@@ -9,5 +9,6 @@
         'views/test_portal_templates.xml',
         'views/menues.xml'
     ],
+    'depends': ['portal'],
     'installable': True,
 }

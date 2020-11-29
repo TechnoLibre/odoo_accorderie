@@ -6,6 +6,7 @@ from odoo import api, models, fields
 class TestModel(models.Model):
     _name = 'test.model'
     _description = 'test_model'
+    _inherit = ['portal.mixin']
 
     name = fields.Char(
         string='Name',

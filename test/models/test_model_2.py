@@ -6,6 +6,7 @@ from odoo import api, models, fields
 class TestModel2(models.Model):
     _name = 'test.model_2'
     _description = 'test_model_2'
+    _inherit = ['portal.mixin']
 
     mom = fields.Many2one(
         string='mom',

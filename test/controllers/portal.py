@@ -17,8 +17,8 @@ class CustomerPortal(CustomerPortal):
 
     def _prepare_portal_layout_values(self):
         values = super(CustomerPortal, self)._prepare_portal_layout_values()
-        values['project_count'] = request.env['project.project'].search_count([])
-        values['task_count'] = request.env['project.task'].search_count([])
+        values['test_model_count'] = request.env['test.model'].search_count([])
+        values['test_model_2_count'] = request.env['test.model_2'].search_count([])
         return values
 
     # ------------------------------------------------------------
@@ -34,7 +34,7 @@ class CustomerPortal(CustomerPortal):
     @http.route(['/my/projects', '/my/projects/page/<int:page>'], type='http', auth="user", website=True)
     def portal_my_projects(self, page=1, date_begin=None, date_end=None, sortby=None, **kw):
         values = self._prepare_portal_layout_values()
-        Project = request.env['project.project']
+        Project = request.env['test.model']
         domain = []
 
         searchbar_sortings = {
@@ -46,7 +46,7 @@ class CustomerPortal(CustomerPortal):
         order = searchbar_sortings[sortby]['order']
 
         # archive groups - Default Group By 'create_date'
-        archive_groups = self._get_archive_groups('project.project', domain)
+        archive_groups = self._get_archive_groups('test.model', domain)
         if date_begin and date_end:
             domain += [('create_date', '>', date_begin), ('create_date', '<=', date_end)]
         # projects count
@@ -80,7 +80,7 @@ class CustomerPortal(CustomerPortal):
     @http.route(['/my/project/<int:project_id>'], type='http', auth="public", website=True)
     def portal_my_project(self, project_id=None, access_token=None, **kw):
         try:
-            project_sudo = self._document_check_access('project.project', project_id, access_token)
+            project_sudo = self._document_check_access('test.model', project_id, access_token)
         except (AccessError, MissingError):
             return request.redirect('/my')
 
@@ -105,26 +105,26 @@ class CustomerPortal(CustomerPortal):
         searchbar_sortings = {
             'date': {'label': _('Newest'), 'order': 'create_date desc'},
             'name': {'label': _('Title'), 'order': 'name'},
-            'stage': {'label': _('Stage'), 'order': 'stage_id'},
-            'update': {'label': _('Last Stage Update'), 'order': 'date_last_stage_update desc'},
+            # 'stage': {'label': _('Stage'), 'order': 'stage_id'},
+            # 'update': {'label': _('Last Stage Update'), 'order': 'date_last_stage_update desc'},
         }
         searchbar_filters = {
             'all': {'label': _('All'), 'domain': []},
         }
         searchbar_inputs = {
-            'content': {'input': 'content', 'label': _('Search <span class="nolabel"> (in Content)</span>')},
-            'message': {'input': 'message', 'label': _('Search in Messages')},
-            'customer': {'input': 'customer', 'label': _('Search in Customer')},
-            'stage': {'input': 'stage', 'label': _('Search in Stages')},
+            # 'content': {'input': 'content', 'label': _('Search <span class="nolabel"> (in Content)</span>')},
+            # 'message': {'input': 'message', 'label': _('Search in Messages')},
+            # 'customer': {'input': 'customer', 'label': _('Search in Customer')},
+            # 'stage': {'input': 'stage', 'label': _('Search in Stages')},
             'all': {'input': 'all', 'label': _('Search in All')},
         }
         searchbar_groupby = {
             'none': {'input': 'none', 'label': _('None')},
-            'project': {'input': 'project', 'label': _('Project')},
+            # 'project': {'input': 'project', 'label': _('Project')},
         }
 
         # extends filterby criteria with project the customer has access to
-        projects = request.env['project.project'].search([])
+        projects = request.env['test.model'].search([])
         for project in projects:
             searchbar_filters.update({
                 str(project.id): {'label': project.name, 'domain': [('project_id', '=', project.id)]}
@@ -132,7 +132,7 @@ class CustomerPortal(CustomerPortal):
 
         # extends filterby criteria with project (criteria name is the project id)
         # Note: portal users can't view projects they don't follow
-        project_groups = request.env['project.task'].read_group([('project_id', 'not in', projects.ids)],
+        project_groups = request.env['test.model_2'].read_group([('project_id', 'not in', projects.ids)],
                                                                 ['project_id'], ['project_id'])
         for group in project_groups:
             proj_id = group['project_id'][0] if group['project_id'] else False
@@ -151,7 +151,7 @@ class CustomerPortal(CustomerPortal):
         domain = searchbar_filters[filterby]['domain']
 
         # archive groups - Default Group By 'create_date'
-        archive_groups = self._get_archive_groups('project.task', domain)
+        archive_groups = self._get_archive_groups('test.model_2', domain)
         if date_begin and date_end:
             domain += [('create_date', '>', date_begin), ('create_date', '<=', date_end)]
 
@@ -169,7 +169,7 @@ class CustomerPortal(CustomerPortal):
             domain += search_domain
 
         # task count
-        task_count = request.env['project.task'].search_count(domain)
+        task_count = request.env['test.model_2'].search_count(domain)
         # pager
         pager = portal_pager(
             url="/my/tasks",
@@ -182,11 +182,11 @@ class CustomerPortal(CustomerPortal):
         # content according to pager and archive selected
         if groupby == 'project':
             order = "project_id, %s" % order  # force sort on project first to group by project in view
-        tasks = request.env['project.task'].search(domain, order=order, limit=self._items_per_page,
+        tasks = request.env['test.model_2'].search(domain, order=order, limit=self._items_per_page,
                                                    offset=(page - 1) * self._items_per_page)
         request.session['my_tasks_history'] = tasks.ids[:100]
         if groupby == 'project':
-            grouped_tasks = [request.env['project.task'].concat(*g) for k, g in
+            grouped_tasks = [request.env['test.model_2'].concat(*g) for k, g in
                              groupbyelem(tasks, itemgetter('project_id'))]
         else:
             grouped_tasks = [tasks]
@@ -213,7 +213,7 @@ class CustomerPortal(CustomerPortal):
     @http.route(['/my/task/<int:task_id>'], type='http', auth="public", website=True)
     def portal_my_task(self, task_id, access_token=None, **kw):
         try:
-            task_sudo = self._document_check_access('project.task', task_id, access_token)
+            task_sudo = self._document_check_access('test.model_2', task_id, access_token)
         except (AccessError, MissingError):
             return request.redirect('/my')
 
