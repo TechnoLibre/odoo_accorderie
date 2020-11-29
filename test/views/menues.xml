@@ -1,0 +1,22 @@
+<?xml version= "1.0" encoding="utf-8"?>
+<odoo>
+
+  <menuitem id="root_test_model"
+            name="root_test_model"
+            sequence="20"
+  />
+
+  <menuitem id="models"
+            name="Models"
+            sequence="1"
+            parent="root_test_model"
+  />
+
+  <menuitem id="test_model"
+            name="test_model"
+            action="test_model_test_model_action_view_actionwindow"
+            sequence="1"
+            parent="models"
+  />
+
+</odoo>
