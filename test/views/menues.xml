@@ -19,4 +19,11 @@
             parent="models"
   />
 
+  <menuitem id="test_model_2"
+            name="test_model_2"
+            action="test_model_2_test_model_2_action_view_actionwindow"
+            sequence="2"
+            parent="models"
+  />
+
 </odoo>
