@@ -4,7 +4,7 @@ from odoo import api, models, fields
 
 
 class TestModel(models.Model):
-    _name = 'test_model'
+    _name = 'test.model'
     _description = 'test_model'
 
     name = fields.Char(
