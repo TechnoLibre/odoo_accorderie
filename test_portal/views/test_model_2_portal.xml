@@ -1,0 +1,46 @@
+<?xml version= "1.0" encoding="utf-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="test_model_2_portal_treeview">
+    <field name="name">test_model_2_portal_tree</field>
+    <field name="model">test.model_2.portal</field>
+    <field name="arch" type="xml">
+      <tree editable="top">
+        <field name="model_1"/>
+        <field name="name"/>
+      </tree>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="test_model_2_portal_qwebview">
+    <field name="name">Portal layout: project menu entry</field>
+    <field name="model">test.model_2.portal</field>
+    <field name="key">test_portal.portal_layout</field>
+    <field name="priority">40</field>
+    <field name="inherit_id" ref="test_model_2_portal_qwebview"/>
+    <field name="arch" type="xml">
+      <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+        <li t-if="page_name == 'project' or project" t-attf-class="breadcrumb-item #{'active ' if not project else ''}">
+          <a t-if="project" t-attf-href="/my/projects?{{ keep_query() }}">Projects</a>
+          <t t-else="">Projects</t>
+        </li>
+        <li t-if="project" class="breadcrumb-item active">
+          <t t-esc="project.name"/>
+        </li>
+        <li t-if="page_name == 'task' or task" t-attf-class="breadcrumb-item #{'active ' if not task else ''}">
+          <a t-if="task" t-attf-href="/my/tasks?{{ keep_query() }}">Tasks</a>
+          <t t-else="">Tasks</t>
+        </li>
+        <li t-if="task" class="breadcrumb-item active">
+          <t t-esc="task.name"/>
+        </li>
+      </xpath>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="test_model_2_portal_test_model_2_portal_action_view_actionwindow">
+    <field name="name">test_model_2_portal_action_view</field>
+    <field name="res_model">test.model_2.portal</field>
+  </record>
+
+</odoo>

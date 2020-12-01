@@ -1,0 +1,30 @@
+<?xml version= "1.0" encoding="utf-8"?>
+<odoo>
+
+  <menuitem id="root_test_model_2_portal"
+            name="root_test_model_2_portal"
+            sequence="20"
+            web_icon="test_portal,static/description/icon.png"
+  />
+
+  <menuitem id="models"
+            name="Models"
+            sequence="1"
+            parent="root_test_model_2_portal"
+  />
+
+  <menuitem id="test_model_2_portal"
+            name="test_model_2_portal"
+            action="test_model_2_portal_test_model_2_portal_action_view_actionwindow"
+            sequence="1"
+            parent="models"
+  />
+
+  <menuitem id="test_model_portal"
+            name="test_model_portal"
+            action="test_model_portal_test_model_portal_action_view_actionwindow"
+            sequence="2"
+            parent="models"
+  />
+
+</odoo>
