@@ -5,6 +5,9 @@
     'author': 'TechnoLibre',
     'license': 'AGPL-3',
     'application': 'True',
+    'depends': [
+        'portal'
+    ],
     'data': [
         'security/ir.model.access.csv',
         'views/test_model_2_portal.xml',

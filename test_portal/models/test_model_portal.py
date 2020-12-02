@@ -4,6 +4,7 @@ from odoo import _, api, models, fields
 
 
 class TestModelPortal(models.Model):
+    _inherit = 'portal.mixin'
     _name = 'test.model.portal'
     _description = 'test_model_portal'
 

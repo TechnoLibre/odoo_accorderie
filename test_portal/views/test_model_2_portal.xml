@@ -12,53 +12,40 @@
     </field>
   </record>
 
-  <record model="ir.ui.view" id="test_model_2_portal_qwebview">
-    <field name="name">Portal My Home: project entries</field>
-    <field name="model">test.model_2.portal</field>
-    <field name="key">test_portal.portal_my_home</field>
-    <field name="priority">40</field>
-    <field name="inherit_id" ref="test_model_2_portal_qwebview"/>
-    <field name="arch" type="xml">
-      <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
-        <t t-if="test_model_count" t-call="portal.portal_docs_entry">
-          <t t-set="title">Projects</t>
-          <t t-set="url" t-value=""/>
-          <t t-set="count" t-value="test_model_count"/>
-        </t>
-        <li t-if="test_model_2_count" t-call="portal.portal_docs_entry">
-          <t t-set="title">Tasks</t>
-          <t t-set="url" t-value="/my/tasks"/>
-          <t t-set="count" t-value="test_model_2_count"/>
-        </li>
-      </xpath>
-    </field>
-  </record>
+  <template id="test_portal.portal_my_home" name="Portal My Home: project entries" inherit_id="portal.portal_my_home">
+    <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+      <t t-if="test_model_count" t-call="portal.portal_docs_entry">
+        <t t-set="title">Projects</t>
+        <t t-set="url" t-value=""/>
+        <t t-set="count" t-value="test_model_count"/>
+      </t>
+      <li t-if="test_model_2_count" t-call="portal.portal_docs_entry">
+        <t t-set="title">Tasks</t>
+        <t t-set="url" t-value="/my/tasks"/>
+        <t t-set="count" t-value="test_model_2_count"/>
+      </li>
+    </xpath>
+  </template>
 
-  <record model="ir.ui.view" id="test_model_2_portal_qwebview">
-    <field name="name">Portal layout: project menu entry</field>
-    <field name="model">test.model_2.portal</field>
-    <field name="key">test_portal.portal_layout</field>
-    <field name="priority">40</field>
-    <field name="inherit_id" ref="test_model_2_portal_qwebview"/>
-    <field name="arch" type="xml">
-      <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
-        <li t-if="page_name == 'project' or project" t-attf-class="breadcrumb-item #{'active ' if not project else ''}">
-          <a t-if="project" t-attf-href="/my/projects?{{ keep_query() }}">Projects</a>
-          <t t-else="">Projects</t>
-        </li>
-        <li t-if="project" class="breadcrumb-item active">
-          <t t-esc="project.name"/>
-        </li>
-        <li t-if="page_name == 'task' or task" t-attf-class="breadcrumb-item #{'active ' if not task else ''}">
-          <a t-if="task" t-attf-href="/my/tasks?{{ keep_query() }}">Tasks</a>
-          <t t-else="">Tasks</t>
-        </li>
-        <li t-if="task" class="breadcrumb-item active">
-          <t t-esc="task.name"/>
-        </li>
-      </xpath>
-    </field>
-  </record>
+  <template id="test_portal.portal_layout" name="Portal layout: project menu entry"
+            inherit_id="portal.portal_breadcrumbs">
+    <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+      <li t-if="page_name == 'project' or project" t-attf-class="breadcrumb-item #{'active ' if not project else ''}">
+        <a t-if="project" t-attf-href="/my/projects?{{ keep_query() }}">Projects</a>
+        <t t-else="">Projects</t>
+      </li>
+      <li t-if="project" class="breadcrumb-item active">
+        <t t-esc="project.name"/>
+      </li>
+      <li t-if="page_name == 'task' or task" t-attf-class="breadcrumb-item #{'active ' if not task else ''}">
+        <a t-if="task" t-attf-href="/my/tasks?{{ keep_query() }}">Tasks</a>
+        <t t-else="">Tasks</t>
+      </li>
+      <li t-if="task" class="breadcrumb-item active">
+        <t t-esc="task.name"/>
+      </li>
+    </xpath>
+  </template>
 
   <record model="ir.actions.act_window" id="test_model_2_portal_test_model_2_portal_action_view_actionwindow">
     <field name="name">test_model_2_portal_action_view</field>

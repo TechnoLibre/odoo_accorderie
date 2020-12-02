@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 test_model_2_portal_access_types_d'utilisateur_/_utilisateur_interne,test_model_2_portal Access Types d'utilisateur / Utilisateur interne,model_test_model_2_portal,base.group_user,1,1,1,1
+test_model_2_portal_access_types_d'utilisateur_/_portail,test_model_2_portal Access Types d'utilisateur / Portail,model_test_model_2_portal,base.group_portal,1,0,0,0
 test_model_portal_access_types_d'utilisateur_/_utilisateur_interne,test_model_portal Access Types d'utilisateur / Utilisateur interne,model_test_model_portal,base.group_user,1,1,1,1
-access_test_model_portal,access_test_model_portal,model_test_model_portal,base.group_user,1,0,0,0
+test_model_portal_access_types_d'utilisateur_/_portail,test_model_portal Access Types d'utilisateur / Portail,model_test_model_portal,base.group_portal,1,0,0,0
