@@ -14,15 +14,15 @@
 
   <template id="test_portal.portal_my_home" name="Portal My Home: project entries" inherit_id="portal.portal_my_home">
     <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
-      <t t-if="test_model_count" t-call="portal.portal_docs_entry">
+      <t t-if="test_model_portal_count" t-call="portal.portal_docs_entry">
         <t t-set="title">Projects</t>
         <t t-set="url" t-value=""/>
-        <t t-set="count" t-value="test_model_count"/>
+        <t t-set="count" t-value="test_model_portal_count"/>
       </t>
-      <li t-if="test_model_2_count" t-call="portal.portal_docs_entry">
+      <li t-if="test_model_2_portal_count" t-call="portal.portal_docs_entry">
         <t t-set="title">Tasks</t>
-        <t t-set="url" t-value="/my/tasks"/>
-        <t t-set="count" t-value="test_model_2_count"/>
+        <t t-set="url" t-value="'/my/tasks'"/>
+        <t t-set="count" t-value="test_model_2_portal_count"/>
       </li>
     </xpath>
   </template>
