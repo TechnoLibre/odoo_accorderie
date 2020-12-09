@@ -1,6 +1,44 @@
 <?xml version= "1.0" encoding="utf-8"?>
 <odoo>
 
+  <template id="test_portal.portal_my_test_model_portal" name="My Test Model Portal">
+    <t t-call="portal.portal_layout">
+      <t t-set="o_portal_fullwidth_alert">
+        <t t-call="portal.portal_back_in_edit_mode">
+          <t t-set="backend_url"
+             t-value="'/web#return_label=Website&amp;model=test_portal.test.model.portal&amp;id=%s&amp;view_type=form' % (test_model_portal.id)"/>
+        </t>
+      </t>
+      <t t-call="portal.portal_record_layout">
+        <t t-set="card_header">
+          <h5 class="mb-0">
+            <small class="text-muted">Test Model Portal -</small>
+            <span t-field="test_model_portal.name"/>
+          </h5>
+        </t>
+      </t>
+    </t>
+  </template>
+
+  <template id="test_portal.portal_my_test_model_2_portal" name="My Test Model_2 Portal">
+    <t t-call="portal.portal_layout">
+      <t t-set="o_portal_fullwidth_alert">
+        <t t-call="portal.portal_back_in_edit_mode">
+          <t t-set="backend_url"
+             t-value="'/web#return_label=Website&amp;model=test_portal.test.model_2.portal&amp;id=%s&amp;view_type=form' % (test_model_2_portal.id)"/>
+        </t>
+      </t>
+      <t t-call="portal.portal_record_layout">
+        <t t-set="card_header">
+          <h5 class="mb-0">
+            <small class="text-muted">Test Model_2 Portal -</small>
+            <span t-field="test_model_2_portal.name"/>
+          </h5>
+        </t>
+      </t>
+    </t>
+  </template>
+
   <record model="ir.ui.view" id="test_model_2_portal_treeview">
     <field name="name">test_model_2_portal_tree</field>
     <field name="model">test.model_2.portal</field>
