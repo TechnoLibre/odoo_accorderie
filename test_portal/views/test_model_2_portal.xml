@@ -16,6 +16,13 @@
             <span t-field="test_model_portal.name"/>
           </h5>
         </t>
+        <t t-set="card_body">
+          <div class="row">
+            <div class="col-12 col-md-6 mb-2 mb-md-0">Banana test-
+              <span t-field="test_model_portal.banana"/>
+            </div>
+          </div>
+        </t>
       </t>
     </t>
   </template>
@@ -34,6 +41,13 @@
             <small class="text-muted">Test Model_2 Portal -</small>
             <span t-field="test_model_2_portal.name"/>
           </h5>
+        </t>
+        <t t-set="card_body">
+          <div class="row">
+            <div class="col-12 col-md-6 mb-2 mb-md-0">Model 1-
+              <span t-field="test_model_2_portal.model_1"/>
+            </div>
+          </div>
         </t>
       </t>
     </t>
