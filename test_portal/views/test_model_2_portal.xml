@@ -12,37 +12,88 @@
     </field>
   </record>
 
-  <template id="test_portal.portal_my_home" name="Portal My Home: project entries" inherit_id="portal.portal_my_home">
+  <template id="test_portal.portal_my_test_model_portals" name="My Test Model Portals">
+    <t t-call="portal.portal_layout">
+      <t t-set="breadcrumbs_searchbar" t-value="True"/>
+      <t t-call="portal.portal_searchbar">
+        <t t-set="title">Test Model Portals</t>
+      </t>
+      <t t-if="not test_model_portals">
+        <div class="alert alert-warning mt8" role="alert">There are no test_model_portals.</div>
+      </t>
+      <t t-if="test_model_portals" t-call="portal.portal_table">
+        <tbody>
+          <tr t-foreach="test_model_portals" t-as="test_model_portal">
+            <td>
+              <a t-attf-href="/my/test_model_portal/#{test_model_portal.id}?{{ keep_query() }}">
+                <span t-field="test_model_portal.name"/>
+              </a>
+            </td>
+            <td class="text-right"/>
+          </tr>
+        </tbody>
+      </t>
+    </t>
+  </template>
+
+  <template id="test_portal.portal_my_test_model_2_portals" name="My Test Model_2 Portals">
+    <t t-call="portal.portal_layout">
+      <t t-set="breadcrumbs_searchbar" t-value="True"/>
+      <t t-call="portal.portal_searchbar">
+        <t t-set="title">Test Model_2 Portals</t>
+      </t>
+      <t t-if="not test_model_2_portals">
+        <div class="alert alert-warning mt8" role="alert">There are no test_model_2_portals.</div>
+      </t>
+      <t t-if="test_model_2_portals" t-call="portal.portal_table">
+        <tbody>
+          <tr t-foreach="test_model_2_portals" t-as="test_model_2_portal">
+            <td>
+              <a t-attf-href="/my/test_model_2_portal/#{test_model_2_portal.id}?{{ keep_query() }}">
+                <span t-field="test_model_2_portal.name"/>
+              </a>
+            </td>
+            <td class="text-right"/>
+          </tr>
+        </tbody>
+      </t>
+    </t>
+  </template>
+
+  <template id="test_portal.portal_my_home" name="Portal My Home: Test_Portal entries"
+            inherit_id="portal.portal_my_home">
     <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+      <t t-if="test_model_2_portal_count" t-call="portal.portal_docs_entry">
+        <t t-set="title">Test Model_2 Portals</t>
+        <t t-set="url" t-value="'/my/test_model_2_portals'"/>
+        <t t-set="count" t-value="test_model_2_portal_count"/>
+      </t>
       <t t-if="test_model_portal_count" t-call="portal.portal_docs_entry">
-        <t t-set="title">Projects</t>
-        <t t-set="url" t-value=""/>
+        <t t-set="title">Test Model Portals</t>
+        <t t-set="url" t-value="'/my/test_model_portals'"/>
         <t t-set="count" t-value="test_model_portal_count"/>
       </t>
-      <li t-if="test_model_2_portal_count" t-call="portal.portal_docs_entry">
-        <t t-set="title">Tasks</t>
-        <t t-set="url" t-value="'/my/tasks'"/>
-        <t t-set="count" t-value="test_model_2_portal_count"/>
-      </li>
     </xpath>
   </template>
 
-  <template id="test_portal.portal_layout" name="Portal layout: project menu entry"
+  <template id="test_portal.portal_layout" name="Portal layout: Test_Portal menu entry"
             inherit_id="portal.portal_breadcrumbs">
     <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
-      <li t-if="page_name == 'project' or project" t-attf-class="breadcrumb-item #{'active ' if not project else ''}">
-        <a t-if="project" t-attf-href="/my/projects?{{ keep_query() }}">Projects</a>
-        <t t-else="">Projects</t>
+      <li t-if="page_name == 'test_model_2_portal' or test_model_2_portal"
+          t-attf-class="breadcrumb-item #{'active ' if not test_model_2_portal else ''}">
+        <a t-if="test_model_2_portal" t-attf-href="/my/test_model_2_portals?{{ keep_query() }}">Test Model_2 Portals</a>
+        <t t-else="">Test Model_2 Portals</t>
       </li>
-      <li t-if="project" class="breadcrumb-item active">
-        <t t-esc="project.name"/>
+      <li t-if="test_model_2_portal" class="breadcrumb-item active">
+        <t t-esc="test_model_2_portal.name"/>
       </li>
-      <li t-if="page_name == 'task' or task" t-attf-class="breadcrumb-item #{'active ' if not task else ''}">
-        <a t-if="task" t-attf-href="/my/tasks?{{ keep_query() }}">Tasks</a>
-        <t t-else="">Tasks</t>
+      <li t-if="page_name == 'test_model_portal' or test_model_portal"
+          t-attf-class="breadcrumb-item #{'active ' if not test_model_portal else ''}">
+        <a t-if="test_model_portal" t-attf-href="/my/test_model_portals?{{ keep_query() }}">Test Model Portals</a>
+        <t t-else="">Test Model Portals</t>
       </li>
-      <li t-if="task" class="breadcrumb-item active">
-        <t t-esc="task.name"/>
+      <li t-if="test_model_portal" class="breadcrumb-item active">
+        <t t-esc="test_model_portal.name"/>
       </li>
     </xpath>
   </template>
