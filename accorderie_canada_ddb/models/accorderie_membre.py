@@ -239,11 +239,16 @@ class AccorderieMembre(models.Model):
         store=True,
     )
 
-    def send_notif(self):
-        # self.env['bus.bus'].sendone('accorderie.notification.favorite', {"test": 123})
-        self.env["bus.bus"].sendone(
-            "accorderie.notification.favorite", {"date": str(datetime.now())}
-        )
+    @api.multi
+    def write(self, vals):
+        for rec in self:
+            print("yeah")
+            self.env["bus.bus"].sendone(
+                # 'accorderie.notification.favorite',
+                f'["{self._cr.dbname}","{self._name}",{rec.id}]',
+                {"date": str(datetime.now())},
+            )
+        return super().write(vals)
 
     @api.depends(
         "membre_partner_id",

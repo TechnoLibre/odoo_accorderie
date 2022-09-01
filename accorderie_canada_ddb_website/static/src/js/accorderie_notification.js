@@ -10,12 +10,15 @@ odoo.define('website.accorderie_notification', function (require) {
     let AccorderieNotification = Widget.extend({
         init: function (parent) {
             this._super(parent);
+            this._global_scope = angular.element($("[ng-app]")).scope();
         },
         willStart: function () {
             return this._loadQWebTemplate();
         },
         start: function () {
-            this.call('bus_service', 'addChannel', "accorderie.notification.favorite");
+            // this.call('bus_service', 'addChannel', "accorderie.notification.favorite");
+            let canal_accorderie_membre_personal = JSON.stringify([this._global_scope.global.dbname, "accorderie.membre", this._global_scope.personal.id]);
+            this.call('bus_service', 'addChannel', canal_accorderie_membre_personal);
             this.call('bus_service', 'startPolling');
             this.call('bus_service', 'onNotification', this, this._onNotification);
             return this._super();

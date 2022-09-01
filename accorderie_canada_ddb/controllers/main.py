@@ -522,6 +522,9 @@ class AccorderieCanadaDdbController(http.Controller):
         #     month_bank_time -= v.nb_heure
         # bank_time = 15 + month_bank_time
         return {
+            "global": {
+                "dbname": http.request.env.cr.dbname,
+            },
             "personal": {
                 "id": membre_id.id,
                 "full_name": membre_id.nom_complet,
@@ -1171,7 +1174,6 @@ class AccorderieCanadaDdbController(http.Controller):
             favoris_membre_id = http.request.env["accorderie.membre"].browse(
                 id_record
             )
-            favoris_membre_id.send_notif()
             if favoris_membre_id.id in membre_id.membre_favoris_ids.ids:
                 membre_id.write(
                     {"membre_favoris_ids": [(3, favoris_membre_id.id)]}
@@ -1201,10 +1203,6 @@ class AccorderieCanadaDdbController(http.Controller):
                     )
                 status["id"] = favoris_membre_id.id
                 status["is_favorite"] = True
-
-        http.request.env["bus.bus"].sendone(
-            "accorderie.notification.favorite", {"date": str(datetime.now())}
-        )
 
         return status
 
