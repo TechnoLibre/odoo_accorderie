@@ -16,11 +16,11 @@ odoo.define('website.accorderie_notification', function (require) {
             return this._loadQWebTemplate();
         },
         start: function () {
-            // this.call('bus_service', 'addChannel', "accorderie.notification.favorite");
+            this.call('bus_service', 'addChannel', "accorderie.notification.favorite");
             // TODO a bug can occur if the scope not exist or dbname is not sync fast, block in willStart with angular watch
-            this._canal_membre_update = JSON.stringify([this._global_scope.global.dbname, "accorderie.membre", this._global_scope.personal.id]);
-            console.warn(this._canal_membre_update);
-            this.call('bus_service', 'addChannel', this._canal_membre_update);
+            // this._canal_membre_update = JSON.stringify([this._global_scope.global.dbname, "accorderie.membre", this._global_scope.personal.id]);
+            // console.warn(this._canal_membre_update);
+            // this.call('bus_service', 'addChannel', this._canal_membre_update);
             this.call('bus_service', 'startPolling');
             this.call('bus_service', 'onNotification', this, this._onNotification);
             return this._super();
@@ -48,25 +48,30 @@ odoo.define('website.accorderie_notification', function (require) {
             // Recreate it solves a strange bug
             let canal_membre_update = JSON.stringify([this._global_scope.global.dbname, "accorderie.membre", this._global_scope.personal.id]);
             console.debug(notifications);
-            _.each(notifications, function (notification) {
-                let channel = notification[0];
-                let message = notification[1];
+            // Cannot use each, because need to update scope at the end for optimisation
+            // _.each(notifications, function (notification) {
+            for (let i = 0; i < notifications.length; i++) {
+                let notification = notifications[i];
+                    // let channel = notification[0];
+                    let message = notification[1];
+                    let channel = message.canal;
                 if (channel === canal_membre_update && !_.isEmpty(message)) {
                     let data = message.data;
                     for (const [key, value] of Object.entries(data)) {
                         if (key === "membre_favoris_ids") {
                             console.debug("action to do " + String(value));
-                            if (value[0] === 4) {
-                                self._global_scope.personal.dct_membre_favoris[value[1]].is_favorite = true;
+                            if (value[0][0] === 4) {
+                                self._global_scope.personal.dct_membre_favoris[value[0][1]].is_favorite = true;
                                 has_update = true;
-                            } else {
-                                self._global_scope.personal.dct_membre_favoris[value[1]].is_favorite = false;
+                            } else if (value[0][0] === 3) {
+                                self._global_scope.personal.dct_membre_favoris[value[0][1]].is_favorite = false;
                                 has_update = true;
                             }
                         }
                     }
                 }
-            });
+            }
+            // });
 
             if (has_update) {
                 this._global_scope.$digest();

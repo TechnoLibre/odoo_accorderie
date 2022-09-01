@@ -486,8 +486,7 @@ class AccorderieCanadaDdbController(http.Controller):
         ]
 
         dct_membre_favoris = {
-            a.membre_id.id:
-            {
+            a.membre_id.id: {
                 "id": a.membre_id.id,
                 "description": a.membre_id.introduction,
                 "age": 35,
@@ -547,7 +546,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "lst_offre_service_favoris": lst_offre_service_favoris,
                 "lst_demande_service_favoris": lst_demande_service_favoris,
                 "dct_membre_favoris": dct_membre_favoris,
-            }
+            },
         }
 
     @http.route(
