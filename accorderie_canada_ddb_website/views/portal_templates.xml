@@ -247,7 +247,7 @@
                                                     role="menuitem"
                                                     ng-href="/monprofil/mapresentation#!?membre_id={{membre_favoris.id}}"
                                                     class="dropdown-item"
-                                                    ng-repeat="membre_favoris in personal.lst_membre_favoris"
+                                                    ng-repeat="(membre_id, membre_favoris) in personal.dct_membre_favoris"
                                                 >
                                                     <div class="cat activite btn " data-name="Box">
                                                         <img

@@ -242,11 +242,10 @@ class AccorderieMembre(models.Model):
     @api.multi
     def write(self, vals):
         for rec in self:
-            print("yeah")
+            # 'accorderie.notification.favorite',
             self.env["bus.bus"].sendone(
-                # 'accorderie.notification.favorite',
                 f'["{self._cr.dbname}","{self._name}",{rec.id}]',
-                {"date": str(datetime.now())},
+                {"timestamp": str(datetime.now()), "data": vals},
             )
         return super().write(vals)
 

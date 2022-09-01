@@ -2441,10 +2441,10 @@
                                                 </h5>
                                             </div>
 
-                                            <div class="activite btn" data-name="Box" ng-if="_.isEmpty(personal.lst_membre_favoris)">
+                                            <div class="activite btn" data-name="Box" ng-if="_.isEmpty(personal.dct_membre_favoris)">
                                                 Aucun membre favoris dans votre liste.
                                             </div>
-                                            <div class="activite btn" data-name="Box" ng-repeat="membre_favoris in personal.lst_membre_favoris">
+                                            <div class="activite btn" data-name="Box" ng-repeat="(membre_id, membre_favoris) in personal.dct_membre_favoris">
                                                 <a ng-href="/monprofil/mapresentation#!?membre_id={{membre_favoris.id}}">
                                                     <img class="activite_img img-fluid rounded-circle" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
                                                     <div class="infos">

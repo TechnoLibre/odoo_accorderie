@@ -485,7 +485,8 @@ class AccorderieCanadaDdbController(http.Controller):
             )
         ]
 
-        lst_membre_favoris = [
+        dct_membre_favoris = {
+            a.membre_id.id:
             {
                 "id": a.membre_id.id,
                 "description": a.membre_id.introduction,
@@ -495,7 +496,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "distance": "8m",
             }
             for a in membre_id.membre_favoris_ids
-        ]
+        }
 
         is_favorite = membre_id.id in [
             a.membre_id.id for a in membre_id.membre_favoris_ids
@@ -545,7 +546,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "lst_demande_service": lst_demande_service,
                 "lst_offre_service_favoris": lst_offre_service_favoris,
                 "lst_demande_service_favoris": lst_demande_service_favoris,
-                "lst_membre_favoris": lst_membre_favoris,
+                "dct_membre_favoris": dct_membre_favoris,
             }
         }
 

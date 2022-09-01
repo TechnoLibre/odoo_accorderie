@@ -17,8 +17,10 @@ odoo.define('website.accorderie_notification', function (require) {
         },
         start: function () {
             // this.call('bus_service', 'addChannel', "accorderie.notification.favorite");
-            let canal_accorderie_membre_personal = JSON.stringify([this._global_scope.global.dbname, "accorderie.membre", this._global_scope.personal.id]);
-            this.call('bus_service', 'addChannel', canal_accorderie_membre_personal);
+            // TODO a bug can occur if the scope not exist or dbname is not sync fast, block in willStart with angular watch
+            this._canal_membre_update = JSON.stringify([this._global_scope.global.dbname, "accorderie.membre", this._global_scope.personal.id]);
+            console.warn(this._canal_membre_update);
+            this.call('bus_service', 'addChannel', this._canal_membre_update);
             this.call('bus_service', 'startPolling');
             this.call('bus_service', 'onNotification', this, this._onNotification);
             return this._super();
@@ -27,9 +29,9 @@ odoo.define('website.accorderie_notification', function (require) {
          * @private
          */
         _loadQWebTemplate: function () {
-            var xml_files = [];
+            let xml_files = [];
             // This is not useful, only need to return an empty apply
-            var defs = _.map(xml_files, function (tmpl) {
+            let defs = _.map(xml_files, function (tmpl) {
                 return session.rpc('/web/proxy/load', {path: tmpl}).then(function (xml) {
                     QWeb.add_template(xml);
                 });
@@ -41,8 +43,34 @@ odoo.define('website.accorderie_notification', function (require) {
          * @param {Array[]} notifications
          */
         _onNotification: function (notifications) {
-            console.debug("Accorderie Notification");
+            let self = this;
+            let has_update = false;
+            // Recreate it solves a strange bug
+            let canal_membre_update = JSON.stringify([this._global_scope.global.dbname, "accorderie.membre", this._global_scope.personal.id]);
             console.debug(notifications);
+            _.each(notifications, function (notification) {
+                let channel = notification[0];
+                let message = notification[1];
+                if (channel === canal_membre_update && !_.isEmpty(message)) {
+                    let data = message.data;
+                    for (const [key, value] of Object.entries(data)) {
+                        if (key === "membre_favoris_ids") {
+                            console.debug("action to do " + String(value));
+                            if (value[0] === 4) {
+                                self._global_scope.personal.dct_membre_favoris[value[1]].is_favorite = true;
+                                has_update = true;
+                            } else {
+                                self._global_scope.personal.dct_membre_favoris[value[1]].is_favorite = false;
+                                has_update = true;
+                            }
+                        }
+                    }
+                }
+            });
+
+            if (has_update) {
+                this._global_scope.$digest();
+            }
         },
     });
 
