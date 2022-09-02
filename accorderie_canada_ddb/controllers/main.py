@@ -656,6 +656,40 @@ class AccorderieCanadaDdbController(http.Controller):
 
     @http.route(
         [
+            "/accorderie_canada_ddb/get_info/list_membre",
+        ],
+        type="json",
+        auth="user",
+        website=True,
+    )
+    def get_info_list_membre(self, accorderie_id, **kw):
+        my_favorite_membre_id = [
+            a.membre_id.id
+            for a in http.request.env.user.partner_id.accorderie_membre_ids.membre_favoris_ids
+        ]
+        lst_membre = http.request.env["accorderie.membre"].search(
+            [
+                ("accorderie", "=", accorderie_id),
+                ("profil_approuver", "=", True),
+            ]
+        )
+        dct_membre = {
+            a.id: {
+                "age": a.age,
+                "full_name": a.nom_complet,
+                "annee_naissance": a.annee_naissance,
+                "antecedent_judiciaire_verifier": a.antecedent_judiciaire_verifier,
+                "bank_time": a.bank_time,
+                "bank_month_time": a.bank_month_time,
+                "date_adhesion": a.date_adhesion,
+                "is_favorite": a.id in my_favorite_membre_id,
+            }
+            for a in lst_membre
+        }
+        return {"dct_membre": dct_membre}
+
+    @http.route(
+        [
             "/accorderie_canada_ddb/get_info/nb_offre_service",
         ],
         type="json",

@@ -163,72 +163,11 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             actual_month_bank_time_human_short: "0h",
         }
         $scope.membre_info = {}
+        $scope.dct_membre = {}
         // $scope.offre_service_info = {}
         // $scope.demande_service_info = {}
         // $scope.echange_service_info = {}
         $scope.nb_offre_service = 0;
-
-        ajax.rpc("/accorderie_canada_ddb/get_personal_information", {}).then(function (data) {
-            console.debug("AJAX receive get_personal_information");
-            if (data.error || !_.isUndefined(data.error)) {
-                $scope.error = data.error;
-                console.error($scope.error);
-            } else if (_.isEmpty(data)) {
-                $scope.error = "Empty 'get_personal_information' data";
-                console.error($scope.error);
-            } else {
-                $scope.error = "";
-                $scope.global = data.global;
-                $scope.personal = data.personal;
-                $scope.update_personal_data();
-                console.debug($scope.personal);
-
-                // Special case, when need to get information of another member
-                let membre_id = $location.search()["membre_id"];
-                let membre_id_int = parseInt(membre_id);
-                if (window.location.pathname === "/monprofil/mapresentation" && !_.isUndefined(membre_id) && membre_id_int !== $scope.personal.id) {
-                    console.error("ok");
-                    // Force switch to another user
-                    ajax.rpc("/accorderie_canada_ddb/get_membre_information/" + membre_id_int).then(function (data) {
-                        console.debug("AJAX receive get_membre_information");
-                        if (data.error || !_.isUndefined(data.error)) {
-                            $scope.error = data.error;
-                            console.error($scope.error);
-                        } else if (_.isEmpty(data)) {
-                            $scope.error = "Empty 'get_membre_information' data";
-                            console.error($scope.error);
-                        } else {
-                            $scope.error = "";
-                            $scope.membre_info = data.membre_info;
-                            console.debug($scope.membre_info);
-                        }
-                        // Process all the angularjs watchers
-                        $scope.$digest();
-                    })
-                } else {
-                    $scope.membre_info = $scope.personal;
-                }
-            }
-
-            // Process all the angularjs watchers
-            $scope.$digest();
-        })
-
-        ajax.rpc("/accorderie_canada_ddb/get_info/nb_offre_service", {}).then(function (data) {
-            console.debug("AJAX receive get_nb_offre_service");
-            if (data.error || !_.isUndefined(data.error)) {
-                $scope.error = data.error;
-                console.error($scope.error);
-            } else if (_.isEmpty(data)) {
-                $scope.error = "Empty 'get_nb_offre_service' data";
-                console.error($scope.error);
-            } else {
-                $scope.nb_offre_service = data.nb_offre_service;
-            }
-
-            // Process all the angularjs watchers
-            $scope.$digest();
-        })
 
         $scope.add_to_my_favorite_field_id = function (model, record_id) {
             console.error("Not supported change favorite.");
@@ -258,7 +197,96 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             })
         }
 
-        $scope.getDatabaseInfo = function(model, field_id) {
+        $scope.update_db_my_personal_info = function () {
+            ajax.rpc("/accorderie_canada_ddb/get_personal_information", {}).then(function (data) {
+                console.debug("AJAX receive get_personal_information");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                } else if (_.isEmpty(data)) {
+                    $scope.error = "Empty 'get_personal_information' data";
+                    console.error($scope.error);
+                } else {
+                    $scope.error = "";
+                    $scope.global = data.global;
+                    $scope.personal = data.personal;
+                    $scope.update_personal_data();
+                    console.debug($scope.personal);
+
+                    $scope.update_db_list_membre($scope.personal.mon_accorderie.id);
+
+                    // Special case, when need to get information of another member
+                    let membre_id = $location.search()["membre_id"];
+                    let membre_id_int = parseInt(membre_id);
+                    if (window.location.pathname === "/monprofil/mapresentation" && !_.isUndefined(membre_id) && membre_id_int !== $scope.personal.id) {
+                        // Force switch to another user
+                        ajax.rpc("/accorderie_canada_ddb/get_membre_information/" + membre_id_int).then(function (data) {
+                            console.debug("AJAX receive get_membre_information");
+                            if (data.error || !_.isUndefined(data.error)) {
+                                $scope.error = data.error;
+                                console.error($scope.error);
+                            } else if (_.isEmpty(data)) {
+                                $scope.error = "Empty 'get_membre_information' data";
+                                console.error($scope.error);
+                            } else {
+                                $scope.error = "";
+                                $scope.membre_info = data.membre_info;
+                                console.debug($scope.membre_info);
+                            }
+                            // Process all the angularjs watchers
+                            $scope.$digest();
+                        })
+                    } else {
+                        $scope.membre_info = $scope.personal;
+                    }
+                }
+
+                // Process all the angularjs watchers
+                $scope.$digest();
+            })
+        }
+
+        $scope.update_db_my_personal_info();
+
+        $scope.update_db_nb_offre_service = function () {
+            ajax.rpc("/accorderie_canada_ddb/get_info/nb_offre_service", {}).then(function (data) {
+            console.debug("AJAX receive get_nb_offre_service");
+            if (data.error || !_.isUndefined(data.error)) {
+                $scope.error = data.error;
+                console.error($scope.error);
+            } else if (_.isEmpty(data)) {
+                $scope.error = "Empty 'get_nb_offre_service' data";
+                console.error($scope.error);
+            } else {
+                $scope.nb_offre_service = data.nb_offre_service;
+            }
+
+            // Process all the angularjs watchers
+            $scope.$digest();
+        })
+        }
+
+        $scope.update_db_list_membre = function (accorderie_id) {
+            ajax.rpc("/accorderie_canada_ddb/get_info/list_membre", {"accorderie_id": accorderie_id}).then(function (data) {
+                console.debug("AJAX receive /accorderie_canada_ddb/get_info/list_membre");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                } else if (_.isEmpty(data)) {
+                    $scope.error = "Empty '/accorderie_canada_ddb/get_info/list_membre' data";
+                    console.error($scope.error);
+                } else {
+                    $scope.dct_membre = data.dct_membre;
+                }
+
+                // Process all the angularjs watchers
+                $scope.$digest();
+            })
+        }
+
+        $scope.update_db_nb_offre_service();
+
+        $scope.getDatabaseInfo = function (model, field_id) {
             // TODO compete this, suppose to update database value and use cache
             console.warn("Not supported get database info");
             console.debug(model);

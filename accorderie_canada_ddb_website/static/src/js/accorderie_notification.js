@@ -68,15 +68,24 @@ odoo.define('website.accorderie_notification', function (require) {
                             // Modified field is in update value
                             let field_id = value[0][1];
                             let membre = $scope.personal.dct_membre_favoris[field_id];
+                            let membre2 = $scope.dct_membre[field_id];
                             // console.debug("action to do " + String(value));
                             if (value[0][0] === 4) {
                                 if (!_.isUndefined(membre)) {
                                     membre.is_favorite = true;
                                     has_update = true;
                                 }
+                                if (!_.isUndefined(membre2)) {
+                                    membre2.is_favorite = true;
+                                    has_update = true;
+                                }
                             } else if (value[0][0] === 3) {
                                 if (!_.isUndefined(membre)) {
                                     membre.is_favorite = false;
+                                    has_update = true;
+                                }
+                                if (!_.isUndefined(membre2)) {
+                                    membre2.is_favorite = false;
                                     has_update = true;
                                 }
                             } else {

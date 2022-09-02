@@ -3,8 +3,11 @@
     <data noupdate="1">
         <record id="accorderie_membre_administrateur_mathieu_benoit" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
+            <field name="profil_approuver" eval="True" />
+            <field name="antecedent_judiciaire_verifier" eval="True" />
             <field name="nom">Benoit</field>
             <field name="prenom">Mathieu</field>
+            <field name="annee_naissance">1989</field>
             <field name="membre_partner_id" ref="base.partner_admin" />
             <field name="region" ref="accorderie_canada_ddb_data.accorderie_region_capitale_nationale" />
             <field name="ville" ref="accorderie_canada_ddb_data.accorderie_ville_grosse_ile" />
@@ -12,38 +15,43 @@
         </record>
         <record id="accorderie_membre_martin_petit" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
-            <field name="adresse">3800 Queen Mary Rd, Montreal, Quebec H3V 1H6</field>
+            <field name="profil_approuver" eval="True" />
             <field name="nom">Petit</field>
             <field name="prenom">Martin</field>
             <field name="membre_partner_id" ref="partner_demo_martin_petit" />
+            <field name="adresse">3800 Queen Mary Rd, Montreal, Quebec H3V 1H6</field>
             <field name="region" ref="accorderie_canada_ddb_data.accorderie_region_capitale_nationale" />
             <field name="ville" ref="accorderie_canada_ddb_data.accorderie_ville_grosse_ile" />
         </record>
         <record id="accorderie_membre_denis_lemarchand" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
-            <field name="adresse">2150 Autoroute des Laurentides laval</field>
+            <field name="profil_approuver" eval="True" />
             <field name="nom">Lemarchand</field>
             <field name="prenom">Denis</field>
             <field name="membre_partner_id" ref="partner_demo_denis_lemarchand" />
+            <field name="adresse">2150 Autoroute des Laurentides laval</field>
             <field name="region" ref="accorderie_canada_ddb_data.accorderie_region_capitale_nationale" />
             <field name="ville" ref="accorderie_canada_ddb_data.accorderie_ville_grosse_ile" />
         </record>
         <record id="accorderie_membre_alice_poitier" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
-            <field name="adresse">Résidence étudiante du collège de Rosemont, Rue de Bellechasse, Étienne-Desmarteau, Rosemont–La Petite-Patrie, Montreal, Urban agglomeration of Montreal, Montreal (06), Quebec, H1X 1J5, Canada</field>
+            <field name="profil_approuver" eval="True" />
+            <field name="antecedent_judiciaire_verifier" eval="True" />
             <field name="nom">Poitier</field>
             <field name="prenom">Alice</field>
             <field name="membre_partner_id" ref="partner_demo_alice_poitier" />
+            <field name="adresse">Résidence étudiante du collège de Rosemont, Rue de Bellechasse, Étienne-Desmarteau, Rosemont–La Petite-Patrie, Montreal, Urban agglomeration of Montreal, Montreal (06), Quebec, H1X 1J5, Canada</field>
             <field name="region" ref="accorderie_canada_ddb_data.accorderie_region_capitale_nationale" />
             <field name="ville" ref="accorderie_canada_ddb_data.accorderie_ville_grosse_ile" />
             <field name="user_id" ref="base.user_admin" />
         </record>
         <record id="accorderie_membre_martin_bergeron" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
-            <field name="adresse">4777 Pierre-de Coubertin Ave, Montreal, Quebec H1V 1B3</field>
+            <field name="profil_approuver" eval="True" />
             <field name="nom">Bergeron</field>
             <field name="prenom">Martin</field>
             <field name="membre_partner_id" ref="partner_demo_martin_bergeron" />
+            <field name="adresse">4777 Pierre-de Coubertin Ave, Montreal, Quebec H1V 1B3</field>
             <field name="region" ref="accorderie_canada_ddb_data.accorderie_region_capitale_nationale" />
             <field name="ville" ref="accorderie_canada_ddb_data.accorderie_ville_grosse_ile" />
         </record>

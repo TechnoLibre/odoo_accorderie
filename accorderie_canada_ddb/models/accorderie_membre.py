@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 
 from odoo import _, api, fields, models
 
@@ -41,6 +41,8 @@ class AccorderieMembre(models.Model):
     adresse = fields.Char()
 
     annee_naissance = fields.Integer(string="Année de naissance")
+
+    age = fields.Integer(string="Âge", compute="_compute_age")
 
     arrondissement = fields.Many2one(comodel_name="accorderie.arrondissement")
 
@@ -325,3 +327,14 @@ class AccorderieMembre(models.Model):
                     rec.nom_complet = f"{rec.nom}"
                 elif rec.prenom:
                     rec.nom_complet = f"{rec.prenom}"
+
+    @api.depends("annee_naissance")
+    def _compute_age(self):
+        for rec in self:
+            if not rec.annee_naissance:
+                rec.age = 0
+            else:
+                today = date.today()
+                # TODO algorithme avec date de naisance et non année de naissance
+                # rec.age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+                rec.age = today.year - rec.annee_naissance

@@ -55,7 +55,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="nav-item debug_unimplemented" t-ignore="true" t-if="not user_id._is_public()">
+                            <li class="nav-item" t-ignore="true" t-if="not user_id._is_public()">
                                 <a class="nav-link" role="menu_item" href="/communaute/actualite">
                                     <span
                                         data-oe-model="website.menu"
@@ -263,12 +263,12 @@
                                                                 ng-if="membre_favoris.description"
                                                             ><q>{{membre_favoris.description}}</q></span>
                                                         </div>
-                                                        <div class="infos right">
-                                                            <i
-                                                                class="fa fa-2x fa-heart text-epsilon"
-                                                                style="margin:unset;"
-                                                            />
-                                                        </div>
+<!--                                                        <div class="infos right">-->
+<!--                                                            <i-->
+<!--                                                                class="fa fa-2x fa-heart text-epsilon"-->
+<!--                                                                style="margin:unset;"-->
+<!--                                                            />-->
+<!--                                                        </div>-->
                                                     </div>
                                                 </a>
                                             </div>
