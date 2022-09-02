@@ -70,11 +70,15 @@ odoo.define('website.accorderie_notification', function (require) {
                             let membre = $scope.personal.dct_membre_favoris[field_id];
                             // console.debug("action to do " + String(value));
                             if (value[0][0] === 4) {
-                                membre.is_favorite = true;
-                                has_update = true;
+                                if (!_.isUndefined(membre)) {
+                                    membre.is_favorite = true;
+                                    has_update = true;
+                                }
                             } else if (value[0][0] === 3) {
-                                membre.is_favorite = false;
-                                has_update = true;
+                                if (!_.isUndefined(membre)) {
+                                    membre.is_favorite = false;
+                                    has_update = true;
+                                }
                             } else {
                                 console.error("Not support value '" + value + "' from membre_favoris_ids channel '" + channel + "' model 'accorderie.membre'");
                             }
@@ -103,10 +107,13 @@ odoo.define('website.accorderie_notification', function (require) {
                                     has_update = true;
                                 }
                             } else if (value[0][0] === 3) {
-                                offreService.is_favorite = false;
-                                has_update = true;
+                                if (!_.isUndefined(offreService)) {
+                                    offreService.is_favorite = false;
+                                    has_update = true;
+                                }
                                 if (!_.isUndefined(offreService2)) {
                                     offreService2.is_favorite = false;
+                                    has_update = true;
                                 }
                             } else {
                                 console.error("Not support value '" + value + "' from membre_favoris_ids channel '" + channel + "' model 'accorderie.offre.service'");
@@ -135,8 +142,10 @@ odoo.define('website.accorderie_notification', function (require) {
                                     has_update = true;
                                 }
                             } else if (value[0][0] === 3) {
-                                demandeService.is_favorite = false;
-                                has_update = true;
+                                if (!_.isUndefined(demandeService)) {
+                                    demandeService.is_favorite = false;
+                                    has_update = true;
+                                }
                                 if (!_.isUndefined(demandeService2)) {
                                     demandeService2.is_favorite = false;
                                 }

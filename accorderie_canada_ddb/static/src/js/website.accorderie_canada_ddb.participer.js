@@ -184,10 +184,12 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 console.debug($scope.personal);
 
                 // Special case, when need to get information of another member
-                let membre_id = parseInt($location.search()["membre_id"]);
-                if (window.location.pathname === "/monprofil/mapresentation" && !_.isUndefined(membre_id) && membre_id !== $scope.personal.id) {
+                let membre_id = $location.search()["membre_id"];
+                let membre_id_int = parseInt(membre_id);
+                if (window.location.pathname === "/monprofil/mapresentation" && !_.isUndefined(membre_id) && membre_id_int !== $scope.personal.id) {
+                    console.error("ok");
                     // Force switch to another user
-                    ajax.rpc("/accorderie_canada_ddb/get_membre_information/" + membre_id).then(function (data) {
+                    ajax.rpc("/accorderie_canada_ddb/get_membre_information/" + membre_id_int).then(function (data) {
                         console.debug("AJAX receive get_membre_information");
                         if (data.error || !_.isUndefined(data.error)) {
                             $scope.error = data.error;

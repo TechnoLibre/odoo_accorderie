@@ -1909,7 +1909,7 @@
                                             <span class="txt">Intro</span>
                                             <br />
                                             <br />
-                                            <span class="nbr"><q>{{membre_info.introduction}}</q></span>
+                                            <span class="nbr" ng-show="membre_info.introduction"><q>{{membre_info.introduction}}</q></span>
                                         </div>
                                         <div class="information information-3">
                                             <span class="txt">R&#233;sum&#233;</span>
@@ -2302,20 +2302,12 @@
                                                 <a ng-href="/accorderie_canada_ddb/accorderie_offre_service/{{offre_service.id}}">
                                                     <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
                                                     <div class="infos">
-<!--                                                        <h4 class="activite_title">{{offre_service.title}}</h4>-->
-                                                        <h4 ng-if="!_.isEmpty(offre_service.titre)">{{offre_service.titre}}</h4>
-                                                        <h4 ng-if="_.isEmpty(offre_service.titre)">Aucune titre</h4>
-                                                        <!-- TODO activite_desc not exist -->
+                                                        <h4 class="activite_title" ng-if="!_.isEmpty(offre_service.titre)">{{offre_service.titre}}</h4>
+                                                        <h4 class="activite_title" ng-if="_.isEmpty(offre_service.titre)">Aucune titre</h4>
                                                         <h5 class="activite_desc" ng-if="!_.isEmpty(offre_service.description)" ng-bind-html="offre_service.description | unsafe" />
-    <!--                                                    <h5 class="activite_auteur">Denis Lemarchand</h5>-->
-    <!--                                                    <h5 class="activite_distance">Faire visiter une maison &#224;-->
-    <!--                                                        louer-->
-    <!--                                                    </h5>-->
-
-                                                        <!-- TODO manque activite_fav -->
                                                     </div>
                                                 </a>
-                                                <div class="infos right">
+                                                <div class="infos_right">
                                                     <p>{{offre_service.diff_create_date}}</p>
                                                     <i class="fa text-epsilon" ng-class="{'fa-heart': offre_service.is_favorite, 'fa-heart-o': !offre_service.is_favorite}" style="font-size:1.5rem;" ng-click="add_to_my_favorite('accorderie.offre.service', offre_service)" />
                                                 </div>
@@ -2339,12 +2331,12 @@
                                                         <h4 class="activite_title" ng-if="!_.isEmpty(demande_service.titre)">{{demande_service.titre}}</h4>
                                                         <h4 class="activite_title" ng-if="_.isEmpty(demande_service.titre)">Aucune titre</h4>
                                                         <h5 class="activite_desc" ng-if="!_.isEmpty(demande_service.description)" ng-bind-html="demande_service.description | unsafe" />
-                                                        <div class="infos_right">
-                                                            <p>{{demande_service.diff_create_date}}</p>
-                                                            <i class="fa text-epsilon" ng-class="{'fa-heart': demande_service.is_favorite, 'fa-heart-o': !demande_service.is_favorite}" style="font-size:1.5rem;" ng-click="add_to_my_favorite('accorderie.demande.service', demande_service)" />
-                                                        </div>
                                                     </div>
                                                 </a>
+                                                <div class="infos_right">
+                                                    <p>{{demande_service.diff_create_date}}</p>
+                                                    <i class="fa text-epsilon" ng-class="{'fa-heart': demande_service.is_favorite, 'fa-heart-o': !demande_service.is_favorite}" style="font-size:1.5rem;" ng-click="add_to_my_favorite('accorderie.demande.service', demande_service)" />
+                                                </div>
                                             </div>
                                             <a href="/participer#!?state=init.pds" class="btn btn-primary rounded-circle text-gamma add_service"><i class="fa fa-plus-circle icon_padding_right" /> Ajouter une demande de service</a>
                                         </div>
