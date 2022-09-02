@@ -291,6 +291,12 @@ header .nav-link {
   max-height: 500px;
   overflow-y: scroll;
 }
+.navbar-tab {
+ display: none;
+}
+.navbar-tab-open {
+  display: block;
+}
 @media only screen and (max-width: 767px) {
   .dropdown-menu.submenu {
     min-width: 100vw;

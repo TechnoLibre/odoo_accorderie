@@ -150,7 +150,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown" t-ignore="true" t-if="not user_id._is_public()">
-                                <a class="nav-link" data-toggle="dropdown" role="menu_item" style="cursor:pointer">
+                                <a class="nav-link" data-toggle="dropdown" role="menu_item" style="cursor:pointer" ng-click="setTab('tabOffres')">
                                     <span
                                         class="fa fa-2x fa-heart text-primary"
                                         data-oe-model="website.menu"
@@ -161,15 +161,18 @@
                                     />
                                 </a>
 
-                                <div class="dropdown-menu submenu shadow" role="menu">
+                                <div class="1 submenu shadow" role="menu">
                                     <p style="font-size: 1.5rem;">Mes favoris</p>
                                     <div class="dropdown-nav">
-                                        <button id="BtnTabOffres">Offres</button>
-                                        <button id="BtnTabDemandes">Demandes</button>
-                                        <button id="BtnTabMembres">Membres</button>
+                                        <button id="BtnTabOffres" ng-click="setTab('tabOffres')" style="cursor:pointer">Offres</button>
+                                        <button id="BtnTabDemandes" ng-click="setTab('tabDemandes')" style="cursor:pointer">Demandes</button>
+                                        <button id="BtnTabMembres" ng-click="setTab('tabMembres')" style="cursor:pointer">Membres</button>
+<!--                                        <button id="BtnTabOffres" ng-click="navigation.navbar_tab.name='tabOffres'">Offres</button>-->
+<!--                                        <button id="BtnTabDemandes" ng-click="navigation.navbar_tab.name='tabDemandes'">Demandes</button>-->
+<!--                                        <button id="BtnTabMembres" ng-click="navigation.navbar_tab.name='tabMembres'">Membres</button>-->
                                     </div>
                                     <div class="dropdown-cat">
-                                        <div id="tabOffres" class="navbar-tab">
+                                        <div id="tabOffres" class="navbar-tab" ng-class="{'navbar-tab-open': 'tabOffres'===navigation.navbar_tab.name}">
                                             <div class="tab-items-container">
                                                 <a
                                                     role="menuitem"
@@ -204,7 +207,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div id="tabDemandes" class="navbar-tab" style="display:none;">
+                                        <div id="tabDemandes" class="navbar-tab" ng-class="{'navbar-tab-open': 'tabDemandes'===navigation.navbar_tab.name}">
                                             <div class="tab-items-container">
                                                 <a
                                                     role="menuitem"
@@ -241,7 +244,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div id="tabMembres" class="navbar-tab" style="display:none;">
+                                        <div id="tabMembres" class="navbar-tab" ng-class="{'navbar-tab-open': 'tabMembres'===navigation.navbar_tab.name}">
                                             <div class="tab-items-container">
                                                 <a
                                                     role="menuitem"
@@ -284,7 +287,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown" t-ignore="true" t-if="not user_id._is_public()">
-                                <a class="nav-link" role="menu_item" data-toggle="dropdown" style="cursor:pointer">
+                                <a class="nav-link" role="menu_item" data-toggle="dropdown" style="cursor:pointer" ng-click="setTab('tabMessages')">
                                     <span
                                         class="fa fa-2x fa-comments-o text-primary"
                                         data-oe-model="website.menu"
@@ -297,11 +300,13 @@
                                 <div class="dropdown-menu submenu shadow" role="menu">
                                     <p style="font-size: 1.5rem;">Messages et notifications</p>
                                     <div class="dropdown-nav">
-                                        <button id="BtnTabMessages">Messages</button>
-                                        <button id="BtnTabNotifications">Notifications</button>
+<!--                                        <button id="BtnTabMessages" ng-click="navigation.navbar_tab.name='tabMessages'">Messages</button>-->
+<!--                                        <button id="BtnTabNotifications" ng-click="navigation.navbar_tab.name='tabNotifications'">Notifications</button>-->
+                                        <button id="BtnTabMessages" ng-click="setTab('tabMessages')" style="cursor:pointer">Messages</button>
+                                        <button id="BtnTabNotifications" ng-click="setTab('tabNotifications')" style="cursor:pointer">Notifications</button>
                                     </div>
                                     <div class="dropdown-cat">
-                                        <div id="tabMessages" class="navbar-tab">
+                                        <div id="tabMessages" class="navbar-tab" ng-class="{'navbar-tab-open': 'tabMessages'===navigation.navbar_tab.name}">
                                             <div class="tab-items-container">
                                                 <a role="menuitem" href="/participer" class="dropdown-item">
                                                     <div class="cat activite btn " data-name="Box">
@@ -357,7 +362,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div id="tabNotifications" class="navbar-tab" style="display:none;">
+                                        <div id="tabNotifications" class="navbar-tab" ng-class="{'navbar-tab-open': 'tabNotifications'===navigation.navbar_tab.name}">
                                             <div class="tab-items-container">
                                                 <a role="menuitem" href="/participer" class="dropdown-item">
                                                     <div class="cat activite btn " data-name="Box">

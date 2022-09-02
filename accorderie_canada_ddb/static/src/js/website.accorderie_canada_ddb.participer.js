@@ -128,6 +128,11 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
         $scope.global = {
             dbname: undefined,
         }
+        $scope.navigation = {
+            navbar_tab: {
+                name: 'tabOffres', // Default value
+            }
+        }
         $scope.personal = {
             // static
             id: undefined,
@@ -241,6 +246,11 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 // Process all the angularjs watchers
                 $scope.$digest();
             })
+        }
+
+        $scope.setTab = function (tabName) {
+            console.debug(tabName);
+            $scope.navigation.navbar_tab.name = tabName;
         }
 
         // $scope.forceRefreshAngularJS = function () {

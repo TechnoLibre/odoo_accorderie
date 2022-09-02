@@ -73,12 +73,15 @@ odoo.define("website.accorderie_canada_ddb.navbar_tabs", function (require) {
         },
 
         showTab: function (tab) {
-            let x = $('#' + tab).siblings();
-
-            for (let i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            document.getElementById(tab).style.display = "block";
+            // let x = $('#' + tab).siblings();
+            //
+            // for (let i = 0; i < x.length; i++) {
+            //     x[i].style.display = "none";
+            // }
+            let $scope = angular.element($("[ng-app]")).scope();
+            $scope.navigation.navbar_tab.name = tab;
+            console.debug(tab);
+            // document.getElementById(tab).style.display = "block";
         },
     });
 
