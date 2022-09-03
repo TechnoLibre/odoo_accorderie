@@ -257,16 +257,16 @@
         <record id="accorderie_workflow_state_va" model="accorderie.workflow.state">
             <field name="name">Valider un service selon une demande de service</field>
             <field name="key">init.va</field>
-            <field name="message">Avez-vous créer une demande de service pour cette accordage?</field>
+            <field name="message">Avez-vous créer une demande de service pour cet échange?</field>
             <field name="type">selection_static</field>
             <field name="show_breadcrumb">True</field>
-            <field name="breadcrumb_value">Valider un accordage</field>
+            <field name="breadcrumb_value">Valider un échange de service</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_va_oui" model="accorderie.workflow.state">
             <field name="name">Échange d'un service existant</field>
             <field name="key">init.va.oui</field>
-            <field name="message">Quel est votre accordage?</field>
+            <field name="message">Quel est votre échange de service?</field>
             <field name="type">selection_dynamique</field>
             <field name="show_breadcrumb">True</field>
             <field name="breadcrumb_value">Avec une demande de service</field>

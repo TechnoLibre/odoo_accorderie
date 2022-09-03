@@ -109,9 +109,9 @@
             <field name="website_id" ref="website.default_website" />
             <field name="website_published">True</field>
         </record>
-        <record id="website_page_accordages" model="website.page">
-            <field name="url">/monactivite/accordages</field>
-            <field name="view_id" ref="ir_ui_view_accordages" />
+        <record id="website_page_echanges" model="website.page">
+            <field name="url">/monactivite/echanges</field>
+            <field name="view_id" ref="ir_ui_view_echanges" />
             <field name="website_id" ref="website.default_website" />
             <field name="website_published">True</field>
         </record>
@@ -145,9 +145,9 @@
             <field name="website_id" ref="website.default_website" />
             <field name="website_published">True</field>
         </record>
-        <record id="website_page_accordage_a_venir" model="website.page">
-            <field name="url">/monactivite/accordageavenir</field>
-            <field name="view_id" ref="ir_ui_view_accordage_a_venir" />
+        <record id="website_page_echange_a_venir" model="website.page">
+            <field name="url">/monactivite/echange_a_venir</field>
+            <field name="view_id" ref="ir_ui_view_echange_a_venir" />
             <field name="website_id" ref="website.default_website" />
             <field name="website_published">True</field>
         </record>
@@ -157,9 +157,9 @@
             <field name="website_id" ref="website.default_website" />
             <field name="website_published">True</field>
         </record>
-        <record id="website_page_accordage_validation" model="website.page">
-            <field name="url">/monactivite/accordagevalidation</field>
-            <field name="view_id" ref="ir_ui_view_accordage_validation" />
+        <record id="website_page_echange_validation" model="website.page">
+            <field name="url">/monactivite/echange_validation</field>
+            <field name="view_id" ref="ir_ui_view_echange_validation" />
             <field name="website_id" ref="website.default_website" />
             <field name="website_published">True</field>
         </record>

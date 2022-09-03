@@ -1043,7 +1043,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                         } else if ('init.pds.individuelle.formulaire' === $scope.state.id) {
                             $scope.submitted_url = `accorderie_canada_ddb/accorderie_demande_service/${data.demande_service_id}`;
                         } else if (['init.saa.offrir.existant.formulaire', 'init.saa.recevoir.choix.existant.time.formulaire', 'init.saa.offrir.nouveau.categorie_service.formulaire', 'init.saa.recevoir.choix.nouveau.formulaire'].includes($scope.state.id)) {
-                            $scope.submitted_url = `monactivite/accordageavenir/${data.echange_service_id}`;
+                            $scope.submitted_url = `monactivite/echange_a_venir/${data.echange_service_id}`;
                         } else if (['init.va.non.offert.nouveau_formulaire', 'init.va.oui.formulaire', 'init.va.non.recu.choix.formulaire', 'init.va.non.offert.existant_formulaire', 'init.va.non.recu.choix.nouveau.formulaire'].includes($scope.state.id)) {
                             $scope.submitted_url = `monactivite/transactioneffecute/${data.echange_service_id}`;
                         } else {

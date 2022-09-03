@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data noupdate="1">
-        <record id="ir_ui_view_accordages" model="ir.ui.view">
+        <record id="ir_ui_view_echanges" model="ir.ui.view">
             <field name="arch" type="xml">
                 <t name="About us" t-name="website.aboutus">
                     <t t-call="website.layout">
@@ -27,8 +27,8 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link active" role="menu_item" href="/monactivite/accordages">
-                                                <span>Accordages</span>
+                                            <a class="nav-link active" role="menu_item" href="/monactivite/echanges">
+                                                <span>Échanges</span>
                                             </a>
                                         </li>
                                         <li class="nav-item debug_unimplemented">
@@ -49,7 +49,7 @@
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb4" style="text-align: center;">
                                             <p class="s_title_default" style="text-align: left;margin-left:14%; font-size:2rem;">
-                                                Mes accordages
+                                                Mes échanges de service
                                                 <br />
                                             </p>
                                         </div>
@@ -187,7 +187,7 @@
                                                 <a class="details_link" href="/"><u>Voir les détails</u></a>
                                                 <p class="status blue">+ 1h00</p>
                                             </div>
-                                            <div class="medium-btn btn btn-primary">Voir les transactions plus anciennes</div>
+                                            <div class="medium-btn btn btn-primary debug_unimplemented">Voir les transactions plus anciennes</div>
                                         </div>
                                     </div>
                                 </section>
@@ -196,8 +196,8 @@
                     </t>
                 </t>
             </field>
-            <field name="key">website.accordages</field>
-            <field name="name">Accordages</field>
+            <field name="key">website.echanges_services</field>
+            <field name="name">Échanges service</field>
             <field name="type">qweb</field>
         </record>
         <record id="ir_ui_view_communaute" model="ir.ui.view">
@@ -1555,17 +1555,17 @@
                                             </div>
                                     </div>
                                 </div>
-                                <div class="container_accordage">
+                                <div class="container_echange">
                                     <div class="img" style="background-size:cover; background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_adobestock_147894347_preview_jpeg/AdobeStock_147894347_Preview.jpeg&quot;); background-position:70%" />
                                     <div class="info bg-primary">
                                         <h1>Vous venez de donner ou recevoir un service?</h1>
                                         <h5>
-                                            Vous pouvez déjà à présent valider votre accordage en allant dans le section
+                                            Vous pouvez déjà à présent valider votre échange de service en allant dans le section
                                             contribuer ou en cliquant sur le bouton ci-dessous.
                                         </h5>
                                         <a href="/participer#!?state=init.va">
                                             <div class="btn btn-gamma rounded-circle">
-                                                <font class="text-primary">Valider mon accordage</font>
+                                                <font class="text-primary">Valider mon échange</font>
                                             </div>
                                         </a>
                                     </div>
@@ -2408,8 +2408,8 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" role="menu_item" href="/monactivite/accordages">
-                                                <span>Accordages</span>
+                                            <a class="nav-link" role="menu_item" href="/monactivite/echanges">
+                                                <span>Échanges</span>
                                             </a>
                                         </li>
                                         <li class="nav-item debug_unimplemented">
@@ -3071,8 +3071,8 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" role="menu_item" href="/monactivite/accordages">
-                                                <span>Accordages</span>
+                                            <a class="nav-link" role="menu_item" href="/monactivite/echanges">
+                                                <span>Échanges</span>
                                             </a>
                                         </li>
                                         <li class="nav-item debug_unimplemented">
@@ -3091,17 +3091,17 @@
                                 </nav>
                                 <section class="s_activite_bilan">
                                     <div class="bilan_container">
-                                        <a href="/monactivite/accordages" class="bilan bilan-1 btn" style="background-image: url(&quot;https://static.vecteezy.com/system/resources/previews/002/493/163/non_2x/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;)">
+                                        <a href="/monactivite/echanges" class="bilan bilan-1 btn" style="background-image: url(&quot;https://static.vecteezy.com/system/resources/previews/002/493/163/non_2x/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;)">
                                             <span class="txt">Soldes en heures:</span>
                                             <span class="nbr">{{personal.actual_bank_time_human | uppercase}}</span>
                                         </a>
                                         <span class="debug_unimplemented">
-                                            <a href="/monactivite/accordageavenir" class="bilan bilan-2 btn" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">
+                                            <a href="/monactivite/echange_a_venir" class="bilan bilan-2 btn" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">
                                                 <span class="nbr">1</span>
-                                                <span class="txt">accordage &#224; venir</span>
+                                                <span class="txt">Échange &#224; venir</span>
                                             </a>
                                         </span>
-                                        <a href="/monactivite/accordages" class="bilan bilan-3 btn" style="background-image: url(&quot;https://static.vecteezy.com/system/resources/previews/002/493/163/non_2x/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;)">
+                                        <a href="/monactivite/echanges" class="bilan bilan-3 btn" style="background-image: url(&quot;https://static.vecteezy.com/system/resources/previews/002/493/163/non_2x/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;)">
                                             <span class="nbr">{{personal.actual_month_bank_time_human_short | uppercase}}</span>
                                             <span class="txt">ce mois-ci</span>
                                         </a>
@@ -3240,8 +3240,8 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" role="menu_item" href="/monactivite/accordages">
-                                                <span>Accordages</span>
+                                            <a class="nav-link" role="menu_item" href="/monactivite/echanges">
+                                                <span>Échanges</span>
                                             </a>
                                         </li>
                                         <li class="nav-item debug_unimplemented">
@@ -3474,7 +3474,7 @@
                                             <a href="/monactivite" class="footer_link">Bilan</a>
                                             <span class="debug_unimplemented">
                                                 <br />
-                                                <a href="/monactivite/accordages" class="footer_link">Accordages</a>
+                                                <a href="/monactivite/echanges" class="footer_link">Échanges</a>
                                                 <br />
                                                 <a href="/monactivite/monreseau" class="footer_link">Mon r&#233;seau</a>
                                                 <br />
@@ -4001,9 +4001,9 @@
             <field name="name">Offres de service</field>
             <field name="type">qweb</field>
         </record>
-        <record id="ir_ui_view_accordage_a_venir" model="ir.ui.view">
+        <record id="ir_ui_view_echange_a_venir" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="Accordage à venir" t-name="website.accordageavenir">
+                <t name="Échange à venir" t-name="website.echange_a_venir">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -4013,15 +4013,15 @@
                                 <section class="s_back">
                                     <a href="">
                                         <i class="fa fa-arrow-left text-primary" />
-                                        Voir toutes mes accordages
+                                        Voir tous mes échanges
                                     </a>
                                 </section>
-                                <section class="s_accordage_informations pt72 pb72">
+                                <section class="s_echange_informations pt72 pb72">
                                     <div class="informations_container">
                                         <div class="information information-1">
                                             <span class="info_title">
                                                 <font style="font-weight:bold;">
-                                                    Mon accordage à venir avec
+                                                    Mon échange de service à venir avec
                                                 </font>
                                                 <br />
                                                 Alice Poitier
@@ -4190,8 +4190,8 @@
                     </t>
                 </t>
             </field>
-            <field name="key">website.accordage-a-venir</field>
-            <field name="name">Accordage à venir</field>
+            <field name="key">website.echange-a-venir</field>
+            <field name="name">Échange à venir</field>
             <field name="type">qweb</field>
         </record>
         <record id="ir_ui_view_mon_agenda" model="ir.ui.view">
@@ -4335,7 +4335,7 @@
                                                 </div>
                                                 <a class="details_link ml-auto" href="/"><u>Voir les détails</u></a>
                                             </div>
-                                            <div class="medium-btn btn btn-primary">Voir les transactions plus anciennes</div>
+                                            <div class="medium-btn btn btn-primary debug_unimplemented">Voir les transactions plus anciennes</div>
                                         </div>
                                     </div>
                                 </section>
@@ -4348,9 +4348,9 @@
             <field name="name">Mon agenda</field>
             <field name="type">qweb</field>
         </record>
-        <record id="ir_ui_view_accordage_validation" model="ir.ui.view">
+        <record id="ir_ui_view_echange_validation" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="Accordage à venir" t-name="website.accordagevalidation">
+                <t name="Échange à venir" t-name="website.echange_validation">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -4360,7 +4360,7 @@
                                 <section class="s_back">
                                     <a href="">
                                         <i class="fa fa-arrow-left text-primary" />
-                                        Voir toutes mes accordages
+                                        Voir tous mes échanges
                                     </a>
                                     <div class="actions">
                                         <div>
@@ -4376,7 +4376,7 @@
 
                                     </div>
                                 </section>
-                                <section class="s_accordage_informations pt72 pb72">
+                                <section class="s_echange_informations pt72 pb72">
                                     <div class="informations_container">
                                         <div class="information information-1">
                                             <span class="info_title">
@@ -4518,8 +4518,8 @@
                     </t>
                 </t>
             </field>
-            <field name="key">website.accordage-validation</field>
-            <field name="name">Validation accordage</field>
+            <field name="key">website.echange-validation</field>
+            <field name="name">Validation échange</field>
             <field name="type">qweb</field>
         </record>
     </data>

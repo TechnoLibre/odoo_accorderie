@@ -1459,7 +1459,7 @@
                                             <h3><b>Mise en garde</b>
                                             </h3>
                                             <p
-                                            >Avant tout échange de services, nous vous conseillons de vous rejoindre sur un terrain neutre pour vous rencontrer et vous mettre d'accord sur les détails de votre accordage.<br
+                                            >Avant tout échange de services, nous vous conseillons de vous rejoindre sur un terrain neutre pour vous rencontrer et vous mettre d'accord sur les détails.<br
                                                 />Bien que nous vérifions les antécédents judiciaires de certains profils, l'Accorderie ne peut être tenue responsable si vous rencontrez une personne avec de mauvaises intentions. Si vous avez ou avez eu un problème cependant, veuillez nous en avertir.
                                             </p>
                                         </span>
@@ -1615,7 +1615,7 @@
                                             </button>
                                         </a>
                                         <a
-                                            href="monactivite/accordages"
+                                            href="monactivite/echanges"
                                             ng-if="['init.va.non.offert.nouveau_formulaire', 'init.va.oui.formulaire', 'init.va.non.recu.choix.formulaire', 'init.va.non.offert.existant_formulaire', 'init.va.non.recu.choix.nouveau.formulaire'].includes(state.id)"
                                         >
                                             <button class="btn btn-primary text-gamma">Voir tous mes

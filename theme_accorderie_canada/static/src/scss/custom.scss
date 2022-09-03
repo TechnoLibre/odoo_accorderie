@@ -567,7 +567,7 @@ actualité
   float: left;
 }
 
-.container_accordage {
+.container_echange {
   border-radius: 7px;
   overflow: hidden;
   float: right;
@@ -748,7 +748,7 @@ actualité
 }
 
 @media only screen and (max-width: 1050px) {
-  .container_accordage {
+  .container_echange {
     width: 90%;
     float: unset;
     height: auto;
@@ -1681,7 +1681,7 @@ actualité
 }
 
 /*
-    Page Mon activité/Accordages, Mon activité/Mon agenda
+    Page Mon activité/Échanges, Mon activité/Mon agenda
 */
 .s_activites_recentes.lg {
   max-height: 2000px;
@@ -3151,14 +3151,14 @@ actualité
   }
 }
 /*
-  Page Mon accordage à venir
+  Page Mon échange à venir
 */
 
-.s_accordage_informations {
+.s_echange_informations {
   background-color: $gamma;
 }
 
-.s_accordage_informations .informations_container {
+.s_echange_informations .informations_container {
   display: grid;
   grid-template-columns: 0.5fr 1fr;
   grid-column-gap: 5%;
@@ -3295,7 +3295,7 @@ actualité
   }
 }
 @media only screen and (max-width: 990px) {
-  .s_accordage_informations .informations_container {
+  .s_echange_informations .informations_container {
     display: flex;
   }
 
