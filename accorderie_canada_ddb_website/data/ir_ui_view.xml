@@ -1890,7 +1890,7 @@
                                                 <i class="fa fa-shield text-epsilon" ng-if="membre_info.antecedent_judiciaire_verifier" />
                                             </div>
                                             <span class="nbr">
-                                                Bonjour je m'appelle
+                                                Bonjour, je m'appelle
                                                 <br />
                                                 <font style="font-weight:bold;">{{membre_info.full_name}}</font>
                                             </span>
@@ -1994,18 +1994,22 @@
                                                 </span>
                                             </div>
                                             <div class="debug_unimplemented">
-                                                <span class="txt">Les langues que je parle</span>
+                                                <span class="txt" ng-if="membre_info.estPersonnel">Les langues que je parle</span>
+                                                <span class="txt" ng-if="!membre_info.estPersonnel">Les langues parlées</span>
                                                 <span><i class="fa fa-commenting" />Français</span>
                                                 <br />
                                                 <span><i class="fa fa-commenting" />Anglais</span>
                                             </div>
 
                                             <div ng-if="_.isEmpty(membre_info.dct_offre_service)">
-                                                <span class="txt">Mes offres de service</span>
+                                                <span class="txt" ng-if="membre_info.estPersonnel">Mes offres de service</span>
+                                                <span class="txt" ng-if="!membre_info.estPersonnel">Ses offres de service</span>
                                                 <span>Aucune offre de service en cours actuellement.</span>
                                             </div>
                                             <div ng-if="!_.isEmpty(membre_info.dct_offre_service)">
-                                                <span class="txt">Mes offres de service
+                                                <span class="txt">
+                                                    <span ng-if="membre_info.estPersonnel">Mes offres de service</span>
+                                                    <span ng-if="!membre_info.estPersonnel">Ses offres de service</span>
                                                     <a href="" class="debug_unimplemented" style="float:right; font-weight:lighter">
                                                         <u>Voir tout ({{membre_info.dct_offre_service | lengthKeys}})</u>
                                                     </a>
@@ -2028,11 +2032,14 @@
                                             </div>
 
                                             <div ng-if="_.isEmpty(membre_info.dct_demande_service)">
-                                                <span class="txt">Mes demandes de service</span>
+                                                <span class="txt" ng-if="membre_info.estPersonnel">Mes demandes de service</span>
+                                                <span class="txt" ng-if="!membre_info.estPersonnel">Ses demandes de service</span>
                                                 <span>Aucune demande de service en cours actuellement.</span>
                                             </div>
                                             <div ng-if="!_.isEmpty(membre_info.dct_demande_service)">
-                                                <span class="txt">Mes demandes de service
+                                                <span class="txt">
+                                                    <span ng-if="membre_info.estPersonnel">Mes demandes de service</span>
+                                                    <span ng-if="!membre_info.estPersonnel">Ses demandes de service</span>
                                                     <a href="" class="debug_unimplemented" style="float:right; font-weight:lighter">
                                                         <u>Voir tout ({{membre_info.dct_demande_service | lengthKeys}})</u>
                                                     </a>
@@ -2204,7 +2211,8 @@
                                         <div class="row vertical_list">
                                             <div class="list_title s_title pb40">
                                                 <h5>
-                                                    <font style="font-size: 1.5rem;">Mes offres de service</font>
+                                                    <font style="font-size: 1.5rem;" ng-if="membre_info.estPersonnel">Mes offres de service</font>
+                                                    <font style="font-size: 1.5rem;" ng-if="!membre_info.estPersonnel">Ses offres de service</font>
                                                 </h5>
                                             </div>
                                             <div class="activite btn" data-name="Box" ng-if="_.isEmpty(personal.dct_offre_service)">
@@ -2227,9 +2235,11 @@
                                             <a href="/participer#!?state=init.pos" class="btn btn-primary rounded-circle text-gamma add_service"><i class="fa fa-plus-circle icon_padding_right" /> Ajouter une offre de service</a>
                                             <div class="list_title s_title pb40">
                                                 <h5>
-                                                    <font style="font-size: 1.5rem;">
-                                                        Mes demandes de
-                                                        service
+                                                    <font style="font-size: 1.5rem;" ng-if="membre_info.estPersonnel">
+                                                        Mes demandes de service
+                                                    </font>
+                                                    <font style="font-size: 1.5rem;" ng-if="!membre_info.estPersonnel">
+                                                        Ses demandes de service
                                                     </font>
                                                 </h5>
                                             </div>

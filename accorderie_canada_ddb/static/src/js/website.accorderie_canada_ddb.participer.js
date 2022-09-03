@@ -161,16 +161,43 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             actual_bank_time_human_short: "0h",
             actual_bank_time_human_simplify: "0 heure",
             actual_month_bank_time_human_short: "0h",
+            estPersonnel: true,
+
+            // is_in_offre_service_favoris: function () {
+            //     return  $scope.offre_service_info.id in Objects.keys(offre_service_info);
+            // },
+            // is_in_demande_service_favoris: function () {
+            //     return  $scope.demande_service_info.id in Objects.keys(demande_service_info);
+            // },
         }
         $scope.membre_info = {}
         $scope.dct_membre = {}
-        // $scope.offre_service_info = {}
-        // $scope.demande_service_info = {}
-        // $scope.echange_service_info = {}
+        $scope.offre_service_info = {}
+        $scope.demande_service_info = {}
+        $scope.echange_service_info = {}
         $scope.nb_offre_service = 0;
 
         $scope.add_to_my_favorite_field_id = function (model, record_id) {
-            console.error("Not supported change favorite.");
+            ajax.rpc("/accorderie/submit/my_favorite", {"model": model, "id_record": record_id}).then(function (data) {
+                console.debug("AJAX receive add_to_my_favorite");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                } else if (_.isEmpty(data)) {
+                    $scope.error = "Empty 'add_to_my_favorite' data";
+                    console.error($scope.error);
+                } else {
+                    // $scope.nb_offre_service = data.nb_offre_service;
+                    // record_obj.is_favorite = data.is_favorite;
+                    // if (model === "accorderie.membre" && data.is_favorite) {
+                    //     // TODO validate not already in list
+                    //     $scope.personal.lst_membre_favoris.push(record_obj);
+                    // }
+                }
+
+                // Process all the angularjs watchers
+                $scope.$digest();
+            })
         }
 
         $scope.add_to_my_favorite = function (model, record_obj) {
@@ -230,6 +257,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                                 console.error($scope.error);
                             } else {
                                 $scope.error = "";
+                                data.membre_info.estPersonnel = false;
                                 $scope.membre_info = data.membre_info;
                                 console.debug($scope.membre_info);
                             }
@@ -250,21 +278,72 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
 
         $scope.update_db_nb_offre_service = function () {
             ajax.rpc("/accorderie_canada_ddb/get_info/nb_offre_service", {}).then(function (data) {
-            console.debug("AJAX receive get_nb_offre_service");
-            if (data.error || !_.isUndefined(data.error)) {
-                $scope.error = data.error;
-                console.error($scope.error);
-            } else if (_.isEmpty(data)) {
-                $scope.error = "Empty 'get_nb_offre_service' data";
-                console.error($scope.error);
-            } else {
-                $scope.nb_offre_service = data.nb_offre_service;
-            }
+                console.debug("AJAX receive get_nb_offre_service");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                } else if (_.isEmpty(data)) {
+                    $scope.error = "Empty 'get_nb_offre_service' data";
+                    console.error($scope.error);
+                } else {
+                    $scope.nb_offre_service = data.nb_offre_service;
+                }
 
-            // Process all the angularjs watchers
-            $scope.$digest();
-        })
+                // Process all the angularjs watchers
+                $scope.$digest();
+            })
         }
+
+        $scope.load_page_offre_demande_service = function () {
+            let key = "/accorderie_canada_ddb/accorderie_offre_service/";
+            if (window.location.pathname.indexOf(key) === 0) {
+                // params can be 6?debug=1 or 6#!?str=3, need to extract first int
+                let params = window.location.pathname.substring(key.length);
+                params = parseInt(params, 10);
+                if (!Number.isNaN(params)) {
+                    ajax.rpc("/accorderie_canada_ddb/get_info/offre_service/" + params).then(function (data) {
+                        console.debug("AJAX receive /accorderie_canada_ddb/get_info/offre_service");
+                        if (data.error || !_.isUndefined(data.error)) {
+                            $scope.error = data.error;
+                            console.error($scope.error);
+                        } else if (_.isEmpty(data)) {
+                            $scope.error = "Empty '/accorderie_canada_ddb/get_info/offre_service' data";
+                            console.error($scope.error);
+                        } else {
+                            $scope.offre_service_info = data;
+                        }
+
+                        // Process all the angularjs watchers
+                        $scope.$digest();
+                    })
+                }
+            }
+            key = "/accorderie_canada_ddb/accorderie_demande_service/";
+            if (window.location.pathname.indexOf(key) === 0) {
+                // params can be 6?debug=1 or 6#!?str=3, need to extract first int
+                let params = window.location.pathname.substring(key.length);
+                params = parseInt(params, 10);
+                if (!Number.isNaN(params)) {
+                    ajax.rpc("/accorderie_canada_ddb/get_info/demande_service/" + params).then(function (data) {
+                        console.debug("AJAX receive /accorderie_canada_ddb/get_info/demande_service");
+                        if (data.error || !_.isUndefined(data.error)) {
+                            $scope.error = data.error;
+                            console.error($scope.error);
+                        } else if (_.isEmpty(data)) {
+                            $scope.error = "Empty '/accorderie_canada_ddb/get_info/demande_service' data";
+                            console.error($scope.error);
+                        } else {
+                            $scope.demande_service_info = data;
+                        }
+
+                        // Process all the angularjs watchers
+                        $scope.$digest();
+                    })
+                }
+            }
+        }
+
+        $scope.load_page_offre_demande_service();
 
         $scope.update_db_list_membre = function (accorderie_id) {
             ajax.rpc("/accorderie_canada_ddb/get_info/list_membre", {"accorderie_id": accorderie_id}).then(function (data) {

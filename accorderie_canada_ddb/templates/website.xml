@@ -32,8 +32,12 @@
                                     class="btn btn-primary"
                                     t-attf-ng-click="add_to_my_favorite_field_id('accorderie.offre.service', {{accorderie_offre_service_id.id}})"
                                 >
-                                    <i class="fa fa-heart-o icon_padding_right" />
-                                    Ajouter à mes favoris
+                                    <i
+                                        class="fa icon_padding_right"
+                                        ng-class="{'fa-heart': offre_service_info.is_favorite, 'fa-heart-o': !offre_service_info.is_favorite}"
+                                    />
+                                    <span ng-show="!offre_service_info.is_favorite">Ajouter à mes favoris</span>
+                                    <span ng-show="offre_service_info.is_favorite">Retirer de mes favoris</span>
                                 </div>
                             </div>
                         </section>
@@ -214,8 +218,12 @@
                                     class="btn btn-primary"
                                     t-attf-ng-click="add_to_my_favorite_field_id('accorderie.demande.service', {{accorderie_demande_service_id.id}})"
                                 >
-                                    <i class="fa fa-heart-o icon_padding_right" />
-                                    Ajouter à mes favoris
+                                    <i
+                                        class="fa icon_padding_right"
+                                        ng-class="{'fa-heart': demande_service_info.is_favorite, 'fa-heart-o': !demande_service_info.is_favorite}"
+                                    />
+                                    <span ng-show="!demande_service_info.is_favorite">Ajouter à mes favoris</span>
+                                    <span ng-show="demande_service_info.is_favorite">Retirer de mes favoris</span>
                                 </div>
                             </div>
                         </section>

@@ -235,8 +235,19 @@
                                             </div>
                                             <a role="menuitem" href="/monprofil/mesfavoris" class="dropdown-item">
                                                 <div class="cat activite btn btn-primary" data-name="Box">
-                                                    <font class="text-gamma" style="font-size: 1rem;">
+                                                    <font
+                                                        class="text-gamma"
+                                                        style="font-size: 1rem;"
+                                                        ng-if="membre_info.estPersonnel"
+                                                    >
                                                         Voir toutes mes demandes favorites
+                                                    </font>
+                                                    <font
+                                                        class="text-gamma"
+                                                        style="font-size: 1rem;"
+                                                        ng-if="!membre_info.estPersonnel"
+                                                    >
+                                                        Voir toutes ses demandes favorites
                                                     </font>
                                                 </div>
                                             </a>

@@ -127,6 +127,31 @@ class AccorderieCanadaDdbController(http.Controller):
 
     @http.route(
         [
+            "/accorderie_canada_ddb/get_info/offre_service/<model('accorderie.offre.service'):offre_id>",
+        ],
+        type="json",
+        auth="user",
+        website=True,
+    )
+    def get_info_offre_service(self, offre_id, **kw):
+        me_membre_id = http.request.env.user.partner_id.accorderie_membre_ids
+        return {
+            "id": offre_id.id,
+            "description": offre_id.description,
+            "titre": offre_id.titre,
+            "is_favorite": me_membre_id.id in offre_id.membre_favoris_ids.ids,
+            "distance": "8m",
+            "membre": {
+                "id": offre_id.membre.id,
+                "full_name": offre_id.membre.nom_complet,
+            },
+            "diff_create_date": self._transform_str_diff_time_creation(
+                offre_id.create_date
+            ),
+        }
+
+    @http.route(
+        [
             "/accorderie_canada_ddb/accorderie_demande_service/<int:demande_service>"
         ],
         type="http",
@@ -563,6 +588,7 @@ class AccorderieCanadaDdbController(http.Controller):
         #     # This is an error
         #     return membre_id
 
+        me_membre_id = http.request.env.user.partner_id.accorderie_membre_ids
         actual_membre_id = self.get_membre_id()
         if type(actual_membre_id) is dict:
             # This is an error
@@ -577,7 +603,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "id": a.id,
                 "description": a.description,
                 "titre": a.titre,
-                # "is_favorite": membre_id.id in a.membre_favoris_ids.ids,
+                "is_favorite": me_membre_id.id in a.membre_favoris_ids.ids,
                 "diff_create_date": self._transform_str_diff_time_creation(
                     a.create_date
                 ),
@@ -595,7 +621,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "id": a.id,
                 "description": a.description,
                 "titre": a.titre,
-                # "is_favorite": membre_id.id in a.membre_favoris_ids.ids,
+                "is_favorite": me_membre_id.id in a.membre_favoris_ids.ids,
                 "diff_create_date": self._transform_str_diff_time_creation(
                     a.create_date
                 ),

@@ -101,6 +101,15 @@ odoo.define('website.accorderie_notification', function (require) {
                         if (key === "membre_favoris_ids") {
                             let offreService = $scope.personal.dct_offre_service_favoris[field_id];
                             let offreService2 = $scope.personal.dct_offre_service[field_id];
+                            let offreService3 = $scope.membre_info.dct_offre_service_favoris;
+                            if (!_.isUndefined(offreService3)) {
+                                offreService3 = offreService3[field_id];
+                            }
+                            let offreService4 = $scope.membre_info.dct_offre_service;
+                            if (!_.isUndefined(offreService4)) {
+                                offreService4 = offreService4[field_id];
+                            }
+                            let offreService5 = $scope.offre_service_info;
                             // console.debug("action to do " + String(value));
                             if (value[0][0] === 4) {
                                 // let field_id = value[0][1];
@@ -115,6 +124,18 @@ odoo.define('website.accorderie_notification', function (require) {
                                     offreService2.is_favorite = true;
                                     has_update = true;
                                 }
+                                if (!_.isUndefined(offreService3)) {
+                                    offreService3.is_favorite = true;
+                                    has_update = true;
+                                }
+                                if (!_.isUndefined(offreService4)) {
+                                    offreService4.is_favorite = true;
+                                    has_update = true;
+                                }
+                                if (!_.isUndefined(offreService5)) {
+                                    offreService5.is_favorite = true;
+                                    has_update = true;
+                                }
                             } else if (value[0][0] === 3) {
                                 if (!_.isUndefined(offreService)) {
                                     offreService.is_favorite = false;
@@ -122,6 +143,18 @@ odoo.define('website.accorderie_notification', function (require) {
                                 }
                                 if (!_.isUndefined(offreService2)) {
                                     offreService2.is_favorite = false;
+                                    has_update = true;
+                                }
+                                if (!_.isUndefined(offreService3)) {
+                                    offreService3.is_favorite = false;
+                                    has_update = true;
+                                }
+                                if (!_.isUndefined(offreService4)) {
+                                    offreService4.is_favorite = false;
+                                    has_update = true;
+                                }
+                                if (!_.isUndefined(offreService5)) {
+                                    offreService5.is_favorite = false;
                                     has_update = true;
                                 }
                             } else {
@@ -136,6 +169,15 @@ odoo.define('website.accorderie_notification', function (require) {
                         if (key === "membre_favoris_ids") {
                             let demandeService = $scope.personal.dct_demande_service_favoris[field_id];
                             let demandeService2 = $scope.personal.dct_demande_service[field_id];
+                            let demandeService3 = $scope.membre_info.dct_demande_service_favoris;
+                            if (!_.isUndefined(demandeService3)) {
+                                demandeService3 = demandeService3[field_id];
+                            }
+                            let demandeService4 = $scope.membre_info.dct_demande_service;
+                            if (!_.isUndefined(demandeService4)) {
+                                demandeService4 = demandeService4[field_id];
+                            }
+                            let demandeService5 = $scope.demande_service_info;
                             // console.debug("action to do " + String(value));
                             if (value[0][0] === 4) {
                                 // let field_id = value[0][1];
@@ -150,6 +192,18 @@ odoo.define('website.accorderie_notification', function (require) {
                                     demandeService2.is_favorite = true;
                                     has_update = true;
                                 }
+                                if (!_.isUndefined(demandeService3)) {
+                                    demandeService3.is_favorite = true;
+                                    has_update = true;
+                                }
+                                if (!_.isUndefined(demandeService4)) {
+                                    demandeService4.is_favorite = true;
+                                    has_update = true;
+                                }
+                                if (!_.isUndefined(demandeService5)) {
+                                    demandeService5.is_favorite = true;
+                                    has_update = true;
+                                }
                             } else if (value[0][0] === 3) {
                                 if (!_.isUndefined(demandeService)) {
                                     demandeService.is_favorite = false;
@@ -157,6 +211,15 @@ odoo.define('website.accorderie_notification', function (require) {
                                 }
                                 if (!_.isUndefined(demandeService2)) {
                                     demandeService2.is_favorite = false;
+                                }
+                                if (!_.isUndefined(demandeService3)) {
+                                    demandeService3.is_favorite = false;
+                                }
+                                if (!_.isUndefined(demandeService4)) {
+                                    demandeService4.is_favorite = false;
+                                }
+                                if (!_.isUndefined(demandeService5)) {
+                                    demandeService5.is_favorite = false;
                                 }
                             } else {
                                 console.error("Not support value '" + value + "' from membre_favoris_ids channel '" + channel + "' model 'accorderie.demande.service'");
