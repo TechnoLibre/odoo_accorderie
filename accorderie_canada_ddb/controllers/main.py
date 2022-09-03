@@ -1,6 +1,8 @@
 import base64
+import datetime as dt
 import logging
 import urllib.parse
+from collections import defaultdict
 from datetime import datetime
 
 import humanize
@@ -526,6 +528,58 @@ class AccorderieCanadaDdbController(http.Controller):
             a.membre_id.id for a in membre_id.membre_favoris_ids
         ]
 
+        dct_echange = {}
+        for echange_service_id in membre_id.echange_service_acheteur_ids:
+            if echange_service_id.transaction_valide:
+                end_date = echange_service_id.date_echange + dt.timedelta(
+                    hours=echange_service_id.nb_heure
+                )
+            else:
+                end_date = echange_service_id.date_echange + dt.timedelta(
+                    hours=echange_service_id.nb_heure_estime
+                )
+            dct_echange_item = {
+                "transaction_valide": echange_service_id.transaction_valide,
+                "membre": {
+                    "id": echange_service_id.membre_vendeur.id,
+                    "full_name": echange_service_id.membre_vendeur.nom_complet,
+                },
+                "description_service": echange_service_id.offre_service.titre,
+                "date": echange_service_id.date_echange,
+                "end_date": end_date,
+                "temps": echange_service_id.date_echange.hour
+                + echange_service_id.date_echange.minute / 60.0,
+                "duree_estime": echange_service_id.nb_heure_estime,
+                "duree": echange_service_id.nb_heure,
+                "estAcheteur": True,
+            }
+            dct_echange[echange_service_id.id] = dct_echange_item
+        for echange_service_id in membre_id.echange_service_vendeur_ids:
+            if echange_service_id.transaction_valide:
+                end_date = echange_service_id.date_echange + dt.timedelta(
+                    hours=echange_service_id.nb_heure
+                )
+            else:
+                end_date = echange_service_id.date_echange + dt.timedelta(
+                    hours=echange_service_id.nb_heure_estime
+                )
+            dct_echange_item = {
+                "transaction_valide": echange_service_id.transaction_valide,
+                "membre": {
+                    "id": echange_service_id.membre_acheteur.id,
+                    "full_name": echange_service_id.membre_acheteur.nom_complet,
+                },
+                "description_service": echange_service_id.demande_service.titre,
+                "date": echange_service_id.date_echange,
+                "end_date": end_date,
+                "temps": echange_service_id.date_echange.hour
+                + echange_service_id.date_echange.minute / 60.0,
+                "duree_estime": echange_service_id.nb_heure_estime,
+                "duree": echange_service_id.nb_heure,
+                "estAcheteur": False,
+            }
+            dct_echange[echange_service_id.id] = dct_echange_item
+
         # TODO update location with cartier et autre
         # Hack time for demo
         # month_bank_time = 0
@@ -571,6 +625,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "dct_offre_service_favoris": dct_offre_service_favoris,
                 "dct_demande_service_favoris": dct_demande_service_favoris,
                 "dct_membre_favoris": dct_membre_favoris,
+                "dct_echange": dct_echange,
             },
         }
 

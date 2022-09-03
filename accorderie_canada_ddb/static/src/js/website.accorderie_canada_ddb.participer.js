@@ -31,6 +31,17 @@ odoo.define("accorderie.website.date_and_time", function (require) {
     $.when(base.ready(), load_locale());
 });
 
+class DefaultDict {
+    constructor(defaultInit) {
+        return new Proxy({}, {
+            get: (target, name) => name in target ?
+                target[name] :
+                (target[name] = typeof defaultInit === 'function' ?
+                    new defaultInit().valueOf() :
+                    defaultInit)
+        })
+    }
+}
 
 // function compileAngularElement(elSelector) {
 //
@@ -78,6 +89,16 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
     app.filter('lengthKeys', function () {
         return function ($sce) {
             return Object.keys($sce).length;
+        }
+    });
+    app.filter('toTitleCase', function () {
+        return function ($sce) {
+            return $sce.replace(
+                /\w\S*/g,
+                function (txt) {
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                }
+            );
         }
     });
 
@@ -153,6 +174,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             dct_offre_service_favoris: {},
             dct_demande_service_favoris: {},
             dct_membre_favoris: {},
+            dct_echange: {},
 
             // calculate
             actual_bank_sign: true,
@@ -162,6 +184,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             actual_bank_time_human_simplify: "0 heure",
             actual_month_bank_time_human_short: "0h",
             estPersonnel: true,
+            dct_echange_mensuel: {},
 
             // is_in_offre_service_favoris: function () {
             //     return  $scope.offre_service_info.id in Objects.keys(offre_service_info);
@@ -386,8 +409,9 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             // format 4 : 1.0 -> 1h, 1.75 -> 1h45, -.75 -> -0h45
             // format 5 : 2.0 -> + 2 heures, 1.75 -> + 1 heure 45, -.75 -> - 0 heure 45
             // format 6 : 2.0 -> 2 heures, 1.75 -> 1 heure 45, -.75 -> - 0 heure 45
+            // format 7 : 1.0 -> + 1h00, 1.75 -> + 1h45, -.75 -> - 0h45
 
-            if (format > 6 || format < 0) {
+            if (format > 7 || format < 0) {
                 format = 0;
             }
 
@@ -425,8 +449,8 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 newTime = sign + hour + ':' + minute;
             } else if (format === 2) {
                 newTime = sign + ' ' + hour + ':' + minute;
-            } else if (format === 3 || format === 4) {
-                if (minute > 0) {
+            } else if (format === 3 || format === 4 || format === 7) {
+                if (minute > 0 || format === 7) {
                     if (format === 4 && sign === "+") {
                         newTime = hour + 'h' + minute;
                     } else {
@@ -477,8 +501,57 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             $scope.personal.actual_bank_time_human_simplify = $scope.convertNumToTime(time_bank, 6);
 
             $scope.personal.actual_month_bank_time_human_short = $scope.convertNumToTime($scope.personal.actual_month_bank_hours, 4);
+
+            let month_key = moment(Date.now()).format("MMMM YYYY");
+            $scope.personal.dct_echange_mensuel = {};
+            $scope.personal.dct_echange_mensuel[month_key] = {"lst_echange": [], "actualMonth": true};
+
+            // Order list by month and year
+            for (const [key, value] of Object.entries($scope.personal.dct_echange)) {
+                let inner_obj;
+                let month_key = moment(value.date).format("MMMM YYYY");
+                if ($scope.personal.dct_echange_mensuel.hasOwnProperty(month_key)) {
+                    inner_obj = $scope.personal.dct_echange_mensuel[month_key];
+                } else {
+                    inner_obj = {"lst_echange": [], "actualMonth": false};
+                    $scope.personal.dct_echange_mensuel[month_key] = inner_obj;
+                }
+                value.show_date = moment(value.date).format("dddd D MMMM");
+                value.show_start_time = moment(value.date).format("H") + "h" + moment(value.date).format("mm");
+                value.show_end_time = moment(value.end_date).format("H") + "h" + moment(value.end_date).format("mm");
+                inner_obj.lst_echange.push(value);
+            }
+            for (const [key, value] of Object.entries($scope.personal.dct_echange_mensuel)) {
+                // TODO detect if its this month
+                value.sum_time = 0;
+                for (let i = 0; i < value.lst_echange.length; i++) {
+                    let i_echange = value.lst_echange[i];
+                    let duration = i_echange.transaction_valide ? i_echange.duree : i_echange.duree_estime;
+                    if (i_echange.estAcheteur) {
+                        value.sum_time -= duration;
+                    } else {
+                        value.sum_time += duration;
+                    }
+                    let sign = i_echange.estAcheteur ? -1 : 1;
+                    if (!i_echange.estAcheteur && i_echange.duree_estime < 0) {
+                        console.error("Not");
+                    }
+                    i_echange.show_duree_estime = $scope.convertNumToTime(i_echange.duree_estime * sign, 7);
+                    i_echange.show_duree = $scope.convertNumToTime(i_echange.duree * sign, 7);
+                    i_echange.sign = sign;
+                }
+                value.show_sum_time = $scope.convertNumToTime(value.sum_time, 3);
+            }
+            console.debug($scope.personal.dct_echange_mensuel);
         }
 
+        $scope.echange_click_redirect = function (echange) {
+            if (echange.transaction_valide) {
+                window.location.href = '/monactivite/echange_validation';
+            } else {
+                window.location.href = '/monactivite/echange_a_venir';
+            }
+        }
     }])
 
     async function requestSpecialURL($scope, state, new_url) {

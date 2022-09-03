@@ -35,7 +35,7 @@
         <record id="accorderie_echange_service_garder_chien" model="accorderie.echange.service">
             <field name="date_echange" eval="(DateTime.today() - timedelta(hours=5)).strftime('%Y-%m-%d %H:%M')" />
             <field name="demande_service" ref="accorderie_demande_service_garder_mon_chien_svp" />
-            <field name="nb_heure_estime">8</field>
+            <field name="nb_heure_estime">7.75</field>
             <field name="membre_acheteur" ref="accorderie_membre_martin_petit" />
             <field name="membre_vendeur" ref="accorderie_membre_administrateur_mathieu_benoit" />
         </record>

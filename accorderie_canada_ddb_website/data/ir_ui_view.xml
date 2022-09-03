@@ -55,7 +55,7 @@
                                         </div>
                                     </div>
                                 </section>
-                                <section class="s_activites_recentes lg debug_unimplemented">
+                                <section class="s_activites_recentes lg">
                                     <div class="container_lists">
                                         <div class="row activites_list lg">
                                             <section class="s_mobile_filter">
@@ -68,124 +68,39 @@
                                                     Filtrer et trier
                                                 </div>
                                             </section>
-                                            <div class="list_title s_title">
-                                                <div class="title">
-                                                    <h1>Décembre 2021</h1>
-                                                    <a class="text-epsilon" style="font-size:1.25rem;">
-                                                        <i class="fa fa-clock-o" />
-                                                        À venir
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="activite btn mobile-display-none" data-name="Box">
-                                                <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
-                                                <div class="activite_infos">
-                                                    <div class="activite_title">
-                                                        <p>Mercredi 16 août</p>
-                                                        <p class="time">11h00 - 12h00</p>
-                                                    </div>
-                                                    <div class="details">
-                                                        <span class="activite_auteur mt-auto">Denis Lemarchand</span>
-                                                        <span class="mb-auto">Faire visiter une maison à louer</span>
+                                            <div ng-repeat="(month_key, echange_info) in personal.dct_echange_mensuel">
+                                                <div class="list_title s_title">
+                                                    <div class="title">
+                                                        <h1>{{month_key | toTitleCase}}</h1>
+                                                        <a class="text-epsilon" style="font-size:1.25rem;" ng-if="echange_info.actualMonth">
+                                                            <i class="fa fa-clock-o icon_padding_right" />
+                                                            À venir
+                                                        </a>
+                                                        <a style="font-size:1.25rem;" ng-if="!echange_info.actualMonth">
+                                                            <i class="fa fa-clock-o icon_padding_right" />
+                                                            {{echange_info.show_sum_time}}
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <a class="details_link" href="/"><u>Voir les détails</u></a>
-                                                <p class="status red-o">-3h00 à valider</p>
-                                            </div>
-                                            <div class="activite btn" data-name="Box">
-                                                <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
-                                                <div class="activite_infos">
-                                                    <div class="activite_title">
-                                                        <p>Mercredi 16 août</p>
-                                                        <p class="time">11h00 - 12h00</p>
+                                                <div ng-if="_.isEmpty(echange_info.lst_echange)">Aucun échange ce mois-ci</div>
+                                                <div ng-repeat="echange in echange_info.lst_echange" class="activite btn" data-name="Box" ng-click="echange_click_redirect(echange)">
+<!--                                                 <a href="/">-->
+                                                    <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
+                                                    <div class="activite_infos">
+                                                        <div class="activite_title">
+                                                            <p>{{echange.show_date | toTitleCase}}</p>
+                                                            <p class="time" ng-if="echange.transaction_valide">{{echange.show_start_time}} - {{echange.show_end_time}}</p>
+                                                        </div>
+                                                        <div class="details">
+                                                            <span class="activite_auteur mt-auto">{{echange.membre.full_name}}</span>
+                                                            <span class="mb-auto" ng-show="!_.isEmpty(echange.description_service)">{{echange.description_service}}</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="details">
-                                                        <span class="activite_auteur mt-auto">Denis Lemarchand</span>
-                                                        <span class="mb-auto">Faire visiter une maison à louer</span>
-                                                    </div>
+                                                    <a class="details_link" ng-href="{{echange.transaction_valide ? '/monactivite/echange_validation':'/monactivite/echange_a_venir'}}"><u>Voir les détails</u></a>
+                                                    <p class="status" ng-class="{'red-o': echange.estAcheteur, 'blue-o': !echange.estAcheteur}" ng-if="!echange.transaction_valide">{{echange.show_duree_estime}} à valider <i class="fa fa-chevron-right" /></p>
+                                                    <p class="status" ng-class="{'red': echange.estAcheteur, 'blue': !echange.estAcheteur}" ng-if="echange.transaction_valide">{{echange.show_duree}}</p>
+<!--                                                    </a>-->
                                                 </div>
-                                                <a class="details_link" href="/"><u>Voir les détails</u></a>
-                                                <p class="status red">-3h00</p>
-                                            </div>
-
-                                            <div class="list_title s_title">
-                                                <div class="title">
-                                                    <h1>Novembre 2021</h1>
-                                                    <a style="font-size:1.25rem;">
-                                                        <i class="fa fa-clock-o" />
-                                                        0
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="activite btn" data-name="Box">
-                                                <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
-                                                <div class="activite_infos">
-                                                    <div class="activite_title">
-                                                        <p>Mercredi 16 août</p>
-                                                        <p class="time">11h00 - 12h00</p>
-                                                    </div>
-                                                    <div class="details">
-                                                        <span class="activite_auteur mt-auto">Denis Lemarchand</span>
-                                                        <span class="mb-auto">Faire visiter une maison à louer</span>
-                                                    </div>
-                                                </div>
-                                                <a class="details_link" href="/"><u>Voir les détails</u></a>
-                                                <p class="status red">- 1h00</p>
-                                            </div>
-                                            <div class="activite btn" data-name="Box">
-                                                <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
-                                                <div class="activite_infos">
-                                                    <div class="activite_title">
-                                                        <p>Mercredi 16 août</p>
-                                                        <p class="time">11h00 - 12h00</p>
-                                                    </div>
-                                                    <div class="details">
-                                                        <span class="activite_auteur mt-auto">Denis Lemarchand</span>
-                                                        <span class="mb-auto">Faire visiter une maison à louer</span>
-                                                    </div>
-                                                </div>
-                                                <a class="details_link" href="/"><u>Voir les détails</u></a>
-                                                <p class="status blue">+ 1h00</p>
-                                            </div>
-
-                                            <div class="list_title s_title">
-                                                <div class="title">
-                                                    <h1>Octobre 2021</h1>
-                                                    <a style="font-size:1.25rem;">
-                                                        <i class="fa fa-clock-o" />
-                                                        + 2h30
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="activite btn" data-name="Box">
-                                                <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
-                                                <div class="activite_infos">
-                                                    <div class="activite_title">
-                                                        <p>Mercredi 16 août</p>
-                                                        <p class="time">11h00 - 12h00</p>
-                                                    </div>
-                                                    <div class="details">
-                                                        <span class="activite_auteur mt-auto">Denis Lemarchand</span>
-                                                        <span class="mb-auto">Faire visiter une maison à louer</span>
-                                                    </div>
-                                                </div>
-                                                <a class="details_link" href="/"><u>Voir les détails</u></a>
-                                                <p class="status blue">+ 1h00</p>
-                                            </div>
-                                            <div class="activite btn" data-name="Box">
-                                                <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
-                                                <div class="activite_infos">
-                                                    <div class="activite_title">
-                                                        <p>Mercredi 16 août</p>
-                                                        <p class="time">11h00 - 12h00</p>
-                                                    </div>
-                                                    <div class="details">
-                                                        <span class="activite_auteur mt-auto">Denis Lemarchand</span>
-                                                        <span class="mb-auto">Faire visiter une maison à louer</span>
-                                                    </div>
-                                                </div>
-                                                <a class="details_link" href="/"><u>Voir les détails</u></a>
-                                                <p class="status blue">+ 1h00</p>
                                             </div>
                                             <div class="medium-btn btn btn-primary debug_unimplemented">Voir les transactions plus anciennes</div>
                                         </div>
