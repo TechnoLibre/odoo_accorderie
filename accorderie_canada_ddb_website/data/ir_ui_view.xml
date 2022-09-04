@@ -96,7 +96,7 @@
                                                             <span class="mb-auto" ng-show="!_.isEmpty(echange.description_service)">{{echange.description_service}}</span>
                                                         </div>
                                                     </div>
-                                                    <a class="details_link" ng-href="{{echange.transaction_valide ? '/monactivite/echange_validation':'/monactivite/echange_a_venir'}}"><u>Voir les détails</u></a>
+                                                    <a class="details_link" ng-href="{{getURLEchange(echange)}}"><u>Voir les détails</u></a>
                                                     <p class="status" ng-class="{'red-o': echange.estAcheteur, 'blue-o': !echange.estAcheteur}" ng-if="!echange.transaction_valide">{{echange.show_duree_estime}} à valider <i class="fa fa-chevron-right" /></p>
                                                     <p class="status" ng-class="{'red': echange.estAcheteur, 'blue': !echange.estAcheteur}" ng-if="echange.transaction_valide">{{echange.show_duree}}</p>
 <!--                                                    </a>-->
@@ -3926,7 +3926,7 @@
                                     Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86594051">https://marvelapp.com/prototype/1773h559/screen/86594051</a>
                                 </div>
                                 <section class="s_back">
-                                    <a href="">
+                                    <a href="/monactivite/echanges">
                                         <i class="fa fa-arrow-left text-primary" />
                                         Voir tous mes échanges
                                     </a>
@@ -4273,7 +4273,7 @@
                                     Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86594051">https://marvelapp.com/prototype/1773h559/screen/86594051</a>
                                 </div>
                                 <section class="s_back">
-                                    <a href="">
+                                    <a href="/monactivite/echanges">
                                         <i class="fa fa-arrow-left text-primary" />
                                         Voir tous mes échanges
                                     </a>

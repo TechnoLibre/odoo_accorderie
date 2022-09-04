@@ -539,6 +539,7 @@ class AccorderieCanadaDdbController(http.Controller):
                     hours=echange_service_id.nb_heure_estime
                 )
             dct_echange_item = {
+                "id": echange_service_id.id,
                 "transaction_valide": echange_service_id.transaction_valide,
                 "membre": {
                     "id": echange_service_id.membre_vendeur.id,
@@ -564,6 +565,7 @@ class AccorderieCanadaDdbController(http.Controller):
                     hours=echange_service_id.nb_heure_estime
                 )
             dct_echange_item = {
+                "id": echange_service_id.id,
                 "transaction_valide": echange_service_id.transaction_valide,
                 "membre": {
                     "id": echange_service_id.membre_acheteur.id,

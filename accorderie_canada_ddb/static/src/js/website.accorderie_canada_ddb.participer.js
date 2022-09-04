@@ -545,11 +545,20 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             console.debug($scope.personal.dct_echange_mensuel);
         }
 
-        $scope.echange_click_redirect = function (echange) {
+        $scope.getURLEchange = function(echange) {
             if (echange.transaction_valide) {
-                window.location.href = '/monactivite/echange_validation';
+                return '/monactivite/echange_validation#!?echange=' + echange.id;
             } else {
-                window.location.href = '/monactivite/echange_a_venir';
+                return '/monactivite/echange_a_venir#!?echange=' + echange.id;
+            }
+        }
+
+        $scope.echange_click_redirect = function (echange) {
+            // TODO no need this, use instead <a href and not ng-click
+            if (echange.transaction_valide) {
+                window.location.href = '/monactivite/echange_validation#!?echange=' + echange.id;
+            } else {
+                window.location.href = '/monactivite/echange_a_venir#!?echange=' + echange.id;
             }
         }
     }])
