@@ -53,6 +53,10 @@ body {
 .neg_time {
   color: $bg-red-alert !important;
 }
+.neg_time_b {
+  color: $text-alpha !important;
+  background-color: $bg-red-alert !important;
+}
 .neg_time_2 {
   color: $bg-red-2-alert !important;
 }
@@ -324,7 +328,7 @@ searchbar
     font-size: 1rem;
     width: 45%;
     border: none;
-    background-color: white;
+    background-color: $bg-alpha;
   }
 
   input:focus {
@@ -350,7 +354,7 @@ searchbar
 .search_category:after {
   content: "";
   position: absolute;
-  left: 0px;
+  left: 0;
   top: 20%;
   height: 60%;
   border-left: 2px solid #becfd1;
@@ -857,7 +861,7 @@ actualité
     white-space: nowrap;
   }
   .status.red {
-    color: white;
+    color: $text-alpha;
     background-color: $bg-red-alert;
     border: none;
   }
@@ -865,7 +869,7 @@ actualité
     color: $bg-red-alert;
   }
   .status.blue {
-    color: white;
+    color: $text-alpha;
     background-color: $alpha;
     border: none;
   }

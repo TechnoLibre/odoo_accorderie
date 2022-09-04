@@ -96,7 +96,7 @@
                                                             <span class="mb-auto" ng-show="!_.isEmpty(echange.description_service)">{{echange.description_service}}</span>
                                                         </div>
                                                     </div>
-                                                    <a class="details_link" ng-href="{{getURLEchange(echange)}}"><u>Voir les détails</u></a>
+                                                    <a class="details_link" ng-href="/monactivite/echange#!?echange={{echange.id}}"><u>Voir les détails</u></a>
                                                     <p class="status" ng-class="{'red-o': echange.estAcheteur, 'blue-o': !echange.estAcheteur}" ng-if="!echange.transaction_valide">{{echange.show_duree_estime}} à valider <i class="fa fa-chevron-right" /></p>
                                                     <p class="status" ng-class="{'red': echange.estAcheteur, 'blue': !echange.estAcheteur}" ng-if="echange.transaction_valide">{{echange.show_duree}}</p>
 <!--                                                    </a>-->
@@ -3011,7 +3011,7 @@
                                             <span class="nbr">{{personal.actual_bank_time_human | uppercase}}</span>
                                         </a>
                                         <span class="debug_unimplemented">
-                                            <a href="/monactivite/echange_a_venir" class="bilan bilan-2 btn" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">
+                                            <a href="/monactivite/echanges" class="bilan bilan-2 btn" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">
                                                 <span class="nbr">1</span>
                                                 <span class="txt">Échange &#224; venir</span>
                                             </a>
@@ -3916,30 +3916,50 @@
             <field name="name">Offres de service</field>
             <field name="type">qweb</field>
         </record>
-        <record id="ir_ui_view_echange_a_venir" model="ir.ui.view">
+        <record id="ir_ui_view_echange" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="Échange à venir" t-name="website.echange_a_venir">
+                <t name="Échange de service" t-name="website.echange">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86594051">https://marvelapp.com/prototype/1773h559/screen/86594051</a>
+                                    <div ng-if="!echange_service_info.transaction_valide">
+                                        Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86594051">https://marvelapp.com/prototype/1773h559/screen/86594051</a><br />
+                                    </div>
+                                    <div ng-if="echange_service_info.transaction_valide">
+                                        Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86694421">https://marvelapp.com/prototype/1773h559/screen/86694421</a><br />
+                                    </div>
                                 </div>
                                 <section class="s_back">
                                     <a href="/monactivite/echanges">
                                         <i class="fa fa-arrow-left text-primary" />
                                         Voir tous mes échanges
                                     </a>
+                                    <div class="actions debug_unimplemented">
+                                        <div>
+                                            <i class="fa fa-phone text-primary icon_padding_right" />
+                                        Contacter l'accorderie
+                                        </div>
+
+                                        <divider />
+                                        <div>
+                                            <i class="fa fa-print text-primary icon_padding_right" />
+                                        Imprimer la validation
+                                        </div>
+                                    </div>
                                 </section>
-                                <section class="s_echange_informations pt72 pb72">
+                                <section class="s_echange_informations pt72 pb72" ng-if="_.isEmpty(echange_service_info)">
+                                    Aucune échange de service, veuillez <a href="/monactivite/echanges">recommencer</a>.
+                                </section>
+                                <section class="s_echange_informations pt72 pb72" ng-if="!_.isEmpty(echange_service_info)">
                                     <div class="informations_container">
-                                        <div class="information information-1">
+                                        <div class="information information-1" ng-if="!echange_service_info.transaction_valide">
                                             <span class="info_title">
                                                 <font style="font-weight:bold;">
                                                     Mon échange de service à venir avec
                                                 </font>
                                                 <br />
-                                                Alice Poitier
+                                                {{echange_service_info.membre.full_name}}
                                             </span>
                                             <div class="btn btn-primary ml-auto text-gamma">
                                                 <i class="fa fa-check" />
@@ -3954,12 +3974,28 @@
                                                 <span>Annuler l'entente</span>
                                             </div>
                                         </div>
+                                        <div class="information information-1" ng-if="echange_service_info.transaction_valide">
+                                            <span class="info_title">
+                                                <h1>
+                                                    Service <span ng-if="!echange_service_info.estAcheteur">donné</span><span ng-if="echange_service_info.estAcheteur">reçu</span> le :
+                                                </h1>
+                                                {{echange_service_info.show_date | toTitleCase}}
+                                                <divider />
+                                                {{echange_service_info.show_start_time}} - {{echange_service_info.show_end_time}}
+                                            </span>
+                                            <div class="info_depot" ng-class="{'neg_time': echange_service_info.estAcheteur}">
+                                                <span ng-if="!echange_service_info.estAcheteur">DÉPOT</span><span ng-if="echange_service_info.estAcheteur">RETRAIT</span> SUR MON COMPTE
+                                                <div class="heures" ng-class="{'neg_time_b': echange_service_info.estAcheteur}">
+                                                    {{echange_service_info.transaction_valide ? echange_service_info.show_duree : echange_service_info.show_duree_estime}}
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="information information-2">
                                             <img class="img rounded-circle" src="/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg" />
                                             <p class="nbr text-center">
                                                 <font style="font-weight:bold;">Votre accordeur :</font>
                                                 <br />
-                                                Yannick Gagnon
+                                                {{echange_service_info.membre.full_name}}
                                             </p>
                                             <div class="stats">
                                                 <p>
@@ -3996,49 +4032,78 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="information information-3">
+                                        <div class="information information-3" ng-if="!echange_service_info.transaction_valide">
                                             <span class="info_title">
                                                 <p style="font-weight:bold;">
                                                     Date prévue du service
                                                 </p>
                                                 <br />
                                                 <span>
-                                                    Mercredi 6 juin 2022
+                                                    {{echange_service_info.show_date | toTitleCase}}
                                                 </span>
                                                 <span class="divider" />
                                                 <span>
-                                                    09h00 - 12h00
+                                                    {{echange_service_info.show_start_time}} - {{echange_service_info.show_end_time}}
                                                 </span>
                                             </span>
                                         </div>
-                                        <div class="information information-4">
-                                            <span class="info_title">
-                                                <font style="font-weight:bold;">
-                                                    Offre de service
-                                                </font>
-                                            </span>
-                                            <div class="row vertical_list">
-                                                <div class="activite btn" data-name="Box">
-                                                    <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
-                                                    <div class="infos">
-                                                        <p class="activite_title">
-                                                            Vous souhaitez acheter une maison à
-                                                            l"étranger?
-                                                        </p>
-                                                        <span class="activite_auteur">
-                                                            Yannick Gagnon
-                                                            <br />
-                                                            2.3km
-                                                        </span>
+                                        <div class="information information-4" ng-if="!echange_service_info.transaction_valide &amp;&amp; !_.isUndefined(echange_service_info.offre_service) || !_.isUndefined(echange_service_info.demande_service)">
+                                            <div ng-if="!_.isUndefined(echange_service_info.offre_service)">
+                                                <span class="info_title">
+                                                    <font style="font-weight:bold;">
+                                                        Offre de service
+                                                    </font>
+                                                </span>
+                                                <div class="row vertical_list">
+                                                    <div class="activite btn" data-name="Box">
+                                                        <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
+                                                        <div class="infos">
+                                                            <p class="activite_title">
+                                                                Vous souhaitez acheter une maison à
+                                                                l"étranger?
+                                                            </p>
+                                                            <span class="activite_auteur">
+                                                                Yannick Gagnon
+                                                                <br />
+                                                                2.3km
+                                                            </span>
+                                                        </div>
+                                                        <div class="infos right">
+                                                            <p>5m</p>
+                                                            <p class="fa fa-heart-o text-epsilon" />
+                                                        </div>
                                                     </div>
-                                                    <div class="infos right">
-                                                        <p>5m</p>
-                                                        <p class="fa fa-heart-o text-epsilon" />
+                                                </div>
+                                            </div>
+                                            <div ng-if="!_.isUndefined(echange_service_info.demande_service)">
+                                                <span class="info_title">
+                                                    <font style="font-weight:bold;">
+                                                        Demande de service
+                                                    </font>
+                                                </span>
+                                                <div class="row vertical_list">
+                                                    <div class="activite btn" data-name="Box">
+                                                        <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
+                                                        <div class="infos">
+                                                            <p class="activite_title">
+                                                                Vous souhaitez acheter une maison à
+                                                                l"étranger?
+                                                            </p>
+                                                            <span class="activite_auteur">
+                                                                Yannick Gagnon
+                                                                <br />
+                                                                2.3km
+                                                            </span>
+                                                        </div>
+                                                        <div class="infos right">
+                                                            <p>5m</p>
+                                                            <p class="fa fa-heart-o text-epsilon" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="information information-5">
+                                        <div class="information information-5" ng-if="!echange_service_info.transaction_valide">
                                             <span class="info_title">
                                                 <font style="font-weight:bold;">
                                                     Conditions de l'entente
@@ -4069,7 +4134,7 @@
                                                         Montant total de temps estimé
                                                     </b>
                                                     <span>
-                                                        03h00
+                                                        {{echange_service_info.show_duree_estime_pos}}
                                                     </span>
                                                 </div>
                                             </div>
@@ -4098,6 +4163,82 @@
                                                 </p>
                                             </div>
                                         </div>
+
+                                        <div class="information information-5" style="grid-area:2/2/4/3;" ng-if="echange_service_info.transaction_valide">
+                                            <span class="info_title">
+                                                <font style="font-weight:bold;">
+                                                    Offre de service privé
+                                                </font>
+                                            </span>
+                                            <div class="condition">
+                                                <b class="nbr">
+                                                    Catégorie du service
+                                                </b>
+                                                <p class="condition_desc">Confection desserts pour événements</p>
+                                            </div>
+                                            <divider />
+                                            <div class="condition">
+                                                <b class="nbr">
+                                                    Nom du service
+                                                </b>
+                                                <p class="condition_desc">Création d'un gâteau de fête</p>
+                                            </div>
+                                            <divider />
+                                            <div class="condition">
+                                                <b class="nbr">
+                                                    Description du service offert
+                                                </b>
+                                                <p class="condition_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                Faucibus purus in massa tempor nec feugiat nisl pretium fusce.</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="information information-5" ng-if="echange_service_info.transaction_valide">
+                                            <span class="info_title">
+                                                <font style="font-weight:bold;">
+                                                    Détails sur le service reçu
+                                                </font>
+                                            </span>
+                                            <div class="condition">
+                                                <b class="nbr">
+                                                    Coût monétaires supplémentaires engagés
+                                                </b>
+                                                <p class="condition_desc">Frais pour le trajet :</p>
+                                                <p class="condition_desc">Frais pour le matériel nécessaire à l'échange
+                                                    de service
+
+                                                </p>
+                                            </div>
+                                            <divider />
+                                            <div class="condition">
+                                                <b class="nbr">
+                                                    Durée du service reçu
+                                                </b>
+                                                <p class="condition_desc">Durée de la réalisation du service</p>
+                                                <p>02h50</p>
+                                                <p class="condition_desc">Durée du trajet aller-retour</p>
+                                                <p>00h10</p>
+
+                                            </div>
+                                            <divider />
+                                            <div class="condition">
+                                                <b class="nbr">
+                                                    Commentaires
+                                                </b>
+                                                <p class="condition_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                Faucibus purus in massa tempor nec feugiat nisl pretium fusce.</p>
+                                                <div class="bar_time">
+                                                    <b>
+                                                        Montant total de temps transféré
+                                                    </b>
+                                                    <span>
+                                                        {{echange_service_info.show_duree_pos}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </section>
                             </div>
@@ -4105,8 +4246,8 @@
                     </t>
                 </t>
             </field>
-            <field name="key">website.echange-a-venir</field>
-            <field name="name">Échange à venir</field>
+            <field name="key">website.echange</field>
+            <field name="name">Échange</field>
             <field name="type">qweb</field>
         </record>
         <record id="ir_ui_view_mon_agenda" model="ir.ui.view">
@@ -4261,180 +4402,6 @@
             </field>
             <field name="key">website.mon_agenda</field>
             <field name="name">Mon agenda</field>
-            <field name="type">qweb</field>
-        </record>
-        <record id="ir_ui_view_echange_validation" model="ir.ui.view">
-            <field name="arch" type="xml">
-                <t name="Échange à venir" t-name="website.echange_validation">
-                    <t t-call="website.layout">
-                        <div id="wrap">
-                            <div class="oe_structure">
-                                <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86594051">https://marvelapp.com/prototype/1773h559/screen/86594051</a>
-                                </div>
-                                <section class="s_back">
-                                    <a href="/monactivite/echanges">
-                                        <i class="fa fa-arrow-left text-primary" />
-                                        Voir tous mes échanges
-                                    </a>
-                                    <div class="actions">
-                                        <div>
-                                            <i class="fa fa-phone text-primary icon_padding_right" />
-                                        Contacter l'accorderie
-                                        </div>
-
-                                        <divider />
-                                        <div>
-                                            <i class="fa fa-print text-primary icon_padding_right" />
-                                        Imprimer la validation
-                                        </div>
-
-                                    </div>
-                                </section>
-                                <section class="s_echange_informations pt72 pb72">
-                                    <div class="informations_container">
-                                        <div class="information information-1">
-                                            <span class="info_title">
-                                                <h1>
-                                                    Service donné le:
-                                                </h1>
-                                                Mercredi 6 août 2022
-                                                <divider />
-                                                14h00 -16h00
-                                            </span>
-                                            <div class="info_depot">
-                                                DÉPOT SUR MON COMPTE
-                                                <div class="heures">
-                                                    2h00
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="information information-2">
-                                            <img class="img rounded-circle" src="/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg" />
-                                            <p class="nbr text-center">
-                                                <font style="font-weight:bold;">Votre accordeur :</font>
-                                                <br />
-                                                Yannick Gagnon
-                                            </p>
-                                            <div class="stats">
-                                                <p>
-                                                    <i class="fa fa-user-circle" />
-                                                    Membre depuis mars 2019
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-shield" />
-                                                    Antécédents judiciaires vérifiés
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-user-circle" />
-                                                    3 offres de service
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-clock-o" />
-                                                    15h de service à son actif
-                                                </p>
-                                            </div>
-                                            <div class="summary">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-                                                Aliquam malesuada bibendum arcu vitae elementum curabitur vitae
-                                                nunc. Suspendisse sed nisi lacus sed viverra tellus. Quis commodo
-                                                odio aenean sed adipiscing diam donec.
-                                            </div>
-                                            <div class="buttons">
-                                                <div class="btn btn-primary rounded-circle text-gamma">
-                                                    En savoir plus sur
-                                                    Alice
-                                                </div>
-                                                <div class="btn btn-primary rounded-circle text-gamma">Le contacter
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="information information-5" style="grid-area:2/2/4/3;">
-                                            <span class="info_title">
-                                                <font style="font-weight:bold;">
-                                                    Offre de service privé
-                                                </font>
-                                            </span>
-                                            <div class="condition">
-                                                <b class="nbr">
-                                                    Catégorie du service
-                                                </b>
-                                                <p class="condition_desc">Confection desserts pour événements</p>
-                                            </div>
-                                            <divider />
-                                            <div class="condition">
-                                                <b class="nbr">
-                                                    Nom du service
-                                                </b>
-                                                <p class="condition_desc">Création d'un gâteau de fête</p>
-                                            </div>
-                                            <divider />
-                                            <div class="condition">
-                                                <b class="nbr">
-                                                    Description du service offert
-                                                </b>
-                                                <p class="condition_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Faucibus purus in massa tempor nec feugiat nisl pretium fusce.</p>
-
-                                            </div>
-                                        </div>
-                                        <div class="information information-5">
-                                            <span class="info_title">
-                                                <font style="font-weight:bold;">
-                                                    Détails sur le service reçu
-                                                </font>
-                                            </span>
-                                            <div class="condition">
-                                                <b class="nbr">
-                                                    Coût monétaires supplémentaires engagés
-                                                </b>
-                                                <p class="condition_desc">Frais pour le trajet :</p>
-                                                <p class="condition_desc">Frais pour le matériel nécessaire à l'échange
-                                                    de service
-
-                                                </p>
-                                            </div>
-                                            <divider />
-                                            <div class="condition">
-                                                <b class="nbr">
-                                                    Durée du service reçu
-                                                </b>
-                                                <p class="condition_desc">Durée de la réalisation du service</p>
-                                                <p>02h50</p>
-                                                <p class="condition_desc">Durée du trajet aller-retour</p>
-                                                <p>00h10</p>
-
-                                            </div>
-                                            <divider />
-                                            <div class="condition">
-                                                <b class="nbr">
-                                                    Commentaires
-                                                </b>
-                                                <p class="condition_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Faucibus purus in massa tempor nec feugiat nisl pretium fusce.</p>
-                                                <div class="bar_time">
-                                                    <b>
-                                                        Montant total de temps transféré
-                                                    </b>
-                                                    <span>
-                                                        03h00
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </t>
-                </t>
-            </field>
-            <field name="key">website.echange-validation</field>
-            <field name="name">Validation échange</field>
             <field name="type">qweb</field>
         </record>
     </data>

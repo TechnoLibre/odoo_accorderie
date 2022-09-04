@@ -317,7 +317,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             })
         }
 
-        $scope.load_page_offre_demande_service = function () {
+        $scope.load_page_offre_demande_echange_service = function () {
             let key = "/accorderie_canada_ddb/accorderie_offre_service/";
             if (window.location.pathname.indexOf(key) === 0) {
                 // params can be 6?debug=1 or 6#!?str=3, need to extract first int
@@ -364,9 +364,45 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                     })
                 }
             }
+
+            let echange_id = $location.search()["echange"];
+            if (!_.isEmpty(echange_id)) {
+                echange_id = parseInt(echange_id, 10);
+                if (!Number.isNaN(echange_id)) {
+                    ajax.rpc("/accorderie_canada_ddb/get_info/get_echange_service/" + echange_id).then(function (data) {
+                        console.debug("AJAX receive /accorderie_canada_ddb/get_info/get_echange_service");
+                        if (data.error || !_.isUndefined(data.error)) {
+                            $scope.error = data.error;
+                            console.error($scope.error);
+                        } else if (_.isEmpty(data)) {
+                            $scope.error = "Empty '/accorderie_canada_ddb/get_info/get_echange_service' data";
+                            console.error($scope.error);
+                        } else {
+                            $scope.echange_service_info = data;
+
+                            let sign = data.estAcheteur ? -1 : 1;
+                            $scope.echange_service_info.sign = sign;
+                            $scope.echange_service_info.show_duree_estime = $scope.convertNumToTime(data.duree_estime * sign, 7);
+                            $scope.echange_service_info.show_duree = $scope.convertNumToTime(data.duree * sign, 7);
+                            $scope.echange_service_info.show_duree_estime_pos = $scope.convertNumToTime(data.duree_estime, 8);
+                            $scope.echange_service_info.show_duree_pos = $scope.convertNumToTime(data.duree, 8);
+
+                            $scope.echange_service_info.show_date = moment(data.date).format("dddd D MMMM");
+                            $scope.echange_service_info.show_start_time = moment(data.date).format("H") + "h" + moment(data.date).format("mm");
+                            $scope.echange_service_info.show_end_time = moment(data.end_date).format("H") + "h" + moment(data.end_date).format("mm");
+
+                            console.debug($scope.echange_service_info);
+                        }
+
+                        // Process all the angularjs watchers
+                        $scope.$digest();
+                    })
+                }
+            }
+
         }
 
-        $scope.load_page_offre_demande_service();
+        $scope.load_page_offre_demande_echange_service();
 
         $scope.update_db_list_membre = function (accorderie_id) {
             ajax.rpc("/accorderie_canada_ddb/get_info/list_membre", {"accorderie_id": accorderie_id}).then(function (data) {
@@ -410,8 +446,9 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             // format 5 : 2.0 -> + 2 heures, 1.75 -> + 1 heure 45, -.75 -> - 0 heure 45
             // format 6 : 2.0 -> 2 heures, 1.75 -> 1 heure 45, -.75 -> - 0 heure 45
             // format 7 : 1.0 -> + 1h00, 1.75 -> + 1h45, -.75 -> - 0h45
+            // format 8 : 1.0 -> 1h00, 1.75 -> + 1h45, -.75 -> - 0h45
 
-            if (format > 7 || format < 0) {
+            if (format > 8 || format < 0) {
                 format = 0;
             }
 
@@ -449,9 +486,9 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 newTime = sign + hour + ':' + minute;
             } else if (format === 2) {
                 newTime = sign + ' ' + hour + ':' + minute;
-            } else if (format === 3 || format === 4 || format === 7) {
-                if (minute > 0 || format === 7) {
-                    if (format === 4 && sign === "+") {
+            } else if (format === 3 || format === 4 || format === 7 || format === 8) {
+                if (minute > 0 || format === 7 || format === 8) {
+                    if ((format === 4 || format === 8) && sign === "+") {
                         newTime = hour + 'h' + minute;
                     } else {
                         newTime = sign + ' ' + hour + 'h' + minute;
@@ -519,6 +556,12 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 value.show_date = moment(value.date).format("dddd D MMMM");
                 value.show_start_time = moment(value.date).format("H") + "h" + moment(value.date).format("mm");
                 value.show_end_time = moment(value.end_date).format("H") + "h" + moment(value.end_date).format("mm");
+
+                let sign = value.estAcheteur ? -1 : 1;
+                value.show_duree_estime = $scope.convertNumToTime(value.duree_estime * sign, 7);
+                value.show_duree = $scope.convertNumToTime(value.duree * sign, 7);
+                value.sign = sign;
+
                 inner_obj.lst_echange.push(value);
             }
             for (const [key, value] of Object.entries($scope.personal.dct_echange_mensuel)) {
@@ -532,34 +575,15 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                     } else {
                         value.sum_time += duration;
                     }
-                    let sign = i_echange.estAcheteur ? -1 : 1;
-                    if (!i_echange.estAcheteur && i_echange.duree_estime < 0) {
-                        console.error("Not");
-                    }
-                    i_echange.show_duree_estime = $scope.convertNumToTime(i_echange.duree_estime * sign, 7);
-                    i_echange.show_duree = $scope.convertNumToTime(i_echange.duree * sign, 7);
-                    i_echange.sign = sign;
                 }
                 value.show_sum_time = $scope.convertNumToTime(value.sum_time, 3);
             }
             console.debug($scope.personal.dct_echange_mensuel);
         }
 
-        $scope.getURLEchange = function(echange) {
-            if (echange.transaction_valide) {
-                return '/monactivite/echange_validation#!?echange=' + echange.id;
-            } else {
-                return '/monactivite/echange_a_venir#!?echange=' + echange.id;
-            }
-        }
-
         $scope.echange_click_redirect = function (echange) {
             // TODO no need this, use instead <a href and not ng-click
-            if (echange.transaction_valide) {
-                window.location.href = '/monactivite/echange_validation#!?echange=' + echange.id;
-            } else {
-                window.location.href = '/monactivite/echange_a_venir#!?echange=' + echange.id;
-            }
+            window.location.href = '/monactivite/echange#!?echange=' + echange.id;
         }
     }])
 
@@ -1125,9 +1149,9 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                         } else if ('init.pds.individuelle.formulaire' === $scope.state.id) {
                             $scope.submitted_url = `accorderie_canada_ddb/accorderie_demande_service/${data.demande_service_id}`;
                         } else if (['init.saa.offrir.existant.formulaire', 'init.saa.recevoir.choix.existant.time.formulaire', 'init.saa.offrir.nouveau.categorie_service.formulaire', 'init.saa.recevoir.choix.nouveau.formulaire'].includes($scope.state.id)) {
-                            $scope.submitted_url = `monactivite/echange_a_venir/${data.echange_service_id}`;
+                            $scope.submitted_url = `monactivite/echange#!?echange=${data.echange_service_id}`;
                         } else if (['init.va.non.offert.nouveau_formulaire', 'init.va.oui.formulaire', 'init.va.non.recu.choix.formulaire', 'init.va.non.offert.existant_formulaire', 'init.va.non.recu.choix.nouveau.formulaire'].includes($scope.state.id)) {
-                            $scope.submitted_url = `monactivite/transactioneffecute/${data.echange_service_id}`;
+                            $scope.submitted_url = `monactivite/echange#!?echange=${data.echange_service_id}`;
                         } else {
                             $scope.submitted_url = "";
                         }

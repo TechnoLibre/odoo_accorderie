@@ -166,7 +166,8 @@ class AccorderieCanadaDdbController(http.Controller):
             "id": demande_id.id,
             "description": demande_id.description,
             "titre": demande_id.titre,
-            "is_favorite": me_membre_id.id in demande_id.membre_favoris_ids.ids,
+            "is_favorite": me_membre_id.id
+            in demande_id.membre_favoris_ids.ids,
             "distance": "8m",
             "membre": {
                 "id": demande_id.membre.id,
@@ -176,6 +177,68 @@ class AccorderieCanadaDdbController(http.Controller):
                 demande_id.create_date
             ),
         }
+
+    @http.route(
+        [
+            "/accorderie_canada_ddb/get_info/get_echange_service/<model('accorderie.echange.service'):echange_id>",
+        ],
+        type="json",
+        auth="user",
+        website=True,
+    )
+    def get_info_echange_service(self, echange_id, **kw):
+        me_membre_id = http.request.env.user.partner_id.accorderie_membre_ids
+        if (
+            me_membre_id.id not in echange_id.membre_vendeur.ids
+            and me_membre_id.id not in echange_id.membre_acheteur.ids
+        ):
+            return {
+                "error": (
+                    "Ne peut pas accéder aux données d'un échange si vous êtes"
+                    " ni l'offrant ou le receveur du service."
+                )
+            }
+
+        data = {
+            "id": echange_id.id,
+            "transaction_valide": echange_id.transaction_valide,
+            "date": echange_id.date_echange,
+            "temps": echange_id.date_echange.hour
+            + echange_id.date_echange.minute / 60.0,
+            "duree_estime": echange_id.nb_heure_estime,
+            "duree": echange_id.nb_heure,
+        }
+
+        if me_membre_id.id in echange_id.membre_vendeur.ids:
+            membre = echange_id.membre_acheteur
+            data["estAcheteur"] = False
+        else:
+            membre = echange_id.membre_vendeur
+            data["estAcheteur"] = True
+
+        data["membre"] = {
+            "id": membre.id,
+            "full_name": membre.nom_complet,
+        }
+
+        if echange_id.transaction_valide:
+            end_date = echange_id.date_echange + dt.timedelta(
+                hours=echange_id.nb_heure
+            )
+        else:
+            end_date = echange_id.date_echange + dt.timedelta(
+                hours=echange_id.nb_heure_estime
+            )
+        data["end_date"] = end_date
+
+        if echange_id.offre_service:
+            data["offre_service"] = echange_id.offre_service.id
+            # data["description_service"] = echange_id.offre_service.titre
+        if echange_id.demande_service:
+            data["demande_service"] = echange_id.demande_service.id
+            # data["description_service"] = echange_id.demande_service.titre
+        return data
+
     @http.route(
         [
             "/accorderie_canada_ddb/accorderie_demande_service/<int:demande_service>"
