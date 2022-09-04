@@ -129,7 +129,7 @@ class AccorderieCanadaDdbController(http.Controller):
 
     @http.route(
         [
-            "/accorderie_canada_ddb/get_info/offre_service/<model('accorderie.offre.service'):offre_id>",
+            "/accorderie_canada_ddb/get_info/get_offre_service/<model('accorderie.offre.service'):offre_id>",
         ],
         type="json",
         auth="user",
@@ -152,6 +152,30 @@ class AccorderieCanadaDdbController(http.Controller):
             ),
         }
 
+    @http.route(
+        [
+            "/accorderie_canada_ddb/get_info/get_demande_service/<model('accorderie.demande.service'):demande_id>",
+        ],
+        type="json",
+        auth="user",
+        website=True,
+    )
+    def get_info_demande_service(self, demande_id, **kw):
+        me_membre_id = http.request.env.user.partner_id.accorderie_membre_ids
+        return {
+            "id": demande_id.id,
+            "description": demande_id.description,
+            "titre": demande_id.titre,
+            "is_favorite": me_membre_id.id in demande_id.membre_favoris_ids.ids,
+            "distance": "8m",
+            "membre": {
+                "id": demande_id.membre.id,
+                "full_name": demande_id.membre.nom_complet,
+            },
+            "diff_create_date": self._transform_str_diff_time_creation(
+                demande_id.create_date
+            ),
+        }
     @http.route(
         [
             "/accorderie_canada_ddb/accorderie_demande_service/<int:demande_service>"

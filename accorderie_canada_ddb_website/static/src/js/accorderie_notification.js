@@ -109,7 +109,7 @@ odoo.define('website.accorderie_notification', function (require) {
                             if (!_.isUndefined(offreService4)) {
                                 offreService4 = offreService4[field_id];
                             }
-                            let offreService5 = $scope.offre_service_info;
+                            let offreService5 = $scope.offre_service_info.id === field_id ? $scope.offre_service_info : undefined;
                             // console.debug("action to do " + String(value));
                             if (value[0][0] === 4) {
                                 // let field_id = value[0][1];
@@ -177,7 +177,7 @@ odoo.define('website.accorderie_notification', function (require) {
                             if (!_.isUndefined(demandeService4)) {
                                 demandeService4 = demandeService4[field_id];
                             }
-                            let demandeService5 = $scope.demande_service_info;
+                            let demandeService5 = $scope.demande_service_info.id === field_id ? $scope.demande_service_info : undefined;
                             // console.debug("action to do " + String(value));
                             if (value[0][0] === 4) {
                                 // let field_id = value[0][1];

@@ -324,13 +324,13 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 let params = window.location.pathname.substring(key.length);
                 params = parseInt(params, 10);
                 if (!Number.isNaN(params)) {
-                    ajax.rpc("/accorderie_canada_ddb/get_info/offre_service/" + params).then(function (data) {
-                        console.debug("AJAX receive /accorderie_canada_ddb/get_info/offre_service");
+                    ajax.rpc("/accorderie_canada_ddb/get_info/get_offre_service/" + params).then(function (data) {
+                        console.debug("AJAX receive /accorderie_canada_ddb/get_info/get_offre_service");
                         if (data.error || !_.isUndefined(data.error)) {
                             $scope.error = data.error;
                             console.error($scope.error);
                         } else if (_.isEmpty(data)) {
-                            $scope.error = "Empty '/accorderie_canada_ddb/get_info/offre_service' data";
+                            $scope.error = "Empty '/accorderie_canada_ddb/get_info/get_offre_service' data";
                             console.error($scope.error);
                         } else {
                             $scope.offre_service_info = data;
@@ -347,13 +347,13 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 let params = window.location.pathname.substring(key.length);
                 params = parseInt(params, 10);
                 if (!Number.isNaN(params)) {
-                    ajax.rpc("/accorderie_canada_ddb/get_info/demande_service/" + params).then(function (data) {
-                        console.debug("AJAX receive /accorderie_canada_ddb/get_info/demande_service");
+                    ajax.rpc("/accorderie_canada_ddb/get_info/get_demande_service/" + params).then(function (data) {
+                        console.debug("AJAX receive /accorderie_canada_ddb/get_info/get_demande_service");
                         if (data.error || !_.isUndefined(data.error)) {
                             $scope.error = data.error;
                             console.error($scope.error);
                         } else if (_.isEmpty(data)) {
-                            $scope.error = "Empty '/accorderie_canada_ddb/get_info/demande_service' data";
+                            $scope.error = "Empty '/accorderie_canada_ddb/get_info/get_demande_service' data";
                             console.error($scope.error);
                         } else {
                             $scope.demande_service_info = data;
