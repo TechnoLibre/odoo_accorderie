@@ -2652,44 +2652,7 @@
                                         </div>
 
                                         <div class="right_cards_container">
-                                            <div class="card info-4">
-                                                <div class="img rounded-circle" style="background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg&quot;);" />
-                                                <h4>Votre accordeuse:</h4>
-                                                <h4>Alice Poitier</h4>
-                                                <div class="stats">
-                                                    <p>
-                                                        <i class="fa fa-user-circle" />
-                                                        Membre depuis mars 2019
-                                                    </p>
-                                                    <p>
-                                                        <i class="fa fa-shield" />
-                                                        Antécédents judiciaires vérifiés
-                                                    </p>
-                                                    <p>
-                                                        <i class="fa fa-user-circle" />
-                                                        3 offres de service
-                                                    </p>
-                                                    <p>
-                                                        <i class="fa fa-clock-o" />
-                                                        15h de service à son actif
-                                                    </p>
-                                                </div>
-                                                <div class="summary">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                    aliqua. Faucibus purus in massa tempor nec feugiat nisl pretium
-                                                    fusce. Aliquam malesuada bibendum arcu vitae elementum curabitur
-                                                    vitae nunc. Suspendisse sed nisi lacus sed viverra tellus. Quis
-                                                    commodo odio aenean sed adipiscing diam donec.
-                                                </div>
-                                                <div class="buttons">
-                                                    <div class="btn btn-primary rounded-circle">
-                                                        En savoir plus sur
-                                                        Alice
-                                                    </div>
-                                                    <div class="btn btn-primary rounded-circle">La contacter</div>
-                                                </div>
-                                            </div>
+                                            <div class="card info-4" ng-include="'/accorderie_canada_ddb/template/votre_contact_full'" />
                                         </div>
                                     </div>
                                 </section>
@@ -3737,44 +3700,8 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="card info-4">
-                                                <div class="img rounded-circle" style="background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg&quot;);" />
-                                                <h4>Votre organisatrice:</h4>
-                                                <h4>Alice Poitier</h4>
-                                                <div class="stats">
-                                                    <p>
-                                                        <i class="fa fa-user-circle" />
-                                                        Membre depuis mars 2019
-                                                    </p>
-                                                    <p>
-                                                        <i class="fa fa-shield" />
-                                                        Antécédents judiciaires vérifiés
-                                                    </p>
-                                                    <p>
-                                                        <i class="fa fa-user-circle" />
-                                                        3 offres de service
-                                                    </p>
-                                                    <p>
-                                                        <i class="fa fa-clock-o" />
-                                                        15h de service à son actif
-                                                    </p>
-                                                </div>
-                                                <div class="summary">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-                                                    Aliquam malesuada bibendum arcu vitae elementum curabitur vitae
-                                                    nunc. Suspendisse sed nisi lacus sed viverra tellus. Quis commodo
-                                                    odio aenean sed adipiscing diam donec.
-                                                </div>
-                                                <div class="buttons">
-                                                    <div class="btn btn-primary rounded-circle">
-                                                        En savoir plus sur
-                                                        Alice
-                                                    </div>
-                                                    <div class="btn btn-primary rounded-circle">La contacter</div>
-                                                </div>
-                                            </div>
+                                            <!-- Votre organisatrice -->
+                                            <div class="card info-4" ng-include="'/accorderie_canada_ddb/template/votre_contact_full'" />
                                         </div>
                                     </div>
                                 </section>
@@ -3991,46 +3918,8 @@
                                             </div>
                                         </div>
                                         <div class="information information-2">
-                                            <img class="img rounded-circle" src="/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg" />
-                                            <p class="nbr text-center">
-                                                <font style="font-weight:bold;">Votre accordeur :</font>
-                                                <br />
-                                                {{echange_service_info.membre.full_name}}
-                                            </p>
-                                            <div class="stats">
-                                                <p>
-                                                    <i class="fa fa-user-circle" />
-                                                    Membre depuis mars 2019
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-shield" />
-                                                    Antécédents judiciaires vérifiés
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-user-circle" />
-                                                    3 offres de service
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-clock-o" />
-                                                    15h de service à son actif
-                                                </p>
-                                            </div>
-                                            <div class="summary">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-                                                Aliquam malesuada bibendum arcu vitae elementum curabitur vitae
-                                                nunc. Suspendisse sed nisi lacus sed viverra tellus. Quis commodo
-                                                odio aenean sed adipiscing diam donec.
-                                            </div>
-                                            <div class="buttons">
-                                                <div class="btn btn-primary rounded-circle text-gamma">
-                                                    En savoir plus sur
-                                                    Alice
-                                                </div>
-                                                <div class="btn btn-primary rounded-circle text-gamma">Le contacter
-                                                </div>
-                                            </div>
+<!--                                                {{echange_service_info.membre.full_name}}-->
+                                            <div ng-include="'/accorderie_canada_ddb/template/votre_contact_full'" />
                                         </div>
                                         <div class="information information-3" ng-if="!echange_service_info.transaction_valide">
                                             <span class="info_title">

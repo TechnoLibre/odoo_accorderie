@@ -241,6 +241,12 @@ class AccorderieMembre(models.Model):
         store=True,
     )
 
+    bank_max_service_offert = fields.Float(
+        string="Temps maximal de service offert",
+        compute="_bank_time",
+        store=True,
+    )
+
     @api.multi
     def write(self, vals):
         status = super().write(vals)
@@ -286,6 +292,13 @@ class AccorderieMembre(models.Model):
                     ]
                 )
             )
+            bank_max_service_offert = sum(
+                [
+                    a.nb_heure
+                    for a in rec.echange_service_vendeur_ids
+                    if a.transaction_valide
+                ]
+            )
             bank_time_month = sum(
                 [
                     a.nb_heure
@@ -306,6 +319,7 @@ class AccorderieMembre(models.Model):
 
             rec.bank_time = bank_time
             rec.bank_month_time = bank_time_month
+            rec.bank_max_service_offert = bank_max_service_offert
 
     def _compute_access_url(self):
         super(AccorderieMembre, self)._compute_access_url()

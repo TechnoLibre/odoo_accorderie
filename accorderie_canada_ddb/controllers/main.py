@@ -1,6 +1,7 @@
 import base64
 import datetime as dt
 import logging
+import time
 import urllib.parse
 from collections import defaultdict
 from datetime import datetime
@@ -143,10 +144,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "titre": offre_id.titre,
             "is_favorite": me_membre_id.id in offre_id.membre_favoris_ids.ids,
             "distance": "8m",
-            "membre": {
-                "id": offre_id.membre.id,
-                "full_name": offre_id.membre.nom_complet,
-            },
+            "membre_id": offre_id.membre.id,
             "diff_create_date": self._transform_str_diff_time_creation(
                 offre_id.create_date
             ),
@@ -169,10 +167,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "is_favorite": me_membre_id.id
             in demande_id.membre_favoris_ids.ids,
             "distance": "8m",
-            "membre": {
-                "id": demande_id.membre.id,
-                "full_name": demande_id.membre.nom_complet,
-            },
+            "membre_id": demande_id.membre.id,
             "diff_create_date": self._transform_str_diff_time_creation(
                 demande_id.create_date
             ),
@@ -216,10 +211,11 @@ class AccorderieCanadaDdbController(http.Controller):
             membre = echange_id.membre_vendeur
             data["estAcheteur"] = True
 
-        data["membre"] = {
-            "id": membre.id,
-            "full_name": membre.nom_complet,
-        }
+        # data["membre"] = {
+        #     "id": membre.id,
+        #     "full_name": membre.nom_complet,
+        # }
+        data["membre_id"] = membre.id
 
         if echange_id.transaction_valide:
             end_date = echange_id.date_echange + dt.timedelta(
@@ -786,19 +782,25 @@ class AccorderieCanadaDdbController(http.Controller):
             "membre_info": {
                 "id": membre_id.id,
                 "full_name": membre_id.nom_complet,
+                "prenom": membre_id.prenom,
+                "bank_max_service_offert": membre_id.bank_max_service_offert,
                 "actual_bank_hours": membre_id.bank_time,
                 "actual_month_bank_hours": membre_id.bank_month_time,
                 "is_favorite": is_favorite,
                 "introduction": membre_id.introduction,
                 "diff_humain_creation_membre": str_diff_time_creation,
+                "date_creation": membre_id.create_date,
                 "location": membre_id.ville.nom,
                 "antecedent_judiciaire_verifier": membre_id.antecedent_judiciaire_verifier,
+                "sexe": membre_id.sexe,
                 "mon_accorderie": {
                     "name": membre_id.accorderie.nom,
                     "id": membre_id.accorderie.id,
                 },
                 "dct_offre_service": dct_offre_service,
+                "len_offre_service": len(dct_offre_service),
                 "dct_demande_service": dct_demande_service,
+                "len_demande_service": len(dct_demande_service),
             }
         }
 
@@ -1506,6 +1508,20 @@ class AccorderieCanadaDdbController(http.Controller):
         return request.env["ir.ui.view"].render_template(
             "accorderie_canada_ddb.accorderie_type_service_categorie_list_publication_sous_categorie",
             dct_value,
+        )
+
+    @http.route(
+        [
+            "/accorderie_canada_ddb/template/votre_contact_full",
+        ],
+        type="http",
+        auth="public",
+        website=True,
+    )
+    def get_template_votre_contact_full(self, **kw):
+        # Render page
+        return request.env["ir.ui.view"].render_template(
+            "accorderie_canada_ddb.template_votre_contact_full",
         )
 
     @http.route(

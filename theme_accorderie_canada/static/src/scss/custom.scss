@@ -2840,52 +2840,54 @@ actualité
     }
   }
 
-  .info-4 {
-    background-color: $delta;
-    border-radius: 7px;
-    height: auto;
-    padding: 8%;
+  .card {
+    border: 1px solid $beta;
+  }
+}
 
-    .img {
-      width: 25%;
-      aspect-ratio: 1/1;
-      background-size: cover;
-      margin: 0 auto 5% auto;
-    }
+.info-4 {
+  background-color: $delta;
+  border-radius: 7px;
+  height: auto;
+  padding: 8%;
+}
 
-    h4 {
-      text-align: center;
-    }
+.card-votre-relation {
+  .img {
+    width: 25%;
+    aspect-ratio: 1/1;
+    background-size: cover;
+    margin: 0 auto 5% auto;
+  }
 
-    .stats {
-      margin-top: 10%;
+  h4 {
+    text-align: center;
+  }
 
-      p {
-        font-size: 1rem;
+  .stats {
+    margin-top: 10%;
 
-        i {
-          width: 2rem;
-          color: $alpha;
-        }
-      }
-    }
+    p {
+      font-size: 1rem;
 
-    .summary {
-      margin-top: 10%;
-    }
-
-    .buttons {
-      margin-top: 10%;
-
-      .btn {
-        color: $text-alpha;
-        margin: 0 auto 0 auto;
+      i {
+        width: 2rem;
+        color: $alpha;
       }
     }
   }
 
-  .card {
-    border: 1px solid $beta;
+  .summary {
+    margin-top: 10%;
+  }
+
+  .buttons {
+    margin-top: 10%;
+
+    .btn {
+      color: $text-alpha;
+      margin: 0 auto 0 auto;
+    }
   }
 }
 

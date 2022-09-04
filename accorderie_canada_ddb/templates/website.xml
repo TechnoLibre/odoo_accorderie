@@ -136,49 +136,11 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="card info-4" t-if="accorderie_offre_service_id.membre">
-                                        <div
-                                            class="img rounded-circle"
-                                            style="background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg&quot;);"
-                                        />
-                                        <h4>Votre accordeuse:</h4>
-                                        <h4 t-field="accorderie_offre_service_id.membre.nom_complet" />
-                                        <div class="stats">
-                                            <div class="stats">
-                                                <p>
-                                                    <i class="fa fa-user-circle" />
-                                                    Membre depuis mars 2019
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-shield" />
-                                                    Antécédents judiciaires vérifiés
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-user-circle" />
-                                                    3 offres de service
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-clock-o" />
-                                                    15h de service à son actif
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="summary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                            Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-                                            Aliquam malesuada bibendum arcu vitae elementum curabitur vitae
-                                            nunc. Suspendisse sed nisi lacus sed viverra tellus. Quis commodo
-                                            odio aenean sed adipiscing diam donec.
-                                        </div>
-                                        <div class="buttons">
-                                            <div class="btn btn-primary rounded-circle">
-                                                En savoir plus sur
-                                                Alice
-                                            </div>
-                                            <div class="btn btn-primary rounded-circle">La contacter</div>
-                                        </div>
-                                    </div>
+                                    <div
+                                        class="card info-4"
+                                        t-if="accorderie_offre_service_id.membre"
+                                        ng-include="'/accorderie_canada_ddb/template/votre_contact_full'"
+                                    />
                                 </div>
                             </div>
                         </section>
@@ -322,49 +284,11 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="card info-4" t-if="accorderie_demande_service_id.membre">
-                                        <div
-                                            class="img rounded-circle"
-                                            style="background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg&quot;);"
-                                        />
-                                        <h4>Votre accordeuse:</h4>
-                                        <h4 t-field="accorderie_demande_service_id.membre.nom_complet" />
-                                        <div class="stats">
-                                            <div class="stats">
-                                                <p>
-                                                    <i class="fa fa-user-circle" />
-                                                    Membre depuis mars 2019
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-shield" />
-                                                    Antécédents judiciaires vérifiés
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-user-circle" />
-                                                    3 demandes de service
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-clock-o" />
-                                                    15h de service à son actif
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="summary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                            Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-                                            Aliquam malesuada bibendum arcu vitae elementum curabitur vitae
-                                            nunc. Suspendisse sed nisi lacus sed viverra tellus. Quis commodo
-                                            odio aenean sed adipiscing diam donec.
-                                        </div>
-                                        <div class="buttons">
-                                            <div class="btn btn-primary rounded-circle">
-                                                En savoir plus sur
-                                                Alice
-                                            </div>
-                                            <div class="btn btn-primary rounded-circle">La contacter</div>
-                                        </div>
-                                    </div>
+                                    <div
+                                        class="card info-4"
+                                        t-if="accorderie_demande_service_id.membre"
+                                        ng-include="'/accorderie_canada_ddb/template/votre_contact_full'"
+                                    />
                                 </div>
                             </div>
                         </section>
@@ -1663,5 +1587,63 @@
                 </label>
             </t>
         </t>
+    </template>
+    <template id="template_votre_contact_full" name="Votre contact">
+        <div ng-if="_.isEmpty(contact_info)">
+            Information manquante sur le contact, veuillez informer votre administrateur du problème.
+        </div>
+        <div class="card-votre-relation" ng-if="!_.isEmpty(contact_info)">
+            <div
+                class="img rounded-circle"
+                style="background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg&quot;);"
+            />
+            <h4>Votre contact :</h4>
+            <h4>{{contact_info.full_name}}</h4>
+            <div class="stats">
+                <p>
+                    <i class="fa fa-user-circle" />
+                    Membre depuis {{contact_info.show_date_creation}}
+                </p>
+                <p>
+                    <i class="fa fa-shield" ng-class="{'neg_time': !contact_info.antecedent_judiciaire_verifier}" />
+                    Antécédents judiciaires <span
+                        ng-if="!contact_info.antecedent_judiciaire_verifier"
+                    >non </span>vérifiés
+                </p>
+                <p>
+                    <i class="fa fa-user-circle" />
+                    {{contact_info.len_offre_service}} offre<span
+                        ng-if="contact_info.len_offre_service > 0"
+                    >s</span> de service
+                </p>
+                <p>
+                    <i class="fa fa-user-circle" />
+                    {{contact_info.len_demande_service}} demande<span
+                        ng-if="contact_info.len_demande_service > 0"
+                    >s</span> de service
+                </p>
+                <p>
+                    <i class="fa fa-clock-o" />
+                    {{contact_info.show_bank_max_service_offert}} de service à son actif
+                </p>
+            </div>
+            <div class="summary" ng-if="!_.isEmpty(contact_info.introduction)">
+                <q>{{contact_info.introduction}}</q>
+            </div>
+            <div class="buttons">
+                <a ng-href="/monprofil/mapresentation#!?membre_id={{membre_favoris.id}}">
+                    <div class="btn btn-primary rounded-circle">
+                        En savoir plus<span
+                            ng-if="!_.isUndefined(contact_info.prenom)"
+                        > sur {{contact_info.prenom}}</span>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="btn btn-primary rounded-circle"><span ng-if="contact_info === 'femme'">La</span><span
+                            ng-if="contact_info !== 'femme'"
+                        >La</span> contacter</div>
+                </a>
+            </div>
+        </div>
     </template>
 </odoo>

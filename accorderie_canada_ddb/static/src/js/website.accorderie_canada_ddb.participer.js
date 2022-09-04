@@ -195,6 +195,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
         }
         $scope.membre_info = {}
         $scope.dct_membre = {}
+        $scope.contact_info = {}
         $scope.offre_service_info = {}
         $scope.demande_service_info = {}
         $scope.echange_service_info = {}
@@ -270,23 +271,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                     let membre_id_int = parseInt(membre_id);
                     if (window.location.pathname === "/monprofil/mapresentation" && !_.isUndefined(membre_id) && membre_id_int !== $scope.personal.id) {
                         // Force switch to another user
-                        ajax.rpc("/accorderie_canada_ddb/get_membre_information/" + membre_id_int).then(function (data) {
-                            console.debug("AJAX receive get_membre_information");
-                            if (data.error || !_.isUndefined(data.error)) {
-                                $scope.error = data.error;
-                                console.error($scope.error);
-                            } else if (_.isEmpty(data)) {
-                                $scope.error = "Empty 'get_membre_information' data";
-                                console.error($scope.error);
-                            } else {
-                                $scope.error = "";
-                                data.membre_info.estPersonnel = false;
-                                $scope.membre_info = data.membre_info;
-                                console.debug($scope.membre_info);
-                            }
-                            // Process all the angularjs watchers
-                            $scope.$digest();
-                        })
+                        $scope.update_membre_info(membre_id_int, "membre_info");
                     } else {
                         $scope.membre_info = $scope.personal;
                     }
@@ -298,6 +283,28 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
         }
 
         $scope.update_db_my_personal_info();
+
+        $scope.update_membre_info = function (membre_id, scope_var_name_to_update) {
+            ajax.rpc("/accorderie_canada_ddb/get_membre_information/" + membre_id).then(function (data) {
+                console.debug("AJAX receive get_membre_information");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                } else if (_.isEmpty(data)) {
+                    $scope.error = "Empty 'get_membre_information' data";
+                    console.error($scope.error);
+                } else {
+                    $scope.error = "";
+                    data.membre_info.estPersonnel = false;
+                    data.membre_info.show_date_creation = moment(data.date_creation).format("MMMM YYYY");
+                    data.membre_info.show_bank_max_service_offert = $scope.convertNumToTime(data.membre_info.bank_max_service_offert, 4);
+                    $scope[scope_var_name_to_update] = data.membre_info;
+                    console.debug(data.membre_info);
+                }
+                // Process all the angularjs watchers
+                $scope.$digest();
+            })
+        }
 
         $scope.update_db_nb_offre_service = function () {
             ajax.rpc("/accorderie_canada_ddb/get_info/nb_offre_service", {}).then(function (data) {
@@ -334,6 +341,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                             console.error($scope.error);
                         } else {
                             $scope.offre_service_info = data;
+                            $scope.update_membre_info($scope.offre_service_info.membre_id, "contact_info");
                         }
 
                         // Process all the angularjs watchers
@@ -357,6 +365,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                             console.error($scope.error);
                         } else {
                             $scope.demande_service_info = data;
+                            $scope.update_membre_info($scope.demande_service_info.membre_id, "contact_info");
                         }
 
                         // Process all the angularjs watchers
@@ -390,6 +399,8 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                             $scope.echange_service_info.show_date = moment(data.date).format("dddd D MMMM");
                             $scope.echange_service_info.show_start_time = moment(data.date).format("H") + "h" + moment(data.date).format("mm");
                             $scope.echange_service_info.show_end_time = moment(data.end_date).format("H") + "h" + moment(data.end_date).format("mm");
+
+                            $scope.update_membre_info($scope.echange_service_info.membre_id, "contact_info");
 
                             console.debug($scope.echange_service_info);
                         }
