@@ -507,19 +507,19 @@
 
                                 </a>
                                 <div class="dropdown-menu js_usermenu" role="menu">
-                                    <a class="dropdown-item" t-attf-href="monactivite" role="menuitem">
+                                    <a class="dropdown-item" t-attf-href="/monactivite" role="menuitem">
                                         <i class="fa fa-signal icon_padding_right" />Mon activité
                                     </a>
-                                    <a class="dropdown-item" t-attf-href="monprofil/mapresentation" role="menuitem">
+                                    <a class="dropdown-item" t-attf-href="/monprofil/mapresentation" role="menuitem">
                                         <i class="fa fa-user-circle icon_padding_right" />Ma présentation
                                     </a>
-                                    <a class="dropdown-item" t-attf-href="monprofil/mesannonces" role="menuitem">
+                                    <a class="dropdown-item" t-attf-href="/monprofil/mesannonces" role="menuitem">
                                         <i class="fa fa-newspaper-o icon_padding_right" />Mes annonces publiées
                                     </a>
-                                    <a class="dropdown-item" t-attf-href="communaute/actualite" role="menuitem">
+                                    <a class="dropdown-item" t-attf-href="/communaute/actualite" role="menuitem">
                                         <i class="fa fa-eye icon_padding_right" />Mon accorderie
                                     </a>
-                                    <a class="dropdown-item" t-attf-href="monprofil/mespreferences" role="menuitem">
+                                    <a class="dropdown-item" t-attf-href="/monprofil/mespreferences" role="menuitem">
                                         <i class="fa fa-gear icon_padding_right" />Mes préférences générales
                                     </a>
                                     <hr />

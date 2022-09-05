@@ -1365,7 +1365,7 @@
                                         <!-- Montant à transférer -->
                                         <div class="bar_time" ng-if="form_is_service_and_service_prevu()">
                                             <b>Montant total de temps à transférer</b>
-                                            <span>_ _ - _ _</span>
+                                            <span>{{show_sum_total_time_echange()}}</span>
                                         </div>
 
                                         <!-- Respecter les conditions suivantes -->
@@ -1520,14 +1520,14 @@
                                             >Voir les détails de la transaction</button>
                                         </a>
                                         <a
-                                            ng-href="accorderie_canada_ddb/accorderie_offre_service/{{form.offre_service_id.id}}"
+                                            ng-href="/accorderie_canada_ddb/accorderie_offre_service/{{form.offre_service_id.id}}"
                                             ng-if="['init.saa.recevoir.choix.existant.time.formulaire'].includes(state.id)"
                                         >
                                             <button class="btn btn-primary text-gamma">Voir l'offre de service
                                             </button>
                                         </a>
                                         <a
-                                            ng-href="profil/membre/{{form.membre_id.id}}"
+                                            ng-href="/monprofil/mapresentation#!?membre_id={{form.membre_id.id}}"
                                             ng-if="['init.saa.offrir.existant.formulaire', 'init.saa.recevoir.choix.existant.time.formulaire', 'init.saa.offrir.nouveau.categorie_service.formulaire', 'init.saa.recevoir.choix.nouveau.formulaire'].includes(state.id)"
                                         >
                                             <button class="btn btn-primary text-gamma">Voir le profil de l'Accordeur.e
@@ -1631,7 +1631,7 @@
                 <q>{{contact_info.introduction}}</q>
             </div>
             <div class="buttons">
-                <a ng-href="/monprofil/mapresentation#!?membre_id={{membre_favoris.id}}">
+                <a ng-href="/monprofil/mapresentation#!?membre_id={{contact_info.id}}">
                     <div class="btn btn-primary rounded-circle">
                         En savoir plus<span
                             ng-if="!_.isUndefined(contact_info.prenom)"

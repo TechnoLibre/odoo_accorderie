@@ -202,6 +202,9 @@ class AccorderieCanadaDdbController(http.Controller):
             + echange_id.date_echange.minute / 60.0,
             "duree_estime": echange_id.nb_heure_estime,
             "duree": echange_id.nb_heure,
+            "duree_trajet_estime": echange_id.nb_heure_estime_duree_trajet,
+            "duree_trajet": echange_id.nb_heure_duree_trajet,
+            "commentaire": echange_id.commentaire,
         }
 
         if me_membre_id.id in echange_id.membre_vendeur.ids:
@@ -639,12 +642,21 @@ class AccorderieCanadaDdbController(http.Controller):
             }
             dct_echange[echange_service_id.id] = dct_echange_item
         for echange_service_id in membre_id.echange_service_vendeur_ids:
+            date_echange = echange_service_id.date_echange
+
+            if echange_service_id.date_echange is False:
+                _logger.warning(
+                    f"Echange service id '{echange_service_id.id}' missing"
+                    " date_echange."
+                )
+                date_echange = echange_service_id.create_date
+
             if echange_service_id.transaction_valide:
-                end_date = echange_service_id.date_echange + dt.timedelta(
+                end_date = date_echange + dt.timedelta(
                     hours=echange_service_id.nb_heure
                 )
             else:
-                end_date = echange_service_id.date_echange + dt.timedelta(
+                end_date = date_echange + dt.timedelta(
                     hours=echange_service_id.nb_heure_estime
                 )
             dct_echange_item = {
@@ -655,10 +667,9 @@ class AccorderieCanadaDdbController(http.Controller):
                     "full_name": echange_service_id.membre_acheteur.nom_complet,
                 },
                 "description_service": echange_service_id.demande_service.titre,
-                "date": echange_service_id.date_echange,
+                "date": date_echange,
                 "end_date": end_date,
-                "temps": echange_service_id.date_echange.hour
-                + echange_service_id.date_echange.minute / 60.0,
+                "temps": date_echange.hour + date_echange.minute / 60.0,
                 "duree_estime": echange_service_id.nb_heure_estime,
                 "duree": echange_service_id.nb_heure,
                 "estAcheteur": False,
@@ -1317,6 +1328,9 @@ class AccorderieCanadaDdbController(http.Controller):
             else:
                 vals["membre_vendeur"] = membre_id
 
+            vals["nb_heure_estime"] = kw.get("time_realisation_service")
+            vals["nb_heure_estime_duree_trajet"] = kw.get("time_dure_trajet")
+            # date_echange
             new_accorderie_echange_service = (
                 request.env["accorderie.echange.service"].sudo().create(vals)
             )

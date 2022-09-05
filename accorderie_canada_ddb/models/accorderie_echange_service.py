@@ -45,6 +45,16 @@ class AccorderieEchangeService(models.Model):
         help="Nombre d'heure estimé pour l'échange.",
     )
 
+    nb_heure_duree_trajet = fields.Float(
+        string="Nombre d'heure durée trajet",
+        help="Nombre d'heure effectué au moment de le trajet.",
+    )
+
+    nb_heure_estime_duree_trajet = fields.Float(
+        string="Nombre d'heure estimé durée trajet",
+        help="Nombre d'heure estimé pour le trajet.",
+    )
+
     offre_service = fields.Many2one(
         comodel_name="accorderie.offre.service",
         string="Offre de services",

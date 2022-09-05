@@ -1809,7 +1809,7 @@
                                                 <br />
                                                 <font style="font-weight:bold;">{{membre_info.full_name}}</font>
                                             </span>
-                                            <div class="modif_btn btn btn-primary debug_unimplemented">
+                                            <div class="modif_btn btn btn-primary debug_unimplemented" ng-if="membre_info.estPersonnel">
                                                 <span class="img img-fluid mx-auto fa fa-pencil" />
                                                 Modifier le profil
                                             </div>
@@ -3892,11 +3892,11 @@
                                                 <i class="fa fa-check" />
                                                 <span>Déclarer le service comme effectué</span>
                                             </div>
-                                            <div class="btn btn-epsilon text-gamma">
+                                            <div class="btn btn-epsilon text-gamma debug_unimplemented">
                                                 <i class="fa fa-pencil" />
                                                 <span>Modifier l'entente</span>
                                             </div>
-                                            <div class="btn btn-epsilon text-gamma">
+                                            <div class="btn btn-epsilon text-gamma debug_unimplemented">
                                                 <i class="fa fa-times-circle" />
                                                 <span>Annuler l'entente</span>
                                             </div>
@@ -3998,58 +3998,72 @@
                                                     Conditions de l'entente
                                                 </font>
                                             </span>
-                                            <div class="condition">
-                                                <b class="nbr">
-                                                    Coût possible supplémentaire à prévoir
-                                                </b>
-                                                <p class="condition_desc">Frais pour trajet de</p>
-                                                <p>2.3km</p>
-                                                <p class="condition_desc">Frais pour le matériel nécessaire à l'échange
-                                                    de service
-                                                    <a href="" class="ml-auto text-primary">Voir la liste</a>
-                                                </p>
-                                            </div>
-                                            <divider />
+                                            <span class="debug_unimplemented">
+                                                <div class="condition">
+                                                    <b class="nbr">
+                                                        Coût possible supplémentaire à prévoir
+                                                    </b>
+                                                    <p class="condition_desc">Frais pour trajet de</p>
+                                                    <p>2.3km</p>
+                                                    <p class="condition_desc">Frais pour le matériel nécessaire à l'échange
+                                                        de service
+                                                        <a href="" class="ml-auto text-primary">Voir la liste</a>
+                                                    </p>
+                                                </div>
+                                                <divider />
+                                            </span>
                                             <div class="condition">
                                                 <b class="nbr">
                                                     Estimation de la durée de service
                                                 </b>
                                                 <p class="condition_desc">Nombre d'heures estimé pour le service</p>
-                                                <p>02h50</p>
-                                                <p class="condition_desc">Durée du traget estimée à effectuer</p>
-                                                <p>00h10</p>
+                                                <p>{{echange_service_info.show_duree_estime_pos}}</p>
+                                                <p class="condition_desc">Durée du trajet estimée à effectuer</p>
+                                                <p>{{echange_service_info.show_duree_trajet_estime_pos}}</p>
                                                 <div class="bar_time">
                                                     <b>
                                                         Montant total de temps estimé
                                                     </b>
                                                     <span>
-                                                        {{echange_service_info.show_duree_estime_pos}}
+                                                        {{echange_service_info.show_total_dure_estime_pos}}
                                                     </span>
                                                 </div>
                                             </div>
-                                            <divider />
+                                            <span class="debug_unimplemented">
+                                                <divider />
+                                                <div class="condition">
+                                                    <b class="nbr">
+                                                        Respectez-vous les conditions suivantes :
+                                                    </b>
+                                                    <p>
+                                                        <i class="fa fa-check text-epsilon checker" />
+                                                        Il doit y avoir au moins 4 personnes pout le déménagement
+                                                    </p>
+                                                </div>
+                                                <divider />
+                                                <div class="condition">
+                                                    <b class="nbr">
+                                                        Mise en garde
+                                                    </b>
+                                                    <p class="condition_txt">
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                        Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
+                                                        Aliquam malesuada bibendum arcu vitae elementum curabitur vitae
+                                                        nunc. Suspendisse sed nisi lacus sed viverra tellus. Quis commodo
+                                                        odio aenean sed adipiscing diam donec.
+                                                    </p>
+                                                </div>
+                                            </span>
+                                            <span ng-if="!_.isEmpty(echange_service_info.commentaire)">
+                                                <span class="info_title">
+                                                    <font style="font-weight:bold;">
+                                                        Commentaire
+                                                    </font>
+                                                </span>
+                                            </span>
                                             <div class="condition">
-                                                <b class="nbr">
-                                                    Respectez-vous les conditions suivantes :
-                                                </b>
-                                                <p>
-                                                    <i class="fa fa-check text-epsilon checker" />
-                                                    Il doit y avoir au moins 4 personnes pout le déménagement
-                                                </p>
-                                            </div>
-                                            <divider />
-                                            <div class="condition">
-                                                <b class="nbr">
-                                                    Mise en garde
-                                                </b>
-                                                <p class="condition_txt">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-                                                    Aliquam malesuada bibendum arcu vitae elementum curabitur vitae
-                                                    nunc. Suspendisse sed nisi lacus sed viverra tellus. Quis commodo
-                                                    odio aenean sed adipiscing diam donec.
-                                                </p>
+                                                <p>{{echange_service_info.commentaire}}</p>
                                             </div>
                                         </div>
 
@@ -4105,9 +4119,9 @@
                                                     Durée du service reçu
                                                 </b>
                                                 <p class="condition_desc">Durée de la réalisation du service</p>
-                                                <p>02h50</p>
+                                                <p>{{echange_service_info.show_duree_pos}}</p>
                                                 <p class="condition_desc">Durée du trajet aller-retour</p>
-                                                <p>00h10</p>
+                                                <p>{{echange_service_info.show_duree_trajet_pos}}</p>
 
                                             </div>
                                             <divider />
@@ -4123,7 +4137,7 @@
                                                         Montant total de temps transféré
                                                     </b>
                                                     <span>
-                                                        {{echange_service_info.show_duree_pos}}
+                                                        {{echange_service_info.show_total_dure_pos}}
                                                     </span>
                                                 </div>
                                             </div>

@@ -273,6 +273,8 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                         // Force switch to another user
                         $scope.update_membre_info(membre_id_int, "membre_info");
                     } else {
+                        console.debug("Setup membre personal.");
+                        $scope.personal.estPersonnel = true;
                         $scope.membre_info = $scope.personal;
                     }
                 }
@@ -393,8 +395,15 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                             $scope.echange_service_info.sign = sign;
                             $scope.echange_service_info.show_duree_estime = $scope.convertNumToTime(data.duree_estime * sign, 7);
                             $scope.echange_service_info.show_duree = $scope.convertNumToTime(data.duree * sign, 7);
+                            $scope.echange_service_info.show_duree_trajet_estime = $scope.convertNumToTime(data.duree_trajet_estime * sign, 7);
+                            $scope.echange_service_info.show_duree_trajet = $scope.convertNumToTime(data.duree_trajet * sign, 7);
                             $scope.echange_service_info.show_duree_estime_pos = $scope.convertNumToTime(data.duree_estime, 8);
                             $scope.echange_service_info.show_duree_pos = $scope.convertNumToTime(data.duree, 8);
+                            $scope.echange_service_info.show_duree_trajet_estime_pos = $scope.convertNumToTime(data.duree_trajet_estime, 8);
+                            $scope.echange_service_info.show_duree_trajet_pos = $scope.convertNumToTime(data.duree_trajet, 8);
+
+                            $scope.echange_service_info.show_total_dure_estime_pos = $scope.convertNumToTime(data.duree_estime + data.duree_trajet_estime, 8);
+                            $scope.echange_service_info.show_total_dure_pos = $scope.convertNumToTime(data.duree + data.duree_trajet, 8);
 
                             $scope.echange_service_info.show_date = moment(data.date).format("dddd D MMMM");
                             $scope.echange_service_info.show_start_time = moment(data.date).format("H") + "h" + moment(data.date).format("mm");
@@ -762,6 +771,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
         // Date
         $scope.load_date = function () {
             let time = require("web.time");
+            // TODO not optimal how this is called, need only to be call 1 time when page is loaded (with date)
             console.debug("Call load_date");
             _.each($(".input-group.date"), function (date_field) {
                 let minDate =
@@ -1120,6 +1130,23 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 value = value.replace(core._t.database.parameters.decimal_point, '.');
             }
             return Number(value);
+        }
+
+        $scope.show_sum_total_time_echange = function () {
+            let sum_total = 0;
+            if (!_.isUndefined($scope.form.time_realisation_service)) {
+                sum_total += $scope.parseFloatTime($scope.form.time_realisation_service);
+            }
+            if (!_.isUndefined($scope.form.time_dure_trajet)) {
+                sum_total += $scope.parseFloatTime($scope.form.time_dure_trajet);
+            }
+            if (!_.isUndefined($scope.form.time_service_estimated)) {
+                sum_total += $scope.parseFloatTime($scope.form.time_service_estimated);
+            }
+            if (!_.isUndefined($scope.form.time_drive_estimated)) {
+                sum_total += $scope.parseFloatTime($scope.form.time_drive_estimated);
+            }
+            return $scope.convertNumToTime(sum_total, 8);
         }
 
         $scope.submit_form = function () {
