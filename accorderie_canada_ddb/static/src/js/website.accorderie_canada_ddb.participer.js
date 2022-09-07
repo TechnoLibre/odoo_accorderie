@@ -434,6 +434,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                     $scope.error = "Empty '/accorderie_canada_ddb/get_info/list_membre' data";
                     console.error($scope.error);
                 } else {
+                    console.debug(data.dct_membre);
                     $scope.dct_membre = data.dct_membre;
                 }
 

@@ -865,6 +865,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "bank_time": a.bank_time,
                 "bank_month_time": a.bank_month_time,
                 "date_adhesion": a.date_adhesion,
+                "introduction": a.introduction if a.introduction else "",
                 "is_favorite": a.id in my_favorite_membre_id,
             }
             for a in lst_membre

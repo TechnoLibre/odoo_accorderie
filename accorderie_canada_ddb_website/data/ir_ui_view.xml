@@ -92,7 +92,7 @@
                                                             <p class="time" ng-if="echange.transaction_valide">{{echange.show_start_time}} - {{echange.show_end_time}}</p>
                                                         </div>
                                                         <div class="details">
-                                                            <span class="activite_auteur mt-auto">{{echange.membre.full_name}}</span>
+                                                            <span class="activite_auteur mt-auto">{{contact_info.full_name}}</span>
                                                             <span class="mb-auto" ng-show="!_.isEmpty(echange.description_service)">{{echange.description_service}}</span>
                                                         </div>
                                                     </div>
@@ -2075,8 +2075,8 @@
                                                         </div>
                                                         <div class="infos text-gamma"><span ng-if="membre.age > 0">{{membre.age}} ans</span><span ng-if="membre.age > 0 &amp;&amp; !_.isUndefined(membre.distance)"> - </span><span ng-if="!_.isUndefined(membre.distance)">{{membre.distance}} m</span></div>
                                                     </div>
-                                                    <div class="item_desc centered" ng-if="!_.isUndefined(membre.introduction)">
-                                                        <font style="color: rgb(99, 99, 99);">{{membre.introduction}}</font>
+                                                    <div class="item_desc centered" ng-if="!_.isEmpty(membre.introduction)">
+                                                        <font style="color: rgb(99, 99, 99);"><q>{{membre.introduction}}</q></font>
                                                     </div>
                                                     <div class="item_foot debug_unimplemented">
                                                         <span class="tag">Marche</span>
@@ -2223,7 +2223,7 @@
                                                     <div class="infos">
                                                         <h4 class="activite_title">{{offre_service.titre}}</h4>
                                                         <p class="activite_desc" ng-if="!_.isEmpty(offre_service.description)" ng-bind-html="offre_service.description | unsafe" />
-                                                        <h5 class="activite_auteur">{{offre_service.membre.full_name}}</h5>
+                                                        <h5 class="activite_auteur">{{contact_info.full_name}}</h5>
                                                         <h5 class="activite_distance">{{offre_service.distance}}</h5>
                                                     </div>
                                                 </a>
@@ -4061,10 +4061,10 @@
                                                         Commentaire
                                                     </font>
                                                 </span>
+                                                <div class="condition">
+                                                    <p>{{echange_service_info.commentaire}}</p>
+                                                </div>
                                             </span>
-                                            <div class="condition">
-                                                <p>{{echange_service_info.commentaire}}</p>
-                                            </div>
                                         </div>
 
                                         <div class="information information-5" style="grid-area:2/2/4/3;" ng-if="echange_service_info.transaction_valide">
