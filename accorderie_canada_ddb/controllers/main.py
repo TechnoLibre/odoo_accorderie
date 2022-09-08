@@ -1125,6 +1125,8 @@ class AccorderieCanadaDdbController(http.Controller):
                     dct_state["type"] = state_id.type
                 if state_id.show_breadcrumb:
                     dct_state["show_breadcrumb"] = state_id.show_breadcrumb
+                if state_id.maquette_link:
+                    dct_state["maquette_link"] = state_id.maquette_link
                 if state_id.breadcrumb_value:
                     dct_state["breadcrumb_value"] = state_id.breadcrumb_value
                 if state_id.breadcrumb_show_only_last_item:

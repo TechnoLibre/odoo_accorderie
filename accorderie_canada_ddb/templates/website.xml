@@ -591,8 +591,12 @@
                         <div class="oe_structure">
                             <div class="debug_debug">
                                     Lien maquette : <a
+                                    ng-if="_.isEmpty(state.maquette_link)"
                                     href="https://marvelapp.com/prototype/1773h559/screen/86371515"
-                                >https://marvelapp.com/prototype/1773h559/screen/86371515</a><br />
+                                >https://marvelapp.com/prototype/1773h559/screen/86371515</a><a
+                                    ng-if="!_.isEmpty(state.maquette_link)"
+                                    ng-href="{{state.maquette_link}}"
+                                >{{state.maquette_link}}</a><br />
                                 Debug form: <span>{{form || json}}</span>
                                 <br />
                                 Debug state: <span>{{state || json}}</span>
@@ -739,77 +743,7 @@
                                         style="flex-direction:column; flex-wrap:nowrap;"
                                         ng-class="{form: form_is_offre_demande_service()}"
                                     >
-                                        <div class="debug_debug">
-                                            <!-- Debug information about form -->
-                                            <h4>Debug</h4>
-
-                                            <div ng-if="state.id == 'init.pos.individuelle.formulaire'">0 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86371567"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86371567</a><a
-                                                    href="participer#!?state=init.pos.individuelle.formulaire&amp;categorie=520"
-                                                >participer#!?state=init.pos.individuelle.formulaire&amp;categorie=520</a></div>
-
-                                            <div
-                                                ng-if="state.id == 'init.saa.offrir.nouveau.categorie_service.formulaire'"
-                                            >1 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86537471"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86537471</a><a
-                                                    href="participer#!?state=init.saa.offrir.nouveau.categorie_service.formulaire&amp;membre=3&amp;categorie=92"
-                                                >participer#!?state=init.saa.offrir.nouveau.categorie_service.formulaire&amp;membre=3&amp;categorie=92</a></div>
-
-                                            <div ng-if="state.id == 'init.saa.offrir.existant.formulaire'">2 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86537295"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86537295</a><a
-                                                    href="participer#!?state=init.saa.offrir.existant.formulaire&amp;offre_service=3&amp;membre=3"
-                                                >participer#!?state=init.saa.offrir.existant.formulaire&amp;offre_service=3&amp;membre=3</a></div>
-
-                                            <div ng-if="state.id == 'init.saa.recevoir.choix.nouveau.formulaire'">3 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86697719"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86697719</a><a
-                                                    href="participer#!?state=init.saa.recevoir.choix.nouveau.formulaire&amp;membre=3&amp;categorie=94"
-                                                >participer#!?state=init.saa.recevoir.choix.nouveau.formulaire&amp;membre=3&amp;categorie=94</a></div>
-
-                                            <div
-                                                ng-if="state.id == 'init.saa.recevoir.choix.existant.time.formulaire'"
-                                            >4 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86588770"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86588770</a><a
-                                                    href="participer#!?state=init.saa.recevoir.choix.existant.time.formulaire&amp;membre=3&amp;offre_service=6&amp;date=2022-08-25&amp;time=10:00"
-                                                >participer#!?state=init.saa.recevoir.choix.existant.time.formulaire&amp;membre=3&amp;offre_service=6&amp;date=2022-08-25&amp;time=10:00</a></div>
-
-                                            <div ng-if="state.id == 'init.va.oui.formulaire'">5 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86537849"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86537849</a><a
-                                                    href="participer#!?state=init.va.oui.formulaire&amp;echange_service=2"
-                                                >participer#!?state=init.va.oui.formulaire&amp;echange_service=2</a></div>
-
-                                            <div ng-if="state.id == 'init.va.non.offert.nouveau_formulaire'">6 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86594545"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86594545</a><a
-                                                    href="participer#!?state=init.va.non.offert.nouveau_formulaire"
-                                                >participer#!?state=init.va.non.offert.nouveau_formulaire</a></div>
-
-                                            <div ng-if="state.id == 'init.va.non.offert.existant_formulaire'">7 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86537980"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86537980</a><a
-                                                    href="participer#!?state=init.va.non.offert.existant_formulaire&amp;echange_service=4"
-                                                >participer#!?state=init.va.non.offert.existant_formulaire&amp;echange_service=4</a></div>
-
-                                            <div ng-if="state.id == 'init.va.non.recu.choix.nouveau.formulaire'">8 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86609563"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86609563</a><a
-                                                    href="participer#!?state=init.va.non.recu.choix.nouveau.formulaire&amp;membre=4&amp;categorie=94"
-                                                >participer#!?state=init.va.non.recu.choix.nouveau.formulaire&amp;membre=4&amp;categorie=94</a></div>
-
-                                            <div ng-if="state.id == 'init.va.non.recu.choix.formulaire'">9 <a
-                                                    href="https://marvelapp.com/prototype/1773h559/screen/86608523"
-                                                >https://marvelapp.com/prototype/1773h559/screen/86608523</a><a
-                                                    href="participer#!?state=init.va.non.recu.choix.formulaire&amp;membre=4&amp;echange_service=3"
-                                                >participer#!?state=init.va.non.recu.choix.formulaire&amp;membre=4&amp;echange_service=3</a></div>
-                                        </div>
-
                                         <!-- Catégorie -->
-
                                         <div
                                             ng-if="form_is_offre_demande_service() &amp;&amp; state.show_breadcrumb"
                                             class="nav_back"

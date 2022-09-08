@@ -86,6 +86,11 @@ class AccorderieWorkflowState(models.Model):
         ),
     )
 
+    maquette_link = fields.Char(
+        string="Lien maquette",
+        help="Référence de la conception de l'état vers une maquette.",
+    )
+
     show_breadcrumb = fields.Boolean(string="Afficher le fil d'ariane")
 
     state_dst_ids = fields.One2many(

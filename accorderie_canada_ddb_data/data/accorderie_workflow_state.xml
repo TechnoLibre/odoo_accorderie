@@ -4,6 +4,7 @@
         <record id="accorderie_workflow_state_init" model="accorderie.workflow.state">
             <field name="name">Initiale</field>
             <field name="key">init</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86371515</field>
             <field name="message">Que souhaitez-vous faire?</field>
             <field name="type">selection_static</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
@@ -17,6 +18,7 @@
         <record id="accorderie_workflow_state_pos" model="accorderie.workflow.state">
             <field name="name">Offre de service</field>
             <field name="key">init.pos</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86371582</field>
             <field name="message">Est-ce pour une offre de service :</field>
             <field name="type">selection_static</field>
             <field name="show_breadcrumb">True</field>
@@ -26,6 +28,7 @@
         <record id="accorderie_workflow_state_pos_individuelle" model="accorderie.workflow.state">
             <field name="name">Choisir une catégorie de service</field>
             <field name="key">init.pos.individuelle</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86371553</field>
             <field name="message">Dans quelle catégorie s'inscrit votre offre de service?</field>
             <field name="type">choix_categorie_de_service</field>
             <field name="show_breadcrumb">True</field>
@@ -38,6 +41,7 @@
         <record id="accorderie_workflow_state_pos_individuelle_form" model="accorderie.workflow.state">
             <field name="name">Formulaire offre de service individuelle</field>
             <field name="key">init.pos.individuelle.formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86371567</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">True</field>
             <field name="breadcrumb_show_only_last_item">True</field>
@@ -81,6 +85,7 @@
         <record id="accorderie_workflow_state_saa" model="accorderie.workflow.state">
             <field name="name">Échange d'un service</field>
             <field name="key">init.saa</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537288</field>
             <field name="message">Que voulez-vous?</field>
             <field name="type">selection_static</field>
             <field name="show_breadcrumb">True</field>
@@ -90,6 +95,7 @@
         <record id="accorderie_workflow_state_saa_offrir" model="accorderie.workflow.state">
             <field name="name">Choisir une de mes offres</field>
             <field name="key">init.saa.offrir</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537290</field>
             <field name="message">Choisir une de mes offres</field>
             <field name="type">selection_dynamique</field>
             <field name="show_breadcrumb">True</field>
@@ -103,6 +109,7 @@
         <record id="accorderie_workflow_state_saa_offrir_nouveau" model="accorderie.workflow.state">
             <field name="name">Choisir un membre</field>
             <field name="key">init.saa.offrir.nouveau</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537465</field>
             <field name="message">À qui souhaitez-vous offrir le service?</field>
             <field name="type">choix_membre</field>
             <field name="show_breadcrumb">True</field>
@@ -115,6 +122,7 @@
         <record id="accorderie_workflow_state_saa_offrir_existant" model="accorderie.workflow.state">
             <field name="name">Choisir un membre</field>
             <field name="key">init.saa.offrir.existant</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537292</field>
             <field name="message">À qui souhaitez-vous offrir le service?</field>
             <field name="type">choix_membre</field>
             <field name="show_breadcrumb">True</field>
@@ -127,6 +135,7 @@
         <record id="accorderie_workflow_state_saa_offrir_existant_form" model="accorderie.workflow.state">
             <field name="name">Formulaire service privé existant échange</field>
             <field name="key">init.saa.offrir.existant.formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537295</field>
             <field name="message">Offrir un service privé</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
@@ -138,6 +147,7 @@
         <record id="accorderie_workflow_state_saa_offrir_nouveau_categorie_service" model="accorderie.workflow.state">
             <field name="name">Choisir une catégorie de service</field>
             <field name="key">init.saa.offrir.nouveau.categorie_service</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537468</field>
             <field name="message">Dans quelle catégorie s'inscrit votre offre de service privée?</field>
             <field name="type">choix_categorie_de_service</field>
             <field name="show_breadcrumb">True</field>
@@ -151,6 +161,7 @@
         <record id="accorderie_workflow_state_saa_offrir_nouveau_categorie_service_form" model="accorderie.workflow.state">
             <field name="name">Formulaire nouveau service privé échange</field>
             <field name="key">init.saa.offrir.nouveau.categorie_service.formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537471</field>
             <field name="message">Offrir un service privé</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
@@ -163,6 +174,7 @@
         <record id="accorderie_workflow_state_saa_recevoir" model="accorderie.workflow.state">
             <field name="name">Choisir un membre</field>
             <field name="key">init.saa.recevoir</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86588759</field>
             <field name="message">De qui souhaitez-vous recevoir le service?</field>
             <field name="type">choix_membre</field>
             <field name="show_breadcrumb">True</field>
@@ -175,6 +187,7 @@
         <record id="accorderie_workflow_state_saa_recevoir_choix" model="accorderie.workflow.state">
             <field name="name">Choisir une de ses offres</field>
             <field name="key">init.saa.recevoir.choix</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86588762</field>
             <field name="message">Choisir une de ses offres</field>
             <field name="type">selection_dynamique</field>
             <field name="show_breadcrumb">True</field>
@@ -193,6 +206,7 @@
         <record id="accorderie_workflow_state_saa_recevoir_choix_nouveau" model="accorderie.workflow.state">
             <field name="name">Choisir une catégorie de service</field>
             <field name="key">init.saa.recevoir.choix.nouveau</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86698635</field>
             <field name="message">Dans quelle catégorie s'inscrit l'offre de service privée reçue?</field>
             <field name="type">choix_categorie_de_service</field>
             <field name="show_breadcrumb">True</field>
@@ -205,6 +219,7 @@
         <record id="accorderie_workflow_state_saa_recevoir_choix_nouveau_form" model="accorderie.workflow.state">
             <field name="name">Formulaire nouveau service reçu échange</field>
             <field name="key">init.saa.recevoir.choix.nouveau.formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86697719</field>
             <field name="message">Description de la transaction</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
@@ -216,6 +231,7 @@
         <record id="accorderie_workflow_state_saa_recevoir_choix_existant" model="accorderie.workflow.state">
             <field name="name">Choisir date</field>
             <field name="key">init.saa.recevoir.choix.existant</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86588764</field>
             <field name="message">Choisir une des dates</field>
             <field name="type">calendrier</field>
             <field name="show_breadcrumb">True</field>
@@ -232,6 +248,7 @@
         <record id="accorderie_workflow_state_saa_recevoir_choix_existant_temps_duree" model="accorderie.workflow.state">
             <field name="name">Choisir temps et durée</field>
             <field name="key">init.saa.recevoir.choix.existant.time</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86588766</field>
             <field name="message">Horaires</field>
             <field name="type">temps_duree</field>
             <field name="show_breadcrumb">True</field>
@@ -245,6 +262,7 @@
         <record id="accorderie_workflow_state_saa_recevoir_choix_existant_temps_duree_form" model="accorderie.workflow.state">
             <field name="name">Formulaire nouveau service reçu échange</field>
             <field name="key">init.saa.recevoir.choix.existant.time.formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86588770</field>
             <field name="message">Résumé de ma demande</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
@@ -257,6 +275,7 @@
         <record id="accorderie_workflow_state_va" model="accorderie.workflow.state">
             <field name="name">Valider un service selon une demande de service</field>
             <field name="key">init.va</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537845</field>
             <field name="message">Avez-vous créer une demande de service pour cet échange?</field>
             <field name="type">selection_static</field>
             <field name="show_breadcrumb">True</field>
@@ -266,6 +285,7 @@
         <record id="accorderie_workflow_state_va_oui" model="accorderie.workflow.state">
             <field name="name">Échange d'un service existant</field>
             <field name="key">init.va.oui</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537847</field>
             <field name="message">Quel est votre échange de service?</field>
             <field name="type">selection_dynamique</field>
             <field name="show_breadcrumb">True</field>
@@ -278,6 +298,7 @@
         <record id="accorderie_workflow_state_va_oui_form" model="accorderie.workflow.state">
             <field name="name">Formulaire échange d'un service existant</field>
             <field name="key">init.va.oui.formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537849</field>
             <field name="message">Déclaration du service effectué</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
@@ -290,6 +311,7 @@
         <record id="accorderie_workflow_state_va_non" model="accorderie.workflow.state">
             <field name="name">Échange d'un nouveau service</field>
             <field name="key">init.va.non</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537965</field>
             <field name="message">Qui êtes-vous?</field>
             <field name="type">selection_static</field>
             <field name="show_breadcrumb">True</field>
@@ -299,6 +321,7 @@
         <record id="accorderie_workflow_state_va_non_offert" model="accorderie.workflow.state">
             <field name="name">Choisir un échange ou en créer</field>
             <field name="key">init.va.non.offert</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537978</field>
             <field name="message">Quel service avez-vous offert?</field>
             <field name="type">selection_dynamique</field>
             <field name="show_breadcrumb">True</field>
@@ -312,6 +335,7 @@
         <record id="accorderie_workflow_state_va_non_offert_nouveau_formulaire" model="accorderie.workflow.state">
             <field name="name">Formulaire valider transaction sans demande service nouveau offert</field>
             <field name="key">init.va.non.offert.nouveau_formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86594545</field>
             <field name="message">Déclaration du service effectué</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
@@ -323,6 +347,7 @@
         <record id="accorderie_workflow_state_va_non_offert_existant_formulaire" model="accorderie.workflow.state">
             <field name="name">Formulaire valider transaction sans demande service existant offert</field>
             <field name="key">init.va.non.offert.existant_formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86537980</field>
             <field name="message">Déclaration du service effectué</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
@@ -334,6 +359,7 @@
         <record id="accorderie_workflow_state_va_non_recu" model="accorderie.workflow.state">
             <field name="name">Choisir un membre</field>
             <field name="key">init.va.non.recu</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86538192</field>
             <field name="message">Qui vous a offert le service?</field>
             <field name="type">choix_membre</field>
             <field name="show_breadcrumb">True</field>
@@ -346,6 +372,7 @@
         <record id="accorderie_workflow_state_va_non_recu_choix" model="accorderie.workflow.state">
             <field name="name">Choisir un échange ou en créer</field>
             <field name="key">init.va.non.recu.choix</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86538195</field>
             <field name="message">Quel service avez-vous reçu?</field>
             <field name="type">selection_dynamique</field>
             <field name="show_breadcrumb">True</field>
@@ -364,6 +391,7 @@
         <record id="accorderie_workflow_state_va_non_recu_choix_existant_formulaire" model="accorderie.workflow.state">
             <field name="name">Formulaire valider transaction sans demande service existant reçu</field>
             <field name="key">init.va.non.recu.choix.formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86608523</field>
             <field name="message">Déclaration du service effectué</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
@@ -375,6 +403,7 @@
         <record id="accorderie_workflow_state_va_non_recu_choix_nouveau" model="accorderie.workflow.state">
             <field name="name">Choisir une catégorie de service</field>
             <field name="key">init.va.non.recu.choix.nouveau</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86609091</field>
             <field name="message">Dans quelle catégorie s'inscrit l'offre de service privée reçue?</field>
             <field name="type">choix_categorie_de_service</field>
             <field name="show_breadcrumb">True</field>
@@ -387,6 +416,7 @@
         <record id="accorderie_workflow_state_va_non_recu_choix_nouveau_formulaire" model="accorderie.workflow.state">
             <field name="name">Formulaire valider transaction sans demande service nouveau reçu</field>
             <field name="key">init.va.non.recu.choix.nouveau.formulaire</field>
+            <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86609563</field>
             <field name="message">Déclaration du service effectué</field>
             <field name="type">form</field>
             <field name="show_breadcrumb">False</field>
