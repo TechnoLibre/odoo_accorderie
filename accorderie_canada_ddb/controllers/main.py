@@ -1141,8 +1141,8 @@ class AccorderieCanadaDdbController(http.Controller):
                     dct_state[
                         "model_field_name_alias"
                     ] = state_id.model_field_name_alias
-                if state_id.data_depend_field:
-                    dct_state["data_depend_field"] = state_id.data_depend_field
+                if state_id.model_field_depend:
+                    dct_state["model_field_depend"] = state_id.model_field_depend
                 if state_id.data_url_field:
                     dct_state["data_url_field"] = state_id.data_url_field
                 if state_id.data_update_url:

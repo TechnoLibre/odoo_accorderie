@@ -650,7 +650,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             show_breadcrumb: false,
             data: undefined,
             data_name: undefined,
-            data_depend_field: undefined,
+            model_field_depend: undefined,
             data_url_field: undefined,
             data_update_url: undefined,
             force_update_data: undefined,

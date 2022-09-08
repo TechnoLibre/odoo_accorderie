@@ -53,14 +53,18 @@ class AccorderieWorkflowState(models.Model):
 
     message = fields.Char()
 
+    model_field_depend = fields.Char(
+        string="État qui dépend de champs",
+        help=(
+            "Liste de champs nécessaire pour cette état, séparé par ;. Il est"
+            " nécessaire d'avoir dans les états précédents avec"
+            " 'model_field_name' les éléments de ce champs indépendants."
+        ),
+    )
+
     model_field_name = fields.Char(string="Champs du modèle")
 
     model_field_name_alias = fields.Char(string="Alias champs du modèle")
-
-    data_depend_field = fields.Char(
-        string="État qui dépend de champs",
-        help="Separé par ; pour en avoir plusieurs",
-    )
 
     data_update_url = fields.Char(
         string="URL sync data",

@@ -32,8 +32,8 @@
                     <group string="Formulaire" attrs="{'invisible': [('type','in',('null','selection_static'))]}">
                         <field name="data" />
                         <field name="model_field_name" />
+                        <field name="model_field_depend" />
                         <field name="model_field_name_alias" />
-                        <field name="data_depend_field" />
                         <field
                             name="data_update_url"
                             attrs="{'invisible': [('type','not in',('selection_dynamique',))]}"
@@ -81,6 +81,7 @@
                 <field name="list_is_first_position" />
                 <field name="message" />
                 <field name="model_field_name" />
+                <field name="model_field_depend" />
                 <field name="model_field_name_alias" />
                 <field name="show_breadcrumb" />
                 <field name="type" />
@@ -171,6 +172,11 @@
                                     <li class="mb4">
                                         <strong>
                                             <field name="model_field_name" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="model_field_depend" />
                                         </strong>
                                     </li>
                                     <li class="mb4">
@@ -269,6 +275,11 @@
                     string="Champs du mod&#232;le"
                 />
                 <filter
+                    domain="[('model_field_depend','!=',False)]"
+                    name="model_field_depend"
+                    string="Dépendances de champs"
+                />
+                <filter
                     domain="[('model_field_name_alias','!=',False)]"
                     name="model_field_name_alias"
                     string="Alias champs du mod&#232;le"
@@ -305,6 +316,7 @@
                 <field name="message" />
                 <field name="model_field_name" />
                 <field name="model_field_name_alias" />
+                <field name="model_field_depend" />
                 <field name="show_breadcrumb" />
                 <field name="state_dst_ids" />
                 <field name="state_src_ids" />

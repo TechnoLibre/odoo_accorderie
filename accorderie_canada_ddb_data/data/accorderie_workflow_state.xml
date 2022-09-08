@@ -48,6 +48,7 @@
             <field name="disable_question">True</field>
             <field name="submit_button_text">Valider mon offre de service</field>
             <field name="submit_response_title">Félicitation votre offre de service a été publié!</field>
+            <field name="model_field_depend">type_service_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_pds" model="accorderie.workflow.state">
@@ -80,6 +81,7 @@
             <field name="disable_question">True</field>
             <field name="submit_button_text">Valider ma demande de service</field>
             <field name="submit_response_title">Félicitation votre demande de service a été publié!</field>
+            <field name="model_field_depend">type_service_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_saa" model="accorderie.workflow.state">
@@ -142,6 +144,7 @@
             <field name="submit_button_text">Valider mon offre</field>
             <field name="submit_response_title">Votre offre de service a bien été envoyée.</field>
             <field name="submit_response_description">L'Accordeur devrait vous contacter sous peu pour valider, modifier ou refuser votre proposition.</field>
+            <field name="model_field_depend">offre_service_id;membre_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_saa_offrir_nouveau_categorie_service" model="accorderie.workflow.state">
@@ -168,6 +171,7 @@
             <field name="submit_button_text">Valider mon offre</field>
             <field name="submit_response_title">Votre offre de service privé a bien été envoyée.</field>
             <field name="submit_response_description">L'Accordeur devrait vous contacter sous peu pour valider, modifier ou refuser votre proposition.</field>
+            <field name="model_field_depend">membre_id;type_service_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
 
@@ -196,7 +200,7 @@
             <field name="model_field_name_alias">offre_service</field>
             <field name="model_field_name">offre_service_id</field>
             <field name="data">ses_offres_de_service</field>
-            <field name="data_depend_field">membre_id</field>
+            <field name="model_field_depend">membre_id</field>
             <field name="data_url_field">membre_id</field>
             <field name="data_update_url">/accorderie_canada_ddb/get_info/offre_service/%s</field>
             <field name="force_update_data">True</field>
@@ -226,6 +230,7 @@
             <field name="submit_button_text">Envoyer ma demande</field>
             <field name="submit_response_title">La demande a bien été envoyée!</field>
             <field name="submit_response_description">Que souhaitez-vous faire maintenant?</field>
+            <field name="model_field_depend">membre_id;type_service_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_saa_recevoir_choix_existant" model="accorderie.workflow.state">
@@ -239,7 +244,7 @@
             <field name="data">ses_temps_disponibles</field>
             <field name="model_field_name_alias">date</field>
             <field name="model_field_name">date_name</field>
-            <field name="data_depend_field">membre_id</field>
+            <field name="model_field_depend">membre_id</field>
             <field name="data_url_field">membre_id</field>
             <field name="data_update_url">/accorderie_canada_ddb/get_info/recevoir_service/%s</field>
             <field name="force_update_data">True</field>
@@ -256,7 +261,7 @@
             <field name="breadcrumb_field_value">date_name</field>
             <field name="model_field_name_alias">time</field>
             <field name="model_field_name">time_name</field>
-            <field name="data_depend_field">date_name</field>
+            <field name="model_field_depend">membre_id;date_name</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_saa_recevoir_choix_existant_temps_duree_form" model="accorderie.workflow.state">
@@ -269,6 +274,7 @@
             <field name="submit_button_text">Envoyer ma demande</field>
             <field name="submit_response_title">La demande a bien été envoyée!</field>
             <field name="submit_response_description">Que souhaitez-vous faire maintenant?</field>
+            <field name="model_field_depend">membre_id;offre_service_id;date_name;time_name</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
 
@@ -305,6 +311,7 @@
             <field name="submit_button_text">Je déclare que le service a bien été effectué</field>
             <field name="submit_response_title">La transaction de l'échange de service a bien été déclarée!</field>
             <field name="submit_response_description">Merci de contribuer continuellement à la communauté de l'Accorderie de ??. Que souhaitez-vous faire maintenant?</field>
+            <field name="model_field_depend">echange_service_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
 
@@ -354,6 +361,7 @@
             <field name="submit_button_text">Je déclare que le service a bien été effectué</field>
             <field name="submit_response_title">La transaction de l'échange de service a bien été déclarée!</field>
             <field name="submit_response_description">Merci de contribuer continuellement à la communauté de l'Accorderie de ??. Que souhaitez-vous faire maintenant?</field>
+            <field name="model_field_depend">echange_service_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_va_non_recu" model="accorderie.workflow.state">
@@ -381,11 +389,11 @@
             <field name="model_field_name_alias">echange_service</field>
             <field name="model_field_name">echange_service_id</field>
             <field name="data">mes_echanges_de_service_recu_sans_demande_non_valide</field>
-            <field name="data_depend_field">membre_id</field>
             <field name="data_url_field">membre_id</field>
             <field name="data_update_url">/accorderie_canada_ddb/get_info/echange_service/%s</field>
             <field name="force_update_data">True</field>
             <field name="list_is_first_position">False</field>
+            <field name="model_field_depend">membre_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_va_non_recu_choix_existant_formulaire" model="accorderie.workflow.state">
@@ -398,6 +406,7 @@
             <field name="submit_button_text">Je déclare que le service a bien été effectué</field>
             <field name="submit_response_title">La transaction de l'échange de service a bien été déclarée!</field>
             <field name="submit_response_description">Merci de contribuer continuellement à la communauté de l'Accorderie de ??. Que souhaitez-vous faire maintenant?</field>
+            <field name="model_field_depend">membre_id;echange_service_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_state_va_non_recu_choix_nouveau" model="accorderie.workflow.state">
@@ -423,6 +432,7 @@
             <field name="submit_button_text">Je déclare que le service a bien été effectué</field>
             <field name="submit_response_title">La transaction de l'échange de service a bien été déclarée!</field>
             <field name="submit_response_description">Merci de contribuer continuellement à la communauté de l'Accorderie de ??. Que souhaitez-vous faire maintenant?</field>
+            <field name="model_field_depend">membre_id;type_service_id</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
     </data>
