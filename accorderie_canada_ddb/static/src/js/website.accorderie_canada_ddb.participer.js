@@ -197,9 +197,16 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
         $scope.dct_membre = {}
         $scope.contact_info = {}
         $scope.offre_service_info = {}
+        // $scope.lst_offre_service_id = []
+        $scope.dct_offre_service_info = {}
         $scope.demande_service_info = {}
         $scope.echange_service_info = {}
         $scope.nb_offre_service = 0;
+        $scope.generic_offre_service = {
+            lst_offre_service_id: [],
+            enable_href: true,
+            enable_favorite: true,
+        }
 
         $scope.add_to_my_favorite_field_id = function (model, record_id) {
             ajax.rpc("/accorderie/submit/my_favorite", {"model": model, "id_record": record_id}).then(function (data) {
@@ -283,6 +290,10 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 $scope.$digest();
             })
         }
+
+        $scope.$watch('membre_info', function (newValue, oldValue, scope) {
+            console.debug("mathben membre info watch");
+        });
 
         $scope.update_db_my_personal_info();
 
@@ -606,6 +617,10 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             // TODO no need this, use instead <a href and not ng-click
             window.location.href = '/monactivite/echange#!?echange=' + echange.id;
         }
+    }])
+
+    app.controller('OffreDemandeServiceController', ['$scope', '$location', function ($scope) {
+
     }])
 
     async function requestSpecialURL($scope, state, new_url) {

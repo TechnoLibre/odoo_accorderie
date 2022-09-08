@@ -1549,6 +1549,20 @@ class AccorderieCanadaDdbController(http.Controller):
         )
 
     @http.route(
+        [
+            "/accorderie_canada_ddb/template/offre_de_service_generic",
+        ],
+        type="http",
+        auth="public",
+        website=True,
+    )
+    def get_template_offre_de_service_generic(self, **kw):
+        # Render page
+        return request.env["ir.ui.view"].render_template(
+            "accorderie_canada_ddb.template_offre_de_service_generic",
+        )
+
+    @http.route(
         "/new/accorderie_accorderie", type="http", auth="user", website=True
     )
     def create_new_accorderie_accorderie(self, **kw):

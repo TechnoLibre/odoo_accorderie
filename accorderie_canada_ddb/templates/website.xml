@@ -1582,4 +1582,20 @@
             </div>
         </div>
     </template>
+    <template id="template_offre_de_service_generic" name="Offre de service generic">
+        <div class="activite btn" ng-repeat="offre_service_id in generic_offre_service.lst_offre_service_id" ng-init="offre_service = dct_offre_service_info[offre_service_id]" ng-if="!_.isUndefined(offre_service)">
+            <a ng-href="{{generic_offre_service.enable_href ? ('/accorderie_canada_ddb/accorderie_offre_service' + offre_service_id) : ''}}">
+                <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
+                <div class="infos">
+                    <h4 class="activite_title" ng-if="!_.isEmpty(offre_service.titre)">{{offre_service.titre}}</h4>
+                    <h4 class="activite_title" ng-if="_.isEmpty(offre_service.titre)">Aucune titre</h4>
+                    <h5 class="activite_desc" ng-if="!_.isEmpty(offre_service.description)" ng-bind-html="offre_service.description | unsafe" />
+                </div>
+            </a>
+            <div class="infos_right">
+                <p>{{offre_service.diff_create_date}}</p>
+                <i class="fa text-epsilon" ng-class="{'fa-heart': offre_service.is_favorite, 'fa-heart-o': !offre_service.is_favorite}" style="font-size:1.5rem;" ng-click="generic_offre_service.enable_favorite &amp;&amp; add_to_my_favorite('accorderie.offre.service', offre_service)" />
+            </div>
+        </div>
+    </template>
 </odoo>
