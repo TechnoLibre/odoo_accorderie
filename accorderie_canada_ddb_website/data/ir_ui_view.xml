@@ -3886,11 +3886,13 @@
                                                     Mon échange de service à venir avec
                                                 </font>
                                                 <br />
-                                                {{echange_service_info.membre.full_name}}
+                                                {{contact_info.full_name}}
                                             </span>
                                             <div class="btn btn-primary ml-auto text-gamma">
-                                                <i class="fa fa-check" />
-                                                <span>Déclarer le service comme effectué</span>
+                                                <a ng-href="/participer#!?state=init.va.oui.formulaire&amp;echange_service={{echange_service_info.id}}">
+                                                    <i class="fa fa-check" />
+                                                    <span>Déclarer le service comme effectué</span>
+                                                </a>
                                             </div>
                                             <div class="btn btn-epsilon text-gamma debug_unimplemented">
                                                 <i class="fa fa-pencil" />

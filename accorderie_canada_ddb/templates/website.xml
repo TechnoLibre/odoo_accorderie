@@ -1068,7 +1068,9 @@
                                             ng-if="'init.saa.offrir.nouveau.categorie_service.formulaire' === state.id"
                                         >Date prévue du service
                                         </h2>
-                                        <h2 ng-if="form_is_service() || form_is_service_and_service_prevu()">Service
+                                        <h2
+                                            ng-if="(form_is_service() || form_is_service_and_service_prevu()) &amp;&amp; 'init.saa.offrir.nouveau.categorie_service.formulaire' !== state.id"
+                                        >Service
                                         </h2>
                                         <div ng-if="form_is_service_and_service_prevu()">
                                             <!-- load_date() will initialize date field -->
@@ -1597,7 +1599,7 @@
                 class="img rounded-circle"
                 style="background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_freestocks_9uvmlib0wju_unsplash_jpg/freestocks-9UVmlIb0wJU-unsplash.jpg&quot;);"
             />
-            <h4>Votre contact :</h4>
+            <h4><b>Votre contact :</b></h4>
             <h4>{{contact_info.full_name}}</h4>
             <div class="stats">
                 <p>

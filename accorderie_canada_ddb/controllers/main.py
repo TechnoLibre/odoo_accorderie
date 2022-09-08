@@ -1050,7 +1050,8 @@ class AccorderieCanadaDdbController(http.Controller):
                 "title": a.titre,
             }
             for a in membre_id.echange_service_acheteur_ids
-            if not a.transaction_valide and a.demande_service
+            if not a.transaction_valide
+            and (a.demande_service or a.offre_service)
         ]
 
         lst_echange_vendeur = [
@@ -1061,7 +1062,8 @@ class AccorderieCanadaDdbController(http.Controller):
                 "title": a.titre,
             }
             for a in membre_id.echange_service_vendeur_ids
-            if not a.transaction_valide and a.demande_service
+            if not a.transaction_valide
+            and (a.demande_service or a.offre_service)
         ]
 
         # TODO order by time
@@ -1288,11 +1290,6 @@ class AccorderieCanadaDdbController(http.Controller):
             elif kw.get("offre_service_id"):
                 vals["offre_service"] = kw.get("offre_service_id").get("id")
 
-            if kw.get("time_service_estimated"):
-                vals["nb_heure_estime"] = float(
-                    kw.get("time_service_estimated")
-                )
-
             if kw.get("date_service"):
                 date_echange = kw.get("date_service")
                 if kw.get("time_service"):
@@ -1329,8 +1326,20 @@ class AccorderieCanadaDdbController(http.Controller):
             else:
                 vals["membre_vendeur"] = membre_id
 
-            vals["nb_heure_estime"] = kw.get("time_realisation_service")
-            vals["nb_heure_estime_duree_trajet"] = kw.get("time_dure_trajet")
+            if kw.get("time_service_estimated"):
+                vals["nb_heure_estime"] = float(
+                    kw.get("time_service_estimated")
+                )
+            if kw.get("time_realisation_service"):
+                vals["nb_heure"] = float(kw.get("time_realisation_service"))
+            if kw.get("time_drive_estimated"):
+                vals["nb_heure_estime_duree_trajet"] = float(
+                    kw.get("time_drive_estimated")
+                )
+            if kw.get("time_dure_trajet"):
+                vals["nb_heure_duree_trajet"] = float(
+                    kw.get("time_dure_trajet")
+                )
             # date_echange
             new_accorderie_echange_service = (
                 request.env["accorderie.echange.service"].sudo().create(vals)
