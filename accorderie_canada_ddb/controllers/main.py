@@ -1050,8 +1050,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "title": a.titre,
             }
             for a in membre_id.echange_service_acheteur_ids
-            if not a.transaction_valide
-            and (a.demande_service or a.offre_service)
+            if not a.transaction_valide and a.demande_service
         ]
 
         lst_echange_vendeur = [
@@ -1062,8 +1061,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 "title": a.titre,
             }
             for a in membre_id.echange_service_vendeur_ids
-            if not a.transaction_valide
-            and (a.demande_service or a.offre_service)
+            if not a.transaction_valide and a.demande_service
         ]
 
         # TODO order by time
