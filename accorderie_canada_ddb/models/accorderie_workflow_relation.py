@@ -7,6 +7,12 @@ class AccorderieWorkflowRelation(models.Model):
 
     name = fields.Char(string="Nom")
 
+    active = fields.Boolean(
+        string="Actif",
+        default=True,
+        help="Lorsque non actif, cette relation n'est plus visible.",
+    )
+
     body_html = fields.Html(string="HTML")
 
     diagram_id = fields.Many2one(

@@ -49,6 +49,7 @@
         </record>
         <record id="accorderie_workflow_relation_state_pos_collective" model="accorderie.workflow.relation">
             <field name="name">Collective</field>
+            <field name="active">false</field>
             <field name="body_html">Si vous offrez un service destiné à plusieurs personnes à la fois (cours en groupe, ateliers, conférences, achats groupés, ...)</field>
             <field name="state_src" ref="accorderie_workflow_state_pos" />
             <field name="state_dst" ref="accorderie_workflow_state_null_collective" />

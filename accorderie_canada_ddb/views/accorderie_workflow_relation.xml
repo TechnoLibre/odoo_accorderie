@@ -6,6 +6,11 @@
         <field name="arch" type="xml">
             <form string="Titre">
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+                            <field name="active" widget="boolean_button" options='{"terminology": "active"}' />
+                        </button>
+                    </div>
                     <group>
                         <field name="name" />
                     </group>
@@ -105,6 +110,7 @@
                 <filter domain="[('state_src','!=',False)]" name="state_src" string="State source" />
                 <filter domain="[('state_dst','!=',False)]" name="state_dst" string="State destination" />
                 <filter domain="[('diagram_id','!=',False)]" name="diagram_id" string="Diagram" />
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]" />
             </search>
         </field>
     </record>
