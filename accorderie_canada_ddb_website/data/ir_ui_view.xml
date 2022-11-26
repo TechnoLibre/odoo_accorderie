@@ -1291,7 +1291,7 @@
                             <section class="s_activites_recentes o_accorderie_canada_ddb_liste_offre_et_demande_service">
                                 <div class="container" />
                             </section>
-                            <section class="s_banner parallax s_parallax_no_overflow_hidden pb184 pt160" data-scroll-background-ratio="0" style="background-image: none;">
+                            <section class="s_banner parallax s_parallax_no_overflow_hidden pb184 pt160 debug_unimplemented" data-scroll-background-ratio="0" style="background-image: none;">
                                 <span class="s_parallax_bg oe_img_bg oe_custom_bg" style="" />
                                 <div class="banner-bg" style="background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_adobestock_309423704_preview_jpeg/AdobeStock_309423704_Preview.jpeg&quot;); background-position: 50% 0px; background-size:cover">
                                     <div class="container">
@@ -1350,7 +1350,7 @@
                                     </div>
                                 </div>
                             </section>
-                            <section class="s_actualite">
+                            <section class="s_actualite debug_unimplemented">
                                 <div class="container_actualite debug_unimplemented">
                                     <div class="list_title s_title">
                                         <div class="title">
