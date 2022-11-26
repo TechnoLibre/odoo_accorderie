@@ -1081,6 +1081,210 @@
                                     </div>
                                 </div>
                             </section>
+                            <section class="o_section_header text-center pt0 pb0">
+                                <div class="container">
+                                    <h2 class="o_h2 pt4 pb8">Remerciements</h2>
+                                </div>
+                            </section>
+                            <div id="myCarousel1669471269891" class="s_quotes_carousel carousel slide s_carousel_default" data-interval="10000">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel1669471269891" data-slide-to="0" class="active" />
+                                    <li data-target="#myCarousel1669471269891" data-slide-to="1" />
+                                    <li data-target="#myCarousel1669471269891" data-slide-to="2" />
+                                    <li data-target="#myCarousel1669471269891" data-slide-to="3" />
+                                    <li data-target="#myCarousel1669471269891" data-slide-to="4" />
+                                    <li data-target="#myCarousel1669471269891" data-slide-to="5" />
+                                    <li data-target="#myCarousel1669471269891" data-slide-to="6" />
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item bg-200 pt80 pb80 active" data-name="Slide" style="">
+                                        <div class="container">
+                                            <div class="row content">
+                                                <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
+                                                    <p>
+                                                        <a href="https://mathieubenoit.ca/" class="btn btn-alpha rounded-circle">Mathieu Benoit
+                                                        </a>
+                                                        <br />
+                                                    </p>
+                                                    <footer>
+                                                        <img class="img" src="/web/image/accorderie_canada_ddb_website.ir_attachment_mathieu_benoit_logo_jpg/Mathieu-Benoit-Logo.jpg" alt="" />
+                                                        <span>—
+                                                            <b>Développement général, gestion, intégration et automatisation</b>
+                                                        </span>
+                                                    </footer>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item bg-200 pt80 pb80" data-name="Slide" style="">
+                                        <div class="container">
+                                            <div class="row content">
+                                                <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
+                                                    <p>Samuel Bassetto
+                                                        <br />
+                                                    </p>
+                                                    <footer>
+                                                        <img class="img" src="/web/image/accorderie_canada_ddb_website.ir_attachment_samuel_bassetto_jpeg/samuel_bassetto.jpeg" alt="" />
+                                                        <span>—
+                                                            <b>Instigateur du projet, supervision, coaching
+                                                                <br />
+                                                            </b>
+                                                        </span>
+                                                    </footer>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item bg-200 pt80 pb80" data-name="Slide" style="">
+                                        <div class="container">
+                                            <div class="row content">
+                                                <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
+                                                    <p>Célia Lignon
+                                                        <br />
+                                                    </p>
+                                                    <footer>
+                                                        <span>—
+                                                            <b>Design de la maquette
+                                                                <br />
+                                                            </b>
+                                                        </span>
+                                                    </footer>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item bg-200 pt80 pb80" data-name="Slide" style="">
+                                        <div class="container">
+                                            <div class="row content">
+                                                <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
+                                                    <p>Jason Pan
+                                                        <br />
+                                                    </p>
+                                                    <footer>
+                                                        <span>—
+                                                            <b>Intégration de la maquette
+                                                                <br />
+                                                            </b>
+                                                        </span>
+                                                    </footer>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item bg-200 pt80 pb80" data-name="Slide" style="">
+                                        <div class="container">
+                                            <div class="row content">
+                                                <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
+                                                    <p>Marie-Michèle Poulin
+                                                        <br />
+                                                    </p>
+                                                    <footer>
+                                                        <img class="img" src="/web/image/accorderie_canada_ddb_website.ir_attachment_marieplume_logo_png/marieplume_logo.png" alt="" />
+                                                        <span>—
+                                                            <b>Communications, rédaction, révision</b>
+                                                        </span>
+                                                    </footer>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item bg-200 pt80 pb80" data-name="Slide" style="">
+                                        <div class="container">
+                                            <div class="row content">
+                                                <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
+                                                    <p>Garrick Cabour</p>
+                                                    <footer>
+                                                        <span>—
+                                                            <b>Chargé de projet</b>
+                                                        </span>
+                                                    </footer>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item bg-200 pt80 pb80" data-name="Slide" style="">
+                                        <div class="container">
+                                            <div class="row content">
+                                                <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
+                                                    <p>Sarah Batha</p>
+                                                    <footer>
+                                                        <span>—
+                                                            <b>Chargée de projet</b>
+                                                        </span>
+                                                    </footer>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-control-prev" data-target="#myCarousel1669471269891" data-slide="prev" role="img" aria-label="Précedent" title="Précedent">
+                                    <span class="carousel-control-prev-icon" />
+                                    <span class="sr-only o_default_snippet_text">Précédent</span>
+                                </div>
+                                <div class="carousel-control-next" data-target="#myCarousel1669471269891" data-slide="next" role="img" aria-label="Suivante" title="Suivante">
+                                    <span class="carousel-control-next-icon" />
+                                    <span class="sr-only o_default_snippet_text">Suivant</span>
+                                </div>
+                            </div>
+                            <section class="o_section_header text-center pb0 pt0">
+                                <div class="container">
+                                    <h2 class="o_h2 pt4 pb8">Partenaires</h2>
+                                </div>
+                            </section>
+                            <section class="s_team_profiles pt32 pb32">
+                                <div class="container">
+                                    <div class="row d-flex align-items-stretch s_col_no_bgcolor">
+                                        <div class="col-lg-4 pt16 pb16">
+                                            <div class="card bg-white text-center">
+                                                <div class="card-body">
+                                                    <img class="img img-fluid rounded-circle m-3 mx-auto" src="/web/image/accorderie_canada_ddb_website.ir_attachment_technolibre_circle_logo_svg/technolibre_circle_logo.svg" style="width: 50%;" alt="" />
+                                                    <h2 class="card-title">TechnoLibre</h2>
+                                                    <h6 class="text-primary">Participation au développement et
+                                                        contribution financière
+                                                    </h6>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a href="https://technolibre.ca/" class="btn-lg" target="_blank" data-original-title="" title="" aria-describedby="tooltip514997">
+                                                        <span class="fa fa-1x fa-link" style="" data-original-title="" title="" aria-describedby="tooltip208123" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 pt16 pb16">
+                                            <div class="card bg-white text-center">
+                                                <div class="card-body">
+                                                    <img class="img img-fluid rounded-circle m-3" src="/web/image/accorderie_canada_ddb_website.ir_attachment_famille_trottier_logo_png/famille_trottier_logo.png" style="width: 50%;" alt="" />
+                                                    <h2 class="card-title">Fondation Trottier
+                                                        <br />
+                                                    </h2>
+                                                    <h6 class="text-primary">Mécène</h6>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a href="https://www.fondationtrottier.com/" class="btn-lg" target="_blank" data-original-title="" title="" aria-describedby="tooltip514997">
+                                                        <span class="fa fa-1x fa-link" style="" data-original-title="" title="" aria-describedby="tooltip208123" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 pt16 pb16">
+                                            <div class="card bg-white text-center">
+                                                <div class="card-body">
+                                                    <img class="img img-fluid rounded-circle m-3 mx-auto" src="/web/image/accorderie_canada_ddb_website.ir_attachment_labac_logo_png/LABAC_logo.png" style="width: 50%;" alt="" />
+                                                    <h2 class="card-title">LABAC</h2>
+                                                    <h6 class="text-primary">Recherche et développement en amélioration
+                                                        continue
+                                                    </h6>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a href="https://polylabac.ca" class="btn-lg" target="_blank" data-original-title="" title="" aria-describedby="tooltip514997">
+                                                        <span class="fa fa-1x fa-link" style="" data-original-title="" title="" aria-describedby="tooltip208123" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </t>
                 </t>

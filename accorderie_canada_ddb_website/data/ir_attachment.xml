@@ -313,5 +313,53 @@
             <field name="type">url</field>
             <field name="url">/accorderie_canada_ddb_website/static/src/img/Profil-InformationsPersonnelles.png</field>
         </record>
+        <record id="ir_attachment_mathieu_benoit_logo_jpg" model="ir.attachment">
+            <field name="datas_fname">Mathieu-Benoit-Logo.jpg</field>
+            <field name="name">Mathieu-Benoit-Logo.jpg</field>
+            <field name="public">True</field>
+            <field name="res_model">ir.ui.view</field>
+            <field name="type">url</field>
+            <field name="url">/accorderie_canada_ddb_website/static/src/img/Mathieu-Benoit-Logo.jpg</field>
+        </record>
+        <record id="ir_attachment_famille_trottier_logo_png" model="ir.attachment">
+            <field name="datas_fname">famille_trottier_logo.png</field>
+            <field name="name">famille_trottier_logo.png</field>
+            <field name="public">True</field>
+            <field name="res_model">ir.ui.view</field>
+            <field name="type">url</field>
+            <field name="url">/accorderie_canada_ddb_website/static/src/img/famille_trottier_logo.png</field>
+        </record>
+        <record id="ir_attachment_technolibre_circle_logo_svg" model="ir.attachment">
+            <field name="datas_fname">technolibre_circle_logo.svg</field>
+            <field name="name">technolibre_circle_logo.svg</field>
+            <field name="public">True</field>
+            <field name="res_model">ir.ui.view</field>
+            <field name="type">url</field>
+            <field name="url">/accorderie_canada_ddb_website/static/src/img/technolibre_circle_logo.svg</field>
+        </record>
+        <record id="ir_attachment_marieplume_logo_png" model="ir.attachment">
+            <field name="datas_fname">marieplume_logo.png</field>
+            <field name="name">marieplume_logo.png</field>
+            <field name="public">True</field>
+            <field name="res_model">ir.ui.view</field>
+            <field name="type">url</field>
+            <field name="url">/accorderie_canada_ddb_website/static/src/img/marieplume_logo.png</field>
+        </record>
+        <record id="ir_attachment_labac_logo_png" model="ir.attachment">
+            <field name="datas_fname">LABAC_logo.png</field>
+            <field name="name">LABAC_logo.png</field>
+            <field name="public">True</field>
+            <field name="res_model">ir.ui.view</field>
+            <field name="type">url</field>
+            <field name="url">/accorderie_canada_ddb_website/static/src/img/LABAC_logo.png</field>
+        </record>
+        <record id="ir_attachment_samuel_bassetto_jpeg" model="ir.attachment">
+            <field name="datas_fname">samuel_bassetto.jpeg</field>
+            <field name="name">samuel_bassetto.jpeg</field>
+            <field name="public">True</field>
+            <field name="res_model">ir.ui.view</field>
+            <field name="type">url</field>
+            <field name="url">/accorderie_canada_ddb_website/static/src/img/samuel_bassetto.jpeg</field>
+        </record>
     </data>
 </odoo>
