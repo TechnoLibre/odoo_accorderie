@@ -87,7 +87,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/accorderie_offre_service/<int:offre_service>"
         ],
         type="http",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_page_offre_service(self, offre_service=None, **kw):
@@ -323,7 +323,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/accorderie_demande_service/<int:demande_service>"
         ],
         type="http",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_page_demande_service(self, demande_service=None, **kw):
@@ -365,7 +365,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/offre_service_accorderie_offre_service_and_demande_service_accorderie_demande_service_list"
         ],
         type="json",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_offre_service_accorderie_offre_service_and_demande_service_accorderie_demande_service_list(
@@ -472,7 +472,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/type_service_categorie/<int:type_service_categorie>"
         ],
         type="http",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_page_type_service_categorie(
@@ -504,7 +504,7 @@ class AccorderieCanadaDdbController(http.Controller):
     @http.route(
         ["/accorderie_canada_ddb/type_service_categorie_list"],
         type="json",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_type_service_categorie_list(self, **kw):
@@ -533,7 +533,7 @@ class AccorderieCanadaDdbController(http.Controller):
     @http.route(
         ["/participer"],
         type="http",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_page_participer(self, **kw):
@@ -900,7 +900,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/get_info/offre_service/<model('accorderie.membre'):membre_id>",
         ],
         type="json",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_participer_workflow_data_offre_service(self, membre_id, **kw):
@@ -2011,7 +2011,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/get_member",
         ],
         type="json",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_participer_member_from_accorderie(self, **kw):
@@ -2035,7 +2035,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/type_service_sous_categorie_list/<int:categorie_id>",
         ],
         type="json",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_type_service_sous_categorie_list(self, categorie_id=None, **kw):
@@ -2070,7 +2070,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/template/votre_contact_full",
         ],
         type="http",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_template_votre_contact_full(self, **kw):
@@ -2084,7 +2084,7 @@ class AccorderieCanadaDdbController(http.Controller):
             "/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic",
         ],
         type="http",
-        auth="public",
+        auth="user",
         website=True,
     )
     def get_template_offre_ou_demande_de_service_generic(self, **kw):
