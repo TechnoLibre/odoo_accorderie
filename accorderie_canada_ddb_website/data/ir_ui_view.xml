@@ -3751,6 +3751,11 @@
                                             <i class="fa fa-share-alt icon_padding_right" />
                                             Partager
                                         </div>
+                                        <div class="divider" ng-if="is_share_enable()" />
+                                        <div class="btn btn-primary" ng-click="show_and_generate_qrcode()">
+                                            <i class="fa fa-qrcode icon_padding_right" />
+                                            Code QR
+                                        </div>
                                     </div>
                                 </section>
                                 <nav class="sub-navbar navbar navbar-light bg-light mobile-display-none">

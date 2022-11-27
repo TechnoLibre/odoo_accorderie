@@ -33,6 +33,11 @@
                                     Partager
                                 </div>
                                 <div class="divider" ng-if="is_share_enable()" />
+                                <div class="btn btn-primary" ng-click="show_and_generate_qrcode()">
+                                    <i class="fa fa-qrcode icon_padding_right" />
+                                    Code QR
+                                </div>
+                                <div class="divider" />
                                 <div
                                     class="btn btn-primary"
                                     t-attf-ng-click="add_to_my_favorite_field_id('accorderie.offre.service', {{accorderie_offre_service_id.id}})"
@@ -181,6 +186,11 @@
                                     Partager
                                 </div>
                                 <div class="divider" ng-if="is_share_enable()" />
+                                <div class="btn btn-primary" ng-click="show_and_generate_qrcode()">
+                                    <i class="fa fa-qrcode icon_padding_right" />
+                                    Code QR
+                                </div>
+                                <div class="divider" />
                                 <div
                                     class="btn btn-primary"
                                     t-attf-ng-click="add_to_my_favorite_field_id('accorderie.demande.service', {{accorderie_demande_service_id.id}})"
