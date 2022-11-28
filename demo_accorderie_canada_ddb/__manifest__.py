@@ -13,6 +13,8 @@
         "data/accorderie_demande_service.xml",
         "data/accorderie_echange_service.xml",
         "data/accorderie_membre_favoris.xml",
+        "data/leaflet_map_feature.xml",
+        "data/leaflet_map.xml",
     ],
     "installable": True,
     "pre_init_hook": "pre_init_hook",

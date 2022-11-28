@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="leaflet_map_01" model="demo.website_leaflet.map">
+            <field name="company_id" ref="base.main_company" />
+            <field name="name">Membre</field>
+            <field name="description">Carte des membres</field>
+            <field name="feature_id" eval="[(4, ref('leaflet_map_feature_01')), (4, ref('leaflet_map_feature_02'))]" />
+        </record>
+    </data>
+</odoo>

@@ -318,6 +318,9 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             })
         }
 
+        // Map
+        $scope.show_map_member = false;
+
         // Share
         $scope.show_qrcode_modal = false;
 

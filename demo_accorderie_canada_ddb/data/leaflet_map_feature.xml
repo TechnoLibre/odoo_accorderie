@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="leaflet_map_feature_01" model="demo.website_leaflet.map.feature">
+            <field name="name">Mathieu Benoit</field>
+            <field name="html_text">Mathieu Benoit</field>
+            <field name="open_popup" eval="True" />
+            <field name="type">geo_point</field>
+            <field name="geo_point">{"type":"Point","coordinates":[-8205731.55877137,5713872.970031801]}</field>
+        </record>
+        <record id="leaflet_map_feature_02" model="demo.website_leaflet.map.feature">
+            <field name="name">Alice Poitier</field>
+            <field name="html_text">Alice Poitier</field>
+            <field name="open_popup" eval="True" />
+            <field name="type">geo_point</field>
+            <field name="geo_point">{"type":"Point","coordinates":[-8210707.1309009455,5709600.936714743]}</field>
+        </record>
+    </data>
+</odoo>

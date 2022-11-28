@@ -2298,11 +2298,14 @@
                                         </div>
                                     </div>
                                 </section>
-                                <section class="s_map_btn pt32 pb32 debug_unimplemented">
-                                    <div class="btn_map btn btn-primary rounded-circle text-gamma pt16 pb16">
+                                <section class="s_map_btn pt32 pb32">
+                                    <div class="btn_map btn btn-primary rounded-circle text-gamma pt16 pb16" ng-click="show_map_member=!show_map_member">
                                         <icon class="fa fa-map" />
                                         &amp;nbsp; Voir la carte
                                     </div>
+                                </section>
+                                <section class="demo_website_leaflet" ng-show="show_map_member">
+                                    <div class="map" style="position: relative;height:300px" />
                                 </section>
                             </div>
                         </div>
