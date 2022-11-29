@@ -179,10 +179,11 @@ a {
   .nav-item {
     padding-right: 20px;
   }
+  // TODO conflict with other nav
   :nth-child(7) {
     margin-left: auto;
   }
-  :nth-child(11) {
+  :nth-child(12) {
     padding-left: 20px;
   }
 }
@@ -1105,6 +1106,10 @@ actualité
     width: 100%;
   }
   .footer_link {
+    display: none;
+    font-size: 0;
+  }
+  .div_footer_link {
     display: none;
     font-size: 0;
   }

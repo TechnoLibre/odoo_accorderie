@@ -3584,8 +3584,8 @@
                                                 <a href="/monactivite/mesgroupes" class="footer_link">Mes groupes</a>
                                             </span>
                                         </div>
-                                        <div class="col-lg-2 footer_menu">
-                                            <a href="/aide" class="img bottom_menu_icon fa fa-question-circle" style="text-decoration:none;" />
+                                        <div class="col-lg-2 footer_menu div_footer_link">
+<!--                                            <a href="/aide" class="img bottom_menu_icon fa fa-question-circle" style="text-decoration:none;" />-->
                                             <h5>Aide</h5>
                                             <span>
                                                 <a href="/aide#!?section=guide_utilisation" class="footer_link">Guides d'utilisation</a>
