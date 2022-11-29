@@ -1237,22 +1237,6 @@
                                         <div class="col-lg-4 pt16 pb16">
                                             <div class="card bg-white text-center">
                                                 <div class="card-body">
-                                                    <img class="img img-fluid rounded-circle m-3 mx-auto" src="/web/image/accorderie_canada_ddb_website.ir_attachment_technolibre_circle_logo_svg/technolibre_circle_logo.svg" style="width: 50%;" alt="" />
-                                                    <h2 class="card-title">TechnoLibre</h2>
-                                                    <h6 class="text-primary">Participation au développement et
-                                                        contribution financière
-                                                    </h6>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <a href="https://technolibre.ca/" class="btn-lg" target="_blank" data-original-title="" title="" aria-describedby="tooltip514997">
-                                                        <span class="fa fa-1x fa-link" style="" data-original-title="" title="" aria-describedby="tooltip208123" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 pt16 pb16">
-                                            <div class="card bg-white text-center">
-                                                <div class="card-body">
                                                     <img class="img img-fluid rounded-circle m-3" src="/web/image/accorderie_canada_ddb_website.ir_attachment_famille_trottier_logo_png/famille_trottier_logo.png" style="width: 50%;" alt="" />
                                                     <h2 class="card-title">Fondation Trottier
                                                         <br />
@@ -1261,6 +1245,22 @@
                                                 </div>
                                                 <div class="card-footer">
                                                     <a href="https://www.fondationtrottier.com/" class="btn-lg" target="_blank" data-original-title="" title="" aria-describedby="tooltip514997">
+                                                        <span class="fa fa-1x fa-link" style="" data-original-title="" title="" aria-describedby="tooltip208123" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 pt16 pb16">
+                                            <div class="card bg-white text-center">
+                                                <div class="card-body">
+                                                    <img class="img img-fluid rounded-circle m-3 mx-auto" src="/web/image/accorderie_canada_ddb_website.ir_attachment_technolibre_circle_logo_svg/technolibre_circle_logo.svg" style="width: 50%;" alt="" />
+                                                    <h2 class="card-title">TechnoLibre</h2>
+                                                    <h6 class="text-primary">Participation au développement et
+                                                        contribution financière
+                                                    </h6>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a href="https://technolibre.ca/" class="btn-lg" target="_blank" data-original-title="" title="" aria-describedby="tooltip514997">
                                                         <span class="fa fa-1x fa-link" style="" data-original-title="" title="" aria-describedby="tooltip208123" />
                                                     </a>
                                                 </div>
