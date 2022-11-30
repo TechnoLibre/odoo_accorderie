@@ -6,9 +6,18 @@
             <t t-call="website.layout">
                 <div id="wrap">
                     <div class="debug_debug">
-                        Lien maquette : <a
+                        Lien maquette :
+                        <a
                             href="https://marvelapp.com/prototype/1773h559/screen/86417802"
                         >https://marvelapp.com/prototype/1773h559/screen/86417802</a>
+                        <br />
+                        Son offre : <a
+                            href="https://marvelapp.com/prototype/1773h559/screen/86371559"
+                        >https://marvelapp.com/prototype/1773h559/screen/86371559</a>
+                        <br />
+                        Mobile : <a
+                            href="https://marvelapp.com/prototype/6dbaaf8/screen/84804853"
+                        >https://marvelapp.com/prototype/6dbaaf8/screen/84804853</a>
                     </div>
                     <section class="s_back" ng-if="offre_service_info.membre_id === personal.id">
                         <a href="/monprofil/mesannonces">
@@ -1630,10 +1639,10 @@
                         > sur {{contact_info.prenom}}</span>
                     </div>
                 </a>
-                <a href="">
+                <a href="/monprofil/messages/message" class="debug_unimplemented">
                     <div class="btn btn-primary rounded-circle"><span ng-if="contact_info === 'femme'">La</span><span
                             ng-if="contact_info !== 'femme'"
-                        >La</span> contacter</div>
+                        >Le</span> contacter</div>
                 </a>
             </div>
         </div>

@@ -1462,7 +1462,10 @@
                         <t t-set="pageName" t-value="'explorer'" />
                         <div id="wrap" class="oe_structure oe_empty">
                             <div class="debug_debug">
-                                Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371509">https://marvelapp.com/prototype/1773h559/screen/86371509</a>
+                                Lien maquette :
+                                <a href="https://marvelapp.com/prototype/1773h559/screen/86371509">https://marvelapp.com/prototype/1773h559/screen/86371509</a>
+                                <br />
+                                Mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804840">https://marvelapp.com/prototype/6dbaaf8/screen/84804840</a>
                             </div>
                             <section class="s_search oe_img_bg oe_custom_bg pt16 debug_unimplemented" style="background-image: url(&quot;/web/image/accorderie_canada_ddb_website.ir_attachment_accueil_illustration_05@2x_png/Accueil-Illustration-05@2x.png&quot;);">
                                 <div class="container">
