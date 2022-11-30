@@ -9,7 +9,30 @@
                         Lien maquette : <a
                             href="https://marvelapp.com/prototype/1773h559/screen/86417802"
                         >https://marvelapp.com/prototype/1773h559/screen/86417802</a>
-                </div>
+                    </div>
+                    <section class="s_back" ng-if="offre_service_info.membre_id === personal.id">
+                        <a href="/monprofil/mesannonces">
+                            <i class="fa fa-arrow-left text-primary" />
+                            Voir toutes mes annonces publiées
+                        </a>
+                        <div class="actions debug_unimplemented">
+                            <div>
+                                <i class="fa fa-pencil text-primary icon_padding_right" />
+                            Modifier mon offre de service
+                            </div>
+                            <divider />
+                            <div>
+                                <i class="fa fa-trash text-primary icon_padding_right" />
+                            Supprimer
+                            </div>
+                            <divider />
+                            <div>
+                                <i class="fa fa-battery-empty text-primary icon_padding_right" />
+                                <i class="fa fa-battery-full text-primary icon_padding_right" />
+                                Publier l'offre
+                            </div>
+                        </div>
+                    </section>
                     <div class="oe_structure">
                         <section class="pt32 pb32" t-if="not accorderie_offre_service_id">
                             <div class="container">
@@ -125,25 +148,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="right_cards_container debug_unimplemented">
-                                    <div class="card info-3">
-                                        <img
-                                            src="/web/image/accorderie_canada_ddb_website.ir_attachment_patrick_tomasso_ajgebwgnru4_unsplash_jpg/patrick-tomasso-AjgebwgNrU4-unsplash.jpg"
+                                <div class="right_cards_container">
+                                    <div class="card info-3" ng-if="offre_service_info.membre_id !== personal.id">
+                                        <h2>Choisir une date</h2>
+                                        {{ load_date() }}
+                                        <div
+                                            class="input-group date"
+                                            data-target-input="nearest"
+                                            t-attf-id="date_echange_id"
+                                            inline-date="true"
+                                            side-by-side="true"
+                                            date-format-tool="date"
+                                            date-min-today="true"
+                                            date-max-year="true"
                                         />
                                         <div>
-                                            <p>
-                                                <b>Adresse</b>
-                                                <br />
-                                                1551 Rue Dunant, Sherbrooke, J1H QN5, QC
-                                            </p>
-                                            <p>
-                                                <b>Détails pour vous y rendre</b>
-                                                <br />
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua.
-                                                Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-                                            </p>
+                                            <button
+                                                class="btn btn-primary text-gamma"
+                                                ng-click="demander_un_service_sur_une_offre()"
+                                            >Recevoir un service de {{offre_service_info.membre.full_name}}
+                                            </button>
                                         </div>
                                     </div>
                                     <div
@@ -163,6 +187,29 @@
         <t name="About us" t-name="website.aboutus">
             <t t-call="website.layout">
                 <div id="wrap">
+                    <section class="s_back" ng-if="demande_service_info.membre_id === personal.id">
+                        <a href="/monprofil/mesannonces">
+                            <i class="fa fa-arrow-left text-primary" />
+                            Voir toutes mes annonces publiées
+                        </a>
+                        <div class="actions debug_unimplemented">
+                            <div>
+                                <i class="fa fa-pencil text-primary icon_padding_right" />
+                            Modifier ma demande de service
+                            </div>
+                            <divider />
+                            <div>
+                                <i class="fa fa-trash text-primary icon_padding_right" />
+                            Supprimer
+                            </div>
+                            <divider />
+                            <div>
+                                <i class="fa fa-battery-empty text-primary icon_padding_right" />
+                                <i class="fa fa-battery-full text-primary icon_padding_right" />
+                                Publier la demande
+                            </div>
+                        </div>
+                    </section>
                     <div class="oe_structure">
                         <section class="pt32 pb32" t-if="not accorderie_demande_service_id">
                             <div class="container">
@@ -278,25 +325,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="right_cards_container debug_unimplemented">
-                                    <div class="card info-3">
-                                        <img
-                                            src="/web/image/accorderie_canada_ddb_website.ir_attachment_patrick_tomasso_ajgebwgnru4_unsplash_jpg/patrick-tomasso-AjgebwgNrU4-unsplash.jpg"
+                                <div class="right_cards_container" t-if="accorderie_demande_service_id">
+                                    <div
+                                        class="card info-3 debug_unimplemented"
+                                        ng-if="demande_service_info.membre_id !== personal.id"
+                                    >
+                                        <h2>Choisir une date</h2>
+                                        {{ load_date() }}
+                                        <div
+                                            class="input-group date"
+                                            data-target-input="nearest"
+                                            t-attf-id="date_echange_id"
+                                            inline-date="true"
+                                            side-by-side="true"
+                                            date-format-tool="date"
+                                            date-min-today="true"
+                                            date-max-year="true"
                                         />
                                         <div>
-                                            <p>
-                                                <b>Adresse</b>
-                                                <br />
-                                                1551 Rue Dunant, Sherbrooke, J1H QN5, QC
-                                            </p>
-                                            <p>
-                                                <b>Détails pour vous y rendre</b>
-                                                <br />
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua.
-                                                Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-                                            </p>
+                                            <button
+                                                class="btn btn-primary text-gamma"
+                                                ng-click="offrir_un_service_sur_une_demande()"
+                                            >Offrir un service à {{demande_service_info.membre.full_name}}
+                                            </button>
                                         </div>
                                     </div>
                                     <div

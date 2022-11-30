@@ -318,6 +318,97 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             })
         }
 
+        // Date
+        $scope.load_date = function () {
+            let time = require("web.time");
+            // TODO not optimal how this is called, need only to be call 1 time when page is loaded (with date)
+            console.debug("Call load_date");
+            _.each($(".input-group.date"), function (date_field) {
+                let minDate =
+                    $(date_field).data("mindate") || moment({y: 1900});
+                if ($(date_field).attr("date-min-today")) {
+                    minDate = moment();
+                }
+                let maxDate =
+                    $(date_field).data("maxdate") || moment().add(200, "y");
+                if ($(date_field).attr("date-max-year")) {
+                    maxDate = moment().add(1, "y").add(1, "d");
+                }
+                let inline =
+                    $(date_field).attr("inline-date") && true || false;
+                let sideBySide =
+                    $(date_field).attr("side-by-side") && true || false;
+                let calendarWeeks =
+                    $(date_field).attr("calendar-weeks") && true || false;
+                let dateFormatTool =
+                    $(date_field).attr("date-format-tool") || false;
+
+                let options = {
+                    minDate: minDate,
+                    maxDate: maxDate,
+                    calendarWeeks: calendarWeeks,
+                    icons: {
+                        time: "fa fa-clock-o",
+                        date: "fa fa-calendar",
+                        next: "fa fa-chevron-right",
+                        previous: "fa fa-chevron-left",
+                        up: "fa fa-chevron-up",
+                        down: "fa fa-chevron-down",
+                    },
+                    locale: moment.locale(),
+                    allowInputToggle: true,
+                    inline: inline,
+                    sideBySide: sideBySide,
+                    keyBinds: null,
+                };
+                if ($(date_field).find(".o_website_form_date").length > 0 || dateFormatTool === "date") {
+                    options.format = time.getLangDateFormat();
+                } else if (
+                    $(date_field).find(".o_website_form_clock").length > 0 || dateFormatTool === "clock"
+                ) {
+                    // options.format = time.getLangTimeFormat();
+                    options.format = "HH:mm";
+                    options.defaultDate = moment("00:00", "HH:mm");
+                } else {
+                    options.format = time.getLangDatetimeFormat();
+                }
+                $("#" + date_field.id).datetimepicker(options);
+            });
+        }
+
+        $scope.demander_un_service_sur_une_offre = function () {
+            let input = $('#date_echange_id');
+            let date_value = input.data().date;
+            if (date_value.includes("/")) {
+                // Bug, wrong format (why, load_date is called with specific format...), force it
+                console.warn("Bug wrong format date, got '" + date_value + "' and expect format YYYY-MM-DD, force conversion.")
+                date_value = moment(date_value).format("YYYY-MM-DD");
+            }
+            let membre_id = $scope.offre_service_info.membre_id;
+            let offre_id = $scope.offre_service_info.id;
+            let url = `/participer#!?state=init.saa.recevoir.choix.existant.time&membre=${membre_id}&offre_service=${offre_id}&date=${date_value}`;
+            console.debug(url);
+            // location.replace(url);
+            window.location.href = url;
+        }
+
+        $scope.offrir_un_service_sur_une_demande = function () {
+            // TODO wrong
+            let input = $('#date_echange_id');
+            let date_value = input.data().date;
+            if (date_value.includes("/")) {
+                // Bug, wrong format (why, load_date is called with specific format...), force it
+                console.warn("Bug wrong format date, got '" + date_value + "' and expect format YYYY-MM-DD, force conversion.")
+                date_value = moment(date_value).format("YYYY-MM-DD");
+            }
+            let membre_id = $scope.offre_service_info.membre_id;
+            let offre_id = $scope.offre_service_info.id;
+            let url = `/participer#!?state=init.saa.recevoir.choix.existant.time&membre=${membre_id}&offre_service=${offre_id}&date=${date_value}`;
+            console.debug(url);
+            // location.replace(url);
+            window.location.href = url;
+        }
+
         // Map
         $scope.show_map_member = false;
 
@@ -3073,64 +3164,6 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 }
             }
             $scope.change_state_name(state);
-        }
-
-        // Date
-        $scope.load_date = function () {
-            let time = require("web.time");
-            // TODO not optimal how this is called, need only to be call 1 time when page is loaded (with date)
-            console.debug("Call load_date");
-            _.each($(".input-group.date"), function (date_field) {
-                let minDate =
-                    $(date_field).data("mindate") || moment({y: 1900});
-                if ($(date_field).attr("date-min-today")) {
-                    minDate = moment();
-                }
-                let maxDate =
-                    $(date_field).data("maxdate") || moment().add(200, "y");
-                if ($(date_field).attr("date-max-year")) {
-                    maxDate = moment().add(1, "y").add(1, "d");
-                }
-                let inline =
-                    $(date_field).attr("inline-date") && true || false;
-                let sideBySide =
-                    $(date_field).attr("side-by-side") && true || false;
-                let calendarWeeks =
-                    $(date_field).attr("calendar-weeks") && true || false;
-                let dateFormatTool =
-                    $(date_field).attr("date-format-tool") || false;
-
-                let options = {
-                    minDate: minDate,
-                    maxDate: maxDate,
-                    calendarWeeks: calendarWeeks,
-                    icons: {
-                        time: "fa fa-clock-o",
-                        date: "fa fa-calendar",
-                        next: "fa fa-chevron-right",
-                        previous: "fa fa-chevron-left",
-                        up: "fa fa-chevron-up",
-                        down: "fa fa-chevron-down",
-                    },
-                    locale: moment.locale(),
-                    allowInputToggle: true,
-                    inline: inline,
-                    sideBySide: sideBySide,
-                    keyBinds: null,
-                };
-                if ($(date_field).find(".o_website_form_date").length > 0 || dateFormatTool === "date") {
-                    options.format = time.getLangDateFormat();
-                } else if (
-                    $(date_field).find(".o_website_form_clock").length > 0 || dateFormatTool === "clock"
-                ) {
-                    // options.format = time.getLangTimeFormat();
-                    options.format = "HH:mm";
-                    options.defaultDate = moment("00:00", "HH:mm");
-                } else {
-                    options.format = time.getLangDatetimeFormat();
-                }
-                $("#" + date_field.id).datetimepicker(options);
-            });
         }
 
         // Member

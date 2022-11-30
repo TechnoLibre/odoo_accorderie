@@ -413,7 +413,7 @@
             <field name="name">Choisir temps et durée</field>
             <field name="key">init.saa.recevoir.choix.existant.time</field>
             <field name="maquette_link">https://marvelapp.com/prototype/1773h559/screen/86588766</field>
-            <field name="message">Horaires</field>
+            <field name="message">Horaires - Date demandée à recevoir le service</field>
             <field name="type">temps_duree</field>
             <field name="show_breadcrumb">True</field>
             <field name="breadcrumb_value">Le %s</field>

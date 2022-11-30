@@ -2935,9 +2935,9 @@ actualité
     .right_cards_container {
       width: 100%;
 
-      .info-3 {
-        display: none;
-      }
+      //.info-3 {
+      //  display: none;
+      //}
 
       .info-4 {
         background-color: $bg-alpha;
@@ -3106,9 +3106,9 @@ actualité
   .s_chat {
     padding: 0 !important;
   }
-  .right_cards_container {
-    display: none;
-  }
+  //.right_cards_container {
+  //  display: none;
+  //}
   .chat_container {
     max-height: calc(94vh - 154px);
   }
