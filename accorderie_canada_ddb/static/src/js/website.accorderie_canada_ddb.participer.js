@@ -419,7 +419,8 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 $scope.show_camera_error = "";
                 $scope.show_camera_find_url = true;
                 setTimeout(function () {
-                    location.replace(decodedText);
+                    // location.replace(decodedText);
+                    window.location.href = decodedText;
                 }, 2000);
             } else {
                 $scope.show_camera_error = "Le lien est erroné, provient-il de ce site?";
