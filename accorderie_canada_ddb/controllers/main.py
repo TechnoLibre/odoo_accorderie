@@ -179,6 +179,7 @@ class AccorderieCanadaDdbController(http.Controller):
                     "id": a.membre.id,
                     "full_name": a.membre.nom_complet,
                 },
+                "create_date": a.create_date,
                 "diff_create_date": self._transform_str_diff_time_creation(
                     a.create_date
                 ),
@@ -211,6 +212,7 @@ class AccorderieCanadaDdbController(http.Controller):
                     "id": a.membre.id,
                     "full_name": a.membre.nom_complet,
                 },
+                "create_date": a.create_date,
                 "diff_create_date": self._transform_str_diff_time_creation(
                     a.create_date
                 ),
@@ -681,7 +683,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 },
                 "distance": "8m",
             }
-            for a in membre_id.offre_service_ids
+            for a in membre_id.offre_service_ids[::-1]
         }
 
         dct_offre_service_favoris = {
@@ -721,7 +723,7 @@ class AccorderieCanadaDdbController(http.Controller):
                 },
                 "distance": "8m",
             }
-            for a in membre_id.demande_service_ids
+            for a in membre_id.demande_service_ids[::-1]
         }
 
         dct_demande_service_favoris = {

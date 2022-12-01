@@ -4021,7 +4021,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div ng-repeat="(service_id, service) in dct_offre_service_info" ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'" ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'offre'; " />
+                                            <div ng-repeat="(service_id, service) in dct_offre_service_info | orderBy:'-create_date'" ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'" ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'offre'; " />
 <!--                                            <div class="activite btn debug_unimplemented">-->
 <!--                                                <img class="activite_img img-fluid" src="/web/image/accorderie_canada_ddb_website.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />-->
 <!--                                                <div class="infos">-->
@@ -4110,7 +4110,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div ng-repeat="(service_id, service) in dct_demande_service_info" ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'" ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'demande'; " />
+                                            <div ng-repeat="(service_id, service) in dct_demande_service_info | orderBy:'-service_id.create_date'" ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'" ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'demande'; " />
                                         </div>
                                     </div>
                                 </section>

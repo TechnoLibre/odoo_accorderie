@@ -8,6 +8,7 @@ class AccorderieDemandeService(models.Model):
     _inherit = "portal.mixin"
     _description = "Accorderie Demande Service"
     _rec_name = "titre"
+    _order = "create_date desc"
 
     titre = fields.Char()
 
