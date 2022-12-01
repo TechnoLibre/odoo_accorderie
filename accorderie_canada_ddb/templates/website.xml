@@ -19,26 +19,37 @@
                             href="https://marvelapp.com/prototype/6dbaaf8/screen/84804853"
                         >https://marvelapp.com/prototype/6dbaaf8/screen/84804853</a>
                     </div>
-                    <section class="s_back" ng-if="offre_service_info.membre_id === personal.id">
+                    <section class="s_back ng-cloak" ng-if="offre_service_info.membre_id === personal.id">
                         <a href="/monprofil/mesannonces">
                             <i class="fa fa-arrow-left text-primary" />
                             Voir toutes mes annonces publiées
                         </a>
-                        <div class="actions debug_unimplemented">
-                            <div>
+                        <div class="actions">
+                            <div class="debug_unimplemented" style="cursor:pointer">
                                 <i class="fa fa-pencil text-primary icon_padding_right" />
                             Modifier mon offre de service
                             </div>
-                            <divider />
-                            <div>
+                            <divider class="debug_unimplemented" />
+                            <div ng-click="supprimer_offre_service(offre_service_info.id)" style="cursor:pointer">
                                 <i class="fa fa-trash text-primary icon_padding_right" />
                             Supprimer
                             </div>
                             <divider />
                             <div>
-                                <i class="fa fa-battery-empty text-primary icon_padding_right" />
-                                <i class="fa fa-battery-full text-primary icon_padding_right" />
-                                Publier l'offre
+                                <label class="o_switch o_switch_danger" style="display:inline" for="publier_offre_id">
+                                    <input
+                                        type="checkbox"
+                                        id="publier_offre_id"
+                                        ng-model="offre_service_info.publie"
+                                        ng-change="change_publication_offre_service(offre_service_info.id, offre_service_info.publie)"
+                                    />
+                                    <span />
+                                    <span
+                                        class="css_publish"
+                                        ng-if="!offre_service_info.publie"
+                                    >Dépublier l'offre</span>
+                                    <span class="css_unpublish" ng-if="offre_service_info.publie">Publier l'offre</span>
+                                </label>
                             </div>
                         </div>
                     </section>
@@ -196,26 +207,40 @@
         <t name="About us" t-name="website.aboutus">
             <t t-call="website.layout">
                 <div id="wrap">
-                    <section class="s_back" ng-if="demande_service_info.membre_id === personal.id">
+                    <section class="s_back ng-cloak" ng-if="demande_service_info.membre_id === personal.id">
                         <a href="/monprofil/mesannonces">
                             <i class="fa fa-arrow-left text-primary" />
                             Voir toutes mes annonces publiées
                         </a>
-                        <div class="actions debug_unimplemented">
-                            <div>
+                        <div class="actions">
+                            <div class="debug_unimplemented" style="cursor:pointer">
                                 <i class="fa fa-pencil text-primary icon_padding_right" />
                             Modifier ma demande de service
                             </div>
-                            <divider />
-                            <div>
+                            <divider class="debug_unimplemented" />
+                            <div ng-click="supprimer_demande_service(demande_service_info.id)" style="cursor:pointer">
                                 <i class="fa fa-trash text-primary icon_padding_right" />
                             Supprimer
                             </div>
                             <divider />
                             <div>
-                                <i class="fa fa-battery-empty text-primary icon_padding_right" />
-                                <i class="fa fa-battery-full text-primary icon_padding_right" />
-                                Publier la demande
+                                <label class="o_switch o_switch_danger" style="display:inline" for="publier_demande_id">
+                                    <input
+                                        type="checkbox"
+                                        id="publier_demande_id"
+                                        ng-model="demande_service_info.publie"
+                                        ng-change="change_publication_demande_service(demande_service_info.id, demande_service_info.publie)"
+                                    />
+                                    <span />
+                                    <span
+                                        class="css_publish"
+                                        ng-if="!demande_service_info.publie"
+                                    >Dépublier la demande</span>
+                                    <span
+                                        class="css_unpublish"
+                                        ng-if="demande_service_info.publie"
+                                    >Publier la demande</span>
+                                </label>
                             </div>
                         </div>
                     </section>

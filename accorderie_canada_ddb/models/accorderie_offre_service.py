@@ -88,6 +88,12 @@ class AccorderieOffreService(models.Model):
 
     offre_special = fields.Boolean(string="Offre spéciale")
 
+    publie = fields.Boolean(
+        string="Offre publié",
+        help="L'offre est publiée, sinon il est privée.",
+        default=True,
+    )
+
     quoi_apporter = fields.Html()
 
     tarif = fields.Char()

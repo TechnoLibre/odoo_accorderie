@@ -318,6 +318,76 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
             })
         }
 
+        $scope.supprimer_offre_service = function (offre_id) {
+            ajax.rpc(`/accorderie/submit/offre/supprimer/${offre_id}`).then(function (data) {
+                console.debug("AJAX receive supprimer_offre_service");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                // } else if (_.isEmpty(data)) {
+                //     $scope.error = "Empty 'add_to_my_favorite' data";
+                //     console.error($scope.error);
+                } else {
+                    // Change location because it's deleted
+                    location.replace("/monprofil/mesannonces");
+                }
+
+                // Process all the angularjs watchers
+                // $scope.$digest();
+            })
+        }
+
+        $scope.supprimer_demande_service = function (demande_id) {
+            ajax.rpc(`/accorderie/submit/demande/supprimer/${demande_id}`).then(function (data) {
+                console.debug("AJAX receive supprimer_demande_service");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                // } else if (_.isEmpty(data)) {
+                //     $scope.error = "Empty 'add_to_my_favorite' data";
+                //     console.error($scope.error);
+                } else {
+                    // Change location because it's deleted
+                    location.replace("/monprofil/mesannonces");
+                }
+
+                // Process all the angularjs watchers
+                // $scope.$digest();
+            })
+        }
+
+        $scope.change_publication_offre_service = function (offre_id, publie) {
+            ajax.rpc(`/accorderie/submit/offre/publish/${offre_id}`, {"publie":publie}).then(function (data) {
+                console.debug("AJAX receive change_publication_offre_service");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                // } else if (_.isEmpty(data)) {
+                //     $scope.error = "Empty 'add_to_my_favorite' data";
+                //     console.error($scope.error);
+                }
+
+                // Process all the angularjs watchers
+                // $scope.$digest();
+            })
+        }
+
+        $scope.change_publication_demande_service = function (demande_id, publie) {
+            ajax.rpc(`/accorderie/submit/demande/publish/${demande_id}`, {"publie":publie}).then(function (data) {
+                console.debug("AJAX receive change_publication_demande_service");
+                if (data.error || !_.isUndefined(data.error)) {
+                    $scope.error = data.error;
+                    console.error($scope.error);
+                // } else if (_.isEmpty(data)) {
+                //     $scope.error = "Empty 'add_to_my_favorite' data";
+                //     console.error($scope.error);
+                }
+
+                // Process all the angularjs watchers
+                // $scope.$digest();
+            })
+        }
+
         // Date
         $scope.load_date = function () {
             let time = require("web.time");
@@ -393,7 +463,7 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
         }
 
         $scope.offrir_un_service_sur_une_demande = function () {
-            // TODO wrong
+            // TODO
             let input = $('#date_echange_id');
             let date_value = input.data().date;
             if (date_value.includes("/")) {

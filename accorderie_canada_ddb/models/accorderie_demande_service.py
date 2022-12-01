@@ -43,6 +43,12 @@ class AccorderieDemandeService(models.Model):
 
     membre_favoris_ids = fields.Many2many(comodel_name="accorderie.membre")
 
+    publie = fields.Boolean(
+        string="Demande publié",
+        help="La demande est publiée, sinon il est privée.",
+        default=True,
+    )
+
     type_service_id = fields.Many2one(
         comodel_name="accorderie.type.service",
         string="Type de services",

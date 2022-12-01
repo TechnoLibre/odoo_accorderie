@@ -39,6 +39,9 @@
                         <field name="commentaire" />
                     </group>
                     <group>
+                        <field name="publie" />
+                    </group>
+                    <group>
                         <field name="type_service_id" />
                     </group>
                 </sheet>
@@ -76,6 +79,7 @@
                 <field name="membre" />
                 <field name="membre_favoris_ids" />
                 <field name="commentaire" />
+                <field name="publie" type="row" />
                 <field name="type_service_id" />
                 <templates>
                     <t t-name="kanban-box">
@@ -128,6 +132,12 @@
                                             <field name="commentaire" />
                                         </strong>
                                     </li>
+                                    <li class="text-success float-right mb4" t-if="record.publie.raw_value">
+                                        <i aria-label="Ok" class="fa fa-circle" role="img" title="Ok" />
+                                    </li>
+                                    <li class="text-danger float-right mb4" t-if="!record.publie.raw_value">
+                                        <i aria-label="Invalid" class="fa fa-circle" role="img" title="Invalid" />
+                                    </li>
                                     <li class="mb4">
                                         <strong>
                                             <field name="type_service_id" />
@@ -177,6 +187,7 @@
                     string="Favoris membre"
                 />
                 <filter domain="[('commentaire','!=',False)]" name="commentaire" string="Commentaire" />
+                <filter domain="[('publie','=',True)]" name="publie" string="Offre publi&#233;" />
                 <filter domain="[('type_service_id','!=',False)]" name="type_service_id" string="Type service" />
             </search>
         </field>
@@ -196,6 +207,7 @@
                 <field name="membre" />
                 <field name="membre_favoris_ids" />
                 <field name="commentaire" />
+                <field name="publie" />
                 <field name="type_service_id" />
             </tree>
         </field>
