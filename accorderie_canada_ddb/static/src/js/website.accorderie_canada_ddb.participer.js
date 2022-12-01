@@ -3388,6 +3388,10 @@ odoo.define("website.accorderie_canada_ddb.participer", function (require) {
                 state.caract_offre_demande_nouveau_existante === "Offre existante";
         }
 
+        $scope.form_is_offre_existante = function (state) {
+            return state.caract_offre_demande_nouveau_existante === "Offre existante";
+        }
+
         $scope.form_is_valider_echange = function (state) {
             return !_.isUndefined(state.caract_valider_echange);
         }

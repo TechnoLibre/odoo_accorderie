@@ -847,30 +847,40 @@
                                         </section>
 
                                         <!-- Présentation du service -->
-                                        <h2
-                                            ng-if="form_is_nouvel_echange_service_offrir_offre_existante(state)"
-                                        >Offre de service donné
-                                        </h2>
-                                        <h2
-                                            ng-if="state.id == 'init.saa.recevoir.choix.existant.time.form'"
-                                        >Offre de service demandé
-                                        </h2>
-                                        <h2
-                                            ng-if="['init.va.oui.form', 'init.va.non.recu.choix.form'].includes(state.id)"
-                                        >Offre de service reçu
-                                        </h2>
-                                        <div
-                                            ng-if="form_is_echange_sur_offre_demande_existante(state)"
-                                            ng-controller="OffreDemandeService"
-                                            ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'"
-                                            ng-init="model = 'accorderie.offre.service'; service_id = form.offre_service_id.id; service_enable_href = false; service_enable_favorite = false; type_service = 'offre'; getDatabaseInfo(); "
-                                        />
-                                        <div
-                                            ng-if="form_is_exist_echange_to_validate(state) &amp;&amp; !_.isUndefined(echange_service.demande_service)"
-                                            ng-controller="OffreDemandeService"
-                                            ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'"
-                                            ng-init="model = 'accorderie.demande.service'; service_id = echange_service.demande_service; service_enable_href = false; service_enable_favorite = false; type_service = 'offre'; getDatabaseInfo(); "
-                                        />
+                                        <span ng-if="['init.saa.offrir.demande.existant.form'].includes(state.id)">
+                                            <h2>Demande de service</h2>
+                                            <div
+                                                ng-controller="OffreDemandeService"
+                                                ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'"
+                                                ng-init="model = 'accorderie.demande.service'; service_id = form.demande_service_id.id; service_enable_href = false; service_enable_favorite = false; type_service = 'demande'; getDatabaseInfo(); "
+                                            />
+                                        </span>
+                                        <span ng-if="form_is_offre_existante(state)">
+                                            <h2
+                                                ng-if="form_is_nouvel_echange_service_offrir_offre_existante(state)"
+                                            >Offre de service donné
+                                            </h2>
+                                            <h2
+                                                ng-if="state.id == 'init.saa.recevoir.choix.existant.time.form'"
+                                            >Offre de service demandé
+                                            </h2>
+                                            <h2
+                                                ng-if="['init.va.oui.form', 'init.va.non.recu.choix.form'].includes(state.id)"
+                                            >Offre de service reçu
+                                            </h2>
+                                            <div
+                                                ng-if="form_is_echange_sur_offre_demande_existante(state)"
+                                                ng-controller="OffreDemandeService"
+                                                ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'"
+                                                ng-init="model = 'accorderie.offre.service'; service_id = form.offre_service_id.id; service_enable_href = false; service_enable_favorite = false; type_service = 'offre'; getDatabaseInfo(); "
+                                            />
+                                            <div
+                                                ng-if="form_is_exist_echange_to_validate(state) &amp;&amp; !_.isUndefined(echange_service.demande_service)"
+                                                ng-controller="OffreDemandeService"
+                                                ng-include="'/accorderie_canada_ddb/template/offre_ou_demande_de_service_generic'"
+                                                ng-init="model = 'accorderie.demande.service'; service_id = echange_service.demande_service; service_enable_href = false; service_enable_favorite = false; type_service = 'offre'; getDatabaseInfo(); "
+                                            />
+                                        </span>
                                         <div
                                             class="divider"
                                             ng-if="form_is_echange_sur_offre_demande_existante(state) || form_is_exist_echange_to_validate(state)"

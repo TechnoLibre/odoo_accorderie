@@ -69,6 +69,14 @@
             <field name="state_dst" ref="accorderie_workflow_state_saa_offrir_nouveau" />
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
+        <record id="accorderie_workflow_relation_saa_offrir_demande_existante" model="accorderie.workflow.relation">
+            <field name="name">Demande existante</field>
+            <field name="body_html" type="html"><p>Créer une offre de service privée<br />(spécifiquement pour un autre accordeur).</p></field>
+            <field name="icon">fa-plus-circle</field>
+            <field name="state_src" ref="accorderie_workflow_state_saa_offrir" />
+            <field name="state_dst" ref="accorderie_workflow_state_saa_offrir_nouveau" />
+            <field name="diagram_id" ref="accorderie_workflow_participer" />
+        </record>
         <record id="accorderie_workflow_relation_saa_offrir_existant" model="accorderie.workflow.relation">
             <field name="name">Une offre existante</field>
             <field name="is_dynamic">True</field>
