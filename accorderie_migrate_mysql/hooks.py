@@ -38,37 +38,42 @@ def post_init_hook(cr, e):
     # General configuration
     migration.setup_configuration()
 
+    # Create warehouse
     migration.set_head_quarter()
 
     # Create company
     migration.migrate_company()
 
+    # Update user configuration
+    migration.update_user(dry_run=False)
+
     # Create file
     migration.migrate_muk_dms()
-
-    # Create product
-    migration.migrate_product()
 
     # Create user
     migration.migrate_member()
 
     # Create HR
+    # TODO à changer
     migration.migrate_skills()
 
     # Create fournisseur
     migration.migrate_fournisseur()
 
     # Create demande service
+    # TODO à changer
     migration.migration_demande_service()
 
     # Create offre service
+    # TODO à changer
     migration.migration_offre_service()
 
     # Create hr timesheet
+    # TODO à changer
     migration.migration_timesheet()
 
-    # Update user configuration
-    migration.update_user(dry_run=False)
+    # Create product
+    migration.migrate_product()
 
 
 class Struct(object):
@@ -84,7 +89,12 @@ class MigrationAccorderie:
         self.passwd = "accorderie"
         self.db_name = "accorderie_log_2019"
         self.conn = MySQLdb.connect(
-            host=self.host, user=self.user, passwd=self.passwd, db=self.db_name
+            host=self.host,
+            user=self.user,
+            passwd=self.passwd,
+            db=self.db_name,
+            charset="utf8",
+            use_unicode=True,
         )
         # Path of the backup
         self.source_code_path = BACKUP_PATH
@@ -242,6 +252,12 @@ class MigrationAccorderie:
             cur.execute(str_query)
             tpl_result = cur.fetchall()
             lst_column_name = [a[0] for a in tpl_result]
+
+            if not SECRET_PASSWORD:
+                raise Exception(
+                    "SECRET_PASSWORD is empty, fill it (search $password into"
+                    " database of Accorderie)"
+                )
 
             if table == "tbl_membre":
                 str_query = f"""SELECT *,DECODE(MotDePasse,'{SECRET_PASSWORD}') AS MotDePasseRaw FROM tbl_membre;"""
@@ -458,7 +474,7 @@ class MigrationAccorderie:
                     if DEBUG_LIMIT and i > LIMIT:
                         break
 
-                    tbl_membre = self._get_membre(pointservice.NoMembre)
+                    tbl_membre = self._get_membre_point_service(pointservice.NoPointService)
                     name = (
                         "Point de service"
                         f" {pointservice.NomPointService.strip()}"
@@ -1390,6 +1406,11 @@ class MigrationAccorderie:
     def _get_membre(self, no_membre: int):
         for membre in self.dct_tbl.tbl_membre:
             if membre.NoMembre == no_membre:
+                return membre
+
+    def _get_membre_point_service(self, no_point_service: int):
+        for membre in self.dct_tbl.tbl_membre:
+            if membre.NoPointService == no_point_service and membre.EstUnPointService:
                 return membre
 
     def _set_phone(self, membre, value):
