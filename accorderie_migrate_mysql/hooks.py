@@ -32,7 +32,7 @@ CACHE_FILE = os.path.join(os.path.dirname(__file__), ".cache")
 
 
 def post_init_hook(cr, e):
-    print("Start migration of Accorderie of Quebec.")
+    _logger.info("Start migration of Accorderie of Quebec.")
     migration = MigrationAccorderie(cr)
 
     # General configuration
@@ -74,6 +74,24 @@ def post_init_hook(cr, e):
 
     # Create product
     migration.migrate_product()
+
+    # Print email
+    if migration.lst_generic_email:
+        print("Got generic mail :")
+        for mail in migration.lst_generic_email:
+            print(f"\t{mail}")
+
+    # Print warning
+    if migration.lst_error:
+        print("Got warning :")
+        for warn in migration.lst_warning:
+            print(f"\t{warn}")
+
+    # Print error
+    if migration.lst_error:
+        print("Got error :")
+        for err in migration.lst_error:
+            print(f"\t{err}")
 
 
 class Struct(object):
@@ -121,6 +139,11 @@ class MigrationAccorderie:
         self._fill_cache_obj()
 
         self.dct_tbl = self._fill_tbl()
+
+        self.lst_generic_email = []
+
+        self.lst_error = []
+        self.lst_warning = []
 
     def set_head_quarter(self):
         with api.Environment.manage():
@@ -243,10 +266,10 @@ class MigrationAccorderie:
 
         for table, lst_column in dct_tbl.items():
             if table in lst_ignore_table:
-                print(f"Skip table '{table}'")
+                _logger.warning(f"Skip table '{table}'")
                 continue
 
-            print(f"Import in cache table '{table}'")
+            _logger.info(f"Import in cache table '{table}'")
             str_query = f"""SHOW COLUMNS FROM {table};"""
             cur.nextset()
             cur.execute(str_query)
@@ -286,7 +309,7 @@ class MigrationAccorderie:
         return Struct(**dct_tbl)
 
     def setup_configuration(self, dry_run=False):
-        print("Setup configuration")
+        _logger.info("Setup configuration")
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
@@ -340,7 +363,7 @@ class MigrationAccorderie:
                 event_config.execute()
 
     def update_user(self, dry_run=False):
-        print("Update user preference")
+        _logger.info("Update user preference")
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
 
@@ -350,7 +373,7 @@ class MigrationAccorderie:
             administrator.company_ids = env["res.company"].search([]).ids
 
     def migrate_company(self, dry_run=False):
-        print("Migrate company")
+        _logger.info("Migrate company")
         # tbl_accorderie + tbl_pointservice
 
         head_quarter = None
@@ -443,6 +466,18 @@ class MigrationAccorderie:
                             value["logo"] = base64.b64encode(data)
 
                         obj = env["res.company"].create(value)
+                        obj_acc = env["accorderie.accorderie"].create(
+                            {"company_id": obj.id}
+                        )
+                        # try:
+                        #     obj = env["res.company"].create(value)
+                        #     obj_acc = env["accorderie.accorderie"].create(
+                        #         {"company_id": obj.id}
+                        #     )
+                        # except Exception as e:
+                        #     self.lst_error.append(e)
+                        #     _logger.error(e)
+                        #     continue
                         lst_child_company.append(obj)
                         obj.tz = "America/Montreal"
                         obj.partner_id.active = accorderie.NonVisible == 0
@@ -454,7 +489,7 @@ class MigrationAccorderie:
 
                     self.dct_accorderie[accorderie.NoAccorderie] = obj
                     # self.dct_accorderie_by_email[obj.email] = obj
-                    print(
+                    _logger.info(
                         f"{pos_id} - res.company - tbl_accorderie - ADDED"
                         f" '{name}' id {accorderie.NoAccorderie}"
                     )
@@ -474,7 +509,9 @@ class MigrationAccorderie:
                     if DEBUG_LIMIT and i > LIMIT:
                         break
 
-                    tbl_membre = self._get_membre_point_service(pointservice.NoPointService)
+                    tbl_membre = self._get_membre_point_service(
+                        pointservice.NoPointService
+                    )
                     name = (
                         "Point de service"
                         f" {pointservice.NomPointService.strip()}"
@@ -501,12 +538,18 @@ class MigrationAccorderie:
                     }
 
                     obj = env["res.company"].create(value)
+                    # try:
+                    #     obj = env["res.company"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     obj.tz = "America/Montreal"
                     obj.partner_id.active = tbl_membre.MembreActif == -1
                     obj.partner_id.customer = False
                     obj.partner_id.supplier = False
                     # obj.partner_id.fax = accorderie.TelecopieurAccorderie.strip()
-                    print(
+                    _logger.info(
                         f"{pos_id} - res.company - tbl_pointservice - "
                         f"ADDED '{name}' id {pointservice.NoPointService}"
                     )
@@ -535,11 +578,11 @@ class MigrationAccorderie:
                     #     obj.partner_id.customer = False
                     #     obj.partner_id.supplier = False
                     #     # obj.partner_id.fax = accorderie.TelecopieurAccorderie.strip()
-                    #     print(f"{pos_id} - res.company - tbl_pointservice - "
+                    #     _logger.info(f"{pos_id} - res.company - tbl_pointservice - "
                     #           f"ADDED '{name}' id {pointservice.NoPointService}")
                     # else:
                     #     obj = accorderie_email_obj
-                    #     print(f"{pos_id} - res.company - tbl_pointservice - "
+                    #     _logger.info(f"{pos_id} - res.company - tbl_pointservice - "
                     #           f"DUPLICATED '{name}' id {pointservice.NoPointService} "
                     #           f"obj_id {obj.id}")
                     self.dct_pointservice[pointservice.NoPointService] = obj
@@ -552,7 +595,7 @@ class MigrationAccorderie:
         Depend on company.
         :return:
         """
-        print("Migrate files")
+        _logger.info("Migrate files")
         # tbl_type_fichier and tbl_fichier
 
         if not self.dct_fichier:
@@ -576,8 +619,14 @@ class MigrationAccorderie:
                     }
 
                     category_id = env["muk_dms.category"].create(value)
+                    # try:
+                    #     category_id = env["muk_dms.category"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_type_fichier[fichier.Id_TypeFichier] = category_id
-                    print(
+                    _logger.info(
                         f"{pos_id} - muk_dms.category - tbl_type_fichier -"
                         f" ADDED '{name}' id {fichier.Id_TypeFichier}"
                     )
@@ -598,6 +647,12 @@ class MigrationAccorderie:
                     }
 
                     storage_id = env["muk_dms.storage"].create(value)
+                    # try:
+                    #     storage_id = env["muk_dms.storage"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
 
                     if "/" in name:
                         name = name.replace("/", "_")
@@ -608,13 +663,19 @@ class MigrationAccorderie:
                     }
 
                     directory_id = env["muk_dms.directory"].create(value)
+                    # try:
+                    #     directory_id = env["muk_dms.directory"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     if accorderie.id in dct_storage:
                         raise Exception(
                             f"Duplicate {accorderie} : {dct_storage}"
                         )
 
                     dct_storage[accorderie.id] = directory_id
-                    print(
+                    _logger.info(
                         f"{pos_id} - muk_dms.storage - tbl_accorderie - ADDED"
                         f" '{name}' id {storage_id.id if storage_id else ''}"
                     )
@@ -651,10 +712,13 @@ class MigrationAccorderie:
                         "create_date": fichier.DateMAJ_Fichier,
                     }
 
-                    try:
-                        file_id = env["muk_dms.file"].create(value)
-                    except Exception as e:
-                        continue
+                    file_id = env["muk_dms.file"].create(value)
+                    # try:
+                    #     file_id = env["muk_dms.file"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     # Validate not duplicate
                     # files_id = env['muk_dms.file'].search([('name', '=', name), ('directory', '=', directory_id.id)])
                     # if not files_id:
@@ -663,14 +727,14 @@ class MigrationAccorderie:
                     #     if len(files_id) > 1:
                     #         raise Exception(f"ERROR, duplicate file id {i}")
                     #     if files_id[0].content == content:
-                    #         print(f"{pos_id} - muk_dms.file - tbl_fichier - SKIPPED DUPLICATED SAME CONTENT '{name}' "
+                    #         _logger.info(f"{pos_id} - muk_dms.file - tbl_fichier - SKIPPED DUPLICATED SAME CONTENT '{name}' "
                     #               f"on storage '{directory_id.name}' id {fichier.Id_Fichier}")
                     #     else:
                     #         raise Exception(
                     #             f"ERROR, duplicate file id {i}, content is different, but same name '{name}'")
 
                     self.dct_fichier[fichier.Id_Fichier] = file_id
-                    print(
+                    _logger.info(
                         f"{pos_id} - muk_dms.file - tbl_fichier - ADDED"
                         f" '{name}' on storage"
                         f" '{directory_id.name if directory_id else ''}' id"
@@ -682,7 +746,7 @@ class MigrationAccorderie:
         """
         :return:
         """
-        print("Migrate products")
+        _logger.info("Migrate products")
         # tbl_titre, tbl_produit
 
         with api.Environment.manage():
@@ -693,6 +757,14 @@ class MigrationAccorderie:
                 product_cat_root_id = env["product.category"].create(
                     {"name": "Aliment"}
                 )
+                # try:
+                #     product_cat_root_id = env["product.category"].create(
+                #         {"name": "Aliment"}
+                #     )
+                # except Exception as e:
+                #     self.lst_error.append(e)
+                #     _logger.error(e)
+                #     return
 
                 i = 0
                 for titre in self.dct_tbl.tbl_titre:
@@ -710,8 +782,14 @@ class MigrationAccorderie:
                     }
 
                     product_cat_id = env["product.category"].create(value)
+                    # try:
+                    #     product_cat_id = env["product.category"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_titre[titre.NoTitre] = product_cat_id
-                    print(
+                    _logger.info(
                         f"{pos_id} - product.category - tbl_titre - ADDED"
                         f" '{name}' id {titre.NoTitre}"
                     )
@@ -740,8 +818,14 @@ class MigrationAccorderie:
                     }
 
                     product_id = env["product.template"].create(value)
+                    # try:
+                    #     product_id = env["product.template"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_produit[produit.NoProduit] = product_id
-                    print(
+                    _logger.info(
                         f"{pos_id} - product.template - tbl_produit - ADDED"
                         f" '{name}' id {produit.NoProduit} - is active"
                         f" {active}"
@@ -754,7 +838,7 @@ class MigrationAccorderie:
         """
         :return:
         """
-        print("Migrate member")
+        _logger.info("Migrate member")
         # tbl_membre
 
         dct_debug_login = self._check_duplicate(
@@ -764,10 +848,10 @@ class MigrationAccorderie:
             self.dct_tbl.tbl_membre, "Courriel", verbose=False
         )
         # self.dct_tbl["tbl_membre|conflict"] = dct_debug
-        # print("profile")
-        # print(dct_debug_login)
-        # print("email")
-        # print(dct_debug_email)
+        # _logger.info("profile")
+        # _logger.info(dct_debug_login)
+        # _logger.info("email")
+        # _logger.info(dct_debug_email)
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
@@ -796,10 +880,12 @@ class MigrationAccorderie:
                         name = ""
 
                     if not login or not name:
-                        print(
+                        msg = (
                             f"{pos_id} - res.partner - tbl_membre - SKIPPED"
                             f" EMPTY LOGIN '{name}' id {membre.NoMembre}"
                         )
+                        _logger.warning(msg)
+                        self.lst_warning.append(msg)
                         # lst_result .append((None, result))
                         continue
 
@@ -807,35 +893,48 @@ class MigrationAccorderie:
                     if ("test" in name or "test" in login) and login not in [
                         "claudettestlaur"
                     ]:
-                        print(
+                        msg = (
                             f"{pos_id} - res.partner - tbl_membre - SKIPPED"
                             f" TEST LOGIN name '{name}' login '{login}' id"
                             f" {membre.NoMembre}"
                         )
+                        _logger.warning(msg)
+                        self.lst_warning.append(msg)
                         continue
 
-                    email = membre.Courriel.strip()
+                    email = membre.Courriel.lower().strip()
                     if not email:
                         if login in dct_debug_login.keys():
                             # TODO Need to merge it
-                            print(
+                            msg = (
                                 f"{pos_id} - res.partner - tbl_membre -"
                                 f" SKIPPED DUPLICATED LOGIN name '{name}'"
                                 f" login '{login}' email '{email}' id"
                                 f" {membre.NoMembre}"
                             )
+                            _logger.warning(msg)
+                            self.lst_warning.append(msg)
                             continue
                         # Need an email for login, force create it
                         # TODO coder un séquenceur dans Odoo pour la création de courriel générique
                         # email = GENERIC_EMAIL % i
-                        email = GENERIC_EMAIL % login
+                        email = (GENERIC_EMAIL % login).lower().strip()
+                        nb_same_email = self.lst_generic_email.count(email)
+                        if nb_same_email > 0:
+                            email = (
+                                GENERIC_EMAIL % f"{login}_{nb_same_email + 1}"
+                            ).lower().strip()
+                        self.lst_generic_email.append(email)
+                        _logger.warning(f"Create generic email '{email}'")
                     elif email in dct_debug_email.keys():
                         # TODO merge user
-                        print(
+                        msg = (
                             f"{pos_id} - res.partner - tbl_membre - SKIPPED"
                             f" DUPLICATED EMAIL name '{name}' login '{login}'"
                             f" email '{email}' id {membre.NoMembre}"
                         )
+                        _logger.warning(msg)
+                        self.lst_warning.append(msg)
                         continue
 
                     # Show duplicate profile
@@ -854,11 +953,11 @@ class MigrationAccorderie:
                     # Technique remplacé par l'utilisation du courriel
                     # if login in dct_debug_login.keys():
                     #     # Validate unique email
-                    #     print(f"{pos_id} - res.partner - tbl_membre - SKIPPED DUPLICATED "
+                    #     _logger.info(f"{pos_id} - res.partner - tbl_membre - SKIPPED DUPLICATED "
                     #           f"name '{name}' login '{login}' id {result[0]}")
                     #
                     #     if email in dct_debug_email:
-                    #         print(dct_debug_email[email])
+                    #         _logger.info(dct_debug_email[email])
                     #     continue
 
                     company_id = self.dct_accorderie.get(membre.NoAccorderie)
@@ -889,6 +988,12 @@ class MigrationAccorderie:
                     self._set_phone(membre, value)
 
                     obj_partner = env["res.partner"].create(value)
+                    # try:
+                    #     obj_partner = env["res.partner"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
 
                     value = {
                         "name": name,
@@ -907,9 +1012,19 @@ class MigrationAccorderie:
                         .with_context({"no_reset_password": True})
                         .create(value)
                     )
+                    # try:
+                    #     obj_user = (
+                    #         env["res.users"]
+                    #         .with_context({"no_reset_password": True})
+                    #         .create(value)
+                    #     )
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
 
                     dct_membre[membre.NoMembre] = obj_user
-                    print(
+                    _logger.info(
                         f"{pos_id} - res.users - tbl_membre - ADDED '{name}'"
                         f" login '{login}' email '{email}' id"
                         f" {membre.NoMembre}"
@@ -921,10 +1036,16 @@ class MigrationAccorderie:
                     }
 
                     obj_employee = env["hr.employee"].create(value)
+                    # try:
+                    #     obj_employee = env["hr.employee"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_employee[membre.NoMembre] = obj_employee
-                    print(
-                        f"{pos_id} - hr.employee - tbl_echange_service - ADDED"
-                        f" '{name}' id {membre.NoMembre}"
+                    _logger.info(
+                        f"{pos_id} - hr.employee - tbl_echange_service -"
+                        f" ADDED '{name}' id {membre.NoMembre}"
                     )
 
                     value = {
@@ -933,10 +1054,16 @@ class MigrationAccorderie:
 
                     # Create fsm employee
                     obj_fsm_employee = env["fsm.person"].create(value)
+                    # try:
+                    #     obj_fsm_employee = env["fsm.person"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_fsm_employee[membre.NoMembre] = obj_fsm_employee
-                    print(
-                        f"{pos_id} - fsm.person - tbl_demande_service - ADDED"
-                        f" '{name}' id {membre.NoMembre}"
+                    _logger.info(
+                        f"{pos_id} - fsm.person - tbl_demande_service -"
+                        f" ADDED '{name}' id {membre.NoMembre}"
                     )
 
                 self.dct_employee = dct_employee
@@ -948,7 +1075,7 @@ class MigrationAccorderie:
         """
         :return:
         """
-        print("Migrate skills")
+        _logger.info("Migrate skills")
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
@@ -972,8 +1099,14 @@ class MigrationAccorderie:
                     }
 
                     categorie_id = env["hr.skill"].create(value)
+                    # try:
+                    #     categorie_id = env["hr.skill"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_categorie[categorie.NoCategorie] = categorie_id
-                    print(
+                    _logger.info(
                         f"{pos_id} - hr.skill - tbl_categorie - ADDED '{name}'"
                         f" id {categorie.NoCategorie}"
                     )
@@ -992,15 +1125,30 @@ class MigrationAccorderie:
                     name = f"{pre_name} - {categorie.TitreSousCategorie}"
                     parent_id = dct_categorie.get(categorie.NoCategorie)
 
-                    value = {
-                        "name": name,
-                        "parent_id": parent_id.id,
-                        "active": categorie.Supprimer == 0,
-                    }
+                    if parent_id:
+                        value = {
+                            "name": name,
+                            "parent_id": parent_id.id,
+                            "active": categorie.Supprimer == 0,
+                        }
+                    else:
+                        msg = (
+                            "Missing categorie with no"
+                            f" {categorie.NoCategorie}"
+                        )
+                        self.lst_error.append(msg)
+                        _logger.error(msg)
+                        continue
 
                     categorie_id = env["hr.skill"].create(value)
+                    # try:
+                    #     categorie_id = env["hr.skill"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_sous_categorie[pre_name] = categorie_id
-                    print(
+                    _logger.info(
                         f"{pos_id} - hr.skill - tbl_sous_categorie - ADDED"
                         f" '{name}' id {categorie.NoCategorie}"
                     )
@@ -1016,7 +1164,7 @@ class MigrationAccorderie:
                         break
 
                     if categorie.NoOffre > 900:
-                        print(
+                        _logger.info(
                             f"{pos_id} - hr.skill -"
                             " tbl_categorie_sous_categorie - SKIPPED result"
                             f" '{categorie.NoOffre}' because > 900 and id"
@@ -1034,18 +1182,30 @@ class MigrationAccorderie:
 
                     parent_id = dct_sous_categorie.get(pre_name)
 
-                    value = {
-                        "name": name,
-                        "parent_id": parent_id.id,
-                        "active": categorie.Supprimer == 0,
-                        "description": categorie.Description.strip(),
-                    }
+                    if parent_id:
+                        value = {
+                            "name": name,
+                            "parent_id": parent_id.id,
+                            "active": categorie.Supprimer == 0,
+                            "description": categorie.Description.strip(),
+                        }
+                    else:
+                        msg = f"Missing sous categorie with name {pre_name}"
+                        self.lst_error.append(msg)
+                        _logger.error(msg)
+                        continue
 
                     categorie_id = env["hr.skill"].create(value)
+                    # try:
+                    #     categorie_id = env["hr.skill"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_categorie_sous_categorie[
                         categorie.NoCategorieSousCategorie
                     ] = categorie_id
-                    print(
+                    _logger.info(
                         f"{pos_id} - hr.skill - tbl_categorie_sous_categorie -"
                         f" ADDED '{name}' id {categorie.NoCategorie}"
                     )
@@ -1059,7 +1219,7 @@ class MigrationAccorderie:
         """
         :return:
         """
-        print("Migrate fournisseur")
+        _logger.info("Migrate fournisseur")
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
@@ -1080,6 +1240,15 @@ class MigrationAccorderie:
                         fournisseur.NoAccorderie
                     )
                     if "Accorderie" in name:
+                        if not accorderie_obj.partner_id:
+                            msg = (
+                                "Missing partner associate to accorderie"
+                                f" {name} fournisseur no"
+                                f" {fournisseur.NoAccorderie}"
+                            )
+                            self.lst_error.append(msg)
+                            _logger.error(msg)
+                            continue
                         accorderie_obj.partner_id.supplier = True
                         new_comment = ""
                         if accorderie_obj.partner_id.comment:
@@ -1096,7 +1265,7 @@ class MigrationAccorderie:
                             fournisseur.NoFournisseur
                         ] = accorderie_obj.partner_id
 
-                        print(
+                        _logger.info(
                             f"{pos_id} - res.partner - tbl_fournisseur -"
                             " UPDATED"
                             f" '{name}/{accorderie_obj.partner_id.name}' id"
@@ -1105,7 +1274,7 @@ class MigrationAccorderie:
                         continue
                     # elif name in dct_debug.keys():
                     #     lst_duplicated = dct_debug.get(name)
-                    #     print(f"{pos_id} - res.partner - tbl_fournisseur - SKIPPED '{name}' id {result[0]}")
+                    #     _logger.info(f"{pos_id} - res.partner - tbl_fournisseur - SKIPPED '{name}' id {result[0]}")
                     #     continue
 
                     city_name = self._get_ville(fournisseur.NoVille)
@@ -1133,6 +1302,12 @@ class MigrationAccorderie:
                         value["city"] = city_name.Ville
 
                     obj = env["res.partner"].create(value)
+                    # try:
+                    #     obj = env["res.partner"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
 
                     value_contact = {
                         "name": fournisseur.NomContact.strip(),
@@ -1144,9 +1319,15 @@ class MigrationAccorderie:
                     }
 
                     obj_contact = env["res.partner"].create(value_contact)
+                    # try:
+                    #     obj_contact = env["res.partner"].create(value_contact)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
 
                     dct_fournisseur[fournisseur.NoFournisseur] = obj
-                    print(
+                    _logger.info(
                         f"{pos_id} - res.partner - tbl_fournisseur - ADDED"
                         f" '{name}' id {fournisseur.NoFournisseur}"
                     )
@@ -1158,7 +1339,7 @@ class MigrationAccorderie:
         """
         :return:
         """
-        print("Migrate tbl_demande_service")
+        _logger.info("Migrate tbl_demande_service")
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
@@ -1175,6 +1356,14 @@ class MigrationAccorderie:
                 }
 
                 obj_stage_accept = env["helpdesk.ticket.stage"].create(value)
+                # try:
+                #     obj_stage_accept = env["helpdesk.ticket.stage"].create(
+                #         value
+                #     )
+                # except Exception as e:
+                #     self.lst_error.append(e)
+                #     _logger.error(e)
+                #     return
 
                 i = 0
                 for demande_service in self.dct_tbl.tbl_demande_service:
@@ -1206,9 +1395,15 @@ class MigrationAccorderie:
                         value["partner_id"] = membre_obj.partner_id.id
 
                     obj = env["helpdesk.ticket"].create(value)
+                    # try:
+                    #     obj = env["helpdesk.ticket"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
 
                     dct_demande_service[demande_service.NoDemandeService] = obj
-                    print(
+                    _logger.info(
                         f"{pos_id} - helpdesk.ticket - tbl_demande_service -"
                         f" ADDED '{name}' id"
                         f" {demande_service.NoDemandeService}"
@@ -1221,7 +1416,7 @@ class MigrationAccorderie:
         """
         :return:
         """
-        print("Migrate tbl_offre_service")
+        _logger.info("Migrate tbl_offre_service")
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
@@ -1232,6 +1427,12 @@ class MigrationAccorderie:
                 # Create default fsm location
                 value = {"name": "AUCUNE", "owner_id": self.head_quarter.id}
                 location_id = env["fsm.location"].create(value)
+                # try:
+                #     location_id = env["fsm.location"].create(value)
+                # except Exception as e:
+                #     self.lst_error.append(e)
+                #     _logger.error(e)
+                #     return
 
                 i = 0
                 for offre_service in self.dct_tbl.tbl_offre_service_membre:
@@ -1248,7 +1449,7 @@ class MigrationAccorderie:
                         break
 
                     if not membre_obj:
-                        print(
+                        _logger.info(
                             f"{pos_id} - fsm.order - tbl_offre_service_membre"
                             " - ERROR MISSING MEMBER"
                             f" '{offre_service.NoMembre}' ON '{name}' id"
@@ -1281,14 +1482,27 @@ class MigrationAccorderie:
                     )
                     if skill_id:
                         value["skill_ids"] = [(6, 0, [skill_id.id])]
+                    else:
+                        msg = (
+                            "Missing categorie sous categorie id"
+                            f" {offre_service.NoCategorieSousCategorie}"
+                        )
+                        self.lst_error.append(msg)
+                        _logger.error(msg)
 
                     if membre_obj:
                         value["person_id"] = membre_obj.id
 
                     obj = env["fsm.order"].create(value)
+                    # try:
+                    #     obj = env["fsm.order"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
 
                     dct_offre_service[offre_service.NoOffreServiceMembre] = obj
-                    print(
+                    _logger.info(
                         f"{pos_id} - fsm.order - tbl_offre_service_membre -"
                         f" ADDED '{name}' id"
                         f" {offre_service.NoOffreServiceMembre}"
@@ -1301,7 +1515,7 @@ class MigrationAccorderie:
         """
         :return:
         """
-        print("Migrate tbl_echange_service")
+        _logger.info("Migrate tbl_echange_service")
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
@@ -1324,8 +1538,14 @@ class MigrationAccorderie:
                     }
 
                     obj_project = env["project.project"].create(value)
+                    # try:
+                    #     obj_project = env["project.project"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
                     dct_project_service[key] = obj_project
-                    print(
+                    _logger.info(
                         f"{pos_id} - project.project - tbl_echange_service -"
                         f" ADDED '{accorderie.name}' id {key}"
                     )
@@ -1353,7 +1573,7 @@ class MigrationAccorderie:
                     )
 
                     if not echange_service.DateEchange:
-                        print(
+                        _logger.info(
                             f"{pos_id} - account.analytic.line -"
                             " tbl_echange_service - SKIP MISSING DATE"
                             f" '{name}' id {echange_service.NoEchangeService}"
@@ -1379,16 +1599,22 @@ class MigrationAccorderie:
                     if employee_id:
                         value["employee_id"] = employee_id.id
                     else:
-                        # print(f"{pos_id} - helpdesk.ticket - tbl_demande_service - ADDED '{name}' "
+                        # _logger.info(f"{pos_id} - helpdesk.ticket - tbl_demande_service - ADDED '{name}' "
                         #       f"id {echange_service.NoDemandeService}")
                         # continue
                         # TODO update me
                         value["employee_id"] = 1
 
                     obj = env["account.analytic.line"].create(value)
+                    # try:
+                    #     obj = env["account.analytic.line"].create(value)
+                    # except Exception as e:
+                    #     self.lst_error.append(e)
+                    #     _logger.error(e)
+                    #     continue
 
                     dct_echange_service[echange_service.NoEchangeService] = obj
-                    print(
+                    _logger.info(
                         f"{pos_id} - account.analytic.line -"
                         f" tbl_echange_service - ADDED '{name}' id"
                         f" {echange_service.NoEchangeService}"
@@ -1410,7 +1636,10 @@ class MigrationAccorderie:
 
     def _get_membre_point_service(self, no_point_service: int):
         for membre in self.dct_tbl.tbl_membre:
-            if membre.NoPointService == no_point_service and membre.EstUnPointService:
+            if (
+                membre.NoPointService == no_point_service
+                and membre.EstUnPointService
+            ):
                 return membre
 
     def _set_phone(self, membre, value):
@@ -1428,7 +1657,7 @@ class MigrationAccorderie:
             or membre.NoTypeTel2 == 5
             or membre.NoTypeTel3 == 5
         ):
-            print("WARNING, le pagette n'est pas supporté.")
+            _logger.warning("Le pagette n'est pas supporté.")
 
         # Travail
         if (
@@ -1436,7 +1665,7 @@ class MigrationAccorderie:
             or membre.NoTypeTel2 == 3
             or membre.NoTypeTel3 == 3
         ):
-            print("WARNING, le téléphone travail n'est pas supporté.")
+            _logger.warning("Le téléphone travail n'est pas supporté.")
 
         # MOBILE
         has_mobile = False
@@ -1448,8 +1677,8 @@ class MigrationAccorderie:
             has_mobile = True
             value["mobile"] = membre.Telephone1.strip()
             if membre.PosteTel1 and membre.PosteTel1.strip():
-                print(
-                    "WARNING, le numéro de poste du mobile n'est pas supporté."
+                _logger.warning(
+                    "Le numéro de poste du mobile n'est pas supporté."
                 )
         if (
             membre.NoTypeTel2 == 4
@@ -1457,14 +1686,13 @@ class MigrationAccorderie:
             and membre.Telephone2.strip()
         ):
             if has_mobile:
-                print("WARNING, duplicat du cellulaire.")
+                _logger.warning("Duplicat du cellulaire.")
             else:
                 has_mobile = True
                 value["mobile"] = membre.Telephone2.strip()
                 if membre.PosteTel2 and membre.PosteTel2.strip():
-                    print(
-                        "WARNING, le numéro de poste du mobile n'est pas"
-                        " supporté."
+                    _logger.warning(
+                        "Le numéro de poste du mobile n'est pas supporté."
                     )
         if (
             membre.NoTypeTel3 == 4
@@ -1472,14 +1700,13 @@ class MigrationAccorderie:
             and membre.Telephone3.strip()
         ):
             if has_mobile:
-                print("WARNING, duplicat du cellulaire.")
+                _logger.warning("Duplicat du cellulaire.")
             else:
                 has_mobile = True
                 value["mobile"] = membre.Telephone3.strip()
                 if membre.PosteTel3 and membre.PosteTel3.strip():
-                    print(
-                        "WARNING, le numéro de poste du mobile n'est pas"
-                        " supporté."
+                    _logger.warning(
+                        "Le numéro de poste du mobile n'est pas supporté."
                     )
 
         has_domicile = False
@@ -1495,9 +1722,8 @@ class MigrationAccorderie:
                 and membre.PosteTel1
                 and membre.PosteTel1.strip()
             ):
-                print(
-                    "WARNING, le numéro de poste du domicile n'est pas"
-                    " supporté."
+                _logger.warning(
+                    "Le numéro de poste du domicile n'est pas supporté."
                 )
         if (
             membre.NoTypeTel2 == 2
@@ -1505,14 +1731,13 @@ class MigrationAccorderie:
             and membre.Telephone2.strip()
         ):
             if has_domicile:
-                print("WARNING, duplicat du cellulaire.")
+                _logger.warning("Duplicat du cellulaire.")
             else:
                 has_domicile = True
                 value["phone"] = membre.Telephone2.strip()
                 if membre.PosteTel2 and membre.PosteTel2.strip():
-                    print(
-                        "WARNING, le numéro de poste du domicile n'est pas"
-                        " supporté."
+                    _logger.warning(
+                        "Le numéro de poste du domicile n'est pas supporté."
                     )
         if (
             membre.NoTypeTel3 == 2
@@ -1520,14 +1745,13 @@ class MigrationAccorderie:
             and membre.Telephone3.strip()
         ):
             if has_domicile:
-                print("WARNING, duplicat du cellulaire.")
+                _logger.warning("Duplicat du cellulaire.")
             else:
                 has_domicile = True
                 value["phone"] = membre.Telephone3.strip()
                 if membre.PosteTel3 and membre.PosteTel3.strip():
-                    print(
-                        "WARNING, le numéro de poste du domicile n'est pas"
-                        " supporté."
+                    _logger.warning(
+                        "Le numéro de poste du domicile n'est pas supporté."
                     )
 
     def _check_duplicate(self, tbl_membre, key, verbose=True):
@@ -1535,14 +1759,23 @@ class MigrationAccorderie:
         # Debug duplicate data, need unique name
         dct_debug = collections.defaultdict(list)
         for result in tbl_membre:
-            dct_debug[result.__dict__.get(key)].append(result)
+            key_info = result.__dict__.get(key)
+            if key_info is None:
+                key_info = ""
+            else:
+                key_info = key_info.lower().strip()
+
+            dct_debug[key_info].append(result)
         lst_to_remove = []
-        for key, value in dct_debug.items():
+        for key_info, value in dct_debug.items():
             if len(value) > 1:
                 if verbose:
-                    print(f"Duplicate name ({len(value)}) {key}: {value}\n")
+                    _logger.warning(
+                        f"Duplicate name ({len(value)})"
+                        f" {key_info.lower().strip()}: {value}\n"
+                    )
             else:
-                lst_to_remove.append(key)
-        for key in lst_to_remove:
-            del dct_debug[key]
+                lst_to_remove.append(key_info.lower().strip())
+        for key_info in lst_to_remove:
+            del dct_debug[key_info]
         return dct_debug
