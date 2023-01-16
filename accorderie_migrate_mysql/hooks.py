@@ -712,13 +712,12 @@ class MigrationAccorderie:
                         "create_date": fichier.DateMAJ_Fichier,
                     }
 
-                    file_id = env["muk_dms.file"].create(value)
-                    # try:
-                    #     file_id = env["muk_dms.file"].create(value)
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
+                    try:
+                        file_id = env["muk_dms.file"].create(value)
+                    except Exception as e:
+                        self.lst_error.append(e)
+                        _logger.error(e)
+                        continue
                     # Validate not duplicate
                     # files_id = env['muk_dms.file'].search([('name', '=', name), ('directory', '=', directory_id.id)])
                     # if not files_id:
