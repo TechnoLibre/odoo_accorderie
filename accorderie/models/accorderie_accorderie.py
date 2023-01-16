@@ -4,10 +4,7 @@ from odoo import _, api, fields, models
 class AccorderieAccorderie(models.Model):
     _name = "accorderie.accorderie"
     _inherit = ["mail.activity.mixin", "mail.thread"]
-    _description = (
-        "Gestion des entitées Accorderie, contient les informations et les"
-        " messages d'une Accorderie."
-    )
+    _description = "Les Accorderies"
     _rec_name = "nom"
 
     nom = fields.Char(

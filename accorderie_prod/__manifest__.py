@@ -6,6 +6,6 @@
     "license": "AGPL-3",
     "application": True,
     "depends": ["accorderie", "partner_fax"],
-    "data": [],
+    "data": ["views/accorderie_accorderie.xml"],
     "installable": True,
 }
