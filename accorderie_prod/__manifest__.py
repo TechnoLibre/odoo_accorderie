@@ -5,7 +5,7 @@
     "author": "TechnoLibre",
     "license": "AGPL-3",
     "application": True,
-    "depends": ["accorderie"],
+    "depends": ["accorderie", "partner_fax"],
     "data": [],
     "installable": True,
 }

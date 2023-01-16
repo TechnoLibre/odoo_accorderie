@@ -5,7 +5,7 @@
     "author": "TechnoLibre",
     "license": "AGPL-3",
     "application": True,
-    "depends": [],
+    "depends": ["mail"],
     "data": [
         "security/ir.model.access.csv",
         "views/accorderie_accorderie.xml",

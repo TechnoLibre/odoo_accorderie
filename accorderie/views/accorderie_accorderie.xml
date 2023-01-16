@@ -27,9 +27,6 @@
                         <field name="courriel" />
                     </group>
                     <group>
-                        <field name="date_mise_a_jour" />
-                    </group>
-                    <group>
                         <field name="grp_achat_administrateur" />
                     </group>
                     <group>
@@ -66,6 +63,11 @@
                         <field name="membre" />
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}" widget="mail_thread" />
+                </div>
             </form>
         </field>
     </record>
@@ -80,7 +82,6 @@
                 <field name="arrondissement" type="row" />
                 <field name="code_postal" type="row" />
                 <field name="courriel" type="row" />
-                <field name="date_mise_a_jour" type="row" />
                 <field name="grp_achat_administrateur" type="row" />
                 <field name="grp_achat_membre" type="row" />
                 <field name="logo" type="row" />
@@ -106,7 +107,6 @@
                 <field name="arrondissement" />
                 <field name="code_postal" />
                 <field name="courriel" />
-                <field name="date_mise_a_jour" />
                 <field name="grp_achat_administrateur" />
                 <field name="grp_achat_membre" />
                 <field name="logo" widget="image" />
@@ -147,11 +147,6 @@
                                     <li class="mb4">
                                         <strong>
                                             <field name="courriel" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="date_mise_a_jour" />
                                         </strong>
                                     </li>
                                     <li
@@ -241,7 +236,6 @@
                 <field name="arrondissement" type="row" />
                 <field name="code_postal" type="row" />
                 <field name="courriel" type="row" />
-                <field name="date_mise_a_jour" type="row" />
                 <field name="grp_achat_administrateur" type="row" />
                 <field name="grp_achat_membre" type="row" />
                 <field name="message_accueil" type="row" />
@@ -267,11 +261,6 @@
                 <filter domain="[('arrondissement','!=',False)]" name="arrondissement" string="Arrondissement" />
                 <filter domain="[('code_postal','!=',False)]" name="code_postal" string="Code postal" />
                 <filter domain="[('courriel','!=',False)]" name="courriel" string="Adresse courriel" />
-                <filter
-                    domain="[('date_mise_a_jour','!=',False)]"
-                    name="date_mise_a_jour"
-                    string="Derni&#232;re mise &#224; jour"
-                />
                 <filter
                     domain="[('grp_achat_administrateur','=',True)]"
                     name="grp_achat_administrateur"
@@ -314,7 +303,6 @@
                 <field name="arrondissement" />
                 <field name="code_postal" />
                 <field name="courriel" />
-                <field name="date_mise_a_jour" />
                 <field name="grp_achat_administrateur" />
                 <field name="grp_achat_membre" />
                 <field name="logo" widget="image" />

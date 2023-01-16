@@ -51,29 +51,29 @@ def post_init_hook(cr, e):
     migration.migrate_muk_dms()
 
     # Create user
-    migration.migrate_member()
+    # migration.migrate_member()
 
     # Create HR
     # TODO à changer
-    migration.migrate_skills()
+    # migration.migrate_skills()
 
     # Create fournisseur
-    migration.migrate_fournisseur()
+    # migration.migrate_fournisseur()
 
     # Create demande service
     # TODO à changer
-    migration.migration_demande_service()
+    # migration.migration_demande_service()
 
     # Create offre service
     # TODO à changer
-    migration.migration_offre_service()
+    # migration.migration_offre_service()
 
     # Create hr timesheet
     # TODO à changer
-    migration.migration_timesheet()
+    # migration.migration_timesheet()
 
     # Create product
-    migration.migrate_product()
+    # migration.migrate_product()
 
     # Print email
     if migration.lst_generic_email:
@@ -467,8 +467,39 @@ class MigrationAccorderie:
 
                         obj = env["res.company"].create(value)
                         obj_acc = env["accorderie.accorderie"].create(
-                            {"company_id": obj.id}
+                            {
+                                "company_id": obj.id,
+                                # TODO implémenter region
+                                # "region": accorderie.noregion,
+                                # "ville": accorderie.noville,
+                                # "arrondissement": accorderie.noarrondissement,
+                                "message_grp_achat": accorderie.MessageGrpAchat,
+                                "message_accueil": accorderie.MessageAccueil,
+                                "url_public": accorderie.URL_Public_Accorderie,
+                                "url_transactionnel": accorderie.URL_Transac_Accorderie,
+                                "grp_achat_administrateur": accorderie.GrpAchat_Admin,
+                                "grp_achat_membre": accorderie.GrpAchat_Accordeur,
+                            }
                         )
+
+                        comment_message = (
+                            "<b>Note de migration</b><br/>Dernière mise à"
+                            f" jour : {accorderie.DateMAJ_Accorderie}"
+                        )
+
+                        comment_value = {
+                            "subject": (
+                                "Note de migration - Plateforme Espace Membre"
+                            ),
+                            "body": f"<p>{comment_message}</p>",
+                            "parent_id": False,
+                            "message_type": "comment",
+                            "author_id": env.ref("base.partner_root").id,
+                            "model": "accorderie.accorderie",
+                            "res_id": obj_acc.id,
+                        }
+                        env["mail.message"].create(comment_value)
+
                         # try:
                         #     obj = env["res.company"].create(value)
                         #     obj_acc = env["accorderie.accorderie"].create(
@@ -921,8 +952,13 @@ class MigrationAccorderie:
                         nb_same_email = self.lst_generic_email.count(email)
                         if nb_same_email > 0:
                             email = (
-                                GENERIC_EMAIL % f"{login}_{nb_same_email + 1}"
-                            ).lower().strip()
+                                (
+                                    GENERIC_EMAIL
+                                    % f"{login}_{nb_same_email + 1}"
+                                )
+                                .lower()
+                                .strip()
+                            )
                         self.lst_generic_email.append(email)
                         _logger.warning(f"Create generic email '{email}'")
                     elif email in dct_debug_email.keys():
