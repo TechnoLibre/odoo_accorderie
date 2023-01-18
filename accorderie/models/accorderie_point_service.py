@@ -19,11 +19,6 @@ class AccorderiePointService(models.Model):
         help="Commentaire relation",
     )
 
-    date_mise_a_jour = fields.Datetime(
-        string="Dernière mise à jour",
-        help="Date de la dernière mise à jour",
-    )
-
     membre = fields.One2many(
         comodel_name="accorderie.membre",
         inverse_name="point_service",

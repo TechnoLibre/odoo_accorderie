@@ -13,12 +13,6 @@
                         <field name="accorderie" />
                     </group>
                     <group>
-                        <field name="date_mise_a_jour" />
-                    </group>
-                    <group>
-                        <field name="sequence" />
-                    </group>
-                    <group>
                         <field name="commentaire" />
                     </group>
                     <group>
@@ -29,19 +23,6 @@
         </field>
     </record>
 
-    <record id="accorderie_point_service_view_graph" model="ir.ui.view">
-        <field name="name">accorderie_point_service_graph</field>
-        <field name="model">accorderie.point.service</field>
-        <field name="arch" type="xml">
-            <graph string="Accorderie point service">
-                <field name="nom" type="row" />
-                <field name="accorderie" type="row" />
-                <field name="date_mise_a_jour" type="row" />
-                <field name="sequence" type="measure" />
-            </graph>
-        </field>
-    </record>
-
     <record id="accorderie_point_service_view_kanban" model="ir.ui.view">
         <field name="name">accorderie_point_service_kanban</field>
         <field name="model">accorderie.point.service</field>
@@ -49,10 +30,6 @@
             <kanban class="o_kanban_mobile">
                 <field name="nom" />
                 <field name="accorderie" />
-                <field name="date_mise_a_jour" />
-                <field name="sequence" />
-                <field name="commentaire" />
-                <field name="membre" />
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
@@ -68,45 +45,12 @@
                                             <field name="accorderie" />
                                         </strong>
                                     </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="date_mise_a_jour" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="sequence" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="commentaire" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="membre" />
-                                        </strong>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </t>
                 </templates>
             </kanban>
-        </field>
-    </record>
-
-    <record id="accorderie_point_service_view_pivot" model="ir.ui.view">
-        <field name="name">accorderie_point_service_pivot</field>
-        <field name="model">accorderie.point.service</field>
-        <field name="arch" type="xml">
-            <pivot string="Accorderie point service">
-                <field name="nom" type="row" />
-                <field name="accorderie" type="row" />
-                <field name="date_mise_a_jour" type="row" />
-                <field name="sequence" type="measure" />
-            </pivot>
         </field>
     </record>
 
@@ -117,12 +61,6 @@
             <search string="Accorderie point service">
                 <filter domain="[('nom','!=',False)]" name="nom" string="Nom" />
                 <filter domain="[('accorderie','!=',False)]" name="accorderie" string="Accorderie" />
-                <filter
-                    domain="[('date_mise_a_jour','!=',False)]"
-                    name="date_mise_a_jour"
-                    string="Derni&#232;re mise &#224; jour"
-                />
-                <filter domain="[('sequence','!=',False)]" name="sequence" string="S&#233;quence" />
                 <filter domain="[('commentaire','!=',False)]" name="commentaire" string="Commentaire" />
                 <filter domain="[('membre','!=',False)]" name="membre" string="Membre" />
             </search>
@@ -134,12 +72,9 @@
         <field name="model">accorderie.point.service</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="sequence" />
+                <field name="sequence" string="Sequence" widget="handle" />
                 <field name="nom" />
                 <field name="accorderie" />
-                <field name="date_mise_a_jour" />
-                <field name="commentaire" />
-                <field name="membre" />
             </tree>
         </field>
     </record>
@@ -148,6 +83,6 @@
         id="accorderie_point_service_point_de_services_action_window"
         name="Point de services"
         res_model="accorderie.point.service"
-        view_mode="kanban,tree,pivot,graph,form"
+        view_mode="kanban,tree,form"
     />
 </odoo>

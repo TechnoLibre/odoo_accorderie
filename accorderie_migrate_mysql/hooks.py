@@ -122,6 +122,7 @@ class MigrationAccorderie:
         self.head_quarter = None
 
         self.dct_accorderie = {}
+        self.dct_accorderie_accorderie = {}
         # self.dct_accorderie_by_email = {}
         self.dct_pointservice = {}
         self.dct_fichier = {}
@@ -473,6 +474,7 @@ class MigrationAccorderie:
                                 # "region": accorderie.noregion,
                                 # "ville": accorderie.noville,
                                 # "arrondissement": accorderie.noarrondissement,
+                                "create_date": accorderie.DateMAJ_Accorderie,
                                 "message_grp_achat": accorderie.MessageGrpAchat,
                                 "message_accueil": accorderie.MessageAccueil,
                                 "url_public": accorderie.URL_Public_Accorderie,
@@ -519,6 +521,9 @@ class MigrationAccorderie:
                         obj.partner_id.supplier = False
 
                     self.dct_accorderie[accorderie.NoAccorderie] = obj
+                    self.dct_accorderie_accorderie[
+                        accorderie.NoAccorderie
+                    ] = obj_acc
                     # self.dct_accorderie_by_email[obj.email] = obj
                     _logger.info(
                         f"{pos_id} - res.company - tbl_accorderie - ADDED"
@@ -569,6 +574,38 @@ class MigrationAccorderie:
                     }
 
                     obj = env["res.company"].create(value)
+                    accorderie_accorderie_obj = (
+                        self.dct_accorderie_accorderie.get(
+                            pointservice.NoAccorderie
+                        )
+                    )
+                    obj_acc = env["accorderie.point.service"].create(
+                        {
+                            "company_id": obj.id,
+                            "accorderie": accorderie_accorderie_obj.id,
+                            "sequence": pointservice.OrdrePointService,
+                            "create_date": pointservice.DateMAJ_PointService,
+                        }
+                    )
+
+                    comment_message = (
+                        "<b>Note de migration</b><br/>Dernière mise à"
+                        f" jour : {pointservice.DateMAJ_PointService}"
+                    )
+
+                    comment_value = {
+                        "subject": (
+                            "Note de migration - Plateforme Espace Membre"
+                        ),
+                        "body": f"<p>{comment_message}</p>",
+                        "parent_id": False,
+                        "message_type": "comment",
+                        "author_id": env.ref("base.partner_root").id,
+                        "model": "accorderie.point.service",
+                        "res_id": obj_acc.id,
+                    }
+                    env["mail.message"].create(comment_value)
+
                     # try:
                     #     obj = env["res.company"].create(value)
                     # except Exception as e:

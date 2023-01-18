@@ -26,15 +26,11 @@
                                     <label for="street" string="Address" />
                                         <div class="o_address_format">
                                             <field name="adresse" placeholder="Adresse..." class="o_address_street" />
-    <!--                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>-->
-    <!--                                        <field name="city" placeholder="City" class="o_address_city"/>-->
-    <!--                                        <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}"/>-->
                                             <field
-                                                name="code_postal"
-                                                placeholder="Code postale"
-                                                class="o_address_zip"
-                                            />
-    <!--                                        <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True}"/>-->
+                                            name="code_postal"
+                                            placeholder="Code postale"
+                                            class="o_address_zip"
+                                        />
                                         </div>
                                         <field name="arrondissement" />
                                         <field name="region" />
@@ -122,6 +118,7 @@
         <field name="model">accorderie.accorderie</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" string="Sequence" widget="handle" />
                 <field name="nom" />
                 <field name="adresse" />
                 <field name="code_postal" />

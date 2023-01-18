@@ -4,14 +4,9 @@ from odoo import _, api, fields, models
 class AccorderieAccorderie(models.Model):
     _inherit = "accorderie.accorderie"
 
-    # TODO support active in res.company
-
     company_id = fields.Many2one(
         "res.company",
         string="Company",
-        default=lambda s: s.env["res.company"]._company_default_get(
-            "ir.sequence"
-        ),
     )
 
     partner_id = fields.Many2one(

@@ -87,6 +87,11 @@ class AccorderieAccorderie(models.Model):
         track_visibility="onchange",
     )
 
+    sequence = fields.Integer(
+        string="Séquence",
+        help="Séquence d'affichage",
+    )
+
     telecopieur = fields.Char(
         string="Télécopieur",
         help="Numéro de télécopieur pour joindre l'Accorderie.",
