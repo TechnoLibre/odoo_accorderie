@@ -27,6 +27,7 @@ FILE_PATH = f"{BACKUP_PATH}/document/doc"
 SECRET_PASSWORD = ""
 DEBUG_LIMIT = False
 LIMIT = 200
+FORCE_ADD_USER_EMAIL = ""
 GENERIC_EMAIL = f"%s_membre@accorderie.ca"
 CACHE_FILE = os.path.join(os.path.dirname(__file__), ".cache")
 
@@ -51,7 +52,7 @@ def post_init_hook(cr, e):
     migration.migrate_muk_dms()
 
     # Create user
-    # migration.migrate_member()
+    migration.migrate_member()
 
     # Create HR
     # TODO à changer
@@ -137,7 +138,7 @@ class MigrationAccorderie:
         self.dct_employee = {}
         self.dct_fsm_employee = {}
 
-        self._fill_cache_obj()
+        # self._fill_cache_obj()
 
         self.dct_tbl = self._fill_tbl()
 
@@ -200,6 +201,7 @@ class MigrationAccorderie:
         db_file.close()
 
     def _update_cache_obj(self):
+        return
         """Write cache"""
         # database
         db = {}
@@ -919,6 +921,8 @@ class MigrationAccorderie:
         # _logger.info(dct_debug_login)
         # _logger.info("email")
         # _logger.info(dct_debug_email)
+        nb_membre = 0
+        nb_admin = 0
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
@@ -932,8 +936,15 @@ class MigrationAccorderie:
                     i += 1
                     pos_id = f"{i}/{len(self.dct_tbl.tbl_membre)}"
 
+                    email = membre.Courriel.lower().strip()
+
                     if DEBUG_LIMIT and i > LIMIT:
-                        break
+                        # except for FORCE_ADD_USER_EMAIL
+                        if FORCE_ADD_USER_EMAIL:
+                            if FORCE_ADD_USER_EMAIL != email:
+                                continue
+                        else:
+                            break
 
                     login = membre.NomUtilisateur
                     # Get the name in 1 field
@@ -969,7 +980,6 @@ class MigrationAccorderie:
                         self.lst_warning.append(msg)
                         continue
 
-                    email = membre.Courriel.lower().strip()
                     if not email:
                         if login in dct_debug_login.keys():
                             # TODO Need to merge it
@@ -1033,6 +1043,9 @@ class MigrationAccorderie:
                     #     continue
 
                     company_id = self.dct_accorderie.get(membre.NoAccorderie)
+                    accorderie_accorderie_id = (
+                        self.dct_accorderie_accorderie.get(membre.NoAccorderie)
+                    )
                     city_name = self._get_ville(membre.NoVille)
 
                     value = {
@@ -1067,13 +1080,40 @@ class MigrationAccorderie:
                     #     _logger.error(e)
                     #     continue
 
+                    permission = self._get_permission_no_membre(
+                        membre.NoMembre
+                    )
+
+                    is_internal_member = permission and (
+                        permission.GestionProfil
+                        or permission.GestionCatSousCat
+                        or permission.GestionOffre
+                        or permission.GestionOffreMembre
+                        or permission.SaisieEchange
+                        or permission.Validation
+                        or permission.GestionDmd
+                        or permission.GroupeAchat
+                        or permission.ConsulterProfil
+                        or permission.ConsulterEtatCompte
+                        or permission.GestionFichier
+                    )
+                    if is_internal_member:
+                        nb_admin += 1
+                    else:
+                        nb_membre += 1
+                    groups_id = (
+                        [(4, env.ref("base.group_user").id)]
+                        if is_internal_member
+                        else [(6, 0, [env.ref("base.group_portal").id])]
+                    )
+
                     value = {
                         "name": name,
                         "active": membre.MembreActif == 0,
                         "login": email,
                         "password": membre.MotDePasseRaw,
                         "email": email,
-                        "groups_id": [(4, env.ref("base.group_user").id)],
+                        "groups_id": groups_id,
                         "company_id": company_id.id,
                         "company_ids": [(4, company_id.id)],
                         "partner_id": obj_partner.id,
@@ -1096,52 +1136,76 @@ class MigrationAccorderie:
                     #     continue
 
                     dct_membre[membre.NoMembre] = obj_user
+                    type_member = "admin" if is_internal_member else "member"
                     _logger.info(
-                        f"{pos_id} - res.users - tbl_membre - ADDED '{name}'"
-                        f" login '{login}' email '{email}' id"
+                        f"{pos_id} - res.users - tbl_membre - '{type_member}'"
+                        f" - ADDED '{name}' login '{login}' email '{email}' id"
                         f" {membre.NoMembre}"
                     )
 
-                    # Create employee
-                    value = {
-                        "user_id": obj_user.id,
+                    value_accorderie = {
+                        "partner_id": obj_partner.id,
+                        "accorderie": accorderie_accorderie_id.id,
+                        "region": 1,
+                        "ville": 1,
                     }
-
-                    obj_employee = env["hr.employee"].create(value)
-                    # try:
-                    #     obj_employee = env["hr.employee"].create(value)
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
-                    dct_employee[membre.NoMembre] = obj_employee
+                    obj_accorderie_membre = env["accorderie.membre"].create(
+                        value_accorderie
+                    )
                     _logger.info(
-                        f"{pos_id} - hr.employee - tbl_echange_service -"
-                        f" ADDED '{name}' id {membre.NoMembre}"
+                        f"{pos_id} - accorderie.membre - tbl_membre - '{type_member}'"
+                        f" - ADDED '{name}' login '{login}' email '{email}' id"
+                        f" {membre.NoMembre}"
                     )
 
-                    value = {
-                        "partner_id": obj_user.partner_id.id,
-                    }
+                    # # Create employee
+                    # value = {
+                    #     "user_id": obj_user.id,
+                    # }
+                    #
+                    # obj_employee = env["hr.employee"].create(value)
+                    # # try:
+                    # #     obj_employee = env["hr.employee"].create(value)
+                    # # except Exception as e:
+                    # #     self.lst_error.append(e)
+                    # #     _logger.error(e)
+                    # #     continue
+                    # dct_employee[membre.NoMembre] = obj_employee
+                    # _logger.info(
+                    #     f"{pos_id} - hr.employee - tbl_echange_service -"
+                    #     f" ADDED '{name}' id {membre.NoMembre}"
+                    # )
+                    #
+                    # value = {
+                    #     "partner_id": obj_user.partner_id.id,
+                    # }
+                    #
+                    # # Create fsm employee
+                    # obj_fsm_employee = env["fsm.person"].create(value)
+                    # # try:
+                    # #     obj_fsm_employee = env["fsm.person"].create(value)
+                    # # except Exception as e:
+                    # #     self.lst_error.append(e)
+                    # #     _logger.error(e)
+                    # #     continue
+                    # dct_fsm_employee[membre.NoMembre] = obj_fsm_employee
+                    # _logger.info(
+                    #     f"{pos_id} - fsm.person - tbl_demande_service -"
+                    #     f" ADDED '{name}' id {membre.NoMembre}"
+                    # )
 
-                    # Create fsm employee
-                    obj_fsm_employee = env["fsm.person"].create(value)
-                    # try:
-                    #     obj_fsm_employee = env["fsm.person"].create(value)
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
-                    dct_fsm_employee[membre.NoMembre] = obj_fsm_employee
-                    _logger.info(
-                        f"{pos_id} - fsm.person - tbl_demande_service -"
-                        f" ADDED '{name}' id {membre.NoMembre}"
-                    )
-
-                self.dct_employee = dct_employee
-                self.dct_fsm_employee = dct_fsm_employee
+                # self.dct_employee = dct_employee
+                # self.dct_fsm_employee = dct_fsm_employee
                 self.dct_membre = dct_membre
                 self._update_cache_obj()
+                _logger.info(f"Stat: {nb_admin} admin and {nb_membre} membre.")
+
+    def _get_permission_no_membre(self, no_membre):
+        tpl_access = [
+            a for a in self.dct_tbl.tbl_droits_admin if a.NoMembre == no_membre
+        ]
+        if tpl_access:
+            return tpl_access[0]
 
     def migrate_skills(self):
         """

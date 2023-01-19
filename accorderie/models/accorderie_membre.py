@@ -78,6 +78,8 @@ class AccorderieMembre(models.Model):
 
     est_un_point_service = fields.Boolean(string="Est un point de service")
 
+    logo = fields.Binary(help="Logo du membre")
+
     membre_ca = fields.Boolean(string="Membre du CA")
 
     membre_conjoint = fields.Boolean(string="A un membre conjoint")

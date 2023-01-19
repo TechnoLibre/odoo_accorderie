@@ -25,9 +25,9 @@ Be sure .cache is deleted before installed.
         # "hr",
         "partner_fax",
         "website",
-        "website_livechat",
-        "im_livechat",
-        "muk_web_theme",
+        # "website_livechat",
+        # "im_livechat",
+        # "muk_web_theme",
         # Document
         "muk_dms",
         "muk_dms_mail",
