@@ -24,13 +24,13 @@ class AccorderieMembre(models.Model):
         readonly=False,
     )
 
-    code_postal = fields.Char(
+    codepostal = fields.Char(
         related="partner_id.zip",
         readonly=False,
     )
 
     logo = fields.Binary(
-        related="partner_id.logo",
+        related="partner_id.image",
         readonly=False,
     )
 

@@ -124,6 +124,7 @@ class MigrationAccorderie:
 
         self.dct_accorderie = {}
         self.dct_accorderie_accorderie = {}
+        self.dct_accorderie_point_service = {}
         # self.dct_accorderie_by_email = {}
         self.dct_pointservice = {}
         self.dct_fichier = {}
@@ -581,7 +582,7 @@ class MigrationAccorderie:
                             pointservice.NoAccorderie
                         )
                     )
-                    obj_acc = env["accorderie.point.service"].create(
+                    obj_ps = env["accorderie.point.service"].create(
                         {
                             "company_id": obj.id,
                             "accorderie": accorderie_accorderie_obj.id,
@@ -604,7 +605,7 @@ class MigrationAccorderie:
                         "message_type": "comment",
                         "author_id": env.ref("base.partner_root").id,
                         "model": "accorderie.point.service",
-                        "res_id": obj_acc.id,
+                        "res_id": obj_ps.id,
                     }
                     env["mail.message"].create(comment_value)
 
@@ -656,6 +657,9 @@ class MigrationAccorderie:
                     #           f"DUPLICATED '{name}' id {pointservice.NoPointService} "
                     #           f"obj_id {obj.id}")
                     self.dct_pointservice[pointservice.NoPointService] = obj
+                    self.dct_accorderie_point_service[
+                        pointservice.NoPointService
+                    ] = obj_ps
 
         if is_updated:
             self._update_cache_obj()
@@ -941,7 +945,7 @@ class MigrationAccorderie:
                     if DEBUG_LIMIT and i > LIMIT:
                         # except for FORCE_ADD_USER_EMAIL
                         if FORCE_ADD_USER_EMAIL:
-                            if FORCE_ADD_USER_EMAIL != email:
+                            if FORCE_ADD_USER_EMAIL.lower() != email:
                                 continue
                         else:
                             break
@@ -1046,6 +1050,14 @@ class MigrationAccorderie:
                     accorderie_accorderie_id = (
                         self.dct_accorderie_accorderie.get(membre.NoAccorderie)
                     )
+                    accorderie_point_service_id = (
+                        self.dct_accorderie_point_service.get(
+                            membre.NoPointService
+                        )
+                    )
+                    accorderie_accorderie_transfer_de_id = (
+                        self.dct_accorderie_accorderie.get(membre.TransfereDe)
+                    )
                     city_name = self._get_ville(membre.NoVille)
 
                     value = {
@@ -1143,20 +1155,105 @@ class MigrationAccorderie:
                         f" {membre.NoMembre}"
                     )
 
+                    # related: nom, active, adresse, codepostal, logo, telephone1, courriel
                     value_accorderie = {
                         "partner_id": obj_partner.id,
                         "accorderie": accorderie_accorderie_id.id,
+                        "point_service": accorderie_point_service_id.id,
+                        # "type_communication": membre.NoTypeCommunication,
+                        # "occupation": membre.NoOccupation,
+                        # "origine": membre.NoOrigine,
+                        # "situation_maison": membre.NoSituationMaison,
+                        # "provenance": membre.NoProvenance,
+                        # "revenu_familial": membre.NoRevenuFamilial,
+                        # "arrondissement": membre.NoArrondissement,
+                        # "ville": membre.NoVille,
+                        # "region": membre.NoRegion,
+                        "membre_ca": membre.MembreCA,
+                        "part_social_paye": membre.PartSocialPaye,
+                        "date_adhesion": membre.DateAdhesion,
+                        "prenom": membre.Prenom,
+                        # "adresse": membre.Adresse,
+                        # "telephone_1": membre.Telephone1,
+                        "telephone_poste_1": membre.PosteTel1,
+                        "telephone_type_1": membre.NoTypeTel1,
+                        "telephone_2": membre.Telephone2,
+                        "telephone_poste_2": membre.PosteTel2,
+                        "telephone_type_2": membre.NoTypeTel2,
+                        "telephone_3": membre.Telephone3,
+                        "telephone_poste_3": membre.PosteTel3,
+                        "telephone_type_3": membre.NoTypeTel3,
+                        "achat_regrouper": membre.AchatRegrouper,
+                        "pret_actif": membre.PretActif,
+                        "bottin_tel": membre.BottinTel,
+                        "bottin_courriel": membre.BottinCourriel,
+                        "membre_conjoint": membre.MembreConjoint,
+                        "membre_conjoint_id": membre.MembreConjoint,
+                        # "memo": membre.Memo,
+                        # "sexe": membre.Sexe,
+                        "annee_naissance": membre.AnneeNaissance,
+                        "nom_utilisateur": membre.NomUtilisateur,
+                        "profil_approuver": membre.ProfilApprouver,
+                        "membre_principal": membre.MembrePrinc,
+                        "recevoir_courriel_groupe": membre.RecevoirCourrielGRP,
+                        "pas_communication": membre.PasCommunication,
+                        "description_membre": membre.DescriptionAccordeur,
                         "region": 1,
                         "ville": 1,
                     }
+                    if accorderie_accorderie_transfer_de_id:
+                        value[
+                            "transfert_accorderie"
+                        ] = accorderie_accorderie_transfer_de_id.id
+
                     obj_accorderie_membre = env["accorderie.membre"].create(
                         value_accorderie
                     )
                     _logger.info(
-                        f"{pos_id} - accorderie.membre - tbl_membre - '{type_member}'"
-                        f" - ADDED '{name}' login '{login}' email '{email}' id"
-                        f" {membre.NoMembre}"
+                        f"{pos_id} - accorderie.membre - tbl_membre -"
+                        f" '{type_member}' - ADDED '{name}' login '{login}'"
+                        f" email '{email}' id {obj_accorderie_membre.id}"
                     )
+
+                    # Add migration message
+                    comment_message = (
+                        "<b>Note de migration</b><br/>Dernière mise à"
+                        f" jour : {membre.Date_MAJ_Membre}"
+                    )
+
+                    comment_value = {
+                        "subject": (
+                            "Note de migration - Plateforme Espace Membre"
+                        ),
+                        "body": f"<p>{comment_message}</p>",
+                        "parent_id": False,
+                        "message_type": "comment",
+                        "author_id": env.ref("base.partner_root").id,
+                        "model": "accorderie.membre",
+                        "res_id": obj_accorderie_membre.id,
+                    }
+                    env["mail.message"].create(comment_value)
+
+                    # Add memo message
+                    if membre.Memo:
+                        html_memo = membre.Memo.replace("\n", "<br/>")
+                        comment_message = (
+                            f"<b>Mémo avant migration</b><br/>{html_memo}"
+                        )
+
+                        comment_value = {
+                            "subject": (
+                                "Mémo avant migration - Plateforme Espace"
+                                " Membre"
+                            ),
+                            "body": f"<p>{comment_message}</p>",
+                            "parent_id": False,
+                            "message_type": "comment",
+                            "author_id": env.ref("base.partner_root").id,
+                            "model": "accorderie.membre",
+                            "res_id": obj_accorderie_membre.id,
+                        }
+                        env["mail.message"].create(comment_value)
 
                     # # Create employee
                     # value = {
