@@ -113,14 +113,6 @@
     />
 
     <menuitem
-        id="droits_administratifs"
-        name="Droits administratifs"
-        action="accorderie_droits_admin_droits_administratifs_action_window"
-        sequence="6"
-        parent="group_configuration"
-    />
-
-    <menuitem
         id="echange_de_services"
         name="&#201;change de services"
         action="accorderie_echange_service_echange_de_services_action_window"
@@ -224,14 +216,6 @@
         action="accorderie_type_communication_type_de_communications_action_window"
         sequence="19"
         parent="group_statistique"
-    />
-
-    <menuitem
-        id="type_de_comptes_membre"
-        name="Type de comptes membre"
-        action="accorderie_type_compte_type_de_comptes_membre_action_window"
-        sequence="20"
-        parent="group_configuration"
     />
 
     <menuitem

@@ -13,8 +13,6 @@ accorderie_demande_adhesion_access_user_types_/_internal_user,accorderie_demande
 accorderie_demande_adhesion_access_user_types_/_portal,accorderie_demande_adhesion Access User types / Portal,model_accorderie_demande_adhesion,base.group_portal,1,1,1,1
 accorderie_demande_service_access_user_types_/_internal_user,accorderie_demande_service Access User types / Internal User,model_accorderie_demande_service,base.group_user,1,1,1,1
 accorderie_demande_service_access_user_types_/_portal,accorderie_demande_service Access User types / Portal,model_accorderie_demande_service,base.group_portal,1,1,1,1
-accorderie_droits_admin_access_user_types_/_internal_user,accorderie_droits_admin Access User types / Internal User,model_accorderie_droits_admin,base.group_user,1,1,1,1
-accorderie_droits_admin_access_user_types_/_portal,accorderie_droits_admin Access User types / Portal,model_accorderie_droits_admin,base.group_portal,1,1,1,1
 accorderie_echange_service_access_user_types_/_internal_user,accorderie_echange_service Access User types / Internal User,model_accorderie_echange_service,base.group_user,1,1,1,1
 accorderie_echange_service_access_user_types_/_portal,accorderie_echange_service Access User types / Portal,model_accorderie_echange_service,base.group_portal,1,1,1,1
 accorderie_echange_service_notification_access_user_types_/_internal_user,accorderie_echange_service_notification Access User types / Internal User,model_accorderie_echange_service_notification,base.group_user,1,1,1,1
@@ -43,8 +41,6 @@ accorderie_situation_maison_access_user_types_/_internal_user,accorderie_situati
 accorderie_situation_maison_access_user_types_/_portal,accorderie_situation_maison Access User types / Portal,model_accorderie_situation_maison,base.group_portal,1,1,1,1
 accorderie_type_communication_access_user_types_/_internal_user,accorderie_type_communication Access User types / Internal User,model_accorderie_type_communication,base.group_user,1,1,1,1
 accorderie_type_communication_access_user_types_/_portal,accorderie_type_communication Access User types / Portal,model_accorderie_type_communication,base.group_portal,1,1,1,1
-accorderie_type_compte_access_user_types_/_internal_user,accorderie_type_compte Access User types / Internal User,model_accorderie_type_compte,base.group_user,1,1,1,1
-accorderie_type_compte_access_user_types_/_portal,accorderie_type_compte Access User types / Portal,model_accorderie_type_compte,base.group_portal,1,1,1,1
 accorderie_type_service_access_user_types_/_internal_user,accorderie_type_service Access User types / Internal User,model_accorderie_type_service,base.group_user,1,1,1,1
 accorderie_type_service_access_user_types_/_portal,accorderie_type_service Access User types / Portal,model_accorderie_type_service,base.group_portal,1,1,1,1
 accorderie_type_service_categorie_access_user_types_/_internal_user,accorderie_type_service_categorie Access User types / Internal User,model_accorderie_type_service_categorie,base.group_user,1,1,1,1
