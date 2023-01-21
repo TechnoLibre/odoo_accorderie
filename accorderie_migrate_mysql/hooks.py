@@ -54,16 +54,11 @@ def post_init_hook(cr, e):
     # Create user
     migration.migrate_member()
 
-    # Create HR
-    # TODO à changer
-    # migration.migrate_skills()
-
     # Create fournisseur
     # migration.migrate_fournisseur()
 
     # Create demande service
-    # TODO à changer
-    # migration.migration_demande_service()
+    migration.migration_demande_service()
 
     # Create offre service
     # TODO à changer
@@ -1304,150 +1299,6 @@ class MigrationAccorderie:
         if tpl_access:
             return tpl_access[0]
 
-    def migrate_skills(self):
-        """
-        :return:
-        """
-        _logger.info("Migrate skills")
-
-        with api.Environment.manage():
-            env = api.Environment(self.cr, SUPERUSER_ID, {})
-            if not self.dct_categorie_sous_categorie:
-                dct_categorie = {}
-                dct_sous_categorie = {}
-                dct_categorie_sous_categorie = {}
-
-                i = 0
-                for categorie in self.dct_tbl.tbl_categorie:
-                    i += 1
-                    pos_id = f"{i}/{len(self.dct_tbl.tbl_categorie)}"
-
-                    if DEBUG_LIMIT and i > LIMIT:
-                        break
-
-                    name = categorie.TitreCategorie
-                    value = {
-                        "name": name,
-                        "active": categorie.Supprimer == 0,
-                    }
-
-                    categorie_id = env["hr.skill"].create(value)
-                    # try:
-                    #     categorie_id = env["hr.skill"].create(value)
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
-                    dct_categorie[categorie.NoCategorie] = categorie_id
-                    _logger.info(
-                        f"{pos_id} - hr.skill - tbl_categorie - ADDED '{name}'"
-                        f" id {categorie.NoCategorie}"
-                    )
-
-                i = 0
-                for categorie in self.dct_tbl.tbl_sous_categorie:
-                    i += 1
-                    pos_id = f"{i}/{len(self.dct_tbl.tbl_sous_categorie)}"
-
-                    if DEBUG_LIMIT and i > LIMIT:
-                        break
-
-                    pre_name = (
-                        f"{categorie.NoSousCategorie}-{categorie.NoCategorie}"
-                    )
-                    name = f"{pre_name} - {categorie.TitreSousCategorie}"
-                    parent_id = dct_categorie.get(categorie.NoCategorie)
-
-                    if parent_id:
-                        value = {
-                            "name": name,
-                            "parent_id": parent_id.id,
-                            "active": categorie.Supprimer == 0,
-                        }
-                    else:
-                        msg = (
-                            "Missing categorie with no"
-                            f" {categorie.NoCategorie}"
-                        )
-                        self.lst_error.append(msg)
-                        _logger.error(msg)
-                        continue
-
-                    categorie_id = env["hr.skill"].create(value)
-                    # try:
-                    #     categorie_id = env["hr.skill"].create(value)
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
-                    dct_sous_categorie[pre_name] = categorie_id
-                    _logger.info(
-                        f"{pos_id} - hr.skill - tbl_sous_categorie - ADDED"
-                        f" '{name}' id {categorie.NoCategorie}"
-                    )
-
-                i = 0
-                for categorie in self.dct_tbl.tbl_categorie_sous_categorie:
-                    i += 1
-                    pos_id = (
-                        f"{i}/{len(self.dct_tbl.tbl_categorie_sous_categorie)}"
-                    )
-
-                    if DEBUG_LIMIT and i > LIMIT:
-                        break
-
-                    if categorie.NoOffre > 900:
-                        _logger.info(
-                            f"{pos_id} - hr.skill -"
-                            " tbl_categorie_sous_categorie - SKIPPED result"
-                            f" '{categorie.NoOffre}' because > 900 and id"
-                            f" {categorie.NoCategorieSousCategorie}"
-                        )
-                        continue
-
-                    pre_name = (
-                        f"{categorie.NoSousCategorie}-{categorie.NoCategorie}"
-                    )
-                    name = (
-                        f"{pre_name}-{categorie.NoOffre} -"
-                        f" {categorie.TitreOffre}"
-                    )
-
-                    parent_id = dct_sous_categorie.get(pre_name)
-
-                    if parent_id:
-                        value = {
-                            "name": name,
-                            "parent_id": parent_id.id,
-                            "active": categorie.Supprimer == 0,
-                            "description": categorie.Description.strip(),
-                        }
-                    else:
-                        msg = f"Missing sous categorie with name {pre_name}"
-                        self.lst_error.append(msg)
-                        _logger.error(msg)
-                        continue
-
-                    categorie_id = env["hr.skill"].create(value)
-                    # try:
-                    #     categorie_id = env["hr.skill"].create(value)
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
-                    dct_categorie_sous_categorie[
-                        categorie.NoCategorieSousCategorie
-                    ] = categorie_id
-                    _logger.info(
-                        f"{pos_id} - hr.skill - tbl_categorie_sous_categorie -"
-                        f" ADDED '{name}' id {categorie.NoCategorie}"
-                    )
-
-                self.dct_categorie_sous_categorie = (
-                    dct_categorie_sous_categorie
-                )
-                self._update_cache_obj()
-
     def migrate_fournisseur(self):
         """
         :return:
@@ -1579,25 +1430,6 @@ class MigrationAccorderie:
             if not self.dct_demande_service:
                 dct_demande_service = {}
 
-                # Create stage and move New
-                obj_stage_new = env["helpdesk.ticket.stage"].browse(1)
-                obj_stage_new.sequence = 0
-
-                value = {
-                    "name": "Approuvé",
-                    "sequence": 1,
-                }
-
-                obj_stage_accept = env["helpdesk.ticket.stage"].create(value)
-                # try:
-                #     obj_stage_accept = env["helpdesk.ticket.stage"].create(
-                #         value
-                #     )
-                # except Exception as e:
-                #     self.lst_error.append(e)
-                #     _logger.error(e)
-                #     return
-
                 i = 0
                 for demande_service in self.dct_tbl.tbl_demande_service:
                     i += 1
@@ -1608,37 +1440,37 @@ class MigrationAccorderie:
 
                     name = demande_service.TitreDemande
 
-                    accorderie_obj = self.dct_accorderie.get(
+                    accorderie_obj = self.dct_accorderie_accorderie.get(
                         demande_service.NoAccorderie
                     )
 
                     membre_obj = self.dct_membre.get(demande_service.NoMembre)
 
                     value = {
-                        "name": name,
+                        "titre": name,
                         "description": demande_service.Description,
-                        "company_id": accorderie_obj.id,
+                        "accorderie": accorderie_obj.id,
                         "active": demande_service.Supprimer == -1,
-                        "stage_id": obj_stage_accept.id
-                        if demande_service.Approuve == -1
-                        else obj_stage_new.id,
+                        "approuver": demande_service.Approuve == -1,
+                        "date_debut": demande_service.DateDebut,
+                        "date_fin": demande_service.DateFin,
                     }
 
                     if membre_obj:
-                        value["partner_id"] = membre_obj.partner_id.id
+                        value["membre"] = membre_obj.id
+                    else:
+                        _logger.warning(
+                            f"{pos_id} - accorderie.demande.service -"
+                            " tbl_demande_service - missing membre no"
+                            f" '{demande_service.NoMembre}'"
+                        )
 
-                    obj = env["helpdesk.ticket"].create(value)
-                    # try:
-                    #     obj = env["helpdesk.ticket"].create(value)
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
+                    obj = env["accorderie.demande.service"].create(value)
 
                     dct_demande_service[demande_service.NoDemandeService] = obj
                     _logger.info(
-                        f"{pos_id} - helpdesk.ticket - tbl_demande_service -"
-                        f" ADDED '{name}' id"
+                        f"{pos_id} - accorderie.demande.service -"
+                        f" tbl_demande_service - ADDED '{name}' id"
                         f" {demande_service.NoDemandeService}"
                     )
 
