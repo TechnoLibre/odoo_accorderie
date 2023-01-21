@@ -7,6 +7,7 @@ import os
 
 # from odoo.exceptions import ValidationError
 import pickle
+from datetime import datetime
 
 from odoo import SUPERUSER_ID, _, api
 
@@ -30,6 +31,7 @@ LIMIT = 200
 FORCE_ADD_USER_EMAIL = ""
 GENERIC_EMAIL = f"%s_membre@accorderie.ca"
 CACHE_FILE = os.path.join(os.path.dirname(__file__), ".cache")
+ENABLE_TIER_VALIDATION = True
 
 
 def post_init_hook(cr, e):
@@ -494,7 +496,7 @@ class MigrationAccorderie:
                             "body": f"<p>{comment_message}</p>",
                             "parent_id": False,
                             "message_type": "comment",
-                            "author_id": env.ref("base.partner_root").id,
+                            "author_id": SUPERUSER_ID,
                             "model": "accorderie.accorderie",
                             "res_id": obj_acc.id,
                         }
@@ -598,7 +600,7 @@ class MigrationAccorderie:
                         "body": f"<p>{comment_message}</p>",
                         "parent_id": False,
                         "message_type": "comment",
-                        "author_id": env.ref("base.partner_root").id,
+                        "author_id": SUPERUSER_ID,
                         "model": "accorderie.point.service",
                         "res_id": obj_ps.id,
                     }
@@ -1361,7 +1363,7 @@ class MigrationAccorderie:
                         "body": f"<p>{comment_message}</p>",
                         "parent_id": False,
                         "message_type": "comment",
-                        "author_id": env.ref("base.partner_root").id,
+                        "author_id": SUPERUSER_ID,
                         "model": "accorderie.membre",
                         "res_id": obj_accorderie_membre.id,
                     }
@@ -1382,7 +1384,7 @@ class MigrationAccorderie:
                             "body": f"<p>{comment_message}</p>",
                             "parent_id": False,
                             "message_type": "comment",
-                            "author_id": env.ref("base.partner_root").id,
+                            "author_id": SUPERUSER_ID,
                             "model": "accorderie.membre",
                             "res_id": obj_accorderie_membre.id,
                         }
@@ -1598,11 +1600,13 @@ class MigrationAccorderie:
                         "titre": name,
                         "description": demande_service.Description,
                         "accorderie": accorderie_obj.id,
-                        "active": demande_service.Supprimer == -1,
-                        "approuver": demande_service.Approuve == -1,
+                        # "active": demande_service.Supprimer == 0,
+                        # "approuver": demande_service.Approuve == -1,
                         "date_debut": demande_service.DateDebut,
                         "date_fin": demande_service.DateFin,
                     }
+                    if not ENABLE_TIER_VALIDATION:
+                        value["active"] = demande_service.Supprimer == 0
 
                     if membre_obj:
                         value["membre"] = membre_obj.id
@@ -1621,6 +1625,47 @@ class MigrationAccorderie:
                         f" tbl_demande_service - ADDED '{name}' id"
                         f" {demande_service.NoDemandeService}"
                     )
+
+                    if ENABLE_TIER_VALIDATION:
+                        if demande_service.Approuve == -1:
+                            # approuvé
+                            val_tier_review = {
+                                "status": "approved",
+                                "model": "accorderie.demande.service",
+                                "res_id": obj.id,
+                                "definition_id": env.ref(
+                                    "accorderie_approbation.accorderie_demande_service_tier_definition"
+                                ).id,
+                                "sequence": 1,
+                                "todo_by": "Migration bot",
+                                "done_by": SUPERUSER_ID,
+                                "requested_by": SUPERUSER_ID,
+                                "reviewed_date": datetime.now(),
+                                "comment": "Validé avant migration",
+                                "create_uid": SUPERUSER_ID,
+                                "write_uid": SUPERUSER_ID,
+                            }
+                            env["tier.review"].create(val_tier_review)
+                        else:
+                            # ask review
+                            val_tier_review = {
+                                "status": "pending",
+                                "model": "accorderie.demande.service",
+                                "res_id": obj.id,
+                                "definition_id": env.ref(
+                                    "accorderie_approbation.accorderie_demande_service_tier_definition"
+                                ).id,
+                                "sequence": 1,
+                                "todo_by": "Migration bot",
+                                "requested_by": SUPERUSER_ID,
+                                "comment": "Non validé avant migration",
+                                "create_uid": SUPERUSER_ID,
+                                "write_uid": SUPERUSER_ID,
+                            }
+                            env["tier.review"].create(val_tier_review)
+
+                        # Change active after review, or cause bug because review is ignore
+                        obj.write({"active": demande_service.Supprimer == 0})
 
                 self.dct_demande_service = dct_demande_service
                 self._update_cache_obj()

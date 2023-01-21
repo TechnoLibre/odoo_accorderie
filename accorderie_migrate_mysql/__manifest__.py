@@ -41,6 +41,7 @@ Be sure .cache is deleted before installed.
         # "hr_timesheet",
         "accorderie",
         "accorderie_prod",
+        "accorderie_approbation",
     ],
     "external_dependencies": {
         "python": [
