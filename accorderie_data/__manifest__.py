@@ -19,7 +19,6 @@
         "data/accorderie_revenu_familial.xml",
         "data/accorderie_situation_maison.xml",
         "data/accorderie_type_communication.xml",
-        "data/accorderie_type_fichier.xml",
         "data/accorderie_type_service_categorie.xml",
         "data/accorderie_type_service_sous_categorie.xml",
         "data/accorderie_type_service.xml",

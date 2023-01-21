@@ -129,14 +129,6 @@
     />
 
     <menuitem
-        id="fichier"
-        name="Fichier"
-        action="accorderie_fichier_fichier_action_window"
-        sequence="8"
-        parent="group_document"
-    />
-
-    <menuitem
         id="membre"
         name="Membre"
         action="accorderie_membre_membre_action_window"
@@ -240,14 +232,6 @@
         action="accorderie_type_compte_type_de_comptes_membre_action_window"
         sequence="20"
         parent="group_configuration"
-    />
-
-    <menuitem
-        id="type_de_fichiers"
-        name="Type de fichiers"
-        action="accorderie_type_fichier_type_de_fichiers_action_window"
-        sequence="21"
-        parent="group_document"
     />
 
     <menuitem
