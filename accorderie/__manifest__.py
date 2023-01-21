@@ -8,6 +8,7 @@
     "depends": ["mail"],
     "data": [
         "security/ir.model.access.csv",
+        "security/accorderie.xml",
         "views/accorderie_accorderie.xml",
         "views/accorderie_arrondissement.xml",
         "views/accorderie_commentaire.xml",

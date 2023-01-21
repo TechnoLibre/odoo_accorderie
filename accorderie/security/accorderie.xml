@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.module.category" id="module_accorderie_category">
+        <field name="name">Accorderie</field>
+        <field name="description">Manage Rights for Accorderie.</field>
+    </record>
+
+    <record id="group_accorderie_gestion_membre" model="res.groups">
+        <!-- GestionProfil -->
+        <field name="name">Accorderie gestion membre</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_gestion_type_service" model="res.groups">
+        <!-- GestionCatSousCat -->
+        <field name="name">Accorderie gestion type de service</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_gestion_offre_de_service" model="res.groups">
+        <!-- GestionOffre -->
+        <field name="name">Accorderie gestion offre de service</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_gestion_demande_de_service" model="res.groups">
+        <!-- GestionDmd -->
+        <field name="name">Accorderie gestion demande de service</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_gestion_achat" model="res.groups">
+        <!-- GroupeAchat -->
+        <field name="name">Accorderie gestion achat</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_gestion_echange" model="res.groups">
+        <!-- SaisieEchange -->
+        <field name="name">Accorderie gestion echange</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_gestion_fichier" model="res.groups">
+        <!-- GestionFichier -->
+        <field name="name">Accorderie gestion fichier</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_consulter_etat_accorderie" model="res.groups">
+        <!-- ConsulterEtatCompte -->
+        <field name="name">Accorderie consulter état Accorderie</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_consulter_membre" model="res.groups">
+        <!-- ConsulterProfil -->
+        <field name="name">Accorderie consulter membre</field>
+        <field name="category_id" ref="module_accorderie_category" />
+    </record>
+
+    <record id="group_accorderie_admin" model="res.groups">
+        <field name="name">Accorderie admin</field>
+        <field name="category_id" ref="module_accorderie_category" />
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+
+    <record id="group_accorderie_admin_chef" model="res.groups">
+        <field name="name">Accorderie admin chef</field>
+        <field name="category_id" ref="module_accorderie_category" />
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+        <field
+            name="implied_ids"
+            eval="[
+            (4, ref('group_accorderie_gestion_membre')),
+            (4, ref('group_accorderie_gestion_type_service')),
+            (4, ref('group_accorderie_gestion_offre_de_service')),
+            (4, ref('group_accorderie_gestion_demande_de_service')),
+            (4, ref('group_accorderie_gestion_achat')),
+            (4, ref('group_accorderie_gestion_echange')),
+            (4, ref('group_accorderie_gestion_fichier')),
+            (4, ref('group_accorderie_consulter_etat_accorderie')),
+            (4, ref('group_accorderie_consulter_membre'))
+            ]"
+        />
+    </record>
+
+    <record id="group_accorderie_admin_reseau" model="res.groups">
+        <field name="name">Accorderie admin reseau</field>
+        <field name="category_id" ref="module_accorderie_category" />
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+</odoo>

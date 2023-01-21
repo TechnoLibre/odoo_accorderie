@@ -39,6 +39,7 @@ Be sure .cache is deleted before installed.
         # "fieldservice_skill",
         # "helpdesk_mgmt",
         # "hr_timesheet",
+        "accorderie",
         "accorderie_prod",
     ],
     "external_dependencies": {

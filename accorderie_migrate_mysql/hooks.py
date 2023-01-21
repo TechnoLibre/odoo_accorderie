@@ -920,7 +920,8 @@ class MigrationAccorderie:
         # _logger.info(dct_debug_login)
         # _logger.info("email")
         # _logger.info(dct_debug_email)
-        nb_membre = 0
+        nb_membre_int = 0
+        nb_membre_ext = 0
         nb_admin = 0
 
         with api.Environment.manage():
@@ -1091,28 +1092,165 @@ class MigrationAccorderie:
                         membre.NoMembre
                     )
 
-                    is_internal_member = permission and (
-                        permission.GestionProfil
-                        or permission.GestionCatSousCat
-                        or permission.GestionOffre
-                        or permission.GestionOffreMembre
-                        or permission.SaisieEchange
-                        or permission.Validation
-                        or permission.GestionDmd
-                        or permission.GroupeAchat
-                        or permission.ConsulterProfil
-                        or permission.ConsulterEtatCompte
-                        or permission.GestionFichier
+                    type_compte = self._get_type_compte_no_membre(
+                        membre.NoMembre
                     )
+
+                    is_admin = type_compte and (
+                        type_compte.Admin
+                        or type_compte.AdminChef
+                        or type_compte.Reseau
+                    )
+
+                    is_internal_member = (
+                        permission
+                        and (
+                            permission.GestionProfil
+                            or permission.GestionCatSousCat
+                            # not use
+                            # or permission.GestionOffre
+                            or permission.GestionOffreMembre
+                            or permission.SaisieEchange
+                            # not use
+                            # or permission.Validation
+                            or permission.GestionDmd
+                            or permission.GroupeAchat
+                            # not admin permission
+                            or permission.ConsulterProfil
+                            or permission.ConsulterEtatCompte
+                            or permission.GestionFichier
+                        )
+                        or is_admin
+                    )
+
                     if is_internal_member:
-                        nb_admin += 1
+                        if is_admin:
+                            nb_admin += 1
+                        else:
+                            nb_membre_int += 1
                     else:
-                        nb_membre += 1
-                    groups_id = (
-                        [(4, env.ref("base.group_user").id)]
-                        if is_internal_member
-                        else [(6, 0, [env.ref("base.group_portal").id])]
-                    )
+                        nb_membre_ext += 1
+
+                    groups_id = []
+                    if is_internal_member:
+                        groups_id.append((4, env.ref("base.group_user").id))
+                        if is_admin:
+                            if type_compte.Admin:
+                                groups_id.append(
+                                    (
+                                        4,
+                                        env.ref(
+                                            "accorderie.group_accorderie_admin"
+                                        ).id,
+                                    )
+                                )
+                            if type_compte.AdminChef:
+                                groups_id.append(
+                                    (
+                                        4,
+                                        env.ref(
+                                            "accorderie.group_accorderie_admin_chef"
+                                        ).id,
+                                    )
+                                )
+                                groups_id.append(
+                                    (4, env.ref("base.group_erp_manager").id)
+                                )
+                            if type_compte.Reseau:
+                                groups_id.append(
+                                    (
+                                        4,
+                                        env.ref(
+                                            "accorderie.group_accorderie_admin_reseau"
+                                        ).id,
+                                    )
+                                )
+                        if permission.GestionProfil:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_gestion_membre"
+                                    ).id,
+                                )
+                            )
+                        if permission.GestionCatSousCat:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_gestion_type_service"
+                                    ).id,
+                                )
+                            )
+                        if permission.GestionOffreMembre:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_gestion_offre_de_service"
+                                    ).id,
+                                )
+                            )
+                        if permission.GestionDmd:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_gestion_demande_de_service"
+                                    ).id,
+                                )
+                            )
+                        if permission.GroupeAchat:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_gestion_achat"
+                                    ).id,
+                                )
+                            )
+                        if permission.GestionFichier:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_gestion_fichier"
+                                    ).id,
+                                )
+                            )
+                        if permission.SaisieEchange:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_gestion_echange"
+                                    ).id,
+                                )
+                            )
+                        if permission.ConsulterEtatCompte:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_consulter_etat_accorderie"
+                                    ).id,
+                                )
+                            )
+                        if permission.ConsulterProfil:
+                            groups_id.append(
+                                (
+                                    4,
+                                    env.ref(
+                                        "accorderie.group_accorderie_consulter_membre"
+                                    ).id,
+                                )
+                            )
+
+                    else:
+                        groups_id.append(
+                            (6, 0, [env.ref("base.group_portal").id])
+                        )
 
                     value = {
                         "name": name,
@@ -1290,11 +1428,21 @@ class MigrationAccorderie:
                 # self.dct_fsm_employee = dct_fsm_employee
                 self.dct_membre = dct_membre
                 self._update_cache_obj()
-                _logger.info(f"Stat: {nb_admin} admin and {nb_membre} membre.")
+                _logger.info(
+                    f"Stat: {nb_admin} admin and {nb_membre_int} membre"
+                    f" interne and {nb_membre_ext} membre externe."
+                )
 
     def _get_permission_no_membre(self, no_membre):
         tpl_access = [
             a for a in self.dct_tbl.tbl_droits_admin if a.NoMembre == no_membre
+        ]
+        if tpl_access:
+            return tpl_access[0]
+
+    def _get_type_compte_no_membre(self, no_membre):
+        tpl_access = [
+            a for a in self.dct_tbl.tbl_type_compte if a.NoMembre == no_membre
         ]
         if tpl_access:
             return tpl_access[0]
