@@ -136,14 +136,15 @@ class MigrationAccorderie:
         self.dct_employee = {}
         self.dct_fsm_employee = {}
 
-        # self._fill_cache_obj()
-
-        self.dct_tbl = self._fill_tbl()
-
         self.lst_generic_email = []
+        self.lst_used_email = []
 
         self.lst_error = []
         self.lst_warning = []
+
+        # self._fill_cache_obj()
+
+        self.dct_tbl = self._fill_tbl()
 
     def set_head_quarter(self):
         with api.Environment.manage():
@@ -267,7 +268,9 @@ class MigrationAccorderie:
 
         for table, lst_column in dct_tbl.items():
             if table in lst_ignore_table:
-                _logger.warning(f"Skip table '{table}'")
+                msg = f"Skip table '{table}'"
+                _logger.warning(msg)
+                self.lst_warning.append(msg)
                 continue
 
             _logger.info(f"Import in cache table '{table}'")
@@ -946,6 +949,16 @@ class MigrationAccorderie:
                         else:
                             break
 
+                    if membre.EstUnPointService:
+                        msg = (
+                            f"{pos_id} - res.partner - tbl_membre - SKIPPED"
+                            " EST UN POINT DE SERVICE "
+                            f" email '{email}' id {membre.NoMembre}"
+                        )
+                        _logger.warning(msg)
+                        self.lst_warning.append(msg)
+                        continue
+
                     login = membre.NomUtilisateur
                     # Get the name in 1 field
                     if membre.Prenom and membre.Nom:
@@ -968,30 +981,35 @@ class MigrationAccorderie:
                         continue
 
                     # Ignore test user
-                    if ("test" in name or "test" in login) and login not in [
-                        "claudettestlaur"
-                    ]:
-                        msg = (
-                            f"{pos_id} - res.partner - tbl_membre - SKIPPED"
-                            f" TEST LOGIN name '{name}' login '{login}' id"
-                            f" {membre.NoMembre}"
-                        )
-                        _logger.warning(msg)
-                        self.lst_warning.append(msg)
-                        continue
+                    # if ("test" in name or "test" in login) and login not in [
+                    #     "claudettestlaur"
+                    # ]:
+                    #     msg = (
+                    #         f"{pos_id} - res.partner - tbl_membre - SKIPPED"
+                    #         f" TEST LOGIN name '{name}' login '{login}' id"
+                    #         f" {membre.NoMembre}"
+                    #     )
+                    #     _logger.warning(msg)
+                    #     self.lst_warning.append(msg)
+                    #     continue
 
-                    if not email:
-                        if login in dct_debug_login.keys():
-                            # TODO Need to merge it
-                            msg = (
-                                f"{pos_id} - res.partner - tbl_membre -"
-                                f" SKIPPED DUPLICATED LOGIN name '{name}'"
-                                f" login '{login}' email '{email}' id"
-                                f" {membre.NoMembre}"
-                            )
-                            _logger.warning(msg)
-                            self.lst_warning.append(msg)
-                            continue
+                    create_new_email = (
+                        not email or email in self.lst_used_email
+                    )
+
+                    if create_new_email:
+                        # Ignore duplicate login, create a new email
+                        # if login in dct_debug_login.keys():
+                        #     # TODO Need to merge it
+                        #     msg = (
+                        #         f"{pos_id} - res.partner - tbl_membre -"
+                        #         f" SKIPPED DUPLICATED LOGIN name '{name}'"
+                        #         f" login '{login}' email '{email}' id"
+                        #         f" {membre.NoMembre}"
+                        #     )
+                        #     _logger.warning(msg)
+                        #     self.lst_warning.append(msg)
+                        #     continue
                         # Need an email for login, force create it
                         # TODO coder un séquenceur dans Odoo pour la création de courriel générique
                         # email = GENERIC_EMAIL % i
@@ -1007,17 +1025,21 @@ class MigrationAccorderie:
                                 .strip()
                             )
                         self.lst_generic_email.append(email)
-                        _logger.warning(f"Create generic email '{email}'")
-                    elif email in dct_debug_email.keys():
-                        # TODO merge user
-                        msg = (
-                            f"{pos_id} - res.partner - tbl_membre - SKIPPED"
-                            f" DUPLICATED EMAIL name '{name}' login '{login}'"
-                            f" email '{email}' id {membre.NoMembre}"
-                        )
+                        msg = f"Create generic email '{email}'"
                         _logger.warning(msg)
                         self.lst_warning.append(msg)
-                        continue
+                    # elif email in dct_debug_email.keys():
+                    #     # TODO merge user
+                    #     msg = (
+                    #         f"{pos_id} - res.partner - tbl_membre - SKIPPED"
+                    #         f" DUPLICATED EMAIL name '{name}' login '{login}'"
+                    #         f" email '{email}' id {membre.NoMembre}"
+                    #     )
+                    #     _logger.warning(msg)
+                    #     self.lst_warning.append(msg)
+                    #     continue
+
+                    self.lst_used_email.append(email)
 
                     # Show duplicate profile
                     # '\n'.join([str([f"user '{a[44]}'", f"actif '{a[37]}'", f"acc '{a[2]}'", f"id '{a[0]}'", f"mail '{a[29]}'"]) for va in list(dct_debug_login.items())[:15] for a in va[1] if a[37] == -1])
@@ -1252,33 +1274,94 @@ class MigrationAccorderie:
                             (6, 0, [env.ref("base.group_portal").id])
                         )
 
-                    value = {
-                        "name": name,
-                        "active": membre.MembreActif == 0,
-                        "login": email,
-                        "password": membre.MotDePasseRaw,
-                        "email": email,
-                        "groups_id": groups_id,
-                        "company_id": company_id.id,
-                        "company_ids": [(4, company_id.id)],
-                        "partner_id": obj_partner.id,
-                    }
+                    if is_admin:
+                        type_member = "admin"
+                    elif is_internal_member:
+                        type_member = "member interne"
+                    else:
+                        type_member = "member externe"
 
                     if not DISABLE_CREATE_USER:
+                        no_reset_password = True
+                        if not membre.MotDePasseRaw:
+                            msg = (
+                                f"{pos_id} - MISSING PASSWORD, force recreate"
+                                f" it - tbl_membre - '{type_member}' - ADDED"
+                                f" '{name}' login '{login}' email '{email}' id"
+                                f" {membre.NoMembre}"
+                            )
+                            _logger.warning(msg)
+                            self.lst_warning.append(msg)
+                            no_reset_password = False
+                        elif membre.MotDePasseRaw == membre.Courriel:
+                            msg = (
+                                f"{pos_id} - PASSWORD same of email, force"
+                                f" recreate it - tbl_membre - '{type_member}'"
+                                f" - ADDED '{name}' login '{login}' email"
+                                f" '{email}' id {membre.NoMembre}"
+                            )
+                            _logger.warning(msg)
+                            self.lst_warning.append(msg)
+                            no_reset_password = False
+                        elif membre.MotDePasseRaw == membre.NomUtilisateur:
+                            msg = (
+                                f"{pos_id} - PASSWORD same of nom utilisateur,"
+                                " force recreate it - tbl_membre -"
+                                f" '{type_member}' - ADDED '{name}' login"
+                                f" '{login}' email '{email}' id"
+                                f" {membre.NoMembre}"
+                            )
+                            _logger.warning(msg)
+                            self.lst_warning.append(msg)
+                            no_reset_password = False
+                        elif membre.MotDePasseRaw == membre.Nom:
+                            msg = (
+                                f"{pos_id} - PASSWORD same of nom, force"
+                                f" recreate it - tbl_membre - '{type_member}'"
+                                f" - ADDED '{name}' login '{login}' email"
+                                f" '{email}' id {membre.NoMembre}"
+                            )
+                            _logger.warning(msg)
+                            self.lst_warning.append(msg)
+                            no_reset_password = False
+                        elif membre.MotDePasseRaw == membre.Prenom:
+                            msg = (
+                                f"{pos_id} - PASSWORD same of prenom, force"
+                                f" recreate it - tbl_membre - '{type_member}'"
+                                f" - ADDED '{name}' login '{login}' email"
+                                f" '{email}' id {membre.NoMembre}"
+                            )
+                            _logger.warning(msg)
+                            self.lst_warning.append(msg)
+                            no_reset_password = False
+
+                        value = {
+                            "name": name,
+                            "active": membre.MembreActif == 0,
+                            "login": email,
+                            "password": membre.MotDePasseRaw,
+                            "email": email,
+                            "groups_id": groups_id,
+                            "company_id": company_id.id,
+                            "company_ids": [(4, company_id.id)],
+                            "partner_id": obj_partner.id,
+                        }
+
                         obj_user = (
                             env["res.users"]
-                            .with_context({"no_reset_password": True})
+                            .with_context(
+                                {"no_reset_password": no_reset_password}
+                            )
                             .create(value)
                         )
 
                         dct_membre[membre.NoMembre] = obj_user
 
-                    type_member = "admin" if is_admin else "member"
-                    _logger.info(
-                        f"{pos_id} - res.users - tbl_membre - '{type_member}'"
-                        f" - ADDED '{name}' login '{login}' email '{email}' id"
-                        f" {membre.NoMembre}"
-                    )
+                        _logger.info(
+                            f"{pos_id} - res.users - tbl_membre -"
+                            f" '{type_member}' - ADDED '{name}' login"
+                            f" '{login}' email '{email}' id {membre.NoMembre}"
+                        )
 
                     # related: nom, active, adresse, codepostal, logo, telephone1, courriel
                     value_accorderie = {
@@ -1605,11 +1688,13 @@ class MigrationAccorderie:
                     if membre_obj:
                         value["membre"] = membre_obj.id
                     else:
-                        _logger.warning(
+                        msg = (
                             f"{pos_id} - accorderie.demande.service -"
                             " tbl_demande_service - missing membre no"
                             f" '{demande_service.NoMembre}'"
                         )
+                        _logger.warning(msg)
+                        self.lst_warning.append(msg)
 
                     obj = env["accorderie.demande.service"].create(value)
 
@@ -1721,12 +1806,13 @@ class MigrationAccorderie:
                     if membre_obj:
                         value["membre"] = membre_obj.id
                     else:
-                        _logger.warning(
+                        msg = (
                             f"{pos_id} - accorderie.offre.service -"
                             " tbl_offre_service_membre - missing membre no"
                             f" '{offre_service.NoMembre}'"
                         )
-
+                        _logger.warning(msg)
+                        self.lst_warning.append(msg)
                     # skill_id = self.dct_categorie_sous_categorie.get(
                     #     offre_service.NoCategorieSousCategorie
                     # )
@@ -1940,7 +2026,12 @@ class MigrationAccorderie:
             or membre.NoTypeTel2 == 5
             or membre.NoTypeTel3 == 5
         ):
-            _logger.warning("Le pagette n'est pas supporté.")
+            msg = (
+                "Le pagette n'est pas supporté pour le membre"
+                f" {membre.NoMembre}."
+            )
+            _logger.warning(msg)
+            self.lst_warning.append(msg)
 
         # Travail
         if (
@@ -1948,7 +2039,12 @@ class MigrationAccorderie:
             or membre.NoTypeTel2 == 3
             or membre.NoTypeTel3 == 3
         ):
-            _logger.warning("Le téléphone travail n'est pas supporté.")
+            msg = (
+                "Le téléphone travail n'est pas supporté pour le membre"
+                f" {membre.NoMembre}."
+            )
+            _logger.warning(msg)
+            self.lst_warning.append(msg)
 
         # MOBILE
         has_mobile = False
@@ -1960,37 +2056,54 @@ class MigrationAccorderie:
             has_mobile = True
             value["mobile"] = membre.Telephone1.strip()
             if membre.PosteTel1 and membre.PosteTel1.strip():
-                _logger.warning(
-                    "Le numéro de poste du mobile n'est pas supporté."
+                msg = (
+                    "Le numéro de poste du mobile n'est pas supporté pour le"
+                    f" membre {membre.NoMembre}."
                 )
+                _logger.warning(msg)
+                self.lst_warning.append(msg)
         if (
             membre.NoTypeTel2 == 4
             and membre.Telephone2
             and membre.Telephone2.strip()
         ):
             if has_mobile:
-                _logger.warning("Duplicat du cellulaire.")
+                msg = (
+                    f"Duplicat du cellulaire pour le membre {membre.NoMembre}."
+                )
+                _logger.warning(msg)
+                self.lst_warning.append(msg)
             else:
                 has_mobile = True
                 value["mobile"] = membre.Telephone2.strip()
                 if membre.PosteTel2 and membre.PosteTel2.strip():
-                    _logger.warning(
-                        "Le numéro de poste du mobile n'est pas supporté."
+                    msg = (
+                        "Le numéro de poste du mobile n'est pas supporté pour"
+                        f" le membre {membre.NoMembre}."
                     )
+                    _logger.warning(msg)
+                    self.lst_warning.append(msg)
         if (
             membre.NoTypeTel3 == 4
             and membre.Telephone3
             and membre.Telephone3.strip()
         ):
             if has_mobile:
-                _logger.warning("Duplicat du cellulaire.")
+                msg = (
+                    f"Duplicat du cellulaire pour le membre {membre.NoMembre}."
+                )
+                _logger.warning(msg)
+                self.lst_warning.append(msg)
             else:
                 has_mobile = True
                 value["mobile"] = membre.Telephone3.strip()
                 if membre.PosteTel3 and membre.PosteTel3.strip():
-                    _logger.warning(
-                        "Le numéro de poste du mobile n'est pas supporté."
+                    msg = (
+                        "Le numéro de poste du mobile n'est pas supporté pour"
+                        f" le membre {membre.NoMembre}."
                     )
+                    _logger.warning(msg)
+                    self.lst_warning.append(msg)
 
         has_domicile = False
         if (
@@ -2005,37 +2118,54 @@ class MigrationAccorderie:
                 and membre.PosteTel1
                 and membre.PosteTel1.strip()
             ):
-                _logger.warning(
-                    "Le numéro de poste du domicile n'est pas supporté."
+                msg = (
+                    "Le numéro de poste du domicile n'est pas supporté pour"
+                    f" le membre {membre.NoMembre}."
                 )
+                _logger.warning(msg)
+                self.lst_warning.append(msg)
         if (
             membre.NoTypeTel2 == 2
             and membre.Telephone2
             and membre.Telephone2.strip()
         ):
             if has_domicile:
-                _logger.warning("Duplicat du cellulaire.")
+                msg = (
+                    f"Duplicat du cellulaire pour le membre {membre.NoMembre}."
+                )
+                _logger.warning(msg)
+                self.lst_warning.append(msg)
             else:
                 has_domicile = True
                 value["phone"] = membre.Telephone2.strip()
                 if membre.PosteTel2 and membre.PosteTel2.strip():
-                    _logger.warning(
-                        "Le numéro de poste du domicile n'est pas supporté."
+                    msg = (
+                        "Le numéro de poste du domicile n'est pas supporté"
+                        f" pour le membre {membre.NoMembre}."
                     )
+                    _logger.warning(msg)
+                    self.lst_warning.append(msg)
         if (
             membre.NoTypeTel3 == 2
             and membre.Telephone3
             and membre.Telephone3.strip()
         ):
             if has_domicile:
-                _logger.warning("Duplicat du cellulaire.")
+                msg = (
+                    f"Duplicat du cellulaire pour le membre {membre.NoMembre}."
+                )
+                _logger.warning(msg)
+                self.lst_warning.append(msg)
             else:
                 has_domicile = True
                 value["phone"] = membre.Telephone3.strip()
                 if membre.PosteTel3 and membre.PosteTel3.strip():
-                    _logger.warning(
-                        "Le numéro de poste du domicile n'est pas supporté."
+                    msg = (
+                        "Le numéro de poste du domicile n'est pas supporté"
+                        f" pour le membre {membre.NoMembre}."
                     )
+                    _logger.warning(msg)
+                    self.lst_warning.append(msg)
 
     def _check_duplicate(self, tbl_membre, key, verbose=True):
         # Ignore duplicate since enable multi-company with different contact, not sharing
