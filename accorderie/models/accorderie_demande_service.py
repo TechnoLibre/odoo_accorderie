@@ -42,7 +42,7 @@ class AccorderieDemandeService(models.Model):
         track_visibility="onchange",
     )
 
-    description = fields.Char(
+    description = fields.Text(
         track_visibility="onchange",
     )
 
@@ -50,6 +50,8 @@ class AccorderieDemandeService(models.Model):
         comodel_name="accorderie.membre",
         track_visibility="onchange",
     )
+
+    user_id = fields.Many2one(related="membre.user_id")
 
     membre_favoris_ids = fields.Many2many(comodel_name="accorderie.membre")
 

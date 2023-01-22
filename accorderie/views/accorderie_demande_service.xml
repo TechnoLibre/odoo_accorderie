@@ -185,17 +185,46 @@
         <field name="model">accorderie.demande.service</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="titre" />
-                <field name="accorderie" />
                 <field name="date_debut" />
                 <field name="date_fin" />
-                <field name="description" />
-                <field name="membre" />
-                <field name="membre_favoris_ids" />
-                <field name="commentaire" />
-                <field name="website_published" />
+                <field name="titre" />
+                <field name="accorderie" />
                 <field name="type_service_id" />
+                <field name="membre" />
+                <field name="website_published" />
             </tree>
+        </field>
+    </record>
+
+    <record id="accorderie_demande_service_view_timeline" model="ir.ui.view">
+        <field name="model">accorderie.demande.service</field>
+        <field name="type">timeline</field>
+        <field name="arch" type="xml">
+            <timeline
+                date_start="date_debut"
+                date_stop="date_fin"
+                default_group_by="accorderie"
+                event_open_popup="true"
+            >
+                <field name="user_id" />
+                <templates>
+                    <t t-name="timeline-item">
+                        <div class="o_project_timeline_item">
+                            <img
+                                t-if="record.user_id"
+                                t-attf-src="/web/image/res.users/#{record.user_id[0]}/image/24x24"
+                                t-att-title="record.user_id[1]"
+                                width="24"
+                                height="24"
+                                class="mr8"
+                            />
+                            <span name="display_name">
+                                <t t-esc="record.display_name" />
+                            </span>
+                        </div>
+                    </t>
+                </templates>
+            </timeline>
         </field>
     </record>
 
@@ -203,6 +232,6 @@
         id="accorderie_demande_service_demande_de_services_action_window"
         name="Demande de services"
         res_model="accorderie.demande.service"
-        view_mode="kanban,tree,pivot,graph,form"
+        view_mode="kanban,tree,timeline,pivot,graph,form"
     />
 </odoo>
