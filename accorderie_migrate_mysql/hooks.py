@@ -32,6 +32,7 @@ FORCE_ADD_USER_EMAIL = ""
 GENERIC_EMAIL = f"%s_membre@accorderie.ca"
 CACHE_FILE = os.path.join(os.path.dirname(__file__), ".cache")
 ENABLE_TIER_VALIDATION = True
+DISABLE_CREATE_USER = False
 
 
 def post_init_hook(cr, e):
@@ -929,8 +930,6 @@ class MigrationAccorderie:
             env = api.Environment(self.cr, SUPERUSER_ID, {})
             if not self.dct_membre:
                 dct_membre = {}
-                dct_fsm_employee = {}
-                dct_employee = {}
 
                 i = 0
                 for membre in self.dct_tbl.tbl_membre:
@@ -1265,24 +1264,16 @@ class MigrationAccorderie:
                         "partner_id": obj_partner.id,
                     }
 
-                    obj_user = (
-                        env["res.users"]
-                        .with_context({"no_reset_password": True})
-                        .create(value)
-                    )
-                    # try:
-                    #     obj_user = (
-                    #         env["res.users"]
-                    #         .with_context({"no_reset_password": True})
-                    #         .create(value)
-                    #     )
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
+                    if not DISABLE_CREATE_USER:
+                        obj_user = (
+                            env["res.users"]
+                            .with_context({"no_reset_password": True})
+                            .create(value)
+                        )
 
-                    dct_membre[membre.NoMembre] = obj_user
-                    type_member = "admin" if is_internal_member else "member"
+                        dct_membre[membre.NoMembre] = obj_user
+
+                    type_member = "admin" if is_admin else "member"
                     _logger.info(
                         f"{pos_id} - res.users - tbl_membre - '{type_member}'"
                         f" - ADDED '{name}' login '{login}' email '{email}' id"
