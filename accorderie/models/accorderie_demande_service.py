@@ -26,12 +26,6 @@ class AccorderieDemandeService(models.Model):
         ),
     )
 
-    approuver = fields.Boolean(
-        string="Approuvé",
-        help="Permet d'approuver cette demande de service.",
-        track_visibility="onchange",
-    )
-
     commentaire = fields.One2many(
         comodel_name="accorderie.commentaire",
         inverse_name="demande_service_id",

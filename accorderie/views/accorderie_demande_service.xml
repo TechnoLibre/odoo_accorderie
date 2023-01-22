@@ -5,9 +5,7 @@
         <field name="model">accorderie.demande.service</field>
         <field name="arch" type="xml">
             <form string="Titre">
-                <header>
-
-                </header>
+                <header />
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
@@ -19,9 +17,6 @@
                     </group>
                     <group>
                         <field name="accorderie" />
-                    </group>
-                    <group>
-                        <field name="approuver" />
                     </group>
                     <group>
                         <field name="date_debut" />
@@ -64,7 +59,6 @@
             <graph string="Accorderie demande service">
                 <field name="titre" type="row" />
                 <field name="accorderie" type="row" />
-                <field name="approuver" type="row" />
                 <field name="date_debut" type="row" />
                 <field name="date_fin" type="row" />
                 <field name="description" type="row" />
@@ -80,7 +74,6 @@
             <kanban class="o_kanban_mobile">
                 <field name="titre" />
                 <field name="accorderie" />
-                <field name="approuver" />
                 <field name="date_debut" />
                 <field name="date_fin" />
                 <field name="description" />
@@ -103,12 +96,6 @@
                                         <strong>
                                             <field name="accorderie" />
                                         </strong>
-                                    </li>
-                                    <li class="text-success float-right mb4" t-if="record.approuver.raw_value">
-                                        <i aria-label="Ok" class="fa fa-circle" role="img" title="Ok" />
-                                    </li>
-                                    <li class="text-danger float-right mb4" t-if="!record.approuver.raw_value">
-                                        <i aria-label="Invalid" class="fa fa-circle" role="img" title="Invalid" />
                                     </li>
                                     <li class="mb4">
                                         <strong>
@@ -167,7 +154,6 @@
             <pivot string="Accorderie demande service">
                 <field name="titre" type="row" />
                 <field name="accorderie" type="row" />
-                <field name="approuver" type="row" />
                 <field name="date_debut" type="row" />
                 <field name="date_fin" type="row" />
                 <field name="description" type="row" />
@@ -183,8 +169,7 @@
             <search string="Accorderie demande service">
                 <filter domain="[('titre','!=',False)]" name="titre" string="Titre" />
                 <filter domain="[('accorderie','!=',False)]" name="accorderie" string="Accorderie" />
-                <filter domain="[('active','=',False)]" name="Inactive" string="Inactive Accorderie demande service" />
-                <filter domain="[('approuver','=',True)]" name="approuver" string="Approuv&#233;" />
+                <filter domain="[('active','=',False)]" name="Inactive" string="Inactive" />
                 <filter domain="[('date_debut','!=',False)]" name="date_debut" string="Date d&#233;but" />
                 <filter domain="[('date_fin','!=',False)]" name="date_fin" string="Date fin" />
                 <filter domain="[('description','!=',False)]" name="description" string="Description" />
@@ -208,7 +193,6 @@
             <tree>
                 <field name="titre" />
                 <field name="accorderie" />
-                <field name="approuver" />
                 <field name="date_debut" />
                 <field name="date_fin" />
                 <field name="description" />
