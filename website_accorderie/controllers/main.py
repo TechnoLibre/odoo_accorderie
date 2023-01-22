@@ -141,7 +141,7 @@ class AccorderieController(http.Controller):
             "id": offre_id.id,
             "description": offre_id.description,
             "titre": offre_id.titre,
-            "publie": offre_id.publie,
+            "website_published": offre_id.website_published,
             "is_favorite": me_membre_id.id in offre_id.membre_favoris_ids.ids,
             "distance": "8m",
             "membre_id": offre_id.membre.id,
@@ -164,13 +164,13 @@ class AccorderieController(http.Controller):
     )
     def get_all_offre_service(self, **kw):
         me_membre_id = http.request.env.user.partner_id.accorderie_membre_ids
-        # don't return not publie if not same member
+        # don't return not website_published if not same member
         value = {
             a.id: {
                 "id": a.id,
                 "description": a.description,
                 "titre": a.titre,
-                "publie": a.publie,
+                "website_published": a.website_published,
                 "is_favorite": me_membre_id.id in a.membre_favoris_ids.ids,
                 "distance": "8m",
                 "membre_id": a.membre.id,
@@ -183,7 +183,7 @@ class AccorderieController(http.Controller):
                 ),
             }
             for a in http.request.env["accorderie.offre.service"].search([])
-            if a.membre.id == me_membre_id.id or a.publie
+            if a.membre.id == me_membre_id.id or a.website_published
         }
         return value
 
@@ -197,7 +197,7 @@ class AccorderieController(http.Controller):
     )
     def get_all_demande_service(self, **kw):
         me_membre_id = http.request.env.user.partner_id.accorderie_membre_ids
-        # don't return not publie if not same member
+        # don't return not website_published if not same member
         value = {
             a.id: {
                 "id": a.id,
@@ -215,7 +215,7 @@ class AccorderieController(http.Controller):
                 ),
             }
             for a in http.request.env["accorderie.demande.service"].search([])
-            if a.membre.id == me_membre_id.id or a.publie
+            if a.membre.id == me_membre_id.id or a.website_published
         }
         return value
 
@@ -233,7 +233,7 @@ class AccorderieController(http.Controller):
             "id": demande_id.id,
             "description": demande_id.description,
             "titre": demande_id.titre,
-            "publie": demande_id.publie,
+            "website_published": demande_id.website_published,
             "is_favorite": me_membre_id.id
             in demande_id.membre_favoris_ids.ids,
             "distance": "8m",
@@ -394,7 +394,11 @@ class AccorderieController(http.Controller):
         # TODO use write_date instead of create_date ?
         accorderie_offre_service_ids = (
             accorderie_offre_service_cls.sudo()
-            .search([("publie", "=", True)], order="create_date desc", limit=3)
+            .search(
+                [("website_published", "=", True)],
+                order="create_date desc",
+                limit=3,
+            )
             .ids
         )
         offre_services = accorderie_offre_service_cls.sudo().browse(
@@ -402,7 +406,7 @@ class AccorderieController(http.Controller):
         )
         offre_services_count = (
             accorderie_offre_service_cls.sudo().search_count(
-                [("publie", "=", True)]
+                [("website_published", "=", True)]
             )
         )
         lst_icon_offre_service = []
@@ -426,7 +430,11 @@ class AccorderieController(http.Controller):
         accorderie_demande_service_cls = env["accorderie.demande.service"]
         accorderie_demande_service_ids = (
             accorderie_demande_service_cls.sudo()
-            .search([("publie", "=", True)], order="create_date desc", limit=3)
+            .search(
+                [("website_published", "=", True)],
+                order="create_date desc",
+                limit=3,
+            )
             .ids
         )
         demande_services = accorderie_demande_service_cls.sudo().browse(
@@ -434,7 +442,7 @@ class AccorderieController(http.Controller):
         )
         demande_services_count = (
             accorderie_demande_service_cls.sudo().search_count(
-                [("publie", "=", True)]
+                [("website_published", "=", True)]
             )
         )
         lst_icon_demande_service = []
@@ -688,7 +696,7 @@ class AccorderieController(http.Controller):
                 "id": a.id,
                 "description": a.description,
                 "titre": a.titre,
-                "publie": a.publie,
+                "website_published": a.website_published,
                 "is_favorite": membre_id.id in a.membre_favoris_ids.ids,
                 "diff_create_date": self._transform_str_diff_time_creation(
                     a.create_date
@@ -720,7 +728,7 @@ class AccorderieController(http.Controller):
             for a in http.request.env["accorderie.offre.service"].search(
                 [("membre_favoris_ids", "=", membre_id.id)]
             )
-            if a.publie
+            if a.website_published
         }
 
         dct_demande_service = {
@@ -728,7 +736,7 @@ class AccorderieController(http.Controller):
                 "id": a.id,
                 "description": a.description,
                 "titre": a.titre,
-                "publie": a.publie,
+                "website_published": a.website_published,
                 "is_favorite": membre_id.id in a.membre_favoris_ids.ids,
                 "diff_create_date": self._transform_str_diff_time_creation(
                     a.create_date
@@ -760,7 +768,7 @@ class AccorderieController(http.Controller):
             for a in http.request.env["accorderie.demande.service"].search(
                 [("membre_favoris_ids", "=", membre_id.id)]
             )
-            if a.publie
+            if a.website_published
         }
 
         dct_membre_favoris = {
@@ -887,7 +895,7 @@ class AccorderieController(http.Controller):
                 "id": a.id,
                 "description": a.description,
                 "titre": a.titre,
-                "publie": a.publie,
+                "website_published": a.website_published,
                 "is_favorite": me_membre_id.id in a.membre_favoris_ids.ids,
                 "diff_create_date": self._transform_str_diff_time_creation(
                     a.create_date
@@ -917,7 +925,7 @@ class AccorderieController(http.Controller):
                 "distance": "8m",
             }
             for a in membre_id.demande_service_ids
-            if a.publie
+            if a.website_published
         }
 
         is_favorite = membre_id.id in [
@@ -1043,7 +1051,7 @@ class AccorderieController(http.Controller):
         nb_offre_service = (
             http.request.env["accorderie.offre.service"]
             .sudo()
-            .search_count([("publie", "=", True)])
+            .search_count([("website_published", "=", True)])
         )
         return {"nb_offre_service": nb_offre_service}
 
@@ -2057,7 +2065,7 @@ class AccorderieController(http.Controller):
     )
     def accorderie_demande_publish_submit(self, demande_id, **kw):
         status = {}
-        publie = kw.get("publie")
+        website_published = kw.get("website_published")
         me_membre_id = http.request.env.user.partner_id.accorderie_membre_ids
         if demande_id.membre.id != me_membre_id.id:
             status["error"] = (
@@ -2065,9 +2073,9 @@ class AccorderieController(http.Controller):
                 " demande."
             )
         else:
-            demande_id.publie = publie
+            demande_id.website_published = website_published
             status["id"] = demande_id
-            status["publie"] = publie
+            status["website_published"] = website_published
         return status
 
     @http.route(
@@ -2129,7 +2137,7 @@ class AccorderieController(http.Controller):
     )
     def accorderie_offre_publish_submit(self, offre_id, **kw):
         status = {}
-        publie = kw.get("publie")
+        website_published = kw.get("website_published")
         me_membre_id = http.request.env.user.partner_id.accorderie_membre_ids
         if offre_id.membre.id != me_membre_id.id:
             status["error"] = (
@@ -2137,9 +2145,9 @@ class AccorderieController(http.Controller):
                 " offre."
             )
         else:
-            offre_id.publie = publie
+            offre_id.website_published = website_published
             status["id"] = offre_id
-            status["publie"] = publie
+            status["website_published"] = website_published
         return status
 
     @http.route(

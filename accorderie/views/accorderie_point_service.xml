@@ -6,18 +6,22 @@
         <field name="arch" type="xml">
             <form string="Titre">
                 <sheet>
-                    <group>
-                        <field name="nom" />
-                    </group>
-                    <group>
-                        <field name="accorderie" />
-                    </group>
-                    <group>
-                        <field name="commentaire" />
-                    </group>
-                    <group>
-                        <field name="membre" />
-                    </group>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="nom" />
+                        </h1>
+                        <group>
+                            <field name="accorderie" />
+                        </group>
+                    </div>
+                    <notebook colspan="4">
+                        <page string="Membre">
+                            <field name="membre" />
+                        </page>
+                        <page string="Commentaire">
+                            <field name="commentaire" />
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

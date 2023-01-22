@@ -11,37 +11,49 @@
                         <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
                             <field name="active" widget="boolean_button" />
                         </button>
+                        <button name="website_publish_button" class="oe_stat_button" type="object" icon="fa-globe">
+                            <field
+                                name="website_published"
+                                widget="website_button"
+                                options='{"terminology": {"string_true": "Published", "hover_false": "Publish"}}'
+                            />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="titre" />
+                        </h1>
+                        <group>
+                            <field name="accorderie" />
+                        </group>
+                        <group>
+                            <field name="membre" />
+                        </group>
                     </div>
                     <group>
-                        <field name="titre" />
+                        <group>
+                            <field name="date_debut" />
+                        </group>
+                        <group>
+                            <field name="date_fin" />
+                        </group>
                     </group>
-                    <group>
-                        <field name="accorderie" />
-                    </group>
-                    <group>
-                        <field name="date_debut" />
-                    </group>
-                    <group>
-                        <field name="date_fin" />
-                    </group>
-                    <group>
-                        <field name="description" />
-                    </group>
-                    <group>
-                        <field name="membre" />
-                    </group>
-                    <group>
-                        <field name="membre_favoris_ids" widget="many2many_tags" />
-                    </group>
-                    <group>
-                        <field name="commentaire" />
-                    </group>
-                    <group>
-                        <field name="publie" />
-                    </group>
-                    <group>
-                        <field name="type_service_id" />
-                    </group>
+                    <notebook colspan="4">
+                        <page string="Description">
+                            <group>
+                                <field name="type_service_id" />
+                            </group>
+                            <field name="description" />
+                        </page>
+                        <page string="Commentaire">
+                            <field name="commentaire" />
+                        </page>
+                        <page string="Favoris">
+                            <group>
+                                <field name="membre_favoris_ids" widget="many2many_tags" />
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
@@ -76,11 +88,8 @@
                 <field name="accorderie" />
                 <field name="date_debut" />
                 <field name="date_fin" />
-                <field name="description" />
                 <field name="membre" />
-                <field name="membre_favoris_ids" />
-                <field name="commentaire" />
-                <field name="publie" type="row" />
+                <field name="website_published" />
                 <field name="type_service_id" />
                 <templates>
                     <t t-name="kanban-box">
@@ -97,6 +106,17 @@
                                             <field name="accorderie" />
                                         </strong>
                                     </li>
+                                    <li class="text-success float-right mb4" t-if="record.website_published.raw_value">
+                                        <i aria-label="Publié" class="fa fa-globe" role="img" title="Publié" />
+                                    </li>
+                                    <li class="text-danger float-right mb4" t-if="!record.website_published.raw_value">
+                                        <i aria-label="Non publié" class="fa fa-globe" role="img" title="Non publié" />
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="membre" />
+                                        </strong>
+                                    </li>
                                     <li class="mb4">
                                         <strong>
                                             <field name="date_debut" />
@@ -106,32 +126,6 @@
                                         <strong>
                                             <field name="date_fin" />
                                         </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="description" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="membre" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="membre_favoris_ids" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="commentaire" />
-                                        </strong>
-                                    </li>
-                                    <li class="text-success float-right mb4" t-if="record.publie.raw_value">
-                                        <i aria-label="Ok" class="fa fa-circle" role="img" title="Ok" />
-                                    </li>
-                                    <li class="text-danger float-right mb4" t-if="!record.publie.raw_value">
-                                        <i aria-label="Invalid" class="fa fa-circle" role="img" title="Invalid" />
                                     </li>
                                     <li class="mb4">
                                         <strong>
@@ -180,7 +174,7 @@
                     string="Favoris membre"
                 />
                 <filter domain="[('commentaire','!=',False)]" name="commentaire" string="Commentaire" />
-                <filter domain="[('publie','=',True)]" name="publie" string="Offre publi&#233;" />
+                <filter domain="[('website_published','=',True)]" name="website_published" string="Offre publi&#233;" />
                 <filter domain="[('type_service_id','!=',False)]" name="type_service_id" string="Type service" />
             </search>
         </field>
@@ -199,7 +193,7 @@
                 <field name="membre" />
                 <field name="membre_favoris_ids" />
                 <field name="commentaire" />
-                <field name="publie" />
+                <field name="website_published" />
                 <field name="type_service_id" />
             </tree>
         </field>

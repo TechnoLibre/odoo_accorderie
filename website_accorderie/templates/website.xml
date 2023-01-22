@@ -40,15 +40,18 @@
                                     <input
                                         type="checkbox"
                                         id="publier_offre_id"
-                                        ng-model="offre_service_info.publie"
-                                        ng-change="change_publication_offre_service(offre_service_info.id, offre_service_info.publie)"
+                                        ng-model="offre_service_info.website_published"
+                                        ng-change="change_publication_offre_service(offre_service_info.id, offre_service_info.website_published)"
                                     />
                                     <span />
                                     <span
                                         class="css_publish"
-                                        ng-if="!offre_service_info.publie"
+                                        ng-if="!offre_service_info.website_published"
                                     >Dépublier l'offre</span>
-                                    <span class="css_unpublish" ng-if="offre_service_info.publie">Publier l'offre</span>
+                                    <span
+                                        class="css_unpublish"
+                                        ng-if="offre_service_info.website_published"
+                                    >Publier l'offre</span>
                                 </label>
                             </div>
                         </div>
@@ -228,17 +231,17 @@
                                     <input
                                         type="checkbox"
                                         id="publier_demande_id"
-                                        ng-model="demande_service_info.publie"
-                                        ng-change="change_publication_demande_service(demande_service_info.id, demande_service_info.publie)"
+                                        ng-model="demande_service_info.website_published"
+                                        ng-change="change_publication_demande_service(demande_service_info.id, demande_service_info.website_published)"
                                     />
                                     <span />
                                     <span
                                         class="css_publish"
-                                        ng-if="!demande_service_info.publie"
+                                        ng-if="!demande_service_info.website_published"
                                     >Dépublier la demande</span>
                                     <span
                                         class="css_unpublish"
-                                        ng-if="demande_service_info.publie"
+                                        ng-if="demande_service_info.website_published"
                                     >Publier la demande</span>
                                 </label>
                             </div>

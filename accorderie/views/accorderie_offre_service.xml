@@ -10,6 +10,13 @@
                         <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
                             <field name="active" widget="boolean_button" />
                         </button>
+                        <button name="website_publish_button" class="oe_stat_button" type="object" icon="fa-globe">
+                            <field
+                                name="website_published"
+                                widget="website_button"
+                                options='{"terminology": {"string_true": "Published", "hover_false": "Publish"}}'
+                            />
+                        </button>
                     </div>
                     <group>
                         <field name="titre" />
@@ -69,9 +76,6 @@
                         <field name="offre_special" />
                     </group>
                     <group>
-                        <field name="publie" />
-                    </group>
-                    <group>
                         <field name="quoi_apporter" />
                     </group>
                     <group>
@@ -108,7 +112,7 @@
                 <field name="nb_consultation" type="measure" />
                 <field name="nom_offre_special" type="row" />
                 <field name="offre_special" type="row" />
-                <field name="publie" type="row" />
+                <field name="website_published" type="row" />
                 <field name="quoi_apporter" type="row" />
                 <field name="tarif" type="row" />
                 <field name="type_service_id" type="row" />
@@ -140,7 +144,7 @@
                 <field name="nb_consultation" />
                 <field name="nom_offre_special" />
                 <field name="offre_special" />
-                <field name="publie" />
+                <field name="website_published" />
                 <field name="quoi_apporter" />
                 <field name="tarif" />
                 <field name="type_service_id" />
@@ -247,11 +251,11 @@
                                     <li class="text-danger float-right mb4" t-if="!record.offre_special.raw_value">
                                         <i aria-label="Invalid" class="fa fa-circle" role="img" title="Invalid" />
                                     </li>
-                                    <li class="text-success float-right mb4" t-if="record.publie.raw_value">
-                                        <i aria-label="Ok" class="fa fa-circle" role="img" title="Ok" />
+                                    <li class="text-success float-right mb4" t-if="record.website_published.raw_value">
+                                        <i aria-label="Publié" class="fa fa-globe" role="img" title="Publié" />
                                     </li>
-                                    <li class="text-danger float-right mb4" t-if="!record.publie.raw_value">
-                                        <i aria-label="Invalid" class="fa fa-circle" role="img" title="Invalid" />
+                                    <li class="text-error float-right mb4" t-if="!record.website_published.raw_value">
+                                        <i aria-label="Non publié" class="fa fa-globe" role="img" title="Non publié" />
                                     </li>
                                     <li class="mb4">
                                         <strong>
@@ -300,7 +304,7 @@
                 <field name="nb_consultation" type="measure" />
                 <field name="nom_offre_special" type="row" />
                 <field name="offre_special" type="row" />
-                <field name="publie" type="row" />
+                <field name="website_published" type="row" />
                 <field name="quoi_apporter" type="row" />
                 <field name="tarif" type="row" />
                 <field name="type_service_id" type="row" />
@@ -353,7 +357,7 @@
                     string="Nom de l'offre sp&#233;ciale"
                 />
                 <filter domain="[('offre_special','=',True)]" name="offre_special" string="Offre sp&#233;ciale" />
-                <filter domain="[('publie','=',True)]" name="publie" string="Offre publi&#233;" />
+                <filter domain="[('website_published','=',True)]" name="website_published" string="Offre publi&#233;" />
                 <filter domain="[('quoi_apporter','!=',False)]" name="quoi_apporter" string="Quoi Apporter" />
                 <filter domain="[('tarif','!=',False)]" name="tarif" string="Tarif" />
                 <filter domain="[('type_service_id','!=',False)]" name="type_service_id" string="Type de services" />
@@ -386,7 +390,7 @@
                 <field name="nb_consultation" />
                 <field name="nom_offre_special" />
                 <field name="offre_special" />
-                <field name="publie" />
+                <field name="website_published" />
                 <field name="tarif" />
                 <field name="type_service_id" />
             </tree>

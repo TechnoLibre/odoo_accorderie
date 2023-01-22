@@ -218,8 +218,8 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             })
         }
 
-        $scope.change_publication_offre_service = function (offre_id, publie) {
-            ajax.rpc(`/accorderie/submit/offre/publish/${offre_id}`, {"publie": publie}).then(function (data) {
+        $scope.change_publication_offre_service = function (offre_id, website_published) {
+            ajax.rpc(`/accorderie/submit/offre/publish/${offre_id}`, {"website_published": website_published}).then(function (data) {
                 console.debug("AJAX receive change_publication_offre_service");
                 if (data.error || !_.isUndefined(data.error)) {
                     $scope.error = data.error;
@@ -234,8 +234,8 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             })
         }
 
-        $scope.change_publication_demande_service = function (demande_id, publie) {
-            ajax.rpc(`/accorderie/submit/demande/publish/${demande_id}`, {"publie": publie}).then(function (data) {
+        $scope.change_publication_demande_service = function (demande_id, website_published) {
+            ajax.rpc(`/accorderie/submit/demande/publish/${demande_id}`, {"website_published": website_published}).then(function (data) {
                 console.debug("AJAX receive change_publication_demande_service");
                 if (data.error || !_.isUndefined(data.error)) {
                     $scope.error = data.error;

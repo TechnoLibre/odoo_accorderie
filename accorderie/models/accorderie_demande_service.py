@@ -53,7 +53,7 @@ class AccorderieDemandeService(models.Model):
 
     membre_favoris_ids = fields.Many2many(comodel_name="accorderie.membre")
 
-    publie = fields.Boolean(
+    website_published = fields.Boolean(
         string="Demande publié",
         help="La demande est publiée, sinon il est privée.",
         track_visibility="onchange",
@@ -87,3 +87,8 @@ class AccorderieDemandeService(models.Model):
                 },
             )
         return status
+
+    @api.multi
+    def website_publish_button(self):
+        self.ensure_one()
+        return self.write({"website_published": not self.website_published})

@@ -87,7 +87,7 @@ class AccorderieOffreService(models.Model):
 
     offre_special = fields.Boolean(string="Offre spéciale")
 
-    publie = fields.Boolean(
+    website_published = fields.Boolean(
         string="Offre publié",
         help="L'offre est publiée, sinon il est privée.",
         default=True,
@@ -123,3 +123,7 @@ class AccorderieOffreService(models.Model):
                 },
             )
         return status
+
+    def website_publish_button(self):
+        self.ensure_one()
+        return self.write({"website_published": not self.website_published})
