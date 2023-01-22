@@ -5,6 +5,7 @@ from odoo import _, api, fields, models
 
 class AccorderieOffreService(models.Model):
     _name = "accorderie.offre.service"
+    _inherit = ["mail.activity.mixin", "mail.thread"]
     _description = "Accorderie Offre Service"
     _rec_name = "titre"
 
@@ -87,12 +88,6 @@ class AccorderieOffreService(models.Model):
 
     offre_special = fields.Boolean(string="Offre spéciale")
 
-    website_published = fields.Boolean(
-        string="Offre publié",
-        help="L'offre est publiée, sinon il est privée.",
-        default=True,
-    )
-
     quoi_apporter = fields.Html()
 
     tarif = fields.Char()
@@ -100,6 +95,14 @@ class AccorderieOffreService(models.Model):
     type_service_id = fields.Many2one(
         comodel_name="accorderie.type.service",
         string="Type de services",
+    )
+
+    user_id = fields.Many2one(related="membre.user_id")
+
+    website_published = fields.Boolean(
+        string="Offre publié",
+        help="L'offre est publiée, sinon il est privée.",
+        default=True,
     )
 
     @api.multi

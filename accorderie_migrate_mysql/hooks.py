@@ -63,8 +63,7 @@ def post_init_hook(cr, e):
     migration.migration_demande_service()
 
     # Create offre service
-    # TODO à changer
-    # migration.migration_offre_service()
+    migration.migration_offre_service()
 
     # Create hr timesheet
     # TODO à changer
@@ -1577,6 +1576,7 @@ class MigrationAccorderie:
 
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
+
             if not self.dct_demande_service:
                 dct_demande_service = {}
 
@@ -1605,7 +1605,10 @@ class MigrationAccorderie:
                         "date_debut": demande_service.DateDebut,
                         "date_fin": demande_service.DateFin,
                     }
-                    if not ENABLE_TIER_VALIDATION:
+                    if (
+                        not ENABLE_TIER_VALIDATION
+                        and demande_service.Supprimer == -1
+                    ):
                         value["active"] = demande_service.Supprimer == 0
 
                     if membre_obj:
@@ -1664,8 +1667,11 @@ class MigrationAccorderie:
                             }
                             env["tier.review"].create(val_tier_review)
 
-                        # Change active after review, or cause bug because review is ignore
-                        obj.write({"active": demande_service.Supprimer == 0})
+                        if demande_service.Supprimer == -1:
+                            # Change active after review, or cause bug because review is ignore
+                            obj.write(
+                                {"active": demande_service.Supprimer == 0}
+                            )
 
                 self.dct_demande_service = dct_demande_service
                 self._update_cache_obj()
@@ -1682,89 +1688,117 @@ class MigrationAccorderie:
             if not self.dct_offre_service:
                 dct_offre_service = {}
 
-                # Create default fsm location
-                value = {"name": "AUCUNE", "owner_id": self.head_quarter.id}
-                location_id = env["fsm.location"].create(value)
-                # try:
-                #     location_id = env["fsm.location"].create(value)
-                # except Exception as e:
-                #     self.lst_error.append(e)
-                #     _logger.error(e)
-                #     return
-
                 i = 0
                 for offre_service in self.dct_tbl.tbl_offre_service_membre:
                     i += 1
                     pos_id = (
                         f"{i}/{len(self.dct_tbl.tbl_offre_service_membre)}"
                     )
-                    membre_obj = self.dct_fsm_employee.get(
-                        offre_service.NoMembre
-                    )
-                    name = offre_service.TitreOffreSpecial
 
                     if DEBUG_LIMIT and i > LIMIT:
                         break
 
-                    if not membre_obj:
-                        _logger.info(
-                            f"{pos_id} - fsm.order - tbl_offre_service_membre"
-                            " - ERROR MISSING MEMBER"
-                            f" '{offre_service.NoMembre}' ON '{name}' id"
-                            f" {offre_service.NoOffreServiceMembre}"
-                        )
-                        continue
-
-                    accorderie_obj = self.dct_accorderie.get(
+                    membre_obj = self.dct_membre.get(offre_service.NoMembre)
+                    accorderie_obj = self.dct_accorderie_accorderie.get(
                         offre_service.NoAccorderie
                     )
-
-                    stage_id = (
-                        env.ref("fieldservice.fsm_stage_completed").id
-                        if offre_service.Fait
-                        else env.ref("fieldservice.fsm_stage_new").id
-                    )
+                    name = offre_service.TitreOffreSpecial
 
                     value = {
-                        "name": name,
+                        "titre": name,
                         "description": offre_service.Description,
-                        "company_id": accorderie_obj.id,
-                        "location_id": location_id.id,
-                        "resolution": offre_service.Tarif,
-                        "stage_id": stage_id,
+                        "accorderie": accorderie_obj.id,
+                        "accompli": offre_service.Fait,
+                        "date_debut": offre_service.DateDebut,
+                        "date_fin": offre_service.DateFin,
                         "create_date": offre_service.DateMAJ_ServiceMembre,
+                        "condition": offre_service.ConditionOffre,
+                        "date_affichage": offre_service.DateAffichage,
+                        "disponibilite": offre_service.Disponibilite,
+                        "approuve": offre_service.Approuve == -1,
+                        "tarif": offre_service.Tarif,
+                        "offre_special": offre_service.OffreSpecial,
+                        "nb_consultation": offre_service.NbFoisConsulterOffreMembre,
+                        # NoCategorieSousCategorie
                     }
-
-                    skill_id = self.dct_categorie_sous_categorie.get(
-                        offre_service.NoCategorieSousCategorie
-                    )
-                    if skill_id:
-                        value["skill_ids"] = [(6, 0, [skill_id.id])]
-                    else:
-                        msg = (
-                            "Missing categorie sous categorie id"
-                            f" {offre_service.NoCategorieSousCategorie}"
-                        )
-                        self.lst_error.append(msg)
-                        _logger.error(msg)
+                    if (
+                        not ENABLE_TIER_VALIDATION
+                        and offre_service.Supprimer == -1
+                    ):
+                        value["active"] = offre_service.Supprimer == 0
 
                     if membre_obj:
-                        value["person_id"] = membre_obj.id
+                        value["membre"] = membre_obj.id
+                    else:
+                        _logger.warning(
+                            f"{pos_id} - accorderie.offre.service -"
+                            " tbl_offre_service_membre - missing membre no"
+                            f" '{offre_service.NoMembre}'"
+                        )
 
-                    obj = env["fsm.order"].create(value)
-                    # try:
-                    #     obj = env["fsm.order"].create(value)
-                    # except Exception as e:
-                    #     self.lst_error.append(e)
-                    #     _logger.error(e)
-                    #     continue
+                    # skill_id = self.dct_categorie_sous_categorie.get(
+                    #     offre_service.NoCategorieSousCategorie
+                    # )
+                    # if skill_id:
+                    #     value["skill_ids"] = [(6, 0, [skill_id.id])]
+                    # else:
+                    #     msg = (
+                    #         "Missing categorie sous categorie id"
+                    #         f" {offre_service.NoCategorieSousCategorie}"
+                    #     )
+                    #     self.lst_error.append(msg)
+                    #     _logger.error(msg)
+
+                    obj = env["accorderie.offre.service"].create(value)
 
                     dct_offre_service[offre_service.NoOffreServiceMembre] = obj
                     _logger.info(
-                        f"{pos_id} - fsm.order - tbl_offre_service_membre -"
-                        f" ADDED '{name}' id"
+                        f"{pos_id} - accorderie.offre.service -"
+                        f" tbl_offre_service_membre - ADDED '{name}' id"
                         f" {offre_service.NoOffreServiceMembre}"
                     )
+
+                    if ENABLE_TIER_VALIDATION:
+                        if offre_service.Approuve == -1:
+                            # approuvé
+                            val_tier_review = {
+                                "status": "approved",
+                                "model": "accorderie.offre.service",
+                                "res_id": obj.id,
+                                "definition_id": env.ref(
+                                    "accorderie_approbation.accorderie_offre_service_tier_definition"
+                                ).id,
+                                "sequence": 1,
+                                "todo_by": "Migration bot",
+                                "done_by": SUPERUSER_ID,
+                                "requested_by": SUPERUSER_ID,
+                                "reviewed_date": datetime.now(),
+                                "comment": "Validé avant migration",
+                                "create_uid": SUPERUSER_ID,
+                                "write_uid": SUPERUSER_ID,
+                            }
+                            env["tier.review"].create(val_tier_review)
+                        else:
+                            # ask review
+                            val_tier_review = {
+                                "status": "pending",
+                                "model": "accorderie.offre.service",
+                                "res_id": obj.id,
+                                "definition_id": env.ref(
+                                    "accorderie_approbation.accorderie_offre_service_tier_definition"
+                                ).id,
+                                "sequence": 1,
+                                "todo_by": "Migration bot",
+                                "requested_by": SUPERUSER_ID,
+                                "comment": "Non validé avant migration",
+                                "create_uid": SUPERUSER_ID,
+                                "write_uid": SUPERUSER_ID,
+                            }
+                            env["tier.review"].create(val_tier_review)
+
+                        if offre_service.Supprimer == -1:
+                            # Change active after review, or cause bug because review is ignore
+                            obj.write({"active": offre_service.Supprimer == 0})
 
                 self.dct_offre_service = dct_offre_service
                 self._update_cache_obj()

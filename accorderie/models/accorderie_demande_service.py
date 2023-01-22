@@ -51,21 +51,21 @@ class AccorderieDemandeService(models.Model):
         track_visibility="onchange",
     )
 
-    user_id = fields.Many2one(related="membre.user_id")
-
     membre_favoris_ids = fields.Many2many(comodel_name="accorderie.membre")
+
+    type_service_id = fields.Many2one(
+        comodel_name="accorderie.type.service",
+        track_visibility="onchange",
+        string="Type de services",
+    )
+
+    user_id = fields.Many2one(related="membre.user_id")
 
     website_published = fields.Boolean(
         string="Demande publié",
         help="La demande est publiée, sinon il est privée.",
         track_visibility="onchange",
         default=True,
-    )
-
-    type_service_id = fields.Many2one(
-        comodel_name="accorderie.type.service",
-        track_visibility="onchange",
-        string="Type de services",
     )
 
     @api.multi

@@ -12,4 +12,5 @@ class TierDefinition(models.Model):
     def _get_tier_validation_model_names(self):
         res = super(TierDefinition, self)._get_tier_validation_model_names()
         res.append("accorderie.demande.service")
+        res.append("accorderie.offre.service")
         return res

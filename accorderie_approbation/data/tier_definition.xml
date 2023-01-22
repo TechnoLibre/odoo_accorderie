@@ -8,4 +8,12 @@
         <field name="review_type">group</field>
         <field name="reviewer_group_id" ref='accorderie.group_accorderie_gestion_demande_de_service' />
     </record>
+    <record id="accorderie_offre_service_tier_definition" model="tier.definition">
+        <field name="name">Validation de la offre de service Accorderie</field>
+        <field name="model_id" ref="model_accorderie_offre_service" />
+        <field name="definition_type">domain</field>
+        <field name="definition_domain" />
+        <field name="review_type">group</field>
+        <field name="reviewer_group_id" ref='accorderie.group_accorderie_gestion_offre_de_service' />
+    </record>
 </odoo>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="accorderie_offre_service_view_approbation_form" model="ir.ui.view">
+        <field name="model">accorderie.offre.service</field>
+        <field name="inherit_id" ref="accorderie.accorderie_offre_service_view_form" />
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button
+                    name="request_validation"
+                    string="Demander la validation"
+                    attrs="{'invisible': ['|','|',('need_validation', '!=', True),('rejected','=',True),('state','not in',['draft'])]}"
+                    type="object"
+                />
+                <button
+                    name="restart_validation"
+                    string="Redémarrer la validation"
+                    attrs="{'invisible': ['|',('review_ids', '=', []),('state','not in',['draft'])]}"
+                    type="object"
+                />
+                <field name="state" invisible="1" />
+            </header>
+            <header position="after">
+                <field name="need_validation" invisible="1" />
+                <field name="validated" invisible="1" />
+                <field name="rejected" invisible="1" />
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    attrs="{'invisible': ['|', '|', '|',
+                     ('validated', '=', True), ('state','not in',['draft']),
+                     ('rejected', '=', True), ('review_ids', '=', [])]}"
+                    style="margin-bottom:0px;"
+                >
+                    <p>
+                        <i class="fa fa-info-circle" />
+                        Cette offre de service a besoin d'être validée.
+                        <field name="can_review" invisible="1" />
+                        <button
+                            name="validate_tier"
+                            string="Validate"
+                            attrs="{'invisible': [('can_review', '=', False)]}"
+                            type="object"
+                            class="oe_inline oe_button btn-success"
+                            icon="fa-thumbs-up"
+                        />
+                        <button
+                            name="reject_tier"
+                            string="Reject"
+                            attrs="{'invisible': [('can_review', '=', False)]}"
+                            type="object"
+                            class="btn-icon btn-danger"
+                            icon="fa-thumbs-down"
+                        />
+                    </p>
+                </div>
+                <div
+                    class="alert alert-success"
+                    role="alert"
+                    attrs="{'invisible': ['|', '|', ('validated', '!=', True), ('state','not in',['draft']), ('review_ids', '=', [])]}"
+                    style="margin-bottom:0px;"
+                >
+                    <p><i class="fa fa-thumbs-up" /> L'offre est <b>validée</b>!</p>
+                </div>
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    attrs="{'invisible': ['|', '|', ('rejected', '!=', True),  ('state','not in',['draft']), ('review_ids', '=', [])]}"
+                    style="margin-bottom:0px;"
+                >
+                    <p><i class="fa fa-thumbs-down" /> L'offre est <b>refusée</b>.</p>
+                </div>
+            </header>
+            <xpath expr="//form/div[hasclass('oe_chatter')]" position="before">
+                <field name="review_ids" widget="tier_validation" attrs="{'invisible':[('review_ids', '=', [])]}" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="accorderie_offre_service_view_kanban" model="ir.ui.view">
+        <field name="model">accorderie.offre.service</field>
+        <field name="inherit_id" ref="accorderie.accorderie_offre_service_view_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban/field[@name='accorderie']" position="after">
+                <field name="validated" />
+                <field name="rejected" />
+                <field name="need_validation" />
+                <field name="can_review" />
+            </xpath>
+            <xpath expr="//kanban/templates/t/div/div/ul/li/strong/field[@name='titre']" position="after">
+                <li class="text-success float-right mb4" t-if="record.validated.raw_value">
+                    <i aria-label="Validé" class="fa fa-thumbs-up" role="img" title="Validé" />
+                </li>
+                <li class="text-danger float-right mb4" t-if="record.rejected.raw_value">
+                    <i aria-label="Invalide" class="fa fa-thumbs-down" role="img" title="Invalide" />
+                </li>
+                <li
+                    class="text-warning float-right mb4"
+                    t-if="record.need_validation.raw_value || record.can_review.raw_value"
+                >
+                    <i
+                        aria-label="Attente d'une validation"
+                        class="fa fa-clock-o"
+                        role="img"
+                        title="Attente d'une validation"
+                    />
+                </li>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="accorderie_offre_service_view_timeline" model="ir.ui.view">
+        <field name="model">accorderie.offre.service</field>
+        <field name="inherit_id" ref="accorderie.accorderie_offre_service_view_timeline" />
+        <field name="arch" type="xml">
+            <timeline position="attributes">
+                <attribute
+                    name="colors"
+                >#ec7063:rejected == true;#2ecb71:validated == true;#edcb71:need_validation == true;#edcb71:can_review == true;</attribute>
+            </timeline>
+        </field>
+    </record>
+
+    <record id="accorderie_offre_service_view_search" model="ir.ui.view">
+        <field name="model">accorderie.offre.service</field>
+        <field name="inherit_id" ref="accorderie.accorderie_offre_service_view_search" />
+        <field name="arch" type="xml">
+            <search position="inside">
+                <separator groups="accorderie.group_accorderie_gestion_offre_de_service" />
+                <filter
+                    name="needs_my_review"
+                    string="Besoin de ma validation"
+                    domain="[('reviewer_ids','in',uid)]"
+                    groups="accorderie.group_accorderie_gestion_offre_de_service"
+                />
+                <filter
+                    name="needs_review"
+                    string="Besoin d'activer la validation"
+                    domain="[('review_ids','=',False)]"
+                    groups="accorderie.group_accorderie_gestion_offre_de_service"
+                />
+                <filter
+                    name="tier_validated"
+                    string="Validé"
+                    domain="[('validated', '=', True)]"
+                    groups="accorderie.group_accorderie_gestion_offre_de_service"
+                />
+                <filter
+                    name="tier_rejected"
+                    string="Rejeté"
+                    domain="[('rejected', '=', True)]"
+                    groups="accorderie.group_accorderie_gestion_offre_de_service"
+                />
+            </search>
+        </field>
+    </record>
+
+</odoo>
