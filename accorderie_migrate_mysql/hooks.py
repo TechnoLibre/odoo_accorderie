@@ -9,6 +9,8 @@ import os
 import pickle
 from datetime import datetime
 
+import unidecode
+
 from odoo import SUPERUSER_ID, _, api
 
 _logger = logging.getLogger(__name__)
@@ -127,6 +129,7 @@ class MigrationAccorderie:
         self.dct_fichier = {}
         self.dct_produit = {}
         self.dct_membre = {}
+        self.dct_accorderie_membre = {}
         self.dct_categorie_sous_categorie = {}
         self.dct_fournisseur = {}
         self.dct_demande_service = {}
@@ -933,6 +936,7 @@ class MigrationAccorderie:
             env = api.Environment(self.cr, SUPERUSER_ID, {})
             if not self.dct_membre:
                 dct_membre = {}
+                dct_accorderie_membre = {}
 
                 i = 0
                 for membre in self.dct_tbl.tbl_membre:
@@ -1011,18 +1015,23 @@ class MigrationAccorderie:
                         #     self.lst_warning.append(msg)
                         #     continue
                         # Need an email for login, force create it
-                        # TODO coder un séquenceur dans Odoo pour la création de courriel générique
                         # email = GENERIC_EMAIL % i
-                        email = (GENERIC_EMAIL % login).lower().strip()
+                        email = unidecode.unidecode(
+                            (GENERIC_EMAIL % login)
+                            .lower()
+                            .strip()
+                            .replace(" ", "_")
+                        )
                         nb_same_email = self.lst_generic_email.count(email)
                         if nb_same_email > 0:
-                            email = (
+                            email = unidecode.unidecode(
                                 (
                                     GENERIC_EMAIL
                                     % f"{login}_{nb_same_email + 1}"
                                 )
                                 .lower()
                                 .strip()
+                                .replace(" ", "_")
                             )
                         self.lst_generic_email.append(email)
                         msg = f"Create generic email '{email}'"
@@ -1422,6 +1431,9 @@ class MigrationAccorderie:
                         f" '{type_member}' - ADDED '{name}' login '{login}'"
                         f" email '{email}' id {obj_accorderie_membre.id}"
                     )
+                    dct_accorderie_membre[
+                        membre.NoMembre
+                    ] = obj_accorderie_membre
 
                     # Add migration message
                     comment_message = (
@@ -1502,6 +1514,7 @@ class MigrationAccorderie:
                 # self.dct_employee = dct_employee
                 # self.dct_fsm_employee = dct_fsm_employee
                 self.dct_membre = dct_membre
+                self.dct_accorderie_membre = dct_accorderie_membre
                 self._update_cache_obj()
                 _logger.info(
                     f"Stat: {nb_admin} admin and {nb_membre_int} membre"
@@ -1668,7 +1681,9 @@ class MigrationAccorderie:
                         demande_service.NoAccorderie
                     )
 
-                    membre_obj = self.dct_membre.get(demande_service.NoMembre)
+                    membre_obj = self.dct_accorderie_membre.get(
+                        demande_service.NoMembre
+                    )
 
                     value = {
                         "titre": name,
@@ -1681,9 +1696,9 @@ class MigrationAccorderie:
                     }
                     if (
                         not ENABLE_TIER_VALIDATION
-                        and demande_service.Supprimer == -1
+                        and demande_service.Supprimer
                     ):
-                        value["active"] = demande_service.Supprimer == 0
+                        value["active"] = False
 
                     if membre_obj:
                         value["membre"] = membre_obj.id
@@ -1706,48 +1721,47 @@ class MigrationAccorderie:
                     )
 
                     if ENABLE_TIER_VALIDATION:
-                        if demande_service.Approuve == -1:
-                            # approuvé
-                            val_tier_review = {
-                                "status": "approved",
-                                "model": "accorderie.demande.service",
-                                "res_id": obj.id,
-                                "definition_id": env.ref(
-                                    "accorderie_approbation.accorderie_demande_service_tier_definition"
-                                ).id,
-                                "sequence": 1,
-                                "todo_by": "Migration bot",
-                                "done_by": SUPERUSER_ID,
-                                "requested_by": SUPERUSER_ID,
-                                "reviewed_date": datetime.now(),
-                                "comment": "Validé avant migration",
-                                "create_uid": SUPERUSER_ID,
-                                "write_uid": SUPERUSER_ID,
-                            }
-                            env["tier.review"].create(val_tier_review)
-                        else:
-                            # ask review
-                            val_tier_review = {
-                                "status": "pending",
-                                "model": "accorderie.demande.service",
-                                "res_id": obj.id,
-                                "definition_id": env.ref(
-                                    "accorderie_approbation.accorderie_demande_service_tier_definition"
-                                ).id,
-                                "sequence": 1,
-                                "todo_by": "Migration bot",
-                                "requested_by": SUPERUSER_ID,
-                                "comment": "Non validé avant migration",
-                                "create_uid": SUPERUSER_ID,
-                                "write_uid": SUPERUSER_ID,
-                            }
-                            env["tier.review"].create(val_tier_review)
+                        if not demande_service.Supprimer:
+                            if demande_service.Approuve == -1:
+                                # approuvé
+                                val_tier_review = {
+                                    "status": "approved",
+                                    "model": "accorderie.demande.service",
+                                    "res_id": obj.id,
+                                    "definition_id": env.ref(
+                                        "accorderie_approbation.accorderie_demande_service_tier_definition"
+                                    ).id,
+                                    "sequence": 1,
+                                    "todo_by": "Migration bot",
+                                    "done_by": SUPERUSER_ID,
+                                    "requested_by": SUPERUSER_ID,
+                                    "reviewed_date": datetime.now(),
+                                    "comment": "Validé avant migration",
+                                    "create_uid": SUPERUSER_ID,
+                                    "write_uid": SUPERUSER_ID,
+                                }
+                                env["tier.review"].create(val_tier_review)
+                            else:
+                                # ask review
+                                val_tier_review = {
+                                    "status": "pending",
+                                    "model": "accorderie.demande.service",
+                                    "res_id": obj.id,
+                                    "definition_id": env.ref(
+                                        "accorderie_approbation.accorderie_demande_service_tier_definition"
+                                    ).id,
+                                    "sequence": 1,
+                                    "todo_by": "Migration bot",
+                                    "requested_by": SUPERUSER_ID,
+                                    "comment": "Non validé avant migration",
+                                    "create_uid": SUPERUSER_ID,
+                                    "write_uid": SUPERUSER_ID,
+                                }
+                                env["tier.review"].create(val_tier_review)
 
-                        if demande_service.Supprimer == -1:
+                        if demande_service.Supprimer:
                             # Change active after review, or cause bug because review is ignore
-                            obj.write(
-                                {"active": demande_service.Supprimer == 0}
-                            )
+                            obj.write({"active": False})
 
                 self.dct_demande_service = dct_demande_service
                 self._update_cache_obj()
@@ -1774,7 +1788,9 @@ class MigrationAccorderie:
                     if DEBUG_LIMIT and i > LIMIT:
                         break
 
-                    membre_obj = self.dct_membre.get(offre_service.NoMembre)
+                    membre_obj = self.dct_accorderie_membre.get(
+                        offre_service.NoMembre
+                    )
                     accorderie_obj = self.dct_accorderie_accorderie.get(
                         offre_service.NoAccorderie
                     )
@@ -1797,11 +1813,8 @@ class MigrationAccorderie:
                         "nb_consultation": offre_service.NbFoisConsulterOffreMembre,
                         # NoCategorieSousCategorie
                     }
-                    if (
-                        not ENABLE_TIER_VALIDATION
-                        and offre_service.Supprimer == -1
-                    ):
-                        value["active"] = offre_service.Supprimer == 0
+                    if not ENABLE_TIER_VALIDATION and offre_service.Supprimer:
+                        value["active"] = False
 
                     if membre_obj:
                         value["membre"] = membre_obj.id
@@ -1836,46 +1849,50 @@ class MigrationAccorderie:
                     )
 
                     if ENABLE_TIER_VALIDATION:
-                        if offre_service.Approuve == -1:
-                            # approuvé
-                            val_tier_review = {
-                                "status": "approved",
-                                "model": "accorderie.offre.service",
-                                "res_id": obj.id,
-                                "definition_id": env.ref(
-                                    "accorderie_approbation.accorderie_offre_service_tier_definition"
-                                ).id,
-                                "sequence": 1,
-                                "todo_by": "Migration bot",
-                                "done_by": SUPERUSER_ID,
-                                "requested_by": SUPERUSER_ID,
-                                "reviewed_date": datetime.now(),
-                                "comment": "Validé avant migration",
-                                "create_uid": SUPERUSER_ID,
-                                "write_uid": SUPERUSER_ID,
-                            }
-                            env["tier.review"].create(val_tier_review)
-                        else:
-                            # ask review
-                            val_tier_review = {
-                                "status": "pending",
-                                "model": "accorderie.offre.service",
-                                "res_id": obj.id,
-                                "definition_id": env.ref(
-                                    "accorderie_approbation.accorderie_offre_service_tier_definition"
-                                ).id,
-                                "sequence": 1,
-                                "todo_by": "Migration bot",
-                                "requested_by": SUPERUSER_ID,
-                                "comment": "Non validé avant migration",
-                                "create_uid": SUPERUSER_ID,
-                                "write_uid": SUPERUSER_ID,
-                            }
-                            env["tier.review"].create(val_tier_review)
+                        if (
+                            not offre_service.Fait
+                            and not offre_service.Supprimer
+                        ):
+                            if offre_service.Approuve == -1:
+                                # approuvé
+                                val_tier_review = {
+                                    "status": "approved",
+                                    "model": "accorderie.offre.service",
+                                    "res_id": obj.id,
+                                    "definition_id": env.ref(
+                                        "accorderie_approbation.accorderie_offre_service_tier_definition"
+                                    ).id,
+                                    "sequence": 1,
+                                    "todo_by": "Migration bot",
+                                    "done_by": SUPERUSER_ID,
+                                    "requested_by": SUPERUSER_ID,
+                                    "reviewed_date": datetime.now(),
+                                    "comment": "Validé avant migration",
+                                    "create_uid": SUPERUSER_ID,
+                                    "write_uid": SUPERUSER_ID,
+                                }
+                                env["tier.review"].create(val_tier_review)
+                            else:
+                                # ask review
+                                val_tier_review = {
+                                    "status": "pending",
+                                    "model": "accorderie.offre.service",
+                                    "res_id": obj.id,
+                                    "definition_id": env.ref(
+                                        "accorderie_approbation.accorderie_offre_service_tier_definition"
+                                    ).id,
+                                    "sequence": 1,
+                                    "todo_by": "Migration bot",
+                                    "requested_by": SUPERUSER_ID,
+                                    "comment": "Non validé avant migration",
+                                    "create_uid": SUPERUSER_ID,
+                                    "write_uid": SUPERUSER_ID,
+                                }
+                                env["tier.review"].create(val_tier_review)
 
-                        if offre_service.Supprimer == -1:
+                        if offre_service.Supprimer:
                             # Change active after review, or cause bug because review is ignore
-                            obj.write({"active": offre_service.Supprimer == 0})
+                            obj.write({"active": False})
 
                 self.dct_offre_service = dct_offre_service
                 self._update_cache_obj()
