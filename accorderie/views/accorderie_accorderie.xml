@@ -106,7 +106,7 @@
         <field name="name">accorderie_accorderie_search</field>
         <field name="model">accorderie.accorderie</field>
         <field name="arch" type="xml">
-            <search string="Accorderie accorderie">
+            <search string="Accorderie">
                 <filter domain="[('active','=',False)]" name="inactive" string="Archivé" />
                 <field name="nom" />
             </search>

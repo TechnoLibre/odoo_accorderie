@@ -27,6 +27,9 @@ def pre_init_hook(cr):
             )
             partner.phone = "(418) 524-2597"
 
+        company_id = env["res.company"].browse(1)
+        company_id.sequence = 1
+
         partners = env["res.partner"].search([("name", "=", "Administrator")])
         for partner in partners:
             partner.website = "https://technolibre.ca"

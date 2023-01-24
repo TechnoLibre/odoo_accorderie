@@ -4,8 +4,14 @@ from odoo import _, api, fields, models
 class AccorderieMembre(models.Model):
     _inherit = "accorderie.membre"
 
+    company_id = fields.Many2one(
+        comodel_name="res.company",
+        string="Company",
+        related="point_service.company_id",
+    )
+
     partner_id = fields.Many2one(
-        "res.partner",
+        comodel_name="res.partner",
         string="Partner",
     )
 

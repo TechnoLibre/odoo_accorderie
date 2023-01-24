@@ -293,27 +293,7 @@
         <field name="arch" type="xml">
             <pivot string="Accorderie offre service">
                 <field name="titre" type="row" />
-                <field name="accompli" type="row" />
-                <field name="accorderie" type="row" />
-                <field name="approuve" type="row" />
-                <field name="condition" type="row" />
-                <field name="condition_autre" type="row" />
-                <field name="date_affichage" type="row" />
-                <field name="date_debut" type="row" />
-                <field name="date_fin" type="row" />
-                <field name="date_mise_a_jour" type="row" />
-                <field name="deplacement" type="row" />
-                <field name="description" type="row" />
-                <field name="disponibilite" type="row" />
-                <field name="entente_tarifiaire" type="row" />
-                <field name="membre" type="row" />
                 <field name="nb_consultation" type="measure" />
-                <field name="nom_offre_special" type="row" />
-                <field name="offre_special" type="row" />
-                <field name="website_published" type="row" />
-                <field name="quoi_apporter" type="row" />
-                <field name="tarif" type="row" />
-                <field name="type_service_id" type="row" />
             </pivot>
         </field>
     </record>

@@ -122,6 +122,7 @@ class MigrationAccorderie:
         self.head_quarter = None
 
         self.dct_accorderie = {}
+        self.dct_tbl_accorderie = {}
         self.dct_accorderie_accorderie = {}
         self.dct_accorderie_point_service = {}
         # self.dct_accorderie_by_email = {}
@@ -145,109 +146,12 @@ class MigrationAccorderie:
         self.lst_error = []
         self.lst_warning = []
 
-        # self._fill_cache_obj()
-
         self.dct_tbl = self._fill_tbl()
 
     def set_head_quarter(self):
         with api.Environment.manage():
             env = api.Environment(self.cr, SUPERUSER_ID, {})
             self.head_quarter = env["res.company"].browse(1)
-
-    def _fill_cache_obj(self):
-        """Read cache"""
-
-        def get_obj(name, model, field_search=None):
-            if name not in db:
-                return {}
-            # Get all obj with browse id
-            with api.Environment.manage():
-                env = api.Environment(self.cr, SUPERUSER_ID, {})
-            if not field_search:
-                return {
-                    a: env[model].browse(b) for a, b in db.get(name).items()
-                }
-            return {
-                a: env[model].search([(field_search, "=", a)])
-                for a, b in db.get(name).items()
-            }
-
-        if not os.path.isfile(CACHE_FILE):
-            return
-        db_file = open(CACHE_FILE, "rb")
-        db = pickle.load(db_file)
-        if db:
-            self.dct_accorderie = get_obj("dct_accorderie", "res.company")
-            # self.dct_accorderie_by_email = get_obj("dct_accorderie_by_email", "res.company", field_search="email")
-            # self.dct_accorderie_by_email = get_obj("dct_accorderie_by_email", "res.company")
-            self.dct_pointservice = get_obj("dct_pointservice", "res.company")
-            self.dct_fichier = get_obj("dct_fichier", "muk_dms.file")
-            self.dct_produit = get_obj("dct_produit", "product.template")
-            self.dct_membre = get_obj("dct_membre", "res.users")
-            self.dct_categorie_sous_categorie = get_obj(
-                "dct_categorie_sous_categorie", "hr.skill"
-            )
-            self.dct_fournisseur = get_obj("dct_fournisseur", "res.partner")
-            self.dct_demande_service = get_obj(
-                "dct_demande_service", "helpdesk.ticket"
-            )
-            self.dct_offre_service = get_obj("dct_offre_service", "fsm.order")
-            self.dct_echange_service = get_obj(
-                "dct_echange_service", "account.analytic.line"
-            )
-            self.dct_project_service = get_obj(
-                "dct_project_service", "project.project"
-            )
-            self.dct_employee = get_obj("dct_employee", "hr.employee")
-            self.dct_fsm_employee = get_obj("dct_fsm_employee", "fsm.person")
-        db_file.close()
-
-    def _update_cache_obj(self):
-        return
-        """Write cache"""
-        # database
-        db = {}
-        db["dct_accorderie"] = {
-            a: b.id for a, b in self.dct_accorderie.items()
-        }
-        # db['dct_accorderie_by_email'] = {a: b.id for a, b in self.dct_accorderie_by_email.items()}
-        db["dct_pointservice"] = {
-            a: b.id for a, b in self.dct_pointservice.items()
-        }
-        db["dct_fichier"] = {a: b.id for a, b in self.dct_fichier.items()}
-        db["dct_produit"] = {a: b.id for a, b in self.dct_produit.items()}
-        db["dct_membre"] = {a: b.id for a, b in self.dct_membre.items()}
-        db["dct_categorie_sous_categorie"] = {
-            a: b.id for a, b in self.dct_categorie_sous_categorie.items()
-        }
-        db["dct_fournisseur"] = {
-            a: b.id for a, b in self.dct_fournisseur.items()
-        }
-        db["dct_demande_service"] = {
-            a: b.id for a, b in self.dct_demande_service.items()
-        }
-        db["dct_offre_service"] = {
-            a: b.id for a, b in self.dct_offre_service.items()
-        }
-        db["dct_echange_service"] = {
-            a: b.id for a, b in self.dct_echange_service.items()
-        }
-        db["dct_project_service"] = {
-            a: b.id for a, b in self.dct_project_service.items()
-        }
-        db["dct_employee"] = {a: b.id for a, b in self.dct_employee.items()}
-        db["dct_fsm_employee"] = {
-            a: b.id for a, b in self.dct_fsm_employee.items()
-        }
-
-        # Its important to use binary mode
-        if os.path.exists(CACHE_FILE):
-            os.remove(CACHE_FILE)
-        db_file = open(CACHE_FILE, "ab")
-
-        # source, destination
-        pickle.dump(db, db_file)
-        db_file.close()
 
     def _fill_tbl(self):
         """
@@ -459,6 +363,7 @@ class MigrationAccorderie:
                             "state_id": 543,  # Quebec
                             "country_id": 38,  # Canada
                             "create_date": accorderie.DateMAJ_Accorderie,
+                            "active": accorderie.NonVisible == 0,
                             "background_image": env.ref(
                                 "accorderie_migrate_mysql.theme_background_image"
                             ).datas,
@@ -527,6 +432,7 @@ class MigrationAccorderie:
                         obj.partner_id.supplier = False
 
                     self.dct_accorderie[accorderie.NoAccorderie] = obj
+                    self.dct_tbl_accorderie[accorderie.NoAccorderie] = accorderie
                     self.dct_accorderie_accorderie[
                         accorderie.NoAccorderie
                     ] = obj_acc
@@ -554,6 +460,7 @@ class MigrationAccorderie:
                     tbl_membre = self._get_membre_point_service(
                         pointservice.NoPointService
                     )
+                    tbl_accorderie = self.dct_tbl_accorderie[pointservice.NoAccorderie]
                     name = (
                         "Point de service"
                         f" {pointservice.NomPointService.strip()}"
@@ -573,6 +480,7 @@ class MigrationAccorderie:
                         "country_id": 38,  # Canada
                         "create_date": pointservice.DateMAJ_PointService,
                         "parent_id": accorderie_obj.id,
+                        "active": tbl_accorderie.NonVisible == 0,
                         "background_image": env.ref(
                             "accorderie_migrate_mysql.theme_background_image"
                         ).datas,
@@ -663,9 +571,6 @@ class MigrationAccorderie:
                     self.dct_accorderie_point_service[
                         pointservice.NoPointService
                     ] = obj_ps
-
-        if is_updated:
-            self._update_cache_obj()
 
     def migrate_muk_dms(self):
         """
@@ -816,7 +721,6 @@ class MigrationAccorderie:
                         f" '{directory_id.name if directory_id else ''}' id"
                         f" {fichier.Id_Fichier}"
                     )
-            self._update_cache_obj()
 
     def migrate_product(self):
         """
@@ -908,7 +812,6 @@ class MigrationAccorderie:
                     )
 
                 self.dct_produit = dct_produit
-                self._update_cache_obj()
 
     def migrate_member(self):
         """
@@ -1097,7 +1000,8 @@ class MigrationAccorderie:
                         "state_id": 543,  # Quebec
                         "country_id": 38,  # Canada
                         "tz": "America/Montreal",
-                        "active": membre.MembreActif == 0,
+                        "active": membre.MembreActif
+                        and "désinscrit" not in name,
                         "company_id": company_id.id,
                         "create_date": membre.Date_MAJ_Membre,
                         "free_member": True,
@@ -1515,7 +1419,6 @@ class MigrationAccorderie:
                 # self.dct_fsm_employee = dct_fsm_employee
                 self.dct_membre = dct_membre
                 self.dct_accorderie_membre = dct_accorderie_membre
-                self._update_cache_obj()
                 _logger.info(
                     f"Stat: {nb_admin} admin and {nb_membre_int} membre"
                     f" interne and {nb_membre_ext} membre externe."
@@ -1653,7 +1556,6 @@ class MigrationAccorderie:
                     )
 
                 self.dct_fournisseur = dct_fournisseur
-                self._update_cache_obj()
 
     def migration_demande_service(self):
         """
@@ -1764,7 +1666,6 @@ class MigrationAccorderie:
                             obj.write({"active": False})
 
                 self.dct_demande_service = dct_demande_service
-                self._update_cache_obj()
 
     def migration_offre_service(self):
         """
@@ -1813,8 +1714,10 @@ class MigrationAccorderie:
                         "nb_consultation": offre_service.NbFoisConsulterOffreMembre,
                         # NoCategorieSousCategorie
                     }
-                    if not ENABLE_TIER_VALIDATION and offre_service.Supprimer:
-                        value["active"] = False
+                    if not ENABLE_TIER_VALIDATION:
+                        value["active"] = not (
+                            offre_service.Supprimer or offre_service.Fait
+                        )
 
                     if membre_obj:
                         value["membre"] = membre_obj.id
@@ -1890,12 +1793,11 @@ class MigrationAccorderie:
                                 }
                                 env["tier.review"].create(val_tier_review)
 
-                        if offre_service.Supprimer:
+                        if offre_service.Supprimer or offre_service.Fait:
                             # Change active after review, or cause bug because review is ignore
                             obj.write({"active": False})
 
                 self.dct_offre_service = dct_offre_service
-                self._update_cache_obj()
 
     def migration_timesheet(self):
         """
@@ -2008,7 +1910,6 @@ class MigrationAccorderie:
 
                 self.dct_echange_service = dct_echange_service
                 self.dct_project_service = dct_project_service
-                self._update_cache_obj()
 
     def _get_ville(self, no_ville: int):
         for ville in self.dct_tbl.tbl_ville:
