@@ -1,0 +1,354 @@
+/*
+    Page Évènement/Offre
+*/
+
+.s_event_banner {
+    height: 35vh;
+    padding: 5% 10% 0;
+    position: relative;
+  }
+
+  .event_banner_action {
+    bottom: 0;
+    position: absolute;
+    right: 10%;
+    display: flex;
+    border-radius: 5px 5px 0 0;
+  
+    .btn {
+      padding: 1rem 2rem;
+      color: $text-alpha;
+    }
+
+    .divider {
+      width: 1px;
+      background-color: $text-alpha;
+      margin: auto;
+      height: 2rem;
+    }
+  }
+  
+  .event_container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .icon_padding_right {
+    padding-right: 10px;
+  }
+  
+  .event_head {
+    width: 100%;
+    padding: 5% 10% 0 10%;
+  
+    .info-1 {
+      .infos {
+        display: flex;
+        flex-direction: row;
+  
+        > * {
+          margin-top: 1%;
+          font-size: 1rem;
+        }
+  
+        > div:not(:first-child) {
+          padding: 0.5% 2%;
+          border-left: 1px solid $beta;
+        }
+  
+        .distance {
+          padding: 0.5% 2% 0 0;
+        }
+  
+        .event_date h3 {
+          font-weight: normal;
+        }
+      }
+  
+      .btn_container {
+        float: right;
+        margin-top: -3rem;
+        width: 50%;
+  
+        .btn {
+          color: $text-alpha;
+          padding: 1rem 2rem;
+          margin-left: 5%;
+          float: right;
+        }
+      }
+    }
+  }
+  
+  .checker {
+    border: 1px solid $beta;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin: 0.5rem 1rem 0 0;
+  }
+
+  .rounded-dashed {
+    border: 2px dashed $beta;
+    padding: 0.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  .dashed {
+    border: 1px dashed gray !important;
+  }
+  
+  .event_container .informations_container {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    gap: 50px;
+    float: left;
+    padding-right: 15%;
+    height: auto;
+  
+    > div:not(:first-child) {
+      padding-right: 25%;
+    }
+  
+    .info-2 {
+      display: flex;
+      flex-direction: column;
+  
+      h2 {
+        margin-bottom: 1.5rem;
+      }
+  
+      > * {
+        padding: 5% 5% 5% 0;
+        border-top: 1px solid $beta;
+      }
+
+      .resume .desc {
+        font-size: 1.2rem;
+  
+        i {
+          width: 1.8rem;
+        }
+      }
+  
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        padding-right: 0;
+  
+        .search_box {
+          height: 50px;
+          border-radius: 7px;
+          width: 50%;
+          border: 1px solid lightgray;
+          display: flex;
+          align-items: center;
+          margin: 5% 0;
+  
+          i {
+            margin-left: 5%;
+          }
+
+          input {
+            border: none;
+            outline: none;
+            height: 100%;
+            width: 85%;
+            margin: auto;
+          }
+        }
+  
+        .contact {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          height: 100px;
+          gap: 40px;
+          border-bottom: 1px solid $beta;
+  
+          .user_pic {
+            background-size: cover;
+            aspect-ratio: 1/1;
+            height: 70%;
+          }
+  
+          .btn {
+            margin-left: auto;
+            padding: 0.75rem 5%;
+            color: $text-alpha;
+            font-size: 1rem;
+          }
+        }
+
+        :last-child {
+          border: none;
+        }
+      }
+    }
+  }
+  
+  .dispo .dates_container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    font-size: 1rem;
+  
+    :nth-child(odd) {
+      width: 25%;
+    }
+    :nth-child(even) {
+      width: 75%;
+    }
+  }
+  
+  .right_cards_container {
+    float: right;
+    width: 25%;
+    margin: 0 10% 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  
+    .info-3 {
+      background-color: $delta;
+      border-radius: 7px;
+      height: auto;
+      padding: 2rem;
+  
+      img {
+        height: 300px;
+        border-radius: 7px 7px 0 0;
+      }
+      div {
+        width: 100%;
+        padding-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  
+    .card {
+      border: 1px solid $beta;
+    }
+  }
+  
+  .info-4 {
+    background-color: $delta;
+    border-radius: 7px;
+    height: auto;
+    padding: 8%;
+  }
+  
+  .card-votre-relation {
+    .img {
+      width: 25%;
+      aspect-ratio: 1/1;
+      background-size: cover;
+      margin: 0 auto 5% auto;
+    }
+  
+    h4 {
+      text-align: center;
+    }
+  
+    .stats {
+      margin-top: 10%;
+  
+      p {
+        font-size: 1rem;
+  
+        i {
+          width: 2rem;
+          color: $alpha;
+        }
+      }
+    }
+  
+    .summary {
+      margin-top: 10%;
+    }
+  
+    .buttons {
+      margin-top: 10%;
+  
+      .btn {
+        color: $text-alpha;
+        margin: 0 auto 0 auto;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 990px) {
+    .s_event_banner {
+      height: 25vh !important;
+    }
+
+    //.event_banner_action {
+    //  display: none;
+    //}
+
+    .event_info .btn_container {
+      float: none !important;
+      width: auto !important;
+      margin-top: auto !important;
+  
+      .btn {
+        padding: 0.5rem 1rem !important;
+        margin-left: 0 !important;
+        margin-right: 4% !important;
+        float: none !important;
+      }
+    }
+
+    .event_info .infos {
+      flex-direction: column !important;
+  
+      > * {
+        border-top: 1px solid $beta !important;
+        border-left: none !important;
+        padding: 1rem 0 !important;
+      }
+    }
+  
+    .event_container {
+      flex-direction: column;
+  
+      .informations_container {
+        width: 100%;
+  
+        .info-2 .contact-list .search_box {
+          width: 100%;
+        }
+      }
+  
+      .right_cards_container {
+        width: 100%;
+  
+        //.info-3 {
+        //  display: none;
+        //}
+  
+        .info-4 {
+          background-color: $bg-alpha;
+          border-radius: 0;
+        }
+      }
+    }
+
+    .dispo .dates_container {
+      :nth-child(odd) {
+        width: 50%;
+      }
+  
+      :nth-child(even) {
+        width: 50%;
+        text-align: center;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 400px) {
+    .s_event_banner {
+      height: 20vh !important;
+    }
+  }

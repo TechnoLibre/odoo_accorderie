@@ -1,0 +1,88 @@
+/*
+    Page Communauté/Membres
+*/
+
+.s_event_list.small-cards {
+    height: auto;
+    padding: 0 10%;
+  
+    .horizontal_list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+  
+      .list_item {
+        height: 350px;
+        width: auto;
+      }
+    }
+  }
+  
+  .item_img > icon {
+    float: right;
+    font-size: 20px;
+  }
+
+  .item_img .name {
+    position: absolute;
+    bottom: 30px;
+    font-size: 20px;
+  }
+
+  .item_img .infos {
+    position: absolute;
+    bottom: 10px;
+  }
+  
+  .item_desc.centered {
+    text-align: center;
+    height: 40% !important;
+    padding: 10% !important;
+  }
+  
+  .item_foot {
+    height: 20%;
+    text-align: center;
+    padding: 8%;
+    position: relative;
+  }
+  
+  .tag {
+    padding: 0.25rem 0.9rem;
+    background-color: #fff4f0;
+    color: $primary-color;
+    border-radius: 5px;
+    width: fit-content;
+  }
+
+  .tag.text-epsilon {
+    background-color: #e3f4f7;
+  }
+  
+  .item_foot:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 5%;
+    width: 90%;
+    border-top: 1px solid $beta;
+  }
+
+  .s_map_btn .btn_map {
+    font-size: 1.2rem;
+    float: right;
+    margin-right: 10%;
+  }
+  
+  //clearfix
+  .s_map_btn::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  @media only screen and (max-width: 990px) {
+    .s_event_list.small-cards {
+      padding: 0 5%;
+    }
+  }

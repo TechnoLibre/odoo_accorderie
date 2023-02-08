@@ -1,0 +1,54 @@
+/*
+    Page Login
+*/
+
+.s_login {
+    background-position-x: center;
+    height: 1000px;
+    min-height: 500px;
+  }
+  
+  .login_box {
+    border-radius: 20px;
+    width: 30%;
+    float: right;
+    padding: 4% 2%;
+    margin: 5% 10% 0 0;
+    background-color: $bg-alpha;
+  
+    h1 {
+      text-align: center;
+    }
+  
+    h2 {
+      text-align: center;
+      font-weight: normal;
+    }
+  }
+  
+  #login_form {
+    margin: 20px auto;
+    max-width: none;
+  }
+  
+  .login-btn {
+    color: $text-alpha !important;
+    width: 40% !important;
+  }
+  
+  @media only screen and (max-width: 990px) {
+    .s_login {
+      background-size: contain !important;
+    }
+
+    .login_box {
+      width: 100%;
+      margin: 40% 0 0 0;
+      padding: 5% 7%;
+      border-radius: 0;
+    }
+    
+    .login_box.shadow {
+      box-shadow: none !important;
+    }
+  }

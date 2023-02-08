@@ -1,0 +1,226 @@
+/*
+    Chat
+*/
+.chat_container {
+    display: flex;
+    flex-direction: row;
+    gap: 8%;
+    max-height: 800px;
+  }
+
+  .chat_box {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    margin-left: 10%;
+    background-color: $delta;
+    border-radius: 7px;
+    border: 1px solid $beta;
+  
+    .chat_header {
+      display: flex;
+      max-height: 18%;
+      padding: 2rem;
+      position: relative;
+
+      img {
+        height: 100%;
+        aspect-ratio: 1/1;
+      }
+
+      .header_info {
+        display: flex;
+        flex-direction: column;
+        line-height: 0.75rem;
+        margin: auto 0 auto 2rem;
+        overflow: hidden;
+
+        p {
+          margin-bottom: 0.75rem;
+        }
+
+        .chat_contact {
+          font-size: 1.25rem;
+          font-weight: bold;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          line-height: 1.5rem;
+        }
+
+        .chat_title {
+          font-size: 1.1rem;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: block;
+          height: 1.1rem;
+        }
+
+        .chat_desc {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+  
+    .chat_header::after {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 2rem;
+      right: 2rem;
+      border-top: 1px solid $beta;
+    }
+    
+    .chat_body {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+
+      .chat_msg {
+        width: 100%;
+        height: auto;
+        white-space: normal;
+        padding: 1rem 2rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+  
+        .msg {
+          padding: 0.5rem 1rem;
+          max-width: 75%;
+          background-color: $gamma;
+          width: fit-content;
+          height: fit-content;
+        }
+
+        .my_msg {
+          border-radius: 25px 25px 3px;
+          margin-left: auto;
+        }
+
+        .their_msg {
+          border-radius: 25px 25px 25px 3px;
+        }
+
+        .contact_pic {
+          aspect-ratio: 1/1;
+          height: 2.5rem;
+          margin-top: auto;
+        }
+
+        .msg_time {
+          flex-basis: 100%;
+          margin-left: 3.5rem;
+          color: $text-beta;
+          margin-top: -0.5rem;
+        }
+      }
+    }
+  
+    .chat_footer {
+      margin-top: auto;
+      padding: 2rem;
+  
+      .input_container {
+        display: flex;
+        border-radius: 7px;
+        border: 1px solid $beta;
+        width: 100%;
+        background-color: $bg-alpha;
+  
+        input {
+          border: none;
+          height: 3.5rem;
+          width: 80%;
+          outline: none;
+        }
+
+        span {
+          margin: auto 1rem;
+          font-size: 1.5rem;
+        }
+
+        .fa-send {
+          margin-left: auto;
+        }
+
+        span:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 990px) {
+    .s_chat {
+      padding: 0 !important;
+    }
+
+    //.right_cards_container {
+    //  display: none;
+    //}
+
+    .chat_container {
+      max-height: calc(94vh - 154px);
+  
+      .right_cards_container {
+        display: none;
+      }
+    }
+
+    .chat_box {
+      width: 100%;
+      margin: 0;
+      background-color: $bg-alpha;
+      border: none;
+  
+      .chat_header {
+        max-height: 80px;
+        padding: 1rem;
+        background-color: $bg-alpha;
+
+        img {
+          border-radius: 50%;
+        }
+  
+        .header_info {
+          .chat_desc {
+            display: none;
+          }
+        }
+      }
+
+      .chat_header::after {
+        left: 1rem;
+        right: 1rem;
+      }
+
+      .chat_body {
+        margin-bottom: 139px;
+      }
+  
+      .chat_footer {
+        position: fixed;
+        bottom: 65px;
+        width: 100%;
+        background-color: $bg-alpha;
+        padding: 1rem;
+  
+        .input_container {
+          input {
+            height: 2.5rem;
+          }
+        }
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 366px) {
+    .chat_container {
+      max-height: calc(94vh - 188.25px);
+    }
+  }

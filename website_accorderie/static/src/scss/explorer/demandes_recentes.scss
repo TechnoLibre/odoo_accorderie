@@ -1,0 +1,147 @@
+/*
+    Offres et demandes récentes
+*/
+
+.s_activites_recentes {
+    height: auto;
+    padding: 5% 10%;
+  }
+  
+  .container_lists {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  
+  .activites_list {
+    padding: 0 5% !important;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 50%;
+    height: 100%;
+    margin: 0 !important;
+    //overflow: hidden;
+  
+    .list_title {
+      padding-bottom: 3rem;
+    }
+  }
+  
+  .activite.btn {
+    max-width: 100%;
+    //max-height: 160px;
+    padding: 1.5rem 0;
+    overflow: hidden;
+    text-align: left;
+    white-space: normal;
+    display: flex;
+  
+    .activite_img {
+      height: 100px;
+      aspect-ratio: 1/1;
+      border-radius: 5px;
+      margin-right: 5%;
+      line-height: 100px;
+      font-size: clamp(12px, 3rem, 3rem);
+    }
+    .infos {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .activite_title {
+      color: $text-beta;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  
+    .activite_auteur {
+      margin-top: auto;
+      color: $text-beta;
+      font-size: 1.1rem;
+    }
+  
+    .activite_distance {
+      margin-bottom: 0;
+      color: $text-beta;
+      font-size: 1.1rem;
+    }
+    .status {
+      border: 1px solid;
+      border-radius: 50px;
+      height: fit-content;
+      padding: 0.5rem 1rem;
+      margin: 0 0 auto auto;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .status.red {
+      color: $text-alpha;
+      background-color: $bg-red-alert;
+      border: none;
+    }
+    .status.red-o {
+      color: $bg-red-alert;
+    }
+    .status.blue {
+      color: $text-alpha;
+      background-color: $alpha;
+      border: none;
+    }
+    .status.blue-o {
+      color: $alpha;
+    }
+    .event {
+      margin: 0 0 auto auto;
+    }
+  
+    .infos.right {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      color: $text-beta;
+      width: min-content;
+  
+      .fa {
+        margin-top: auto;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 990px) {
+    .s_activites_recentes {
+      padding: 5% 0;
+    }
+    .container_lists {
+      flex-direction: column;
+      gap: 5rem;
+    }
+    .row.activites_list {
+      width: 100%;
+      height: inherit !important;
+  
+      .activite {
+        padding: 2% 0 2%;
+        height: unset !important;
+  
+        .activite_img {
+          height: 8vh;
+          line-height: 8vh;
+        }
+  
+        .activite_title {
+          font-size: 1.8vh;
+          max-height: unset;
+          overflow: hidden;
+          //line-height: 1rem;
+        }
+  
+        .activite_auteur,
+        .activite_distance {
+          font-size: 1.5vh;
+        }
+      }
+    }
+  }

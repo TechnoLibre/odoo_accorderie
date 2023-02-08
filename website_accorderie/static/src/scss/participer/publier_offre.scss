@@ -1,0 +1,80 @@
+/*
+    Page publier offre
+*/
+
+.s_pub_offre_desc {
+    padding: 0 15%;
+  }
+  
+  .desc_container {
+    padding-top: 100px;
+  
+    textarea {
+      width: 100%;
+      height: 8rem;
+      padding: 1rem 2rem;
+      border: 1px solid $beta;
+      border-radius: 5px;
+      resize: none;
+    }
+  
+    textarea:focus {
+      border: 1px solid grey;
+      outline: none;
+    }
+  
+    .desc {
+      width: 100%;
+      height: auto;
+      padding: 1rem 2rem;
+      border: 1px solid $beta;
+      border-radius: 5px;
+      margin-top: 1rem;
+    }
+  }
+  
+  .visible {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .modal_pub_offre {
+    background-color: rgba(42, 140, 170, 0.5);
+  
+    .modal-dialog {
+      margin-top: 5%;
+    }
+
+    .modal-content {
+      padding: 10% 25%;
+      text-align: center;
+    }
+
+    button {
+      padding: 0.75rem;
+      font-size: 1.2rem;
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+
+    font {
+      margin-top: 1.5rem;
+    }
+  }
+
+  @media only screen and (max-width: 550px) {
+    .modal_pub_offre .modal-content {
+      padding: 10% 5%;
+  
+      .fa-check-circle-o {
+        font-size: 10vh !important;
+      }
+    }
+    
+    .modal_pub_offre button {
+      padding: 0.375rem 0.75rem;
+      font-size: clamp(12px, 3vh, 1.25rem);
+      white-space: normal;
+      margin-top: 0.75rem;
+    }
+  }

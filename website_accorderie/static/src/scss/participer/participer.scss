@@ -1,0 +1,396 @@
+/*
+    Page Participer
+*/
+
+.s_buttons_form {
+    max-height: calc(100vh - 126px);
+    display: flex;
+  }
+  
+  .txt_question {
+    display: flex;
+    background-color: $alpha;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+  
+    > div {
+      padding: 15%;
+    }
+  
+    h1 {
+      color: $text-alpha;
+    }
+  }
+  
+  #participer_form {
+    flex: 1;
+  
+    h2 {
+      font-weight: bold;
+    }
+  }
+  
+  .buttons_form_container .label:hover {
+    background-color: $delta;
+  }
+  
+  .buttons_form_container input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+  
+  .buttons_form_container .label.checked {
+    box-shadow: inset 0px 0px 0px 2px $alpha;
+  }
+  
+  .buttons_form_container .s_event_banner {
+    width: 100vw;
+    left: -12.5%;
+    padding: 10%;
+  }
+  .buttons_form_container .input-group .datetimepicker-input {
+    height: 3.5rem;
+    padding: 1rem;
+  }
+  
+  .buttons_form_container {
+    display: flex;
+    height: calc(100vh - 126px - 5rem);
+    flex-direction: row;
+    gap: 20px;
+    padding: 5% 10%;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  
+    h3 {
+      margin-top: 50px;
+      margin-bottom: 40px;
+    }
+
+    h4 {
+      margin-top: 20px;
+      margin-bottom: 1rem;
+      display: flex;
+  
+      .modifier {
+        font-size: 1.25rem;
+        margin-left: auto;
+      }
+    }
+
+    .nav_back {
+      display: flex;
+      gap: 1rem;
+      margin: -5% 0 0 -10%;
+      align-items: center;
+    }
+  
+    .label {
+      min-height: 120px;
+      width: 100%;
+      border: 1px solid $beta;
+      border-radius: 5px;
+      padding: 2%;
+      text-align: left;
+      white-space: normal;
+  
+      img {
+        width: 65px;
+      }
+    }
+
+    .button_form {
+      width: 80%;
+      margin: auto;
+    }
+  
+    .divider {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+      border-top: 1px solid $beta;
+    }
+  
+    .categorie {
+      max-height: 100px;
+      width: 47.5%;
+    }
+
+    .cat {
+      min-height: unset;
+      height: 100px;
+      width: 100%;
+      padding: 1rem;
+      hyphens: auto;
+      white-space: normal;
+      display: flex;
+      gap: 5%;
+      align-items: center;
+    }
+  
+    .small {
+      min-height: 5rem;
+      flex: unset;
+      display: flex;
+      align-items: center;
+  
+      > * {
+        margin: 0;
+      }
+    }
+  
+    > *[class^="form_"] {
+      resize: none;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid $beta;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .form_titre {
+      min-height: 5rem;
+    }
+
+    .form_desc {
+      min-height: 10rem;
+    }
+
+    .form_box {
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      border: 1px solid $beta;
+      padding: 1rem;
+      margin-bottom: 2rem;
+  
+      > :nth-child(2) {
+        margin-left: auto;
+      }
+
+      > :nth-child(3) {
+        width: 2rem;
+        text-align: right;
+      }
+    }
+
+    .search_member_container {
+      display: flex;
+      height: 5rem;
+      outline: none;
+      width: 85%;
+      border: 1px solid $beta;
+      border-radius: 5px;
+      align-items: center;
+      padding: 0 5%;
+      gap: 5%;
+    }
+  
+    .autoComplete_wrapper {
+      width: 100%;
+      height: 5rem;
+      position: relative;
+  
+      .fa-search {
+        position: absolute;
+        top: 2rem;
+      }
+    }
+  
+    #chooseMember {
+      width: 100%;
+      height: 5rem;
+      outline: none;
+      border: none;
+      border-top: 1px solid $beta;
+      border-bottom: 1px solid $beta;
+    }
+
+    button.remove_member {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      margin-left: auto;
+    }
+
+    button.remove_member:hover {
+      cursor: pointer;
+    }
+  
+    ul[id^="autoComplete_list"] {
+      list-style: none;
+      width: 100%;
+      padding: 0;
+  
+      > * {
+        margin-top: 1rem;
+      }
+    }
+
+    li[id^="autoComplete_result"] {
+      border: 1px solid $beta;
+      border-radius: 5px;
+      padding: 1rem 2rem;
+      position: relative;
+      left: -15%;
+      width: 122%;
+  
+      img {
+        margin-right: 5%;
+      }
+    }
+  
+    .activite {
+      display: flex;
+      padding: 5%;
+      background-color: $tertiary-color;
+      border-radius: 5px;
+      border: 1px solid $alpha;
+      align-items: center;
+  
+      .activite_img {
+        height: 100px;
+        aspect-ratio: 1;
+        border-radius: 5px;
+        margin-right: 5%;
+      }
+  
+      .infos {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+  
+        > div {
+          margin: auto 0;
+        }
+      }
+  
+      .infos_right {
+        margin-left: auto;
+        height: 100%;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+
+    .bootstrap-datetimepicker-widget {
+      width: 100%;
+    }
+  }
+  
+  .scroll {
+    flex-wrap: nowrap;
+    overflow: auto;
+    padding: 25% 15% 5% 15%;
+  }
+  
+  .submit_container {
+    height: 5rem;
+    border-top: 2px solid $alpha;
+  
+    .submit_btn {
+      min-width: 120px;
+      height: 50px;
+      background-color: $primary-color;
+      float: right;
+      margin: 1rem 5%;
+      border-radius: 5px;
+      color: $text-alpha;
+    }
+  
+    .submit_btn_disable {
+      background-color: #d3d3d3;
+    }
+  
+    .prev {
+      float: left;
+      margin: 1.75rem 5%;
+      text-decoration: underline;
+    }
+  }
+  
+  @media only screen and (max-width: 990px) {
+    .s_buttons_form {
+      flex-direction: column;
+  
+      > * {
+        width: 100% !important;
+  
+        .button_form {
+          width: 80% !important;
+        }
+      }
+  
+      .txt_question {
+        max-height: 100px;
+        background-color: $bg-alpha;
+        padding: 5%;
+  
+        > div {
+          padding: 0;
+  
+          span {
+            display: none;
+          }
+        }
+  
+        h1 {
+          color: $text-beta;
+          font-size: clamp(12px, 7vw, 1.75rem);
+        }
+      }
+      #participer_form {
+        .buttons_form_container {
+          padding: 5%;
+          gap: 0.5rem;
+          height: calc(100vh - 366px);
+  
+          .cat {
+            padding: 0.5rem;
+            height: 100%;
+          }
+          .nav_back {
+            margin: -1% 0 3%;
+          }
+        }
+  
+        .buttons_form_container .btn.small {
+          min-height: 10vh;
+        }
+  
+        .submit_container .submit_btn {
+          width: fit-content;
+          margin-right: 5%;
+        }
+      }
+    }
+    .buttons_form_container .s_event_banner {
+      left: -5.5%;
+    }
+
+    .buttons_form_container.form {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      height: calc(100vh - 272px) !important;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .buttons_form_container .categorie {
+      width: 100%;
+    }
+
+    .cat {
+      .cat_desc {
+        font-size: 3vw;
+      }
+      
+      .offre_img {
+        width: 10vw;
+      }
+    }
+  }

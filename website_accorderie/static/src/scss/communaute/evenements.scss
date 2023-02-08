@@ -1,0 +1,32 @@
+/*
+    Page Communauté/Évènements
+*/
+
+.s_event_list.lg {
+    height: auto;
+    padding: 0 10%;
+  
+    .horizontal_list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 20px;
+  
+      .list_item {
+        height: 500px;
+        width: auto;
+      }
+    }
+  }
+  
+  .filter_btn.btn {
+    border-radius: 50px;
+    float: right;
+    border: 1px solid $alpha;
+    padding: 0.75rem 2rem;
+  }
+  
+  @media only screen and (max-width: 1050px) {
+    .filter_btn.btn {
+      display: none;
+    }
+  }

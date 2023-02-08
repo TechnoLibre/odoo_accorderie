@@ -1,0 +1,47 @@
+/*
+    Time
+*/ 
+
+.neg_time {
+    color: $bg-red-alert !important;
+  }
+
+  .neg_time_b {
+    color: $text-alpha !important;
+    background-color: $bg-red-alert !important;
+  }
+  
+  .neg_time_2 {
+    color: $bg-red-2-alert !important;
+  }
+  
+  .list_title {
+    padding-bottom: 50px;
+  
+    .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+    }
+  
+    a {
+      text-decoration: underline;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+  
+    .nav_btn {
+      font-size: 1rem;
+      border: 1px solid $beta;
+      border-radius: 50%;
+      aspect-ratio: 1;
+      width: 35px;
+      text-align: center;
+      margin: auto 0 auto;
+      line-height: 1.8rem;
+    }
+  }
+  
+  a {
+    color: $text-beta;
+  }

@@ -1,0 +1,166 @@
+/*
+    Page Mon échange à venir
+*/
+
+.s_echange_informations {
+    background-color: $gamma;
+  }
+  
+  .s_echange_informations .informations_container {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-column-gap: 5%;
+    grid-template-rows: auto;
+  
+    .information {
+      background-color: $bg-alpha;
+      border: none;
+      max-height: unset;
+      display: flex;
+      flex-direction: column;
+  
+      .info_title {
+        font-size: 2rem;
+      }
+    }
+  
+    .information-1 {
+      grid-area: 1 / 1 / 2 / 3;
+      padding: 4%;
+      align-items: center;
+      gap: 2%;
+      flex-direction: row;
+  
+      .btn {
+        max-width: 250px;
+        min-height: 3.8rem;
+        white-space: normal;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 1rem;
+        padding: 0.5rem 1.5rem;
+  
+        i {
+          font-size: 1.5rem;
+        }
+      }
+  
+      .info_depot {
+        margin-left: auto;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        color: $alpha;
+        border-left: 1px solid $beta;
+        padding-left: 5%;
+  
+        .heures {
+          background-color: $alpha;
+          border-radius: 50px;
+          padding: 0.5rem;
+          color: $text-alpha;
+          margin-top: 1rem;
+          font-size: 1.5rem;
+        }
+      }
+
+      divider {
+        border-left: 1px solid $beta;
+        margin: 0 4rem;
+      }
+    }
+    
+    .information-2 {
+      grid-area: 2 / 1 / 5 / 2;
+      gap: 2rem;
+      height: fit-content;
+      font-size: 1rem;
+  
+      img {
+        width: 6rem;
+        height: 6rem;
+        display: block;
+        margin: 0 auto 1rem;
+      }
+
+      .stats i {
+        width: 2rem;
+        color: #5e95aa;
+        font-size: 1rem;
+      }
+    }
+
+    .information-3 {
+      grid-area: 2 / 2 / 3 / 3;
+  
+      .divider {
+        border: 1px solid $beta;
+        margin: 0 3rem;
+      }
+    }
+
+    .information-4 {
+      grid-area: 3 / 2 / 4 / 3;
+      height: fit-content;
+  
+      .vertical_list {
+        padding: 1rem 0 0;
+  
+        .activite.btn {
+          border: none;
+        }
+      }
+    }
+
+    .information-5 {
+      grid-area: 4 / 2 / 6 / 3;
+      font-size: 1rem;
+      gap: 3rem;
+  
+      .condition_desc {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        margin-top: 1rem;
+        display: flex;
+      }
+  
+      .condition_txt {
+        margin: 1rem 0 0;
+      }
+
+      divider {
+        border-top: 1px solid $beta;
+      }
+    }
+  }
+  
+  .bar_time {
+    margin-top: 3rem;
+    background-color: $gamma;
+    padding: 1rem 5%;
+    font-size: 1.5rem;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+  
+    :last-child {
+      margin-left: auto;
+      white-space: nowrap;
+    }
+  }
+  
+  @media only screen and (max-width: 990px) {
+    .s_echange_informations .informations_container {
+      display: flex;
+    }
+  
+    .informations_container .information-1 {
+      flex-direction: column !important;
+  
+      .info_depot {
+        margin: unset !important;
+        border: unset !important;
+      }
+    }
+  }

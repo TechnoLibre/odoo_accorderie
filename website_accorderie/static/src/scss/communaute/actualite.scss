@@ -1,0 +1,126 @@
+/*
+    Page Communauté/Actualité
+*/
+
+.sub-navbar .nav {
+    flex-direction: row;
+    background-color: $tertiary-color;
+    padding-left: 9%;
+    margin-bottom: 5%;
+  
+    .nav-item {
+      padding: 0 20px;
+
+      .nav-link {
+        padding: 1rem 0;
+      }
+    }
+  }
+  
+  .active {
+    box-shadow: inset 0 -2px $primary-color;
+  }
+  
+  .actualite_search {
+    padding: 1rem 0 2rem 10%;
+    display: flex;
+  
+    .search_bar_rectangle {
+      border-radius: 7px;
+      width: 65%;
+      padding: 1rem;
+      border: 1px solid $alpha;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: $alpha;
+  
+      input {
+        border: none;
+        outline: none;
+        flex-grow: 1;
+        width: 100%;
+      }
+    }
+
+    .btn {
+      border-radius: 7px;
+      float: right;
+      border: 1px solid $alpha;
+      padding: 1rem;
+      margin-left: auto;
+    }
+  }
+
+  .box_publication {
+    border: 1px solid $beta;
+    border-radius: 7px;
+    overflow-wrap: break-word;
+    margin: 20px 0 0 10%;
+    padding: 3%;
+  
+    p {
+      font-size: 1.5rem;
+    }
+
+    .profile_img {
+      width: 10%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+    }
+
+    input {
+      border: none;
+      outline: none;
+      height: 2.5rem;
+      width: 84%;
+      margin-left: 5%;
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .sub-navbar .nav {
+      flex-direction: row;
+      /*
+      padding: 0;
+  
+      .nav-item {
+        text-align: center;
+        padding: 0;
+        font-size: 3.5vw;
+        margin: auto;
+      }*/
+    }
+  }
+  
+  @media only screen and (max-width: 1050px) {
+    .actualite_search {
+      padding-left: 0;
+      display: flex !important;
+  
+      .search_bar_rectangle {
+        margin: 0;
+        width: 75%;
+      }
+  
+      .btn {
+        border: none;
+        font-size: 0;
+  
+        i {
+          font-size: 6vw;
+          line-height: 1rem;
+        }
+      }
+    }
+
+    .box_publication {
+      margin: unset;
+      
+      input {
+        width: 80%;
+        font-size: 3.5vw;
+      }
+    }
+  }
