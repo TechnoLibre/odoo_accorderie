@@ -9,6 +9,7 @@
 <!--                type="text/scss"-->
 <!--                href="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/10.2.7/css/autoComplete.min.css"-->
 <!--            />-->
+            <!-- main -->
             <link
                 rel="stylesheet"
                 type="text/scss"
@@ -19,6 +20,170 @@
                 type="text/scss"
                 href="/website_accorderie/static/src/scss/accorderie_publication.scss"
             />
+            <!-- accueil -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/accueil/banner.scss"
+            />
+            <!-- communaute -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/communaute/actualite.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/communaute/evenements.scss"
+            />    
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/communaute/membres.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/communaute/offres.scss"
+            />       
+            <!-- explorer -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/explorer/actualite.scss"
+            />   
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/explorer/categories.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/explorer/demandes_recentes.scss"
+            />              
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/explorer/horizontal_list.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/explorer/searchbar.scss"
+            />       
+            <!-- general -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/general/return.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/general/dialog.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/general/footer.scss"
+            />              
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/general/guide.scss"
+            />   
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/general/mobile_filter.scss"
+            />
+            <!-- login -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/login/login.scss"
+            />        
+            <!-- monactivite -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monactivite/bilan.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monactivite/echange_a_venir.scss"
+            /> 
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monactivite/echange_agenda.scss"
+            /> 
+            <!-- monprofil -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monprofil/annonces_favoris.scss"
+            /> 
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monprofil/chat.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monprofil/messages_notifications.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monprofil/monprofil.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monprofil/preferences.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monprofil/presentation.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/monprofil/time.scss"
+            />
+            <!-- navbar -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/navbar/adapt.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/navbar/dropdown_menu.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/navbar/navbar.scss"
+            />
+            <!-- participer -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/participer/participer.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/participer/publier_offre.scss"
+            />         
         </xpath>
         <xpath expr="//script[last()]" position="after">
 <!--            <script type="text/javascript" src="https://webrtchacks.github.io/adapter/adapter-latest.js" />-->

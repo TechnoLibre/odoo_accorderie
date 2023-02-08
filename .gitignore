@@ -40,8 +40,7 @@ pip-delete-this-directory.txt
 # Unit test / coverage reports
 htmlcov/
 .tox/
-.nox/
-.coverage
+.nox/ .coverage
 .coverage.*
 nosetests.xml
 coverage.xml
@@ -126,3 +125,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# OSX
+.DS_Store

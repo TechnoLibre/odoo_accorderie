@@ -1,0 +1,65 @@
+/*
+    Dropdown Menu navbar 
+*/
+
+.dropdown-menu.submenu {
+    max-width: 480px;
+    min-width: 465px;
+    padding: 1.5rem;
+  
+    .pub {
+      border-radius: 5px;
+      border: 1px solid $beta;
+      color: $text-gamma !important;
+      margin-top: 1rem;
+      padding: 1.5rem;
+      white-space: normal;
+    }
+  }
+  
+  .dropdown-nav {
+    border-bottom: 1px solid $beta;
+  
+    button {
+      background-color: $bg-alpha;
+      border: none;
+      margin-right: 1rem;
+      padding: 1rem 0;
+    }
+
+    button:hover {
+      box-shadow: inset 0 -2px $primary-color;
+    }
+  }
+  
+  .cat.activite.btn {
+    min-height: unset;
+    padding-right: 1rem;
+  
+    img {
+      height: 65px;
+    }
+  }
+
+  .cat.activite.btn-primary {
+    display: block;
+    margin-top: 5%;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  
+  .dropdown-cat .dropdown-item {
+    padding: 0;
+  }
+
+  .tab-items-container {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .dropdown-menu.submenu {
+      min-width: 100vw;
+    }
+  }
+  

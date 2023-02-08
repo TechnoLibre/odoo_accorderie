@@ -1,0 +1,109 @@
+/*
+    Banner
+*/
+
+.banner-bg {
+    border-radius: 10px;
+    margin: auto;
+    padding: 5% 4%;
+    width: 70%;
+  }
+  
+  .banner_btn {
+    margin: auto;
+    max-width: none !important;
+    padding-top: 16px;
+  }
+  
+  .container_communaute {
+    .row {
+      width: 100%;
+    }
+  }
+  
+  .s_title_banner {
+    padding: 10vw;
+    p {
+      font-size: 3rem;
+    }
+  }
+
+  .aide_title {
+    font-size: 4rem;
+  }
+  
+  @media only screen and (max-width: 890px) {
+    .banner-bg {
+      background-size: auto;
+      padding: 50% 0 0 0;
+      width: 90%;
+  
+      .container {
+        max-width: 100%;
+  
+        .row > .jumbotron {
+          border-radius: 0px;
+  
+          .row > .s_title * {
+            font-size: 6vw;
+            padding-bottom: 0;
+            padding-top: 0;
+          }
+        }
+      }
+    }
+    
+    #banner_communaute {
+      padding: 50% 0 0 0;
+  
+      .s_parallax_bg {
+        background-position: 90%;
+      }
+    }
+
+    .container_communaute {
+      max-width: 100%;
+      padding: 0;
+  
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  
+    #banner_aide {
+      padding: 50% 0 0 0 !important;
+  
+      .container {
+        max-width: 100% !important;
+  
+        .row {
+          background-color: $primary-color;
+          padding: 30px 15px;
+  
+          .s_btn {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+          }
+        }
+      }
+    }
+
+    .aide_title {
+      font-size: 6vh;
+    }
+    
+    .aide_btn {
+      background-color: $bg-alpha !important;
+      border-color: $bg-alpha !important;
+    }
+
+    #aide_btn_txt {
+      color: $primary-color !important;
+    }
+  
+    .s_title_banner p {
+      font-size: 4vh;
+    }
+  }

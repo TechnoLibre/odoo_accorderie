@@ -3036,7 +3036,7 @@
                                         </p>
                                         <div class="solde_container text-gamma">
                                             <div class="txt">Solde de mon compte <i class="fa fa-question-circle-o debug_unimplemented" /></div>
-                                            <div class="solde" ng-class="{neg_time: !personal.actual_bank_sign}">{{personal.actual_bank_time_human_short | uppercase}}</div>
+                                            <div class="solde text-gamma" ng-class="{neg_time: !personal.actual_bank_sign}">{{personal.actual_bank_time_human_short | uppercase}}</div>
                                         </div>
                                     </div>
                                 </section>
