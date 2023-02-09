@@ -20,11 +20,11 @@
                 type="text/scss"
                 href="/website_accorderie/static/src/scss/accorderie_publication.scss"
             />
-            <!-- acceuil -->
+            <!-- accueil -->
             <link
                 rel="stylesheet"
                 type="text/scss"
-                href="/website_accorderie/static/src/scss/acceuil/banner.scss"
+                href="/website_accorderie/static/src/scss/accueil/banner.scss"
             />
             <!-- communaute -->
             <link
@@ -72,38 +72,37 @@
                 rel="stylesheet"
                 type="text/scss"
                 href="/website_accorderie/static/src/scss/explorer/searchbar.scss"
-            />
-            <!-- login -->
+            />                           
+            <!-- general -->
             <link
                 rel="stylesheet"
                 type="text/scss"
-                href="/website_accorderie/static/src/scss/login/login.scss"
-            />               
-            <!-- margin -->
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/margin/bar_retour.scss"
+                href="/website_accorderie/static/src/scss/general/dialog.scss"
             />
             <link
                 rel="stylesheet"
                 type="text/scss"
-                href="/website_accorderie/static/src/scss/margin/dialog.scss"
-            />
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/margin/footer.scss"
+                href="/website_accorderie/static/src/scss/general/footer.scss"
             />              
             <link
                 rel="stylesheet"
                 type="text/scss"
-                href="/website_accorderie/static/src/scss/margin/guide.scss"
+                href="/website_accorderie/static/src/scss/general/guide.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/general/login.scss"
             />   
             <link
                 rel="stylesheet"
                 type="text/scss"
-                href="/website_accorderie/static/src/scss/margin/mobile_filter.scss"
+                href="/website_accorderie/static/src/scss/general/mobile_filter.scss"
+            />
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/website_accorderie/static/src/scss/general/return.scss"
             />
             <!-- monactivite -->
             <link

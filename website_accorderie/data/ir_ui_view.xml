@@ -3068,31 +3068,31 @@
                                 </nav>
                                 <section class="s_activite_bilan">
                                     <div class="bilan_container">
-                                        <div class="bilan-1" style="background-image: url(&quot;/website_accorderie/static/src/img/dark-blue-background.jpg&quot;)"> 
+                                        <div class="bilan-1" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;)"> 
                                             <a href="/monactivite/echanges">
-                                                <span class="txt">Soldes en heures:</span>
-                                                <span class="nbr">{{personal.actual_bank_time_human | uppercase}}</span>
+                                                <span class="txt">Soldes en heures: </span>
+                                                <span class="nbr-1">{{personal.actual_bank_time_human | uppercase}}</span>
                                             </a>
                                         </div>
-                                        <div class="bilan-1" style="background-image: url(&quot;/website_accorderie/static/src/img/dark-blue-background.jpg&quot;)">    
+                                        <div class="bilan-2" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">    
                                             <a href="/monactivite/echanges">
                                                 <span class="nbr">{{personal.nb_echange_a_venir}}</span>
                                                 <span class="txt">échange &#224; venir</span>
                                             </a>
                                         </div>
-                                        <div class="bilan-1" style="background-image: url(&quot;/website_accorderie/static/src/img/dark-blue-background.jpg&quot;)">    
+                                        <div class="bilan-2" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;)">    
                                             <a href="/monactivite/echanges">
                                                 <span class="nbr">{{personal.actual_month_bank_time_human_short | uppercase}}</span>
                                                 <span class="txt">ce mois-ci</span>
                                             </a>
                                         </div>
-                                        <div class="bilan-1" style="background-image: url(&quot;/website_accorderie/static/src/img/dark-blue-background.jpg&quot;)">
+                                        <div class="bilan-2" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">
                                             <a href="/monactivite/echanges">
                                                 <span class="nbr">{{personal.nb_echange_en_cours}}</span>
                                                 <span class="txt">échange en cours</span>
                                             </a>
                                         </div>
-                                        <div class="bilan-1" style="background-image: url(&quot;/website_accorderie/static/src/img/dark-blue-background.jpg&quot;)">    
+                                        <div class="bilan-2" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;)">    
                                             <a href="/evenement">
                                                 <span class="nbr">1</span>
                                                 <span class="txt">évènement</span>
@@ -4053,7 +4053,7 @@
 
                                         <divider />
                                         <div>
-                                            <i class="fa fa-print text-primary icon_padding_right" />
+                                            <i class="fa fa-print text-prismary icon_padding_right" />
                                         Imprimer la validation
                                         </div>
                                     </div>
