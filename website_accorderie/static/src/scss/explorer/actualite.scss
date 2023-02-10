@@ -3,22 +3,22 @@
 */
 
 .s_actualite {
-    padding-bottom: 256px;
     overflow-y: auto;
+    padding-bottom: 256px;
   }
   
   .container_actualite {
+    float: left;
     margin-left: 5%;
     width: 45%;
-    float: left;
   }
   
   .container_echange {
     border-radius: 7px;
-    overflow: hidden;
     float: right;
-    margin: 0 10% 0 5%;
     height: 1300px;
+    margin: 0 10% 0 5%;
+    overflow: hidden;
     width: 32%;
   
     .img {
@@ -26,8 +26,8 @@
     }
   
     .info {
-      height: 35%;
       background-color: $primary-color;
+      height: 35%;
       padding: 10%;
   
       * {
@@ -42,21 +42,21 @@
   }
   
   .box_actualite {
-    border: 1px solid $beta;
     border-radius: 7px;
-    overflow-wrap: break-word;
+    border: 1px solid $beta;
     margin: 20px 0 0 10%;
+    overflow-wrap: break-word;
   }
   
   .actualite_head {
+    align-items: center;
+    display: flex;
     padding: 3%;
     position: relative;
-    display: flex;
-    align-items: center;
   
     .pub_pfp {
-      width: 50px;
       aspect-ratio: 1;
+      width: 50px;
     }
 
     .pub_info {
@@ -83,11 +83,11 @@
   
   .actualite_head:after {
     content: "";
-    position: absolute;
+    border-bottom: 1px solid $beta;
     bottom: 0px;
     left: 3%;
+    position: absolute;
     width: 94%;
-    border-bottom: 1px solid $beta;
   }
   
   .actualite_content {
@@ -103,10 +103,10 @@
   }
   
   .actualite_stats {
+    display: flex;
+    height: 10%;
     padding: 3%;
     position: relative;
-    height: 10%;
-    display: flex;
   
     .like_count {
       margin-right: auto;
@@ -126,11 +126,11 @@
   
   .actualite_stats:after {
     content: "";
-    position: absolute;
+    border-bottom: 1px solid $beta;
     bottom: 0px;
     left: 3%;
+    position: absolute;
     width: 94%;
-    border-bottom: 1px solid $beta;
   }
   
   .pub_actions {
@@ -139,83 +139,84 @@
   
     .like_btn:after {
       content: "";
+      border-right: 1px solid $beta;
+      height: 100%;
       position: absolute;
       right: 0px;
       top: 0;
-      height: 100%;
-      border-right: 1px solid $beta;
     }
   }
   
   .pub_actions > * {
-    position: relative;
-    width: 50%;
-    text-align: center;
     float: left;
+    position: relative;
+    text-align: center;
+    width: 50%;
   }
   
   .actualite_foot {
+    display: flex;
     padding: 3%;
     position: relative;
-    display: flex;
   
     .profile_img {
-      height: 35px;
       aspect-ratio: 1;
       border-radius: 50%;
+      height: 35px;
     }
   
     .comment_bar {
+      background-color: $beta;
+      border-radius: 50px;
+      display: flex;
+      height: 35px;
+      margin-left: 3%;
       padding: 5px 15px;
       width: 100%;
-      height: 35px;
-      border-radius: 50px;
-      background-color: $beta;
-      margin-left: 3%;
-      display: flex;
   
       input {
-        height: 100%;
         background-color: $beta;
         border: none;
-        width: 100%;
-        outline: none;
         flex-grow: 1;
+        height: 100%;
+        outline: none;
+        width: 100%;
       }
       icon {
-        margin: auto 0 auto 10px;
         font-size: 1.3rem;
+        margin: auto 0 auto 10px;
       }
     }
   }
   
   .actualite_foot:after {
     content: "";
+    border-top: 1px solid $beta;
+    left: 3%;
     position: absolute;
     top: 0px;
-    left: 3%;
     width: 94%;
-    border-top: 1px solid $beta;
   }
   
   @media only screen and (max-width: 1050px) {
     .container_echange {
-      width: 90%;
       float: unset;
       height: auto;
       margin-top: 2rem;
+      width: 90%;
   
       .img {
         height: 35%;
       }
+      
       .info {
         height: 200px;
       }
     }
     
     .container_actualite {
-      margin: auto !important;
       float: none !important;
+      margin: auto !important;
       width: 90% !important;
   
       .box_actualite {

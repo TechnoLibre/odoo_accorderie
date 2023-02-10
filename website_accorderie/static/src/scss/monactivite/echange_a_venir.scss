@@ -8,16 +8,16 @@
   
   .s_echange_informations .informations_container {
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
     grid-column-gap: 5%;
+    grid-template-columns: 0.5fr 1fr;
     grid-template-rows: auto;
   
     .information {
       background-color: $bg-alpha;
       border: none;
-      max-height: unset;
       display: flex;
       flex-direction: column;
+      max-height: unset;
   
       .info_title {
         font-size: 2rem;
@@ -25,21 +25,21 @@
     }
   
     .information-1 {
+      align-items: center;
+      flex-direction: row;
+      gap: 2%;
       grid-area: 1 / 1 / 2 / 3;
       padding: 4%;
-      align-items: center;
-      gap: 2%;
-      flex-direction: row;
   
       .btn {
+        align-items: center;
+        display: flex;
+        gap: 1rem;
         max-width: 250px;
         min-height: 3.8rem;
-        white-space: normal;
-        display: flex;
-        align-items: center;
-        text-align: left;
-        gap: 1rem;
         padding: 0.5rem 1.5rem;
+        text-align: left;
+        white-space: normal;
   
         i {
           font-size: 1.5rem;
@@ -47,21 +47,21 @@
       }
   
       .info_depot {
-        margin-left: auto;
+        border-left: 1px solid $beta;
+        color: $alpha;
         font-size: 1rem;
         font-weight: bold;
-        text-align: center;
-        color: $alpha;
-        border-left: 1px solid $beta;
+        margin-left: auto;
         padding-left: 5%;
+        text-align: center;
   
         .heures {
           background-color: $alpha;
           border-radius: 50px;
-          padding: 0.5rem;
           color: $text-alpha;
-          margin-top: 1rem;
           font-size: 1.5rem;
+          margin-top: 1rem;
+          padding: 0.5rem;
         }
       }
 
@@ -72,22 +72,22 @@
     }
     
     .information-2 {
-      grid-area: 2 / 1 / 5 / 2;
-      gap: 2rem;
-      height: fit-content;
       font-size: 1rem;
+      gap: 2rem;
+      grid-area: 2 / 1 / 5 / 2;
+      height: fit-content;
   
       img {
-        width: 6rem;
-        height: 6rem;
         display: block;
+        height: 6rem;
         margin: 0 auto 1rem;
+        width: 6rem;
       }
 
       .stats i {
-        width: 2rem;
         color: #5e95aa;
         font-size: 1rem;
+        width: 2rem;
       }
     }
 
@@ -114,15 +114,15 @@
     }
 
     .information-5 {
-      grid-area: 4 / 2 / 6 / 3;
       font-size: 1rem;
       gap: 3rem;
+      grid-area: 4 / 2 / 6 / 3;
   
       .condition_desc {
+        display: flex;
         font-size: 1.2rem;
         margin-bottom: 0;
         margin-top: 1rem;
-        display: flex;
       }
   
       .condition_txt {
@@ -136,13 +136,13 @@
   }
   
   .bar_time {
-    margin-top: 3rem;
-    background-color: $gamma;
-    padding: 1rem 5%;
-    font-size: 1.5rem;
-    display: flex;
-    border-radius: 5px;
     align-items: center;
+    background-color: $gamma;
+    border-radius: 5px;
+    display: flex;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    padding: 1rem 5%;
   
     :last-child {
       margin-left: auto;
@@ -159,8 +159,8 @@
       flex-direction: column !important;
   
       .info_depot {
-        margin: unset !important;
         border: unset !important;
+        margin: unset !important;
       }
     }
   }

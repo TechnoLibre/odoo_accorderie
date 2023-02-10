@@ -9,22 +9,22 @@
   }
 
   .event_banner_action {
+    border-radius: 5px 5px 0 0;
     bottom: 0;
+    display: flex;
     position: absolute;
     right: 10%;
-    display: flex;
-    border-radius: 5px 5px 0 0;
   
     .btn {
-      padding: 1rem 2rem;
       color: $text-alpha;
+      padding: 1rem 2rem;
     }
 
     .divider {
-      width: 1px;
       background-color: $text-alpha;
-      margin: auto;
       height: 2rem;
+      margin: auto;
+      width: 1px;
     }
   }
   
@@ -47,13 +47,13 @@
         flex-direction: row;
   
         > * {
-          margin-top: 1%;
           font-size: 1rem;
+          margin-top: 1%;
         }
   
         > div:not(:first-child) {
-          padding: 0.5% 2%;
           border-left: 1px solid $beta;
+          padding: 0.5% 2%;
         }
   
         .distance {
@@ -72,26 +72,26 @@
   
         .btn {
           color: $text-alpha;
-          padding: 1rem 2rem;
-          margin-left: 5%;
           float: right;
+          margin-left: 5%;
+          padding: 1rem 2rem;
         }
       }
     }
   }
   
   .checker {
-    border: 1px solid $beta;
-    padding: 0.5rem;
     border-radius: 5px;
+    border: 1px solid $beta;
     margin: 0.5rem 1rem 0 0;
+    padding: 0.5rem;
   }
 
   .rounded-dashed {
-    border: 2px dashed $beta;
-    padding: 0.5rem;
     border-radius: 50%;
+    border: 2px dashed $beta;
     margin-right: 1rem;
+    padding: 0.5rem;
   }
 
   .dashed {
@@ -101,11 +101,11 @@
   .event_container .informations_container {
     display: flex;
     flex-direction: column;
-    width: 65%;
-    gap: 50px;
     float: left;
-    padding-right: 15%;
+    gap: 50px;
     height: auto;
+    padding-right: 15%;
+    width: 65%;
   
     > div:not(:first-child) {
       padding-right: 25%;
@@ -120,8 +120,8 @@
       }
   
       > * {
-        padding: 5% 5% 5% 0;
         border-top: 1px solid $beta;
+        padding: 5% 5% 5% 0;
       }
 
       .resume .desc {
@@ -138,13 +138,13 @@
         padding-right: 0;
   
         .search_box {
-          height: 50px;
+          align-items: center;
           border-radius: 7px;
-          width: 50%;
           border: 1px solid lightgray;
           display: flex;
-          align-items: center;
+          height: 50px;
           margin: 5% 0;
+          width: 50%;
   
           i {
             margin-left: 5%;
@@ -152,32 +152,32 @@
 
           input {
             border: none;
-            outline: none;
             height: 100%;
-            width: 85%;
             margin: auto;
+            outline: none;
+            width: 85%;
           }
         }
   
         .contact {
+          align-items: center;
+          border-bottom: 1px solid $beta;
           display: flex;
           flex-direction: row;
-          align-items: center;
-          height: 100px;
           gap: 40px;
-          border-bottom: 1px solid $beta;
+          height: 100px;
   
           .user_pic {
-            background-size: cover;
             aspect-ratio: 1/1;
+            background-size: cover;
             height: 70%;
           }
   
           .btn {
-            margin-left: auto;
-            padding: 0.75rem 5%;
             color: $text-alpha;
             font-size: 1rem;
+            margin-left: auto;
+            padding: 0.75rem 5%;
           }
         }
 
@@ -191,24 +191,25 @@
   .dispo .dates_container {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     font-size: 1rem;
+    width: 100%;
   
     :nth-child(odd) {
       width: 25%;
     }
+
     :nth-child(even) {
       width: 75%;
     }
   }
   
   .right_cards_container {
-    float: right;
-    width: 25%;
-    margin: 0 10% 0 0;
     display: flex;
     flex-direction: column;
+    float: right;
     gap: 50px;
+    margin: 0 10% 0 0;
+    width: 25%;
   
     .info-3 {
       background-color: $delta;
@@ -217,13 +218,14 @@
       padding: 2rem;
   
       img {
-        height: 300px;
         border-radius: 7px 7px 0 0;
+        height: 300px;
       }
+      
       div {
-        width: 100%;
-        padding-bottom: 0.5rem;
         font-size: 1rem;
+        padding-bottom: 0.5rem;
+        width: 100%;
       }
     }
   
@@ -241,10 +243,10 @@
   
   .card-votre-relation {
     .img {
-      width: 25%;
       aspect-ratio: 1/1;
       background-size: cover;
       margin: 0 auto 5% auto;
+      width: 25%;
     }
   
     h4 {
@@ -289,14 +291,14 @@
 
     .event_info .btn_container {
       float: none !important;
-      width: auto !important;
       margin-top: auto !important;
+      width: auto !important;
   
       .btn {
-        padding: 0.5rem 1rem !important;
+        float: none !important;
         margin-left: 0 !important;
         margin-right: 4% !important;
-        float: none !important;
+        padding: 0.5rem 1rem !important;
       }
     }
 
@@ -304,8 +306,8 @@
       flex-direction: column !important;
   
       > * {
-        border-top: 1px solid $beta !important;
         border-left: none !important;
+        border-top: 1px solid $beta !important;
         padding: 1rem 0 !important;
       }
     }
@@ -341,8 +343,8 @@
       }
   
       :nth-child(even) {
-        width: 50%;
         text-align: center;
+        width: 50%;
       }
     }
   }

@@ -3,21 +3,21 @@
 */
 
 .banner_profile {
-    display: flex;
-    gap: 2rem;
     align-items: center;
     color: $text-gamma !important;
+    display: flex;
+    gap: 3.5rem;
   
     * {
       color: $text-gamma !important;
     }
-  
+
     .solde_container {
-      margin-left: auto;
+      border-left: 2px solid $text-gamma;
       display: flex;
       flex-direction: column;
+      margin-left: auto;
       padding-left: 4rem;
-      border-left: 2px solid $text-gamma;
   
       .txt {
         font-size: 1.3rem;
@@ -26,37 +26,36 @@
       }
   
       .solde {
+        color: $text-gamma !important;
         font-size: 3rem;
         line-height: 3rem;
-        color: $text-gamma !important;
-  
       }
     }
     
     .profile_infos {
-      display: flex;
       align-items: center;
+      display: flex;
       width: 50%;
     }
   }
   
   .s_informations {
-    margin-top: 100px;
     margin-bottom: 100px;
+    margin-top: 100px;
   }
   
   .profile_pic {
-    height: 150px;
     aspect-ratio: 1/1;
     background-size: cover;
+    height: 150px;
     position: relative;
   
     i {
-      position: absolute;
       bottom: 0px;
-      right: 0px;
-      font-size: 2rem;
       color: $text-gamma !important;
+      font-size: 2rem;
+      position: absolute;
+      right: 0px;
     }
   }
 
@@ -66,20 +65,20 @@
     margin-left: 10%;
   
     .profile_name {
-      font-size: 3rem;
       color: $text-gamma !important;
+      font-size: 3rem;
     }
     .profile_hrs {
-      font-size: 2.5rem;
-      color: $text-gamma !important;
+      font-size: 1.5rem;
+      width: auto;
     }
   }
   
   .profile_btn.btn {
-    border: 1px solid $beta;
+    border: 2px solid $beta;
     color: $text-gamma !important;
-    padding: 1rem;
     font-size: 1.5rem;
+    padding: 1rem;
     white-space: normal;
   }
 
@@ -89,34 +88,36 @@
   
   .informations_container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 30px;
     grid-row-gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     padding: 0 10%;
   
     .information {
       border-radius: 7px;
-      padding: 2.5rem;
-      text-align: left;
       border: 1px solid $beta;
+      max-height: 350px;
+      overflow: hidden;
+      padding: 2rem;
+      text-align: left;
       text-decoration: none;
       white-space: normal;
-      max-height: 300px;
-      overflow: hidden;
-  
+      
       img {
         height: 15%;
       }
   
       .nbr {
-        font-size: 1.5rem;
         color: $text-beta;
+        font-size: 1.5rem;
+        line-height: 20px;
       }
   
       .txt {
-        font-size: 1.2rem;
         color: gray;
+        font-size: 1.2rem;
+        line-height: 30px;
       }
     }
   
@@ -146,8 +147,8 @@
   
     .logout {
       background-color: black;
-      display: none;
       border: none;
+      display: none;
       text-align: center;
   
       > * {
@@ -158,8 +159,8 @@
   
   @media only screen and (max-width: 990px) {
     .banner_profile {
-      flex-direction: column;
       align-items: unset;
+      flex-direction: column;
 
       .profile_infos {
         width: 100%;
@@ -206,6 +207,7 @@
 
       .profile_hrs {
         font-size: 3.5vh;
+        width: auto;
       }
     }
   
@@ -215,8 +217,8 @@
     }
     
     .profile_btn.accorderie {
-      width: 100%;
       font-size: 5vw;
+      width: 100%;
   
       i {
         display: none;

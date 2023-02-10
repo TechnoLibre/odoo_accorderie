@@ -3,15 +3,15 @@
 */
 
 .s_buttons_form {
-    max-height: calc(100vh - 126px);
     display: flex;
+    max-height: calc(100vh - 126px);
   }
   
   .txt_question {
-    display: flex;
     background-color: $alpha;
-    flex: 1;
+    display: flex;
     flex-direction: column;
+    flex: 1;
     justify-content: center;
   
     > div {
@@ -46,9 +46,9 @@
   }
   
   .buttons_form_container .s_event_banner {
-    width: 100vw;
     left: -12.5%;
     padding: 10%;
+    width: 100vw;
   }
   .buttons_form_container .input-group .datetimepicker-input {
     height: 3.5rem;
@@ -57,23 +57,23 @@
   
   .buttons_form_container {
     display: flex;
-    height: calc(100vh - 126px - 5rem);
     flex-direction: row;
-    gap: 20px;
-    padding: 5% 10%;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    gap: 20px;
+    height: calc(100vh - 126px - 5rem);
     overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 5% 10%;
   
     h3 {
-      margin-top: 50px;
       margin-bottom: 40px;
+      margin-top: 50px;
     }
 
     h4 {
-      margin-top: 20px;
-      margin-bottom: 1rem;
       display: flex;
+      margin-bottom: 1rem;
+      margin-top: 20px;
   
       .modifier {
         font-size: 1.25rem;
@@ -82,20 +82,20 @@
     }
 
     .nav_back {
+      align-items: center;
       display: flex;
       gap: 1rem;
       margin: -5% 0 0 -10%;
-      align-items: center;
     }
   
     .label {
-      min-height: 120px;
-      width: 100%;
-      border: 1px solid $beta;
       border-radius: 5px;
+      border: 1px solid $beta;
+      min-height: 120px;
       padding: 2%;
       text-align: left;
       white-space: normal;
+      width: 100%;
   
       img {
         width: 65px;
@@ -103,14 +103,14 @@
     }
 
     .button_form {
-      width: 80%;
       margin: auto;
+      width: 80%;
     }
   
     .divider {
-      margin-top: 4rem;
-      margin-bottom: 2rem;
       border-top: 1px solid $beta;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
     }
   
     .categorie {
@@ -119,22 +119,22 @@
     }
 
     .cat {
-      min-height: unset;
-      height: 100px;
-      width: 100%;
-      padding: 1rem;
-      hyphens: auto;
-      white-space: normal;
+      align-items: center;
       display: flex;
       gap: 5%;
-      align-items: center;
+      height: 100px;
+      hyphens: auto;
+      min-height: unset;
+      padding: 1rem;
+      white-space: normal;
+      width: 100%;
     }
   
     .small {
-      min-height: 5rem;
-      flex: unset;
-      display: flex;
       align-items: center;
+      display: flex;
+      flex: unset;
+      min-height: 5rem;
   
       > * {
         margin: 0;
@@ -142,12 +142,12 @@
     }
   
     > *[class^="form_"] {
-      resize: none;
-      outline: none;
       border-radius: 5px;
       border: 1px solid $beta;
-      padding: 1rem;
       margin-bottom: 2rem;
+      outline: none;
+      padding: 1rem;
+      resize: none;
     }
 
     .form_titre {
@@ -159,39 +159,39 @@
     }
 
     .form_box {
-      display: flex;
       align-items: center;
       border-radius: 5px;
       border: 1px solid $beta;
-      padding: 1rem;
+      display: flex;
       margin-bottom: 2rem;
+      padding: 1rem;
   
       > :nth-child(2) {
         margin-left: auto;
       }
 
       > :nth-child(3) {
-        width: 2rem;
         text-align: right;
+        width: 2rem;
       }
     }
 
     .search_member_container {
+      align-items: center;
+      border-radius: 5px;
+      border: 1px solid $beta;
       display: flex;
+      gap: 5%;
       height: 5rem;
       outline: none;
-      width: 85%;
-      border: 1px solid $beta;
-      border-radius: 5px;
-      align-items: center;
       padding: 0 5%;
-      gap: 5%;
+      width: 85%;
     }
   
     .autoComplete_wrapper {
-      width: 100%;
       height: 5rem;
       position: relative;
+      width: 100%;
   
       .fa-search {
         position: absolute;
@@ -200,12 +200,12 @@
     }
   
     #chooseMember {
-      width: 100%;
+      border-bottom: 1px solid $beta;
+      border-top: 1px solid $beta;
+      border: none;
       height: 5rem;
       outline: none;
-      border: none;
-      border-top: 1px solid $beta;
-      border-bottom: 1px solid $beta;
+      width: 100%;
     }
 
     button.remove_member {
@@ -221,8 +221,8 @@
   
     ul[id^="autoComplete_list"] {
       list-style: none;
-      width: 100%;
       padding: 0;
+      width: 100%;
   
       > * {
         margin-top: 1rem;
@@ -230,11 +230,11 @@
     }
 
     li[id^="autoComplete_result"] {
-      border: 1px solid $beta;
       border-radius: 5px;
+      border: 1px solid $beta;
+      left: -15%;
       padding: 1rem 2rem;
       position: relative;
-      left: -15%;
       width: 122%;
   
       img {
@@ -243,17 +243,17 @@
     }
   
     .activite {
-      display: flex;
-      padding: 5%;
+      align-items: center;
       background-color: $tertiary-color;
       border-radius: 5px;
       border: 1px solid $alpha;
-      align-items: center;
+      display: flex;
+      padding: 5%;
   
       .activite_img {
-        height: 100px;
         aspect-ratio: 1;
         border-radius: 5px;
+        height: 100px;
         margin-right: 5%;
       }
   
@@ -268,12 +268,12 @@
       }
   
       .infos_right {
-        margin-left: auto;
-        height: 100%;
-        text-align: right;
         display: flex;
         flex-direction: column;
+        height: 100%;
         justify-content: space-between;
+        margin-left: auto;
+        text-align: right;
       }
     }
 
@@ -289,17 +289,17 @@
   }
   
   .submit_container {
-    height: 5rem;
     border-top: 2px solid $alpha;
+    height: 5rem;
   
     .submit_btn {
-      min-width: 120px;
-      height: 50px;
       background-color: $primary-color;
-      float: right;
-      margin: 1rem 5%;
       border-radius: 5px;
       color: $text-alpha;
+      float: right;
+      height: 50px;
+      margin: 1rem 5%;
+      min-width: 120px;
     }
   
     .submit_btn_disable {
@@ -326,8 +326,8 @@
       }
   
       .txt_question {
-        max-height: 100px;
         background-color: $bg-alpha;
+        max-height: 100px;
         padding: 5%;
   
         > div {
@@ -345,13 +345,13 @@
       }
       #participer_form {
         .buttons_form_container {
-          padding: 5%;
           gap: 0.5rem;
           height: calc(100vh - 366px);
+          padding: 5%;
   
           .cat {
-            padding: 0.5rem;
             height: 100%;
+            padding: 0.5rem;
           }
           .nav_back {
             margin: -1% 0 3%;
@@ -363,8 +363,8 @@
         }
   
         .submit_container .submit_btn {
-          width: fit-content;
           margin-right: 5%;
+          width: fit-content;
         }
       }
     }

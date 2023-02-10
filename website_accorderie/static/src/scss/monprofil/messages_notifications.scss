@@ -6,17 +6,17 @@
     white-space: normal;
   
     .activite_img {
+      background-color: powderblue;
+      background-position: center;
+      background-size: cover;
       height: 65px;
       margin-right: 2%;
-      background-size: cover;
-      background-position: center;
-      background-color: powderblue;
   
       .unread {
-        background-color: $alpha;
-        height: 15px;
         aspect-ratio: 1/1;
+        background-color: $alpha;
         float: right;
+        height: 15px;
         margin-top: 5px;
       }
     }

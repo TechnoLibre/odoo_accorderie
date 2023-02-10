@@ -10,12 +10,12 @@
     padding-top: 100px;
   
     textarea {
-      width: 100%;
+      border-radius: 5px;
+      border: 1px solid $beta;
       height: 8rem;
       padding: 1rem 2rem;
-      border: 1px solid $beta;
-      border-radius: 5px;
       resize: none;
+      width: 100%;
     }
   
     textarea:focus {
@@ -24,12 +24,12 @@
     }
   
     .desc {
-      width: 100%;
-      height: auto;
-      padding: 1rem 2rem;
-      border: 1px solid $beta;
       border-radius: 5px;
+      border: 1px solid $beta;
+      height: auto;
       margin-top: 1rem;
+      padding: 1rem 2rem;
+      width: 100%;
     }
   }
   
@@ -51,10 +51,10 @@
     }
 
     button {
-      padding: 0.75rem;
       font-size: 1.2rem;
-      width: 100%;
       margin-top: 1.5rem;
+      padding: 0.75rem;
+      width: 100%;
     }
 
     font {
@@ -72,9 +72,9 @@
     }
     
     .modal_pub_offre button {
-      padding: 0.375rem 0.75rem;
       font-size: clamp(12px, 3vh, 1.25rem);
-      white-space: normal;
       margin-top: 0.75rem;
+      padding: 0.375rem 0.75rem;
+      white-space: normal;
     }
   }

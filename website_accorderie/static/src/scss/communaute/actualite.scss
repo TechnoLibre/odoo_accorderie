@@ -3,10 +3,10 @@
 */
 
 .sub-navbar .nav {
-    flex-direction: row;
     background-color: $tertiary-color;
-    padding-left: 9%;
+    flex-direction: row;
     margin-bottom: 5%;
+    padding-left: 9%;
   
     .nav-item {
       padding: 0 20px;
@@ -22,41 +22,41 @@
   }
   
   .actualite_search {
-    padding: 1rem 0 2rem 10%;
     display: flex;
+    padding: 1rem 0 2rem 10%;
   
     .search_bar_rectangle {
-      border-radius: 7px;
-      width: 65%;
-      padding: 1rem;
-      border: 1px solid $alpha;
-      display: flex;
       align-items: center;
-      gap: 1rem;
+      border-radius: 7px;
+      border: 1px solid $alpha;
       color: $alpha;
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      width: 65%;
   
       input {
         border: none;
-        outline: none;
         flex-grow: 1;
+        outline: none;
         width: 100%;
       }
     }
 
     .btn {
       border-radius: 7px;
-      float: right;
       border: 1px solid $alpha;
-      padding: 1rem;
+      float: right;
       margin-left: auto;
+      padding: 1rem;
     }
   }
 
   .box_publication {
-    border: 1px solid $beta;
     border-radius: 7px;
-    overflow-wrap: break-word;
+    border: 1px solid $beta;
     margin: 20px 0 0 10%;
+    overflow-wrap: break-word;
     padding: 3%;
   
     p {
@@ -64,18 +64,18 @@
     }
 
     .profile_img {
-      width: 10%;
       aspect-ratio: 1;
       border-radius: 50%;
+      width: 10%;
     }
 
     input {
       border: none;
-      outline: none;
-      height: 2.5rem;
-      width: 84%;
-      margin-left: 5%;
       font-size: 1.2rem;
+      height: 2.5rem;
+      margin-left: 5%;
+      outline: none;
+      width: 84%;
     }
   }
   
@@ -86,18 +86,18 @@
       padding: 0;
   
       .nav-item {
-        text-align: center;
-        padding: 0;
         font-size: 3.5vw;
         margin: auto;
+        padding: 0;
+        text-align: center;
       }*/
     }
   }
   
   @media only screen and (max-width: 1050px) {
     .actualite_search {
-      padding-left: 0;
       display: flex !important;
+      padding-left: 0;
   
       .search_bar_rectangle {
         margin: 0;
@@ -119,8 +119,8 @@
       margin: unset;
       
       input {
-        width: 80%;
         font-size: 3.5vw;
+        width: 80%;
       }
     }
   }

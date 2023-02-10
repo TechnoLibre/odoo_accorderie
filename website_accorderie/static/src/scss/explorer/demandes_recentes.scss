@@ -14,37 +14,38 @@
   }
   
   .activites_list {
-    padding: 0 5% !important;
     display: flex;
     flex-direction: column;
     float: left;
-    width: 50%;
     height: 100%;
     margin: 0 !important;
+    padding: 0 5% !important;
+    width: 50%;
     //overflow: hidden;
-  
+
     .list_title {
       padding-bottom: 3rem;
     }
   }
   
-  .activite.btn {
-    max-width: 100%;
+  .activite.btn {    
+    display: flex;
     //max-height: 160px;
-    padding: 1.5rem 0;
+    max-width: 100%;
     overflow: hidden;
+    padding: 1.5rem 0;
     text-align: left;
     white-space: normal;
-    display: flex;
   
     .activite_img {
-      height: 100px;
       aspect-ratio: 1/1;
       border-radius: 5px;
-      margin-right: 5%;
-      line-height: 100px;
       font-size: clamp(12px, 3rem, 3rem);
+      height: 100px;
+      line-height: 100px;
+      margin-right: 5%;
     }
+
     .infos {
       display: flex;
       flex-direction: column;
@@ -52,60 +53,66 @@
   
     .activite_title {
       color: $text-beta;
-      font-weight: bold;
       font-size: 1.2rem;
+      font-weight: bold;
     }
   
     .activite_auteur {
-      margin-top: auto;
       color: $text-beta;
       font-size: 1.1rem;
+      margin-top: auto;
     }
   
     .activite_distance {
-      margin-bottom: 0;
       color: $text-beta;
       font-size: 1.1rem;
+      margin-bottom: 0;
     }
+
     .status {
-      border: 1px solid;
       border-radius: 50px;
-      height: fit-content;
-      padding: 0.5rem 1rem;
-      margin: 0 0 auto auto;
+      border: 1px solid;
       font-weight: bold;
+      height: fit-content;
+      margin: 0 0 auto auto;
+      padding: 0.5rem 1rem;
       white-space: nowrap;
     }
+
     .status.red {
-      color: $text-alpha;
       background-color: $bg-red-alert;
       border: none;
+      color: $text-alpha;
     }
+
     .status.red-o {
       color: $bg-red-alert;
     }
+
     .status.blue {
-      color: $text-alpha;
       background-color: $alpha;
       border: none;
+      color: $text-alpha;
     }
+
     .status.blue-o {
       color: $alpha;
     }
+
     .event {
       margin: 0 0 auto auto;
     }
   
     .infos.right {
-      margin-left: auto;
+      color: $text-beta;
       display: flex;
       flex-direction: column;
-      color: $text-beta;
+      margin-left: auto;
       width: min-content;
   
       .fa {
-        margin-top: auto;
         font-size: 1.5rem;
+        margin-top: auto;
       }
     }
   }
@@ -114,17 +121,19 @@
     .s_activites_recentes {
       padding: 5% 0;
     }
+
     .container_lists {
       flex-direction: column;
       gap: 5rem;
     }
+
     .row.activites_list {
-      width: 100%;
       height: inherit !important;
+      width: 100%;
   
       .activite {
-        padding: 2% 0 2%;
         height: unset !important;
+        padding: 2% 0 2%;
   
         .activite_img {
           height: 8vh;

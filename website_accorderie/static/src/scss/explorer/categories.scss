@@ -12,20 +12,20 @@
   }
   
   .offre_box.btn {
+    max-height: 140px;
     padding: 0;
     text-align: left;
-    max-height: 140px;
   
     a {
       color: $text-beta;
     }
   
     .offre_img {
-      height: 88%;
       aspect-ratio: 1/1;
-      float: left;
       background-size: cover;
       border-radius: 5px;
+      float: left;
+      height: 88%;
     }
   
     .offre_desc {
@@ -36,8 +36,8 @@
   
   @media only screen and (max-width: 1090px) {
     .s_offres {
-      padding: 0 5%;
       height: auto;
+      padding: 0 5%;
     }
     
     .offres_list {

@@ -3,33 +3,33 @@
 */
 
 .s_activites_recentes.lg {
-    max-height: 2000px;
     height: auto;
+    max-height: 2000px;
     padding-top: 0;
   }
   
   .activites_list.lg {
-    width: 100%;
     flex-wrap: nowrap;
+    width: 100%;
   
     .list_title {
       border-bottom: 1px solid $beta;
       margin-top: 6vh;
     }
 
-    .agenda_btns {
-      margin-left: auto;
-      border: 1px solid #d6d6d6;
-      border-radius: 7px;
-      display: flex;
       align-items: center;
+      border-radius: 7px;
+      border: 1px solid #d6d6d6;
+      display: flex;
+      margin-left: auto;
+    .agenda_btns {
   
       .btn {
-        padding: 1rem;
-        line-height: 1rem;
-        font-size: 1.5rem;
         border-radius: 7px;
         color: $beta;
+        font-size: 1.5rem;
+        line-height: 1rem;
+        padding: 1rem;
       }
 
       divider {
@@ -39,19 +39,19 @@
     }
   
     .activite.btn {
-      height: 150px;
-      display: flex;
       align-items: center;
+      display: flex;
+      height: 150px;
   
       .activite_img {
         max-height: 150px;
       }
   
       .activite_infos {
-        display: flex;
-        width: 60%;
-        height: 100%;
         align-items: center;
+        display: flex;
+        height: 100%;
+        width: 60%;
       }
   
       .activite_title {
@@ -59,11 +59,11 @@
       }
   
       .details {
-        position: relative;
-        padding: 0 10%;
         display: flex;
         flex-direction: column;
         height: 100%;
+        padding: 0 10%;
+        position: relative;
       }
   
       .status {
@@ -72,29 +72,29 @@
   
       .details::after {
         content: "";
-        position: absolute;
-        left: 0px;
-        top: 20%;
-        height: 60%;
         border-left: 1px solid $beta;
         border-radius: 2px;
+        height: 60%;
+        left: 0px;
+        position: absolute;
+        top: 20%;
       }
     }
   }
   
   .medium-btn.btn {
     color: $text-alpha;
-    width: fit-content;
-    padding: 1.5%;
     font-size: 1rem;
     margin-top: 5%;
+    padding: 1.5%;
+    width: fit-content;
   }
   
   @media only screen and (max-width: 990px) {
     .activites_list.lg .activite.btn {
       .activite_infos {
-        flex-direction: column;
         align-items: unset;
+        flex-direction: column;
         justify-content: center;
   
         .activite_title {
@@ -106,9 +106,9 @@
         //}
 
         .details {
+          height: auto;
           padding: 0;
           position: unset;
-          height: auto;
         }
       }
 
@@ -118,9 +118,9 @@
     }
     
     .medium-btn.btn {
-      max-width: 100%;
-      margin: 5% auto;
       font-size: clamp(0.75rem, 2.5vw, 1rem);
+      margin: 5% auto;
+      max-width: 100%;
       padding: 2.5%;
     }
   }

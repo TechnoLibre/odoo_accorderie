@@ -3,17 +3,17 @@
 */
 
 .dropdown-menu.submenu {
-    padding: 1.5rem;
     max-width: 480px;
     min-width: 465px;
+    padding: 1.5rem;
   
     .pub {
-      padding: 1.5rem;
-      border: 1px solid $beta;
       border-radius: 5px;
-      margin-top: 1rem;
-      white-space: normal;
+      border: 1px solid $beta;
       color: $text-gamma !important;
+      margin-top: 1rem;
+      padding: 1.5rem;
+      white-space: normal;
     }
   }
   
@@ -23,8 +23,8 @@
     button {
       background-color: $bg-alpha;
       border: none;
-      padding: 1rem 0;
       margin-right: 1rem;
+      padding: 1rem 0;
     }
 
     button:hover {
@@ -42,10 +42,10 @@
   }
 
   .cat.activite.btn-primary {
-    text-align: center;
     display: block;
-    padding: 0.75rem;
     margin-top: 5%;
+    padding: 0.75rem;
+    text-align: center;
   }
   
   .dropdown-cat .dropdown-item {

@@ -8,8 +8,8 @@
   
     .horizontal_list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       grid-gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   
       .list_item {
         height: 350px;
@@ -24,34 +24,34 @@
   }
 
   .item_img .name {
-    position: absolute;
     bottom: 30px;
     font-size: 20px;
+    position: absolute;
   }
 
   .item_img .infos {
-    position: absolute;
     bottom: 10px;
+    position: absolute;
   }
   
   .item_desc.centered {
-    text-align: center;
     height: 40% !important;
     padding: 10% !important;
+    text-align: center;
   }
   
   .item_foot {
     height: 20%;
-    text-align: center;
     padding: 8%;
     position: relative;
+    text-align: center;
   }
   
   .tag {
-    padding: 0.25rem 0.9rem;
     background-color: #fff4f0;
-    color: $primary-color;
     border-radius: 5px;
+    color: $primary-color;
+    padding: 0.25rem 0.9rem;
     width: fit-content;
   }
 
@@ -61,16 +61,16 @@
   
   .item_foot:after {
     content: "";
+    border-top: 1px solid $beta;
+    left: 5%;
     position: absolute;
     top: 0px;
-    left: 5%;
     width: 90%;
-    border-top: 1px solid $beta;
   }
 
   .s_map_btn .btn_map {
-    font-size: 1.2rem;
     float: right;
+    font-size: 1.2rem;
     margin-right: 10%;
   }
   

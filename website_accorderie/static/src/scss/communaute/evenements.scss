@@ -8,8 +8,8 @@
   
     .horizontal_list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       grid-gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   
       .list_item {
         height: 500px;
@@ -20,8 +20,8 @@
   
   .filter_btn.btn {
     border-radius: 50px;
-    float: right;
     border: 1px solid $alpha;
+    float: right;
     padding: 0.75rem 2rem;
   }
   

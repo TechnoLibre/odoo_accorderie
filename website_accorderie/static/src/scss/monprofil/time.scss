@@ -19,26 +19,26 @@
     padding-bottom: 50px;
   
     .title {
-      display: flex;
       align-items: center;
+      display: flex;
       margin-bottom: 0;
     }
   
     a {
-      text-decoration: underline;
       margin-left: auto;
+      text-decoration: underline;
       white-space: nowrap;
     }
   
     .nav_btn {
-      font-size: 1rem;
-      border: 1px solid $beta;
-      border-radius: 50%;
       aspect-ratio: 1;
-      width: 35px;
-      text-align: center;
-      margin: auto 0 auto;
+      border-radius: 50%;
+      border: 1px solid $beta;
+      font-size: 1rem;
       line-height: 1.8rem;
+      margin: auto 0 auto;
+      text-align: center;
+      width: 35px;
     }
   }
   

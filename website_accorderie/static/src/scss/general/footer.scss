@@ -38,8 +38,8 @@
       margin: 0;
   
       .row.footer_row {
-        margin: 0;
         align-items: center;
+        margin: 0;
   
         br {
           display: none;
@@ -48,9 +48,9 @@
     }
   
     .o_footer {
-      position: fixed;
       bottom: 0;
       height: 65px;
+      position: fixed;
       width: 100%;
     }
 
@@ -65,12 +65,12 @@
     }
   
     .col-lg-2.footer_menu {
-      text-align: center;
       padding: 0;
+      text-align: center;
   
       .bottom_menu_icon {
-        font-size: clamp(12px, 7vw, 30px);
         display: inline;
+        font-size: clamp(12px, 7vw, 30px);
       }
   
       h5 {
