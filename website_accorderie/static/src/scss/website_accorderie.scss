@@ -16,9 +16,12 @@ $secondary-color: theme-color("secondary"); // navy blue
 $tertiary-color: theme-color("delta"); // cloud blue
 
 // Text Colors
-$text-alpha: white;
-$text-beta: black;
+$text-alpha: #ffffff;
+$text-beta: #000000;
 $text-gamma: #656565;
+$text-purple: #490a3d;
+$text-white: #ffffff;
+$text-black: #000000;
 
 // Background Colors
 $bg-alpha: white;
@@ -40,14 +43,14 @@ $bg-red-alert: #fd7878;
 
 /*
   Debug
-*/ 
+*/
 .debug_debug {
   display: none;
 }
 
 /*
   AngularJS
-*/ 
+*/
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -115,8 +118,3 @@ $bg-red-alert: #fd7878;
     }
   }
 }
-
-
-
-
-

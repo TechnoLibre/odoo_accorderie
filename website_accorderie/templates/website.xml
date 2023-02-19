@@ -864,15 +864,17 @@
                                         <section
                                             ng-if="form_is_offre_demande_service(state)"
                                             class="s_event_banner oe_img_bg oe_custom_bg"
-                                            style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_eric_prouzet_z62b9jiltgm_unsplash_jpg/eric-prouzet-Z62b9jIltGM-unsplash.jpg&quot;);"
+                                            style="background-image: url(&quot;/website_accorderie/static/src/img/image_ORE_3841_x_1601.png&quot;);"
                                         >
                                             <!-- TODO fill image with model -->
+                                            <!--
                                             <div style="text-align:center" class="debug_unimplemented">
                                                 <div class="btn btn-primary text-gamma">
                                                     <i class="fa fa-edit icon_padding_right" />
                                                     Remplacer la photo
                                                 </div>
                                             </div>
+                                            -->
                                         </section>
 
                                         <!-- Présentation du service -->
@@ -920,6 +922,8 @@
                                                     ng-init="model = 'accorderie.demande.service'; service_id = echange_service.demande_service; service_enable_href = false; service_enable_favorite = false; type_service = 'offre'; getDatabaseInfo(); "
                                                 />
                                             </span>
+                                            <br />
+                                            <br />
                                             <span
                                                 ng-if="form_is_exist_echange_to_validate(state) &amp;&amp; !_.isUndefined(echange_service.offre_service)"
                                             >
@@ -1462,6 +1466,7 @@
                                             <div
                                                 class="bar_time"
                                                 ng-if="form_is_service_and_service_prevu(state) &amp;&amp; !['init.saa.offrir.demande.existante.date.time.form'].includes(state.id)"
+                                                style="background-color: #b4114a; color: white;"
                                             >
                                                 <b>Montant total de temps à transférer</b>
                                                 <span>{{show_sum_total_time_echange()}}</span>
@@ -1774,7 +1779,7 @@
             <div class="infos_right">
                 <h5>{{service.diff_create_date}}</h5>
                 <i
-                    class="fa text-epsilon"
+                    class="fa text-epsilon coeur"
                     ng-class="{'fa-heart': service.is_favorite, 'fa-heart-o': !service.is_favorite}"
                     style="font-size:1.5rem;"
                     ng-click="service_enable_favorite &amp;&amp; add_to_my_favorite('accorderie.' + type_service + '.service', service)"

@@ -3,26 +3,26 @@
 */
 
 .vertical_list.settings {
-    width: 60%;
+  width: 60%;
+}
+
+.activite {
+  border-bottom: 1px solid $beta;
+  padding: 20px 0 20px;
+
+  .item_desc {
+    font-size: 1rem;
+    font-weight: 350;
   }
-  
-  .activite {
-    border-bottom: 1px solid $beta;
-    padding: 20px 0 20px;
-  
-    .item_desc {
-      font-size: 1rem;
-      font-weight: 350;
-    }
-  
-    .modif {
-      float: right;
-      line-height: 2rem;
-    }
+
+  .modif {
+    float: right;
+    line-height: 2rem;
   }
-  
-  @media only screen and (max-width: 990px) {
-    .vertical_list.settings {
-      width: 100%;
-    }
+}
+
+@media only screen and (max-width: 990px) {
+  .vertical_list.settings {
+    width: 100%;
   }
+}

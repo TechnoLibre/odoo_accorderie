@@ -3,44 +3,44 @@
 */
 
 .accorderie_form {
-    padding: 5% 10%;
-  
+  padding: 5% 10%;
+
+  .form_title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .radio_container {
+    border-bottom: 1px solid $beta;
+    display: flex;
+    font-weight: normal;
+    padding: 1rem 0;
+
     .form_title {
       font-size: 2rem;
-      font-weight: bold;
     }
 
-    .radio_container {
-      border-bottom: 1px solid $beta;
-      display: flex;
-      font-weight: normal;
-      padding: 1rem 0;
-  
-      .form_title {
-        font-size: 2rem;
-      }
-  
-      input {
-        margin-left: auto;
-      }
-    }
-  }
-
-  .modal-content {
-    border-radius: 7px;
-  }
-
-  .modal-footer {
-    padding: 1rem 10%;
-  
-    .btn_accorderie {
-      background-color: $primary-color !important;
-      border-radius: 5px !important;
-      border: none;
-      padding: 0.5rem 1.5rem !important;
-    }
-    
-    .save {
+    input {
       margin-left: auto;
     }
   }
+}
+
+.modal-content {
+  border-radius: 7px;
+}
+
+.modal-footer {
+  padding: 1rem 10%;
+
+  .btn_accorderie {
+    background-color: $primary-color !important;
+    border-radius: 5px !important;
+    border: none;
+    padding: 0.5rem 1.5rem !important;
+  }
+
+  .save {
+    margin-left: auto;
+  }
+}

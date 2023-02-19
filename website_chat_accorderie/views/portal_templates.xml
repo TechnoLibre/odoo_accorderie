@@ -6,9 +6,9 @@
                 ng-href="/notification#!?section=message&amp;membre={{contact_info.id}}"
                 ng-if="!hide_votre_contact_to_contact"
             >
-                <div class="btn btn-primary rounded-circle"><span ng-if="contact_info === 'femme'">La</span><span
-                        ng-if="contact_info !== 'femme'"
-                    >Le</span> contacter</div>
+                <div class="btn btn-primary rounded-circle" style="color: #ffffff;"><span
+                        ng-if="contact_info === 'femme'"
+                    >La</span><span ng-if="contact_info !== 'femme'">Le</span> contacter</div>
             </a>
         </xpath>
     </template>

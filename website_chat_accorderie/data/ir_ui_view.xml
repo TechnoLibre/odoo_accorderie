@@ -5,7 +5,7 @@
             <field name="arch" type="xml">
                 <data inherit_id="website_accorderie.ir_ui_view_messages_et_notifications">
                     <xpath expr="//p[hasclass('titre_message_and_notification')]" position="replace">
-                        <p class="s_title_default text-gamma titre_message_and_notification">
+                        <p class="s_title_default text-alpha titre_message_and_notification">
                             Messages et notifications
                         </p>
                     </xpath>

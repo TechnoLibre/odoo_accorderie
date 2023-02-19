@@ -3,21 +3,21 @@
 */
 
 .s_mobile_filter {
-    display: none;
+  display: none;
+  font-size: 2vh;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  .btn {
+    background-color: lightgrey;
+    border-radius: 50px;
     font-size: 2vh;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  
-    .btn {
-      background-color: lightgrey;
-      border-radius: 50px;
-      font-size: 2vh;
-      padding: 0.5rem 1rem;
-    }
+    padding: 0.5rem 1rem;
   }
-  
-  @media only screen and (max-width: 990px) {
-    .s_mobile_filter {
-      display: flex;
-    }
+}
+
+@media only screen and (max-width: 990px) {
+  .s_mobile_filter {
+    display: flex;
   }
+}

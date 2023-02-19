@@ -3,126 +3,126 @@
 */
 
 .s_event_list {
-    height: 675px;
-    padding: 100px 10%;
-  }
-  
-  .list_head {
-    height: 10%;
-    padding: 0 1%;
-  }
-  
-  .horizontal_list {
-    display: flex;
-    flex-direction: row;
-    height: 90%;
-  }
-  
-  .event_date_container {
-    align-items: center;
-    aspect-ratio: 1/1;
-    background-color: $bg-alpha;
-    border-radius: 5px;
-    display: flex;
-    height: 55%;
-    min-height: 75px;
-    overflow: hidden;
-    text-align: center;
-  
-    .event_date {
-      flex: 1;
-    }
-  
-    .event_date_separator {
-      background-color: $primary-color;
-      flex: 0.1;
-      height: 3px;
-    }
-  }
-  
-  .event_date_container.lg {
-    aspect-ratio: 2/1;
-  }
-  
-  .list_item {
+  height: 675px;
+  padding: 100px 10%;
+}
+
+.list_head {
+  height: 10%;
+  padding: 0 1%;
+}
+
+.horizontal_list {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+}
+
+.event_date_container {
+  align-items: center;
+  aspect-ratio: 1/1;
+  background-color: $bg-alpha;
+  border-radius: 5px;
+  display: flex;
+  height: 55%;
+  min-height: 75px;
+  overflow: hidden;
+  text-align: center;
+
+  .event_date {
     flex: 1;
+  }
+
+  .event_date_separator {
+    background-color: $primary-color;
+    flex: 0.1;
+    height: 3px;
+  }
+}
+
+.event_date_container.lg {
+  aspect-ratio: 2/1;
+}
+
+.list_item {
+  flex: 1;
+  height: 100%;
+  padding: 2% 1%;
+
+  .item_card {
     height: 100%;
-    padding: 2% 1%;
-  
-    .item_card {
-      height: 100%;
-      padding: 0;
+    padding: 0;
+    position: relative;
+    text-align: left;
+    white-space: initial;
+    width: 100%;
+
+    .item_img {
+      height: 40%;
+      padding: 5%;
       position: relative;
-      text-align: left;
-      white-space: initial;
       width: 100%;
-  
-      .item_img {
-        height: 40%;
-        padding: 5%;
-        position: relative;
-        width: 100%;
+    }
+
+    .item_desc {
+      height: 60%;
+      padding: 5%;
+      width: 100%;
+
+      .item_title {
+        font-size: 1.2rem;
+        line-height: 1;
       }
-  
-      .item_desc {
-        height: 60%;
-        padding: 5%;
-        width: 100%;
-  
-        .item_title {
-          font-size: 1.2rem;
-          line-height: 1;
-        }
 
-        .event_time {
-          color: $text-gamma;
-        }
-
-        .event_loc {
-          color: $text-gamma;
-          font-size: 0.8rem;
-        }
-
-        * > icon {
-          font-size: 1.2rem;
-        }
+      .event_time {
+        color: $text-gamma;
       }
-  
-      .btn_container {
-        bottom: 4%;
+
+      .event_loc {
+        color: $text-gamma;
+        font-size: 0.8rem;
+      }
+
+      * > icon {
+        font-size: 1.2rem;
+      }
+    }
+
+    .btn_container {
+      bottom: 4%;
+      display: flex;
+      gap: 5%;
+      height: 10%;
+      position: absolute;
+      width: 90%;
+
+      .item_btn {
+        align-items: center;
         display: flex;
-        gap: 5%;
-        height: 10%;
-        position: absolute;
-        width: 90%;
-  
-        .item_btn {
-          align-items: center;
-          display: flex;
-          flex: 1;
-          justify-content: center;
-        }
+        flex: 1;
+        justify-content: center;
+      }
 
-        .item_btn.lg {
-          font-size: 1.2rem;
-        }
+      .item_btn.lg {
+        font-size: 1.2rem;
+      }
 
-        .locked {
-          background-color: $gamma;
-        }
+      .locked {
+        background-color: $gamma;
       }
     }
   }
-  
-  @media only screen and (max-width: 1510px) {
-    .horizontal_list {
-      overflow-x: auto;
-      white-space: normal;
-      width: 100%;
-    }
-    
-    .list_item {
-      height: auto;
-      min-width: 280px;
-    }
+}
+
+@media only screen and (max-width: 1510px) {
+  .horizontal_list {
+    overflow-x: auto;
+    white-space: normal;
+    width: 100%;
   }
+
+  .list_item {
+    height: auto;
+    min-width: 280px;
+  }
+}

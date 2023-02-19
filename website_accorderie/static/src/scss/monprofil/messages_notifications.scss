@@ -3,31 +3,31 @@
 */
 
 .activite.message {
-    white-space: normal;
-  
-    .activite_img {
-      background-color: powderblue;
-      background-position: center;
-      background-size: cover;
-      height: 65px;
-      margin-right: 2%;
-  
-      .unread {
-        aspect-ratio: 1/1;
-        background-color: $alpha;
-        float: right;
-        height: 15px;
-        margin-top: 5px;
-      }
-    }
-  
-    span {
-      margin-left: auto;
+  white-space: normal;
+
+  .activite_img {
+    background-color: powderblue;
+    background-position: center;
+    background-size: cover;
+    height: 65px;
+    margin-right: 2%;
+
+    .unread {
+      aspect-ratio: 1/1;
+      background-color: $alpha;
+      float: right;
+      height: 15px;
+      margin-top: 5px;
     }
   }
-  
-  .message.read {
-    * {
-      opacity: 50%;
-    }
+
+  span {
+    margin-left: auto;
   }
+}
+
+.message.read {
+  * {
+    opacity: 50%;
+  }
+}

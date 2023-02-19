@@ -2,225 +2,225 @@
     Chat
 */
 .chat_container {
+  display: flex;
+  flex-direction: row;
+  gap: 8%;
+  max-height: 800px;
+}
+
+.chat_box {
+  background-color: $delta;
+  border-radius: 7px;
+  border: 1px solid $beta;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-left: 10%;
+  width: 50%;
+
+  .chat_header {
     display: flex;
-    flex-direction: row;
-    gap: 8%;
-    max-height: 800px;
+    max-height: 18%;
+    padding: 2rem;
+    position: relative;
+
+    img {
+      aspect-ratio: 1/1;
+      height: 100%;
+    }
+
+    .header_info {
+      display: flex;
+      flex-direction: column;
+      line-height: 0.75rem;
+      margin: auto 0 auto 2rem;
+      overflow: hidden;
+
+      p {
+        margin-bottom: 0.75rem;
+      }
+
+      .chat_contact {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .chat_title {
+        display: block;
+        font-size: 1.1rem;
+        height: 1.1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .chat_desc {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .chat_header::after {
+    content: "";
+    border-top: 1px solid $beta;
+    bottom: 0px;
+    left: 2rem;
+    position: absolute;
+    right: 2rem;
+  }
+
+  .chat_body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    .chat_msg {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      height: auto;
+      padding: 1rem 2rem;
+      white-space: normal;
+      width: 100%;
+
+      .msg {
+        background-color: $gamma;
+        height: fit-content;
+        max-width: 75%;
+        padding: 0.5rem 1rem;
+        width: fit-content;
+      }
+
+      .my_msg {
+        border-radius: 25px 25px 3px;
+        margin-left: auto;
+      }
+
+      .their_msg {
+        border-radius: 25px 25px 25px 3px;
+      }
+
+      .contact_pic {
+        aspect-ratio: 1/1;
+        height: 2.5rem;
+        margin-top: auto;
+      }
+
+      .msg_time {
+        color: $text-beta;
+        flex-basis: 100%;
+        margin-left: 3.5rem;
+        margin-top: -0.5rem;
+      }
+    }
+  }
+
+  .chat_footer {
+    margin-top: auto;
+    padding: 2rem;
+
+    .input_container {
+      background-color: $bg-alpha;
+      border-radius: 7px;
+      border: 1px solid $beta;
+      display: flex;
+      width: 100%;
+
+      input {
+        border: none;
+        height: 3.5rem;
+        outline: none;
+        width: 80%;
+      }
+
+      span {
+        font-size: 1.5rem;
+        margin: auto 1rem;
+      }
+
+      .fa-send {
+        margin-left: auto;
+      }
+
+      span:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .s_chat {
+    padding: 0 !important;
+  }
+
+  //.right_cards_container {
+  //  display: none;
+  //}
+
+  .chat_container {
+    max-height: calc(94vh - 154px);
+
+    .right_cards_container {
+      display: none;
+    }
   }
 
   .chat_box {
-    background-color: $delta;
-    border-radius: 7px;
-    border: 1px solid $beta;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    margin-left: 10%;
-    width: 50%;
-  
+    background-color: $bg-alpha;
+    border: none;
+    margin: 0;
+    width: 100%;
+
     .chat_header {
-      display: flex;
-      max-height: 18%;
-      padding: 2rem;
-      position: relative;
+      background-color: $bg-alpha;
+      max-height: 80px;
+      padding: 1rem;
 
       img {
-        aspect-ratio: 1/1;
-        height: 100%;
+        border-radius: 50%;
       }
 
       .header_info {
-        display: flex;
-        flex-direction: column;
-        line-height: 0.75rem;
-        margin: auto 0 auto 2rem;
-        overflow: hidden;
-
-        p {
-          margin-bottom: 0.75rem;
-        }
-
-        .chat_contact {
-          font-size: 1.25rem;
-          font-weight: bold;
-          line-height: 1.5rem;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .chat_title {
-          display: block;
-          font-size: 1.1rem;
-          height: 1.1rem;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
         .chat_desc {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          display: none;
         }
       }
     }
-  
+
     .chat_header::after {
-      content: "";
-      border-top: 1px solid $beta;
-      bottom: 0px;
-      left: 2rem;
-      position: absolute;
-      right: 2rem;
+      left: 1rem;
+      right: 1rem;
     }
-    
+
     .chat_body {
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-
-      .chat_msg {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        height: auto;
-        padding: 1rem 2rem;
-        white-space: normal;
-        width: 100%;
-  
-        .msg {
-          background-color: $gamma;
-          height: fit-content;
-          max-width: 75%;
-          padding: 0.5rem 1rem;
-          width: fit-content;
-        }
-
-        .my_msg {
-          border-radius: 25px 25px 3px;
-          margin-left: auto;
-        }
-
-        .their_msg {
-          border-radius: 25px 25px 25px 3px;
-        }
-
-        .contact_pic {
-          aspect-ratio: 1/1;
-          height: 2.5rem;
-          margin-top: auto;
-        }
-
-        .msg_time {
-          color: $text-beta;
-          flex-basis: 100%;
-          margin-left: 3.5rem;
-          margin-top: -0.5rem;
-        }
-      }
+      margin-bottom: 139px;
     }
-  
+
     .chat_footer {
-      margin-top: auto;
-      padding: 2rem;
-  
-      .input_container {
-        background-color: $bg-alpha;
-        border-radius: 7px;
-        border: 1px solid $beta;
-        display: flex;
-        width: 100%;
-  
-        input {
-          border: none;
-          height: 3.5rem;
-          outline: none;
-          width: 80%;
-        }
-
-        span {
-          font-size: 1.5rem;
-          margin: auto 1rem;
-        }
-
-        .fa-send {
-          margin-left: auto;
-        }
-
-        span:hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  @media only screen and (max-width: 990px) {
-    .s_chat {
-      padding: 0 !important;
-    }
-
-    //.right_cards_container {
-    //  display: none;
-    //}
-
-    .chat_container {
-      max-height: calc(94vh - 154px);
-  
-      .right_cards_container {
-        display: none;
-      }
-    }
-
-    .chat_box {
       background-color: $bg-alpha;
-      border: none;
-      margin: 0;
+      bottom: 65px;
+      padding: 1rem;
+      position: fixed;
       width: 100%;
-  
-      .chat_header {
-        background-color: $bg-alpha;
-        max-height: 80px;
-        padding: 1rem;
 
-        img {
-          border-radius: 50%;
-        }
-  
-        .header_info {
-          .chat_desc {
-            display: none;
-          }
-        }
-      }
-
-      .chat_header::after {
-        left: 1rem;
-        right: 1rem;
-      }
-
-      .chat_body {
-        margin-bottom: 139px;
-      }
-  
-      .chat_footer {
-        background-color: $bg-alpha;
-        bottom: 65px;
-        padding: 1rem;
-        position: fixed;
-        width: 100%;
-  
-        .input_container {
-          input {
-            height: 2.5rem;
-          }
+      .input_container {
+        input {
+          height: 2.5rem;
         }
       }
     }
   }
-  
-  @media only screen and (max-width: 366px) {
-    .chat_container {
-      max-height: calc(94vh - 188.25px);
-    }
+}
+
+@media only screen and (max-width: 366px) {
+  .chat_container {
+    max-height: calc(94vh - 188.25px);
   }
+}

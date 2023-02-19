@@ -21,11 +21,7 @@
                 href="/website_accorderie/static/src/scss/accorderie_publication.scss"
             />
             <!-- accueil -->
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/accueil/banner.scss"
-            />
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/accueil/banner.scss" />
             <!-- communaute -->
             <link
                 rel="stylesheet"
@@ -74,26 +70,14 @@
                 href="/website_accorderie/static/src/scss/explorer/searchbar.scss"
             />       
             <!-- general -->
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/general/return.scss"
-            />
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/general/dialog.scss"
-            />
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/general/return.scss" />
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/general/dialog.scss" />
             <link
                 rel="stylesheet"
                 type="text/scss"
                 href="/website_accorderie/static/src/scss/general/footer.scss"
             />              
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/general/guide.scss"
-            />   
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/general/guide.scss" />   
             <link
                 rel="stylesheet"
                 type="text/scss"
@@ -106,11 +90,7 @@
                 href="/website_accorderie/static/src/scss/login/login.scss"
             />        
             <!-- monactivite -->
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/monactivite/bilan.scss"
-            />
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/monactivite/bilan.scss" />
             <link
                 rel="stylesheet"
                 type="text/scss"
@@ -127,11 +107,7 @@
                 type="text/scss"
                 href="/website_accorderie/static/src/scss/monprofil/annonces_favoris.scss"
             /> 
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/monprofil/chat.scss"
-            />
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/monprofil/chat.scss" />
             <link
                 rel="stylesheet"
                 type="text/scss"
@@ -152,27 +128,15 @@
                 type="text/scss"
                 href="/website_accorderie/static/src/scss/monprofil/presentation.scss"
             />
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/monprofil/time.scss"
-            />
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/monprofil/time.scss" />
             <!-- navbar -->
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/navbar/adapt.scss"
-            />
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/navbar/adapt.scss" />
             <link
                 rel="stylesheet"
                 type="text/scss"
                 href="/website_accorderie/static/src/scss/navbar/dropdown_menu.scss"
             />
-            <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/website_accorderie/static/src/scss/navbar/navbar.scss"
-            />
+            <link rel="stylesheet" type="text/scss" href="/website_accorderie/static/src/scss/navbar/navbar.scss" />
             <!-- participer -->
             <link
                 rel="stylesheet"

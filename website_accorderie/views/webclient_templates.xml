@@ -5,7 +5,7 @@
         <xpath expr="//form" position="replace">
             <section
                 class="s_login oe_img_bg oe_custom_bg pt16"
-                style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_accueil_illustration_05@2x_png/Accueil-Illustration-05@2x.png&quot;);"
+                style="background-image: url(&quot;/website_accorderie/static/src/img/image_ORE_finale_1521_x_980.png&quot;);"
             >
                 <div class="debug_debug">
                         Lien maquette :
@@ -20,7 +20,7 @@
                 <div class="login_box shadow">
                     <h1>Bienvenue sur l'espace</h1>
                     <br />
-                    <h2>membre de l'Accorderie</h2>
+                    <h2>membre de ORE</h2>
                     <form
                         id="login_form"
                         class="oe_login_form"

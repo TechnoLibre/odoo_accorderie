@@ -1,47 +1,47 @@
 /*
     Time
-*/ 
+*/
 
 .neg_time {
-    color: $bg-red-alert !important;
+  color: $bg-red-alert !important;
+}
+
+.neg_time_b {
+  background-color: $bg-red-alert !important;
+  color: $text-alpha !important;
+}
+
+.neg_time_2 {
+  color: $bg-red-2-alert !important;
+}
+
+.list_title {
+  padding-bottom: 50px;
+
+  .title {
+    align-items: center;
+    display: flex;
+    margin-bottom: 0;
   }
 
-  .neg_time_b {
-    background-color: $bg-red-alert !important;
-    color: $text-alpha !important;
-  }
-  
-  .neg_time_2 {
-    color: $bg-red-2-alert !important;
-  }
-  
-  .list_title {
-    padding-bottom: 50px;
-  
-    .title {
-      align-items: center;
-      display: flex;
-      margin-bottom: 0;
-    }
-  
-    a {
-      margin-left: auto;
-      text-decoration: underline;
-      white-space: nowrap;
-    }
-  
-    .nav_btn {
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 1px solid $beta;
-      font-size: 1rem;
-      line-height: 1.8rem;
-      margin: auto 0 auto;
-      text-align: center;
-      width: 35px;
-    }
-  }
-  
   a {
-    color: $text-beta;
+    margin-left: auto;
+    text-decoration: underline;
+    white-space: nowrap;
   }
+
+  .nav_btn {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid $beta;
+    font-size: 1rem;
+    line-height: 1.8rem;
+    margin: auto 0 auto;
+    text-align: center;
+    width: 35px;
+  }
+}
+
+a {
+  color: $text-beta;
+}

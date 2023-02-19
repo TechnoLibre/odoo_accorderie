@@ -3,124 +3,124 @@
 */
 
 .s_activites_recentes.lg {
-    height: auto;
-    max-height: 2000px;
-    padding-top: 0;
-  }
-  
-  .activites_list.lg {
-    flex-wrap: nowrap;
-    width: 100%;
-  
-    .list_title {
-      border-bottom: 1px solid $beta;
-      margin-top: 6vh;
-    }
+  height: auto;
+  max-height: 2000px;
+  padding-top: 0;
+}
 
-    .agenda_btns {
-      align-items: center;
+.activites_list.lg {
+  flex-wrap: nowrap;
+  width: 100%;
+
+  .list_title {
+    border-bottom: 1px solid $beta;
+    margin-top: 6vh;
+  }
+
+  .agenda_btns {
+    align-items: center;
+    border-radius: 7px;
+    border: 1px solid #d6d6d6;
+    display: flex;
+    margin-left: auto;
+
+    .btn {
       border-radius: 7px;
-      border: 1px solid #d6d6d6;
-      display: flex;
-      margin-left: auto;
-  
-      .btn {
-        border-radius: 7px;
-        color: $beta;
-        font-size: 1.5rem;
-        line-height: 1rem;
-        padding: 1rem;
-      }
-
-      divider {
-        border-left: 1px solid $beta;
-        height: 1.5rem;
-      }
+      color: $beta;
+      font-size: 1.5rem;
+      line-height: 1rem;
+      padding: 1rem;
     }
-  
-    .activite.btn {
+
+    divider {
+      border-left: 1px solid $beta;
+      height: 1.5rem;
+    }
+  }
+
+  .activite.btn {
+    align-items: center;
+    display: flex;
+    height: 150px;
+
+    .activite_img {
+      max-height: 150px;
+    }
+
+    .activite_infos {
       align-items: center;
       display: flex;
-      height: 150px;
-  
-      .activite_img {
-        max-height: 150px;
-      }
-  
-      .activite_infos {
-        align-items: center;
-        display: flex;
-        height: 100%;
-        width: 60%;
-      }
-  
+      height: 100%;
+      width: 60%;
+    }
+
+    .activite_title {
+      width: 30%;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 0 10%;
+      position: relative;
+    }
+
+    .status {
+      margin: auto 0 auto auto;
+    }
+
+    .details::after {
+      content: "";
+      border-left: 1px solid $beta;
+      border-radius: 2px;
+      height: 60%;
+      left: 0px;
+      position: absolute;
+      top: 20%;
+    }
+  }
+}
+
+.medium-btn.btn {
+  color: $text-alpha;
+  font-size: 1rem;
+  margin-top: 5%;
+  padding: 1.5%;
+  width: fit-content;
+}
+
+@media only screen and (max-width: 990px) {
+  .activites_list.lg .activite.btn {
+    .activite_infos {
+      align-items: unset;
+      flex-direction: column;
+      justify-content: center;
+
       .activite_title {
-        width: 30%;
+        width: auto;
       }
-  
+
+      //.time {
+      //  display: none;
+      //}
+
       .details {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        padding: 0 10%;
-        position: relative;
-      }
-  
-      .status {
-        margin: auto 0 auto auto;
-      }
-  
-      .details::after {
-        content: "";
-        border-left: 1px solid $beta;
-        border-radius: 2px;
-        height: 60%;
-        left: 0px;
-        position: absolute;
-        top: 20%;
+        height: auto;
+        padding: 0;
+        position: unset;
       }
     }
+
+    .details_link {
+      display: none;
+    }
   }
-  
+
   .medium-btn.btn {
-    color: $text-alpha;
-    font-size: 1rem;
-    margin-top: 5%;
-    padding: 1.5%;
-    width: fit-content;
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+    margin: 5% auto;
+    max-width: 100%;
+    padding: 2.5%;
   }
-  
-  @media only screen and (max-width: 990px) {
-    .activites_list.lg .activite.btn {
-      .activite_infos {
-        align-items: unset;
-        flex-direction: column;
-        justify-content: center;
-  
-        .activite_title {
-          width: auto;
-        }
-  
-        //.time {
-        //  display: none;
-        //}
-
-        .details {
-          height: auto;
-          padding: 0;
-          position: unset;
-        }
-      }
-
-      .details_link {
-        display: none;
-      }
-    }
-    
-    .medium-btn.btn {
-      font-size: clamp(0.75rem, 2.5vw, 1rem);
-      margin: 5% auto;
-      max-width: 100%;
-      padding: 2.5%;
-    }
-  }
+}

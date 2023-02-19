@@ -1,28 +1,28 @@
 /*
     Adapt navbar
-*/ 
+*/
 
 .navbar {
-    padding: 0 !important;
-  }
-  
-  .navbar-light {
-    background-color: $primary-color;
-  }
-  
-  @media only screen and (max-width: 890px) {
-    .list_title {
-      h1 {
-        font-size: 5vw !important;
-        margin-left: 0 !important;
-      }
-  
-      a {
-        font-size: 3vw !important;
-      }
-  
-      span * {
-        font-size: 4vw !important;
-      }
+  padding: 0 !important;
+}
+
+.navbar-light {
+  background-color: $primary-color;
+}
+
+@media only screen and (max-width: 890px) {
+  .list_title {
+    h1 {
+      font-size: 5vw !important;
+      margin-left: 0 !important;
+    }
+
+    a {
+      font-size: 3vw !important;
+    }
+
+    span * {
+      font-size: 4vw !important;
     }
   }
+}

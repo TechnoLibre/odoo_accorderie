@@ -265,13 +265,13 @@
             <field name="type">url</field>
             <field name="url">/website_accorderie/static/src/img/AdobeStock_309423704_Preview.jpeg</field>
         </record>
-        <record id="ir_attachment_accueil_illustration_05@2x_png" model="ir.attachment">
-            <field name="datas_fname">Accueil-Illustration-05@2x.png</field>
-            <field name="name">Accueil-Illustration-05@2x.png</field>
+        <record id="ir_attachment_accueil_image_ORE_finale_1521_x_980_png" model="ir.attachment">
+            <field name="datas_fname">image_ORE_finale_1521_x_980.png</field>
+            <field name="name">image_ORE_finale_1521_x_980.png</field>
             <field name="public">True</field>
             <field name="res_model">ir.ui.view</field>
             <field name="type">url</field>
-            <field name="url">/website_accorderie/static/src/img/Accueil-Illustration-05@2x.png</field>
+            <field name="url">/website_accorderie/static/src/img/image_ORE_finale_1521_x_980.png</field>
         </record>
         <record id="ir_attachment_profil_annonces_png" model="ir.attachment">
             <field name="datas_fname">Profil-Annonces.png</field>
