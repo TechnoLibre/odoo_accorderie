@@ -145,6 +145,29 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
         $scope.nb_offre_service = 0;
         $scope.animation_controller_enable = false;
 
+        // TODO créer environnement modification
+        $scope.ask_modification = false;
+        $scope.ask_modification_profile = false;
+        $scope.updateImage = function (input) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                $scope.$apply(function () {
+                    // $scope.imageSrc = reader.result;
+                    $scope.membre_info.ma_photo = reader.result;
+                });
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
+        $scope.change_ask_modification_profile = function (enable) {
+            $scope.ask_modification_profile = enable;
+        };
+        $scope.click_file_input = function () {
+            // $scope.ask_modification_profile = enable;
+            console.debug("prout)");
+            $('#file-input').click();
+        };
+
+
         $scope.lst_notification = [];
 
         $scope.notif_filter_unread = function (notif) {
