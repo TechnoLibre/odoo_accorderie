@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="accorderie_point_service_accorderie_de_laval" model="accorderie.point.service">
+            <field name="nom">Point de service Accorderie de Laval</field>
+<!--            <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />-->
+            <field name="accorderie" ref="accorderie_accorderie_reseau_accorderie" />
+        </record>
+    </data>
+</odoo>

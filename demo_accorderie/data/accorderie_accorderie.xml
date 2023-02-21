@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data noupdate="1">
-        <record id="accorderie_accorderie_accorderie_de_laval" model="accorderie.accorderie">
-            <field name="nom">Accorderie de Laval</field>
+        <record id="accorderie_accorderie_reseau_accorderie" model="accorderie.accorderie">
+            <field name="nom">Réseau Accorderie</field>
+            <field name="partner_id" ref="base.main_partner" />
         </record>
+<!--        <record id="accorderie_accorderie_accorderie_de_laval" model="accorderie.accorderie">-->
+<!--            <field name="nom">Accorderie de Laval</field>-->
+<!--            <field name="partner_id" ref="accorderie_accorderie_accorderie_de_laval" />-->
+<!--        </record>-->
     </data>
 </odoo>

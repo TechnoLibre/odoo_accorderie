@@ -23,6 +23,8 @@
                         <page string="Contact">
                             <group>
                                 <group>
+                                    <field name="company_id" readonly="1" required="0" groups="base.group_no_one" />
+                                    <field name="partner_id" readonly="1" required="0" groups="base.group_no_one" />
                                     <label for="street" string="Address" />
                                         <div class="o_address_format">
                                             <field name="adresse" placeholder="Adresse..." class="o_address_street" />

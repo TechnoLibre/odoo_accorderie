@@ -5,7 +5,6 @@
         <field name="name">Alice Poitier</field>
         <field name="company_id" ref="base.main_company" />
         <field name="parent_id" ref="base.main_company" />
-        <field name="street">Résidence étudiante du collège de Rosemont, Rue de Bellechasse, Étienne-Desmarteau, Rosemont–La Petite-Patrie</field>
         <field name="city">Montréal</field>
         <field name="state_id" model="res.country.state" search="[('code','ilike','QC')]" />
         <field name="zip">H1X 1J5</field>
@@ -36,7 +35,6 @@
         <field name="name">Martin Petit</field>
         <field name="company_id" ref="base.main_company" />
         <field name="parent_id" ref="base.main_company" />
-        <field name="street">3800 Queen Mary Rd, Montreal, Quebec H3V 1H6</field>
         <field name="city">Montréal</field>
         <field name="state_id" model="res.country.state" search="[('code','ilike','QC')]" />
         <field name="zip">H1V 3N7</field>
@@ -67,7 +65,6 @@
         <field name="name">Denis Lemarchand</field>
         <field name="company_id" ref="base.main_company" />
         <field name="parent_id" ref="base.main_company" />
-        <field name="street">2150 Autoroute des Laurentides laval</field>
         <field name="city">Montréal</field>
         <field name="state_id" model="res.country.state" search="[('code','ilike','QC')]" />
         <field name="zip">H1V 3N7</field>
@@ -98,7 +95,6 @@
         <field name="name">Martin Bergeron</field>
         <field name="company_id" ref="base.main_company" />
         <field name="parent_id" ref="base.main_company" />
-        <field name="street">4545, Avenue Pierre-De Coubertin</field>
         <field name="city">Montréal</field>
         <field name="state_id" model="res.country.state" search="[('code','ilike','QC')]" />
         <field name="zip">H1V 3N7</field>

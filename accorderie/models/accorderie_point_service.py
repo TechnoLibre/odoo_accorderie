@@ -6,7 +6,11 @@ class AccorderiePointService(models.Model):
     _description = "Accorderie Point Service"
     _rec_name = "nom"
 
-    nom = fields.Char(help="Nom du point de service")
+    nom = fields.Char(
+        help="Nom du point de service",
+        related="company_id.name",
+        readonly=False,
+    )
 
     accorderie = fields.Many2one(
         comodel_name="accorderie.accorderie",
@@ -19,10 +23,21 @@ class AccorderiePointService(models.Model):
         help="Commentaire relation",
     )
 
+    company_id = fields.Many2one(
+        comodel_name="res.company",
+        string="Company",
+    )
+
     membre = fields.One2many(
         comodel_name="accorderie.membre",
         inverse_name="point_service",
         help="Membre relation",
+    )
+
+    partner_id = fields.Many2one(
+        comodel_name="res.partner",
+        string="Partner",
+        related="company_id.partner_id",
     )
 
     sequence = fields.Integer(

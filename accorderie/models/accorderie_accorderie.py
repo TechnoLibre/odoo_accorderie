@@ -8,6 +8,8 @@ class AccorderieAccorderie(models.Model):
     _rec_name = "nom"
 
     nom = fields.Char(
+        related="company_id.name",
+        readonly=False,
         required=True,
         help="Nom de l'Accorderie",
         track_visibility="onchange",
@@ -15,6 +17,8 @@ class AccorderieAccorderie(models.Model):
 
     active = fields.Boolean(
         string="Actif",
+        related="partner_id.active",
+        readonly=False,
         default=True,
         help=(
             "Lorsque non actif, cette accorderie n'est plus en fonction, mais"
@@ -24,6 +28,8 @@ class AccorderieAccorderie(models.Model):
     )
 
     adresse = fields.Char(
+        related="company_id.street",
+        readonly=False,
         help="Adresse de l'Accorderie",
         track_visibility="onchange",
     )
@@ -36,14 +42,23 @@ class AccorderieAccorderie(models.Model):
 
     code_postal = fields.Char(
         string="Code postal",
+        related="company_id.zip",
+        readonly=False,
         help="Code postal de l'Accorderie",
         track_visibility="onchange",
+    )
+
+    company_id = fields.Many2one(
+        "res.company",
+        string="Company",
     )
 
     courriel = fields.Char(
         string="Adresse courriel",
         help="Adresse courriel pour joindre l'Accorderie.",
         track_visibility="onchange",
+        related="company_id.email",
+        readonly=False,
     )
 
     grp_achat_administrateur = fields.Boolean(
@@ -60,7 +75,11 @@ class AccorderieAccorderie(models.Model):
         track_visibility="onchange",
     )
 
-    logo = fields.Binary(help="Logo de l'Accorderie")
+    logo = fields.Binary(
+        help="Logo de l'Accorderie",
+        related="company_id.logo",
+        readonly=False,
+    )
 
     membre = fields.One2many(
         comodel_name="accorderie.membre",
@@ -80,6 +99,12 @@ class AccorderieAccorderie(models.Model):
         track_visibility="onchange",
     )
 
+    partner_id = fields.Many2one(
+        "res.partner",
+        string="Partner",
+        related="company_id.partner_id",
+    )
+
     region = fields.Many2one(
         comodel_name="accorderie.region",
         string="Région administrative",
@@ -96,12 +121,16 @@ class AccorderieAccorderie(models.Model):
         string="Télécopieur",
         help="Numéro de télécopieur pour joindre l'Accorderie.",
         track_visibility="onchange",
+        related="partner_id.fax",
+        readonly=False,
     )
 
     telephone = fields.Char(
         string="Téléphone",
         help="Numéro de téléphone pour joindre l'Accorderie.",
         track_visibility="onchange",
+        related="company_id.phone",
+        readonly=False,
     )
 
     url_public = fields.Char(

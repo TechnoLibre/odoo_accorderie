@@ -11,12 +11,8 @@ class AccorderieMembre(models.Model):
 
     nom = fields.Char(
         track_visibility="onchange",
-    )
-
-    partner_id = fields.Many2one(
-        comodel_name="res.partner",
-        string="Membre",
-        track_visibility="onchange",
+        related="partner_id.name",
+        readonly=False,
     )
 
     accorderie = fields.Many2one(
@@ -33,7 +29,8 @@ class AccorderieMembre(models.Model):
 
     active = fields.Boolean(
         string="Actif",
-        default=True,
+        related="partner_id.active",
+        readonly=False,
         track_visibility="onchange",
         help=(
             "Lorsque non actif, ce membre n'est plus en fonction, mais demeure"
@@ -43,6 +40,8 @@ class AccorderieMembre(models.Model):
 
     adresse = fields.Char(
         track_visibility="onchange",
+        related="partner_id.street",
+        readonly=False,
     )
 
     annee_naissance = fields.Integer(
@@ -73,6 +72,8 @@ class AccorderieMembre(models.Model):
 
     codepostal = fields.Char(
         track_visibility="onchange",
+        related="partner_id.zip",
+        readonly=False,
     )
 
     commentaire = fields.One2many(
@@ -89,8 +90,16 @@ class AccorderieMembre(models.Model):
         help="Commentaire membre visé relation",
     )
 
+    company_id = fields.Many2one(
+        comodel_name="res.company",
+        string="Company",
+        related="point_service.company_id",
+    )
+
     courriel = fields.Char(
         track_visibility="onchange",
+        related="partner_id.email",
+        readonly=False,
     )
 
     date_adhesion = fields.Date(
@@ -109,6 +118,8 @@ class AccorderieMembre(models.Model):
     logo = fields.Binary(
         help="Logo du membre",
         track_visibility="onchange",
+        related="partner_id.image",
+        readonly=False,
     )
 
     membre_ca = fields.Boolean(
@@ -192,6 +203,12 @@ class AccorderieMembre(models.Model):
         track_visibility="onchange",
     )
 
+    partner_id = fields.Many2one(
+        comodel_name="res.partner",
+        string="Membre",
+        track_visibility="onchange",
+    )
+
     pas_communication = fields.Boolean(
         string="Pas de communication",
         track_visibility="onchange",
@@ -256,6 +273,8 @@ class AccorderieMembre(models.Model):
     telephone_1 = fields.Char(
         string="1er téléphone",
         track_visibility="onchange",
+        related="partner_id.phone",
+        readonly=False,
     )
 
     telephone_2 = fields.Char(

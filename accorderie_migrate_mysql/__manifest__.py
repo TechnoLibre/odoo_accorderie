@@ -39,7 +39,6 @@ Accorderie migrate mysql
         # "helpdesk_mgmt",
         # "hr_timesheet",
         "accorderie",
-        "accorderie_prod",
         "accorderie_approbation",
     ],
     "external_dependencies": {
