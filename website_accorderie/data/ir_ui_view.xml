@@ -2029,14 +2029,11 @@
                                         <div class="information information-1">
                                             <div class="profile_pic">
                                                 <label for="file-input" class="file-label">
-<!--                                                  <i class="fas fa-cloud-upload-alt"></i> Choisissez un fichier-->
-                                                    <i class="fa fa-pencil-square text-epsilon" style="padding-bottom: 60px;padding-right: 60px;" ng-if="ask_modification_profile" />
+                                                    <i class="fa fa-pencil-square text-epsilon" style="padding-bottom: 60px;padding-right: 60px;cursor: pointer;" ng-if="ask_modification_profile" />
                                                 </label>
                                                 <input id="file-input" style="opacity:0;" type="file" ng-model="myImage" accept="image/*" onchange="angular.element(this).scope().updateImage(this)" />
                                                 <img class="img img-fluid rounded-circle" ng-src="{{ membre_info.ma_photo }}" alt="Ma photo" />
                                                 <i class="fa fa-shield text-epsilon" ng-if="membre_info.antecedent_judiciaire_verifier" />
-<!--                                                <i class="fa fa-pencil-square text-epsilon" style="color:white;padding-right: 60px;" />-->
-<!--                                                <img ng-src="{{ imageSrc }}" alt="Ma photo" />-->
                                             </div>
                                             <span class="nbr">
                                                 Bonjour, je m'appelle
@@ -2050,6 +2047,10 @@
                                             <div class="modif_btn btn btn-primary" ng-if="membre_info.estPersonnel &amp;&amp; ask_modification_profile" ng-click="change_ask_modification_profile(false)">
                                                 <span class="img img-fluid mx-auto fa fa-save" />
                                                 Enregistrer le profil
+                                            </div>
+                                            <div class="modif_btn btn btn-primary" ng-if="membre_info.estPersonnel &amp;&amp; ask_modification_profile" ng-click="annuler_ask_modification_profile()">
+                                                <span class="img img-fluid mx-auto fa fa-save" />
+                                                Annuler les modifications
                                             </div>
                                             <div class="modif_btn btn btn-primary btn_saccorder debug_unimplemented" ng-if="!membre_info.estPersonnel">
                                                 S'accorder avec {{membre_info.prenom}}

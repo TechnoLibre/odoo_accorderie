@@ -360,8 +360,30 @@ class AccorderieMembre(models.Model):
     @api.multi
     def write(self, vals):
         status = super().write(vals)
+
         # Detect user
         for rec in self:
+            if "logo" in vals.keys():
+                logo = vals.get("logo")
+                xml_id = f"ir_attachment_accorderie_membre_logo_{rec.id}"
+                # Find attachment
+                ir_attach_id = self.env["ir.attachment"].search(
+                    [("name", "=", xml_id)]
+                )
+                if not ir_attach_id:
+                    self.env["ir.attachment"].create(
+                        {
+                            "name": xml_id,
+                            "datas": logo,
+                            "res_model": "accorderie.membre",
+                            "res_id": rec.id,
+                            "type": "url",
+                        }
+                    )
+                else:
+                    ir_attach_id.datas = logo
+
+            # Update ir.attachement if change into logo
             self.env["bus.bus"].sendone(
                 # f'["{self._cr.dbname}","{self._name}",{rec.id}]',
                 "accorderie.notification.favorite",

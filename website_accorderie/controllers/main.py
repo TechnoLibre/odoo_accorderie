@@ -1,15 +1,11 @@
-import base64
 import datetime as dt
 import logging
-import time
 import urllib.parse
-from collections import defaultdict
 from datetime import datetime, timedelta
 
 import humanize
 import pytz
 import requests
-import werkzeug
 
 from odoo import _, http
 from odoo.http import request
@@ -831,7 +827,7 @@ class AccorderieController(http.Controller):
             ].search([("membre_id", "=", membre_id.id)])
         ]
 
-        return {
+        data = {
             "global": {
                 "dbname": http.request.env.cr.dbname,
             },
@@ -860,6 +856,34 @@ class AccorderieController(http.Controller):
                 "dct_echange": dct_echange,
             },
         }
+        xml_id = f"ir_attachment_accorderie_membre_logo_{membre_id.id}"
+        # Find attachment
+        ir_attach_logo_id = http.request.env["ir.attachment"].search(
+            [("name", "=", xml_id)]
+        )
+        if ir_attach_logo_id:
+            data["personal"]["ma_photo"] = ir_attach_logo_id.local_url
+        return data
+
+    @http.route(
+        "/accorderie/personal_information/submit",
+        type="json",
+        auth="user",
+        website=True,
+        csrf=True,
+    )
+    def accorderie_personal_information_form_submit(self, **kw):
+        membre_id = self.get_membre_id()
+        if type(membre_id) is dict:
+            # This is an error
+            return membre_id
+
+        status = True
+        ma_photo = kw.get("ma_photo")
+        if ma_photo:
+            # TODO do we need validation? like extension or supported file
+            membre_id.logo = ma_photo.split(",")[1].encode("utf-8")
+        return status
 
     @http.route(
         [

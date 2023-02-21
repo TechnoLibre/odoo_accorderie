@@ -654,10 +654,7 @@
                                 t-ignore="true"
                                 t-if="not user_id._is_public()"
                             >
-                                <img
-                                    class="nav_pic rounded-circle"
-                                    src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg"
-                                />
+                                <img class="nav_pic rounded-circle" ng-src="{{ membre_info.ma_photo }}" />
                                 <a
                                     class="nav-link dropdown-toggle text-gamma"
                                     data-toggle="dropdown"
