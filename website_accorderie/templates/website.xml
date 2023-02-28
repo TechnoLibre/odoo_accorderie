@@ -1717,8 +1717,9 @@
                                             ng-href="/monprofil/mapresentation#!?membre_id={{form.membre_id.id}}"
                                             ng-if="form_is_echange_pas_valider(state)"
                                         >
-                                            <button class="btn btn-primary adapt-text-primary-color">
-                                                Voir le profil de l'Accordeur.e
+                                            <button
+                                                class="btn btn-primary adapt-text-primary-color"
+                                            >Voir le profil du membre
                                             </button>
                                         </a>
                                         <a href="monprofil/mesannonces" ng-if="form_is_offre_demande_service(state)">
