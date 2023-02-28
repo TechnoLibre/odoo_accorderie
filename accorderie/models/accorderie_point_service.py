@@ -9,6 +9,7 @@ class AccorderiePointService(models.Model):
     nom = fields.Char(help="Nom du point de service")
 
     accorderie = fields.Many2one(
+        string="Réseau",
         comodel_name="accorderie.accorderie",
         required=True,
     )

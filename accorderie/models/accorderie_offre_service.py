@@ -19,8 +19,9 @@ class AccorderieOffreService(models.Model):
     )
 
     accorderie = fields.Many2one(
+        string="Réseau",
         comodel_name="accorderie.accorderie",
-        help="Accorderie associée",
+        help="Réseau associée",
     )
 
     active = fields.Boolean(

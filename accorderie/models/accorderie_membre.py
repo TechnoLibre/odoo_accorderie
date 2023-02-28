@@ -20,10 +20,11 @@ class AccorderieMembre(models.Model):
     )
 
     accorderie = fields.Many2one(
+        string="Réseau",
         comodel_name="accorderie.accorderie",
         required=True,
         track_visibility="onchange",
-        help="Accorderie associée",
+        help="Réseau associée",
     )
 
     achat_regrouper = fields.Boolean(
@@ -305,7 +306,7 @@ class AccorderieMembre(models.Model):
 
     transfert_accorderie = fields.Many2one(
         comodel_name="accorderie.accorderie",
-        string="Transfert d'une Accorderie",
+        string="Transfert d'un réseau",
         track_visibility="onchange",
     )
 

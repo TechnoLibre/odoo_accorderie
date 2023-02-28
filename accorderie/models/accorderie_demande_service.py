@@ -12,6 +12,7 @@ class AccorderieDemandeService(models.Model):
     titre = fields.Char()
 
     accorderie = fields.Many2one(
+        string="Réseau",
         comodel_name="accorderie.accorderie",
         track_visibility="onchange",
     )

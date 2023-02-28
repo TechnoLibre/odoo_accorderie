@@ -9,9 +9,10 @@ class AccorderieRegion(models.Model):
     nom = fields.Char()
 
     accorderie = fields.One2many(
+        string="Réseau",
         comodel_name="accorderie.accorderie",
         inverse_name="region",
-        help="Accorderie relation",
+        help="Relation du réseau",
     )
 
     code = fields.Integer(

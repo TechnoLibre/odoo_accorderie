@@ -14,6 +14,7 @@ class AccorderieDemandeAdhesion(models.Model):
 
     accorderie = fields.Many2one(
         comodel_name="accorderie.accorderie",
+        string="Réseau",
         required=True,
     )
 

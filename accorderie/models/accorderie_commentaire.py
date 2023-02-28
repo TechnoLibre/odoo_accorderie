@@ -37,7 +37,7 @@ class AccorderieCommentaire(models.Model):
         string="Confidentialité",
     )
 
-    consulter_accorderie = fields.Boolean(string="Consulté par une Accorderie")
+    consulter_accorderie = fields.Boolean(string="Consulté par le réseau")
 
     consulter_reseau = fields.Boolean(string="Consulté par le Réseau")
 
