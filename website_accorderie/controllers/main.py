@@ -616,6 +616,9 @@ class AccorderieController(http.Controller):
         user_tz = pytz.timezone(
             request.context.get("tz") or request.env.user.tz or "UTC"
         )
+        if field_input is False:
+            _logger.error("Field value is empty.")
+            return None
         local_time = pytz.utc.localize(field_input).astimezone(user_tz)
         return local_time
 
