@@ -158,7 +158,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             };
             reader.readAsDataURL(input.files[0]);
         };
-        $scope.annuler_ask_modification_profile = function() {
+        $scope.annuler_ask_modification_profile = function () {
             // revert
             $scope.membre_info.ma_photo = $scope.ask_modif_copy.membre_info.ma_photo;
             $scope.ask_modification_profile = false;
@@ -354,7 +354,11 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
                 ) {
                     // options.format = time.getLangTimeFormat();
                     options.format = "HH:mm";
-                    options.defaultDate = moment("08:00", "HH:mm");
+                    if (["time_service_datepicker", "time_service"].includes(date_field.id)) {
+                        options.defaultDate = moment("08:00", "HH:mm");
+                    } else {
+                        options.defaultDate = moment("00:00", "HH:mm");
+                    }
                 } else {
                     options.format = time.getLangDatetimeFormat();
                 }
