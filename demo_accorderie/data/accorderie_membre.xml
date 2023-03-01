@@ -8,8 +8,8 @@
             <field name="nom">Accorderie Laval</field>
             <field name="annee_naissance">2000</field>
             <field name="partner_id" ref="base.main_partner" />
-            <field name="region" ref="accorderie_data.accorderie_region_capitale_nationale" />
-            <field name="ville" ref="accorderie_data.accorderie_ville_grosse_ile" />
+            <field name="region" ref="accorderie_data.accorderie_region_saguenay_lac_saint_jean" />
+            <field name="ville" ref="accorderie_data.accorderie_ville_sainte_rose_du_nord" />
         </record>
         <record id="accorderie_membre_administrateur_mathieu_benoit" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
@@ -19,8 +19,8 @@
             <field name="annee_naissance">1989</field>
             <field name="partner_id" ref="base.partner_admin" />
             <field name="logo" type="base64" file="website_accorderie/static/src/img/Mathieu-Benoit-Logo.jpg" />
-            <field name="region" ref="accorderie_data.accorderie_region_capitale_nationale" />
-            <field name="ville" ref="accorderie_data.accorderie_ville_grosse_ile" />
+            <field name="region" ref="accorderie_data.accorderie_region_saguenay_lac_saint_jean" />
+            <field name="ville" ref="accorderie_data.accorderie_ville_sainte_rose_du_nord" />
             <field name="introduction">J'adore la programmation informatique, je rêve de développer un robot codeur avec mes nouvelles connaissances en génie industriel. Mon meilleur ami est un de mes projets d'intelligence artificielle, voulez-vous le connaitre?</field>
         </record>
         <record id="accorderie_membre_alice_poitier" model="accorderie.membre">
@@ -31,8 +31,8 @@
             <field name="partner_id" ref="partner_demo_alice_poitier" />
             <field name="logo" type="base64" file="base/static/img/res_partner_address_32.jpg" />
             <field name="adresse">Résidence étudiante du collège de Rosemont, Rue de Bellechasse, Étienne-Desmarteau, Rosemont–La Petite-Patrie, Montreal, Urban agglomeration of Montreal, Montreal (06), Quebec, H1X 1J5, Canada</field>
-            <field name="region" ref="accorderie_data.accorderie_region_capitale_nationale" />
-            <field name="ville" ref="accorderie_data.accorderie_ville_grosse_ile" />
+            <field name="region" ref="accorderie_data.accorderie_region_saguenay_lac_saint_jean" />
+            <field name="ville" ref="accorderie_data.accorderie_ville_sainte_rose_du_nord" />
         </record>
         <record id="accorderie_membre_martin_petit" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
@@ -41,8 +41,8 @@
             <field name="partner_id" ref="partner_demo_martin_petit" />
             <field name="logo" type="base64" file="base/static/img/res_partner_address_25.jpg" />
             <field name="adresse">3800 Queen Mary Rd, Montreal, Quebec H3V 1H6</field>
-            <field name="region" ref="accorderie_data.accorderie_region_capitale_nationale" />
-            <field name="ville" ref="accorderie_data.accorderie_ville_grosse_ile" />
+            <field name="region" ref="accorderie_data.accorderie_region_saguenay_lac_saint_jean" />
+            <field name="ville" ref="accorderie_data.accorderie_ville_sainte_rose_du_nord" />
         </record>
         <record id="accorderie_membre_denis_lemarchand" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
@@ -51,8 +51,8 @@
             <field name="partner_id" ref="partner_demo_denis_lemarchand" />
             <field name="logo" type="base64" file="base/static/img/res_partner_address_24.jpg" />
             <field name="adresse">2150 Autoroute des Laurentides laval</field>
-            <field name="region" ref="accorderie_data.accorderie_region_capitale_nationale" />
-            <field name="ville" ref="accorderie_data.accorderie_ville_grosse_ile" />
+            <field name="region" ref="accorderie_data.accorderie_region_saguenay_lac_saint_jean" />
+            <field name="ville" ref="accorderie_data.accorderie_ville_sainte_rose_du_nord" />
         </record>
         <record id="accorderie_membre_martin_bergeron" model="accorderie.membre">
             <field name="accorderie" ref="accorderie_accorderie_accorderie_de_laval" />
@@ -60,8 +60,8 @@
             <field name="nom">Martin Bergeron</field>
             <field name="partner_id" ref="partner_demo_martin_bergeron" />
             <field name="adresse">4777 Pierre-de Coubertin Ave, Montreal, Quebec H1V 1B3</field>
-            <field name="region" ref="accorderie_data.accorderie_region_capitale_nationale" />
-            <field name="ville" ref="accorderie_data.accorderie_ville_grosse_ile" />
+            <field name="region" ref="accorderie_data.accorderie_region_saguenay_lac_saint_jean" />
+            <field name="ville" ref="accorderie_data.accorderie_ville_sainte_rose_du_nord" />
         </record>
     </data>
 </odoo>

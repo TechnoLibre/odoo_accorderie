@@ -25,10 +25,10 @@ class AccorderieDemandeAdhesion(models.Model):
                     "user_id": val.user_id.id,
                     "partner_id": val.user_id.partner_id.id,
                     "region": self.env.ref(
-                        "accorderie_data.accorderie_region_capitale_nationale"
+                        "accorderie_data.accorderie_region_saguenay_lac_saint_jean"
                     ).id,
                     "ville": self.env.ref(
-                        "accorderie_data.accorderie_ville_grosse_ile"
+                        "accorderie_data.accorderie_ville_sainte_rose_du_nord"
                     ).id,
                 }
                 lst_data.append(data)
