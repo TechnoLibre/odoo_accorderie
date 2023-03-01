@@ -3100,7 +3100,7 @@
                                         </a>
                                     </nav>
                                     <nav class="bilan_main">
-                                        <a href="/monactivite/echanges" class="bilan_main bilan-2 btn" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">
+                                        <a href="/monactivite/echanges" class="bilan_main bilan-2 btn" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector2.jpg&quot;)">
                                             <span class="nbr-activite">{{personal.nb_echange_a_venir}}</span>
                                             <span class="txt-activite">échange &#224; venir</span>
                                         </a>
@@ -3108,7 +3108,7 @@
                                             <span class="nbr-activite">{{personal.actual_month_bank_time_human_short | uppercase}}</span>
                                             <span class="txt-activite">ce mois-ci</span>
                                         </a>
-                                        <a href="/monprofil/mapresentation" class="bilan_main bilan-3 btn debug_unimplemented" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">
+                                        <a href="/monprofil/mapresentation" class="bilan_main bilan-3 btn debug_unimplemented" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector2.jpg&quot;)">
                                             <span class="nbr-activite">1</span>
                                             <span class="txt-activite">nouveau contact</span>
                                         </a>
@@ -3118,7 +3118,7 @@
                                             <span class="nbr-activite">{{personal.nb_echange_en_cours}}</span>
                                             <span class="txt-activite">échange en cours</span>
                                         </a>
-                                        <a href="/evenement" class="bilan_right bilan-5 btn debug_unimplemented" style="background-image: url(&quot;https://i.pinimg.com/originals/60/43/bf/6043bf9787ade7d5b2e746ad0960cd5a.jpg&quot;)">
+                                        <a href="/evenement" class="bilan_right bilan-5 btn debug_unimplemented" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector2.jpg&quot;)">
                                             <span class="nbr-activite">1</span>
                                             <span class="txt-activite">évènement</span>
                                         </a>
