@@ -406,6 +406,7 @@
                 <div class="row activites_list col-lg-6">
                     <div class="list_title s_title">
                         <div class="title">
+                            <img id="offres_recentes_accorderie" />
                             <h1>Offres r&#233;centes</h1>
                             <a
                                 t-if="offre_services_count"
@@ -469,6 +470,7 @@
                 <div class="row activites_list col-lg-6">
                     <div class="list_title s_title">
                         <div class="title">
+                            <img id="demandes_recentes_accorderie" />
                             <h1>Demandes r&#233;centes</h1>
                             <a
                                 t-if="demande_services_count"
