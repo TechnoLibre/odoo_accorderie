@@ -616,6 +616,11 @@ class AccorderieController(http.Controller):
         user_tz = pytz.timezone(
             request.context.get("tz") or request.env.user.tz or "UTC"
         )
+        if not request.context.get("tz"):
+            _logger.warning(
+                f"User id '{request.context.get('uid')}' missing timezone, not"
+                " configure."
+            )
         if field_input is False:
             _logger.error("Field value is empty.")
             return None
@@ -2070,6 +2075,7 @@ class AccorderieController(http.Controller):
             new_accorderie_echange_service.write(value_new_service)
             status["echange_service_id"] = new_accorderie_echange_service.id
             # Force update time per member
+            # TODO remplacer is_time_updated par la méthode pour forcer la mise à jour du compute
             new_accorderie_echange_service.membre_acheteur.is_time_updated = (
                 True
             )
