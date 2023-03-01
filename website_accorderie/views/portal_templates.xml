@@ -154,6 +154,7 @@
                                         data-oe-field="name"
                                         data-oe-type="char"
                                         data-oe-expression="submenu.name"
+                                        id="participer_navbar_accorderie"
                                     >
                                         Participer
                                     </span>

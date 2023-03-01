@@ -3463,7 +3463,7 @@
                                         </div>
                                         <div class="col-lg-2 footer_menu">
                                             <a href="/participer" class="img bottom_menu_icon fa fa-plus-circle" style="text-decoration:none;" />
-                                            <h5>Participer</h5>
+                                            <h5 id="participer_footer_accorderie">Participer</h5>
                                             <a href="/participer#!?state=init.pos" class="footer_link">Publier une offre de service</a>
                                             <br />
                                             <a href="/participer#!?state=init.pds" class="footer_link">Publier une demande de service</a>
