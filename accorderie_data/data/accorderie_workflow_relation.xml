@@ -11,6 +11,7 @@
         <record id="accorderie_workflow_relation_init_pos" model="accorderie.workflow.relation">
             <field name="name">Publier une offre de service</field>
             <field name="body_html" type="html">
+                <img style="float: right;" src="/website_ore/static/src/img/O.svg" />
                 <p>
                     Vous souhaitez offrir vos services?
                     <br />
@@ -30,14 +31,20 @@
         <!--        </record>-->
         <record id="accorderie_workflow_relation_init_pds" model="accorderie.workflow.relation">
             <field name="name">Publier une demande de service</field>
-            <field name="body_html">Vous avez besoin d'un service? Faites part de votre besoin aux membres de l'Accorderie en créant une demande ici.</field>
+            <field name="body_html" type="html">
+                <img style="float: right;" src="/website_ore/static/src/img/R.svg" />
+                <p>Vous avez besoin d'un service? Faites part de votre besoin aux membres de l'Accorderie en créant une demande ici.</p>
+            </field>
             <field name="state_src" ref="accorderie_workflow_state_init" />
             <field name="state_dst" ref="accorderie_workflow_state_pds_individuelle" />
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
         <record id="accorderie_workflow_relation_init_saa" model="accorderie.workflow.relation">
             <field name="name">Créer un échange avec un autre membre</field>
-            <field name="body_html">Mettez vous d'accord à l'avance sur les modalités du service à donner ou recevoir.</field>
+            <field name="body_html" type="html">
+                <img style="float: right;" src="/website_ore/static/src/img/E.svg" />
+                <p>Mettez vous d'accord à l'avance sur les modalités du service à donner ou recevoir.</p>
+            </field>
             <field name="state_src" ref="accorderie_workflow_state_init" />
             <field name="state_dst" ref="accorderie_workflow_state_saa" />
             <field name="diagram_id" ref="accorderie_workflow_participer" />
@@ -198,7 +205,10 @@
         </record>
         <record id="accorderie_workflow_relation_init_va" model="accorderie.workflow.relation">
             <field name="name">Valider un échange</field>
-            <field name="body_html">Vous avez donné ou reçu un service? Déclarez ici la transaction pour donner ou percevoir les heures d'Accorderie dues.</field>
+            <field name="body_html" type="html">
+                <img style="float: right;" src="/website_ore/static/src/img/E.svg" />
+                <p>Vous avez donné ou reçu un service? Déclarez ici la transaction pour donner ou percevoir les heures d'Accorderie dues.</p>
+            </field>
             <field name="state_src" ref="accorderie_workflow_state_init" />
             <field name="state_dst" ref="accorderie_workflow_state_va" />
             <field name="diagram_id" ref="accorderie_workflow_participer" />
