@@ -366,6 +366,9 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
                 };
                 if ($(date_field).find(".o_website_form_date").length > 0 || dateFormatTool === "date") {
                     options.format = time.getLangDateFormat();
+                    if (["date_service_datepicker"].includes(date_field.id)) {
+                        options.defaultDate = moment();
+                    }
                 } else if (
                     $(date_field).find(".o_website_form_clock").length > 0 || dateFormatTool === "clock"
                 ) {
