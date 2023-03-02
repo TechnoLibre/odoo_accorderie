@@ -517,7 +517,7 @@
                                             <div class="tab-items-container">
                                                 <a
                                                     role="menuitem"
-                                                    ng-href="/monactivite/echange#!?echange={{notif.echange_service_id}}"
+                                                    ng-href="/monactivite/echange{{url_debug}}#!?echange={{notif.echange_service_id}}"
                                                     class="dropdown-item"
                                                     ng-repeat="notif in lst_notification | filter:notif_filter_unread | limitTo:5"
                                                 >

@@ -144,6 +144,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
         $scope.dct_echange_service_info = {}
         $scope.nb_offre_service = 0;
         $scope.animation_controller_enable = false;
+        $scope.url_debug = "";
 
         // TODO créer environnement modification
         $scope.ask_modification = false;
@@ -198,6 +199,13 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             }
         };
         // End modification environnement
+
+        // History
+        $scope.$on('$locationChangeSuccess', function (object, newLocation, previousLocation) {
+            if (window.location.search === "?debug=assets") {
+                $scope.url_debug = "?debug=assets";
+            }
+        });
 
         $scope.lst_notification = [];
 
@@ -376,7 +384,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             }
             let membre_id = $scope.offre_service_info.membre_id;
             let offre_id = $scope.offre_service_info.id;
-            let url = `/participer#!?state=init.saa.recevoir.choix.existant.time&membre=${membre_id}&offre_service=${offre_id}&date=${date_value}`;
+            let url = `/participer${$scope.url_debug}#!?state=init.saa.recevoir.choix.existant.time&membre=${membre_id}&offre_service=${offre_id}&date=${date_value}`;
             console.debug(url);
             // location.replace(url);
             window.location.href = url;
@@ -392,7 +400,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             }
             let membre_id = $scope.demande_service_info.membre_id;
             let demande_id = $scope.demande_service_info.id;
-            let url = `/participer#!?state=init.saa.offrir.demande.existante.date.time.form&membre=${membre_id}&demande_service=${demande_id}&date=${date_value}`;
+            let url = `/participer${$scope.url_debug}#!?state=init.saa.offrir.demande.existante.date.time.form&membre=${membre_id}&demande_service=${demande_id}&date=${date_value}`;
             console.debug(url);
             // location.replace(url);
             window.location.href = url;
@@ -646,7 +654,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             // } else {
             //     status = `/participer#!?state=init.va.non.offert.existant.form&membre=${echange_service_info.membre_id}&echange_service=${echange_service_info.id}`;
             // }
-            status = `/participer#!?state=init.va.oui.form&echange_service=${echange_service_info.id}`;
+            status = `/participer${$scope.url_debug}#!?state=init.va.oui.form&echange_service=${echange_service_info.id}`;
             return status;
         }
 
@@ -1021,7 +1029,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
 
         $scope.echange_click_redirect = function (echange) {
             // TODO no need this, use instead <a href and not ng-click
-            window.location.href = '/monactivite/echange#!?echange=' + echange.id;
+            window.location.href = `/monactivite/echange${$scope.url_debug}#!?echange=${echange.id}`;
         }
     }])
 
