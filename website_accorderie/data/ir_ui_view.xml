@@ -3,7 +3,7 @@
     <data>
         <record id="ir_ui_view_echanges" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -121,7 +121,7 @@
         </record>
         <record id="ir_ui_view_communaute" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -429,7 +429,7 @@
         </record>
         <record id="ir_ui_view_communaute_1" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -699,7 +699,7 @@
         </record>
         <record id="ir_ui_view_communaute_2" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -1468,7 +1468,7 @@
         </record>
         <record id="ir_ui_view_explorer" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <t t-set="pageName" t-value="'explorer'" />
                         <div id="wrap" class="oe_structure oe_empty">
@@ -2007,7 +2007,7 @@
         </record>
         <record id="ir_ui_view_ma_presentation" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap" class="ng-cloak">
                             <div class="oe_structure">
@@ -2249,7 +2249,7 @@
         </record>
         <record id="ir_ui_view_membres" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -2363,7 +2363,7 @@
         </record>
         <record id="ir_ui_view_mes_annonces_publiees" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -2451,7 +2451,7 @@
         </record>
         <record id="ir_ui_view_mes_favoris" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -2561,7 +2561,7 @@
         </record>
         <record id="ir_ui_view_mes_groupes" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -2749,7 +2749,7 @@
         </record>
         <record id="ir_ui_view_mes_informations_personnelles" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -2838,7 +2838,7 @@
         </record>
         <record id="ir_ui_view_mes_preferences" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -2886,7 +2886,7 @@
         </record>
         <record id="ir_ui_view_messages_et_notifications" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap" ng-controller="NotificationController">
                             <div class="oe_structure">
@@ -2951,7 +2951,7 @@
         </record>
         <record id="ir_ui_view_mon_profil" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap" class="ng-cloak">
                             <div class="oe_structure">
@@ -3049,7 +3049,7 @@
         </record>
         <record id="ir_ui_view_mon_activite" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -3224,7 +3224,7 @@
         </record>
         <record id="ir_ui_view_mon_reseau" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -3547,7 +3547,7 @@
         </record>
         <record id="ir_ui_view_publier_offre" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t t-name="website.publier-offre">
+                <t t-name="website.publier-offre" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <!-- TODO cette page n'est plus bonne -->
                         <div id="wrap" class="oe_structure oe_empty">
@@ -3647,7 +3647,7 @@
         </record>
         <record id="ir_ui_view_evenement" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -3884,7 +3884,7 @@
         </record>
         <record id="ir_ui_view_offres_service" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -3977,7 +3977,7 @@
         </record>
         <record id="ir_ui_view_demandes_service" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="About us" t-name="website.aboutus">
+                <t name="About us" t-name="website.aboutus" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -4047,7 +4047,7 @@
         </record>
         <record id="ir_ui_view_echange" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="Échange de service" t-name="website.echange">
+                <t name="Échange de service" t-name="website.echange" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
@@ -4359,7 +4359,7 @@
         </record>
         <record id="ir_ui_view_mon_agenda" model="ir.ui.view">
             <field name="arch" type="xml">
-                <t name="Mon agenda" t-name="website.mon_agenda">
+                <t name="Mon agenda" t-name="website.mon_agenda" groups="base.group_user,base.group_portal">
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
