@@ -205,6 +205,15 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             if (window.location.search === "?debug=assets") {
                 $scope.url_debug = "?debug=assets";
             }
+            if (window.location.pathname !== "/monactivite/echange") {
+                return;
+            }
+            if (newLocation !== previousLocation) {
+                let new_echange_id = $location.search()["echange"];
+                if (!_.isUndefined(new_echange_id)) {
+                    $scope.update_echange_service();
+                }
+            }
         });
 
         $scope.lst_notification = [];
@@ -762,7 +771,10 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
                     })
                 }
             }
+            $scope.update_echange_service();
+        }
 
+        $scope.update_echange_service = function () {
             let echange_id = $location.search()["echange"];
             if (!_.isEmpty(echange_id)) {
                 echange_id = parseInt(echange_id, 10);
