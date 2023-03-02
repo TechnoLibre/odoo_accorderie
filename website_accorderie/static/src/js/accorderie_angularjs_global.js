@@ -38,6 +38,25 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             );
         }
     });
+    app.directive("contenteditable", function () {
+        return {
+            require: "ngModel",
+            link: function (scope, element, attrs, ngModel) {
+
+                function read() {
+                    ngModel.$setViewValue(element.html());
+                }
+
+                ngModel.$render = function () {
+                    element.html(ngModel.$viewValue || "");
+                };
+
+                element.bind("blur keyup change", function () {
+                    scope.$apply(read);
+                });
+            }
+        };
+    });
 
     // sAnimation.registry.affixMenu.include({
     //     /**
@@ -145,11 +164,12 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
         $scope.nb_offre_service = 0;
         $scope.animation_controller_enable = false;
         $scope.url_debug = "";
+        $scope.modify_label_when_empty = "Modifiez moi!"
 
         // TODO créer environnement modification
         $scope.ask_modification = false;
         $scope.ask_modification_profile = false;
-        $scope.ask_modif_copy = {membre_info: {}};
+        $scope.ask_modif_copy = {membre_info: {}, introduction: ""};
         $scope.updateImage = function (input) {
             let reader = new FileReader();
             reader.onload = function () {
@@ -162,6 +182,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
         $scope.annuler_ask_modification_profile = function () {
             // revert
             $scope.membre_info.ma_photo = $scope.ask_modif_copy.membre_info.ma_photo;
+            $scope.membre_info.introduction = $scope.ask_modif_copy.membre_info.introduction;
             $scope.ask_modification_profile = false;
         };
         $scope.change_ask_modification_profile = function (enable) {
@@ -169,8 +190,17 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             $scope.ask_modification_profile = enable;
             if (!enable) {
                 // Recording, check diff and rpc to server
+                let form = {};
                 if ($scope.ask_modif_copy.membre_info.ma_photo !== $scope.membre_info.ma_photo) {
-                    let form = {"ma_photo": $scope.membre_info.ma_photo}
+                    form["ma_photo"] = $scope.membre_info.ma_photo;
+                }
+                if ($scope.membre_info.introduction === $scope.modify_label_when_empty) {
+                    $scope.membre_info.introduction = "";
+                }
+                if ($scope.ask_modif_copy.membre_info.introduction !== $scope.membre_info.introduction) {
+                    form["introduction"] = $scope.membre_info.introduction;
+                }
+                if (!_.isEmpty(form)) {
                     let url = "/accorderie/personal_information/submit"
                     ajax.rpc(url, form).then(function (data) {
                             console.debug("AJAX receive submit_form personal_information");
@@ -195,6 +225,16 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
                     $scope.ask_modif_copy.membre_info.ma_photo = JSON.parse(JSON.stringify($scope.membre_info.ma_photo));
                 } else {
                     $scope.ask_modif_copy.membre_info.ma_photo = undefined;
+                }
+                if (!_.isUndefined($scope.membre_info.introduction)) {
+                    if (_.isEmpty($scope.membre_info.introduction)) {
+                        $scope.membre_info.introduction = $scope.modify_label_when_empty;
+                        $scope.ask_modif_copy.membre_info.introduction = "";
+                    } else {
+                        $scope.ask_modif_copy.membre_info.introduction = JSON.parse(JSON.stringify($scope.membre_info.introduction));
+                    }
+                } else {
+                    $scope.ask_modif_copy.membre_info.introduction = undefined;
                 }
             }
         };

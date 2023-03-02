@@ -2074,7 +2074,8 @@
                                             <span class="txt">Intro</span>
                                             <br />
                                             <br />
-                                            <span class="nbr" ng-show="membre_info.introduction"><q>{{membre_info.introduction}}</q></span>
+                                            <span class="nbr" ng-show="membre_info.introduction" ng-if="!ask_modification_profile"><q>{{membre_info.introduction}}</q></span>
+                                            <span class="nbr" ng-if="ask_modification_profile"><q class="editable-content-blue" contenteditable="true" ng-model="membre_info.introduction" /></span>
                                         </div>
                                         <div class="information information-3">
                                             <span class="txt">R&#233;sum&#233;</span>

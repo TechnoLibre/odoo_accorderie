@@ -887,9 +887,12 @@ class AccorderieController(http.Controller):
 
         status = True
         ma_photo = kw.get("ma_photo")
-        if ma_photo:
+        introduction = kw.get("introduction")
+        if "ma_photo" in kw.keys():
             # TODO do we need validation? like extension or supported file
             membre_id.logo = ma_photo.split(",")[1].encode("utf-8")
+        if "introduction" in kw.keys():
+            membre_id.introduction = introduction
         return status
 
     @http.route(
