@@ -142,7 +142,7 @@
             <field name="arch" type="xml">
                 <data inherit_id="website_accorderie.ir_ui_view_ma_presentation">
                     <xpath expr="//div[hasclass('btn_saccorder')]" position="after">
-                        <div class="modif_btn btn btn-primary" ng-if="!membre_info.estPersonnel">
+                        <div class="profil profil_right profil_box modif_btn btn btn-primary adapt-text-primary-color" ng-if="!membre_info.estPersonnel">
                             <a ng-href="/notification#!?section=message&amp;membre={{membre_info.id}}">
                                 Contacter {{membre_info.prenom}}
                             </a>
