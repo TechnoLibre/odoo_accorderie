@@ -524,7 +524,7 @@
                                                     <div class="cat activite btn">
                                                         <img
                                                             class="activite_img img-fluid rounded-circle"
-                                                            src="/web/image/website_accorderie.ir_attachment_liuba_bilyk_wu_tbwqdpji_unsplash_jpg/liuba-bilyk-wU_TbWqdPJI-unsplash.jpg"
+                                                            ng-src="{{ notif.membre_photo }}"
                                                         />
                                                         <div class="infos">
                                                             <span
