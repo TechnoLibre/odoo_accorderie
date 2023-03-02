@@ -7,7 +7,7 @@ import humanize
 import pytz
 import requests
 
-from odoo import _, http
+from odoo import _, fields, http
 from odoo.http import request
 from odoo.tools.image import image_data_uri
 
@@ -1833,6 +1833,8 @@ class AccorderieController(http.Controller):
             _logger.error(status["error"])
             return status
 
+        membre_id = http.request.env.user.partner_id.accorderie_membre_ids.id
+
         demande_service_id = None
         offre_service_id = None
         new_accorderie_echange_service = None
@@ -1868,31 +1870,24 @@ class AccorderieController(http.Controller):
                         if type_service_id_id:
                             vals["type_service_id"] = type_service_id_id
 
-                membre_id = (
-                    http.request.env.user.partner_id.accorderie_membre_ids.id
-                )
                 vals["membre"] = membre_id
 
                 if (
                     state_id.caract_offre_demande_nouveau_existante
                     == "Nouvelle demande"
                 ):
-                    new_accorderie_service = (
-                        request.env["accorderie.demande.service"]
-                        .sudo()
-                        .create(vals)
-                    )
+                    new_accorderie_service = request.env[
+                        "accorderie.demande.service"
+                    ].create(vals)
                     demande_service_id = new_accorderie_service.id
                     status["demande_service_id"] = demande_service_id
                 elif (
                     state_id.caract_offre_demande_nouveau_existante
                     == "Nouvelle offre"
                 ):
-                    new_accorderie_service = (
-                        request.env["accorderie.offre.service"]
-                        .sudo()
-                        .create(vals)
-                    )
+                    new_accorderie_service = request.env[
+                        "accorderie.offre.service"
+                    ].create(vals)
                     offre_service_id = new_accorderie_service.id
                     status["offre_service_id"] = offre_service_id
 
@@ -2012,9 +2007,9 @@ class AccorderieController(http.Controller):
 
             # date_echange
             # TODO support private offre/demande and unpublish it
-            new_accorderie_echange_service = (
-                request.env["accorderie.echange.service"].sudo().create(vals)
-            )
+            new_accorderie_echange_service = request.env[
+                "accorderie.echange.service"
+            ].create(vals)
             status["echange_service_id"] = new_accorderie_echange_service.id
 
         # if str_state_id in (
@@ -2072,6 +2067,9 @@ class AccorderieController(http.Controller):
                     != date_echange_float
                 ):
                     value_new_service["date_echange"] = date_echange_float
+
+            value_new_service["membre_qui_a_valide"] = membre_id
+            value_new_service["date_valide"] = fields.Datetime.now()
             new_accorderie_echange_service.write(value_new_service)
             status["echange_service_id"] = new_accorderie_echange_service.id
             # Force update time per member
