@@ -580,6 +580,248 @@ class AccorderieController(http.Controller):
             dct_value,
         )
 
+    @http.route(
+        ["/monprofil/mapresentation"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mapresentation(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_ma_presentation"
+        ).render()
+
+    @http.route(
+        ["/communaute/actualite"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_communaute_actualite(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_communaute"
+        ).render()
+
+    @http.route(
+        ["/monprofil/mesannonces"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mesannonces(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_annonces_publiees"
+        ).render()
+
+    @http.route(
+        ["/communaute/evenements"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_communaute_evenements(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_communaute_1"
+        ).render()
+
+    @http.route(
+        ["/explorer"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_explorer(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_explorer"
+        ).render()
+
+    @http.route(
+        ["/monactivite/mesgroupes"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_mesgroupes(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_groupes"
+        ).render()
+
+    @http.route(
+        ["/monprofil/mesfavoris"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mesfavoris(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_favoris"
+        ).render()
+
+    @http.route(
+        ["/communaute/groupes"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_communaute_groupes(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_communaute_2"
+        ).render()
+
+    @http.route(
+        ["/evenement"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_evenement(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_evenement"
+        ).render()
+
+    @http.route(
+        ["/monprofil/mespreferences"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mespreferences(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_preferences"
+        ).render()
+
+    @http.route(
+        ["/communaute/membres"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_communaute_membres(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_membres"
+        ).render()
+
+    @http.route(
+        ["/monprofil/mesinfos"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mesinfos(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_informations_personnelles"
+        ).render()
+
+    @http.route(
+        ["/monactivite/monreseau"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_monreseau(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mon_reseau"
+        ).render()
+
+    @http.route(
+        ["/monprofil"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mon_profil"
+        ).render()
+
+    @http.route(
+        ["/monactivite/echanges"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_echanges(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_echanges"
+        ).render()
+
+    @http.route(
+        ["/monactivite/echange"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_echange(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_echange"
+        ).render()
+
+    @http.route(
+        ["/publier-offre"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_publier_offre(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_publier_offre"
+        ).render()
+
+    @http.route(
+        ["/notification"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_notification(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_messages_et_notifications"
+        ).render()
+
+    @http.route(
+        ["/monactivite"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mon_activite"
+        ).render()
+
+    @http.route(
+        ["/offresservice"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_offresservice(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_offres_service"
+        ).render()
+
+    @http.route(
+        ["/demandesservice"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_demandesservice(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_demandes_service"
+        ).render()
+
+    @http.route(
+        ["/monactivite/monagenda"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_monagenda(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mon_agenda"
+        ).render()
+
     def _transform_str_diff_time_creation(self, create_date):
         if not create_date:
             return ""
