@@ -4100,17 +4100,17 @@
 <!--                                                </a>-->
                                             </div>
                                             <div class="btn btn-primary adapt-text-primary-color">
-                                                <a ng-href="{{get_href_participer_service_effectue(echange_service_info)}}">
+                                                <a ng-href="{{get_href_participer_service_effectue(echange_service_info)}}" class="adapt-text-primary-color">
                                                     <i class="fa fa-check" />
                                                     <span>Service effectué</span>
                                                 </a>
                                             </div>
-                                            <div class="btn btn-epsilon adapt-text-epsilon-color debug_unimplemented">
+                                            <div class="btn btn-epsilon adapt-text-primary-color debug_unimplemented">
                                                 <i class="fa fa-pencil" />
                                                 <!-- TODO faire apparaitre un formulaire pour que l'autre utilisateur change une information DEMANDE DE RÉVISION ou modifier soi même une information -->
                                                 <span>Modifier l'entente</span>
                                             </div>
-                                            <div class="btn btn-epsilon adapt-text-epsilon-color debug_unimplemented">
+                                            <div class="btn btn-epsilon adapt-text-primary-color debug_unimplemented">
                                                 <i class="fa fa-times-circle" />
                                                 <!-- TODO faire apparaitre un formulaire pour demander des commentaires et informer l'autre utilisateur du refus -->
                                                 <span>Annuler l'entente</span>
