@@ -2083,23 +2083,23 @@
                                             <br />
                                             <span class="desc-3 debug_unimplemented">
                                                 <i class="fa fa-map-marker" />
-                                                Habite &#224; 1.2km de votre domicile
+                                                <span style="position: relative; left: -25px;">Habite &#224; 1.2km de votre domicile</span>
                                             </span>
                                             <br />
                                             <span class="desc-3">
                                                 <i class="fa fa-home" />
-                                                {{membre_info.location}}
+                                                <span style="position: relative; left: -25px;">{{membre_info.location}}</span>
                                             </span>
                                             <br />
                                             <span class="desc-3">
                                                 <i class="fa fa-shield" />
-                                                <span ng-if="membre_info.antecedent_judiciaire_verifier">Ant&#233;c&#233;dents judificaires v&#233;rifi&#233;s</span>
-                                                <span ng-if="!membre_info.antecedent_judiciaire_verifier">Ant&#233;c&#233;dents judificaires non v&#233;rifi&#233;s</span>
+                                                <span style="position: relative; left: -25px;" ng-if="membre_info.antecedent_judiciaire_verifier">Ant&#233;c&#233;dents judificaires v&#233;rifi&#233;s</span>
+                                                <span style="position: relative; left: -25px;" ng-if="!membre_info.antecedent_judiciaire_verifier">Ant&#233;c&#233;dents judificaires non v&#233;rifi&#233;s</span>
                                             </span>
                                             <br />
                                             <span class="desc-3">
                                                 <i class="fa fa-calendar" />
-                                                Membre depuis {{membre_info.diff_humain_creation_membre}}
+                                                <span style="position: relative; left: -25px;">Membre depuis {{membre_info.diff_humain_creation_membre}}</span>
                                             </span>
                                         </div>
                                         <div class="information information-4">
