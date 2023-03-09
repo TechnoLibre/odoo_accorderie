@@ -2962,26 +2962,26 @@
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pb64 pt56" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="banner_profile">
-                                    <div style="background-color: rgba(255, 255, 255, 0.5); border-radius: 10px;">
-                                        <div class="profile_infos" style="margin: 10px;">
-                                            <div class="profile_pic rounded-circle" ng-style="{'background-image': 'url(' + personal.ma_photo + ')'}">
-                                                <i class="fa fa-shield text-color-title" />
-                                            </div>
-                                            <div class="profile_banner_info" style="white-space: nowrap;">
-                                                <p class="profile_name text-color-title">{{personal.full_name}}</p>
-                                                <p class="profile_hrs text-color-title">
-                                                    <i class="fa fa-clock-o" />&amp;nbsp;<span ng-class="{neg_time_2: !personal.actual_bank_sign}">{{personal.actual_bank_time_human_simplify}}</span>
-                                                </p>
+                                        <div id="background_white_profil">
+                                            <div class="profile_infos" style="margin: 10px;">
+                                                <div class="profile_pic rounded-circle" ng-style="{'background-image': 'url(' + personal.ma_photo + ')'}">
+                                                    <i class="fa fa-shield text-color-title" />
+                                                </div>
+                                                <div class="profile_banner_info" style="white-space: nowrap;">
+                                                    <p class="profile_name text-color-title">{{personal.full_name}}</p>
+                                                    <p class="profile_hrs text-color-title">
+                                                        <i class="fa fa-clock-o" />&amp;nbsp;<span ng-class="{neg_time_2: !personal.actual_bank_sign}">{{personal.actual_bank_time_human_simplify}}</span>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                        <div class="profile_btn btn accorderie text-color-title debug_unimplemented" style="background-color: white; border-radius: 15px;">
+                                        <div id="btn_accorderie_profil" class="profile_btn btn accorderie text-color-title debug_unimplemented">
                                             <i class="fa fa-smile-o" />
                                             <span id="mon_accorderie"> Mon accorderie: {{personal.mon_accorderie.name}}</span>
                                             <i class="fa fa-chevron-right" />
                                         </div>
                                         <a href="web/session/logout?redirect=/">
-                                            <div class="profile_btn btn disconnect text-color-title" style="background-color: white; border-radius: 15px;">
+                                            <div id="btn_disconnect_profil" class="profile_btn btn disconnect text-color-title">
                                                 <i class="fa fa-power-off" />&amp;nbsp;Se déconnecter
                                             </div>
                                         </a>
