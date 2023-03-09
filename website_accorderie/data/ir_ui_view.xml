@@ -2316,29 +2316,29 @@
                                         </div>
                                     </div>
                                     <div class="horizontal_list">
-                                        <div class="list_item" ng-repeat="(membre_id, membre) in dct_membre">
-                                            <div class="item_card btn shadow" style="height: 350px">
+                                        <div class="list_item" ng-repeat="(membre_id, membre) in dct_membre" style="height: 600px; width: 300px;">
+                                            <div class="item_card btn shadow">
                                                 <a ng-href="/monprofil/mapresentation#!?membre_id={{membre_id}}">
-                                                    <div class="item_img oe_img_bg oe_custom_bg" style="height:100px;" ng-style="{'background-image': 'url(' + membre.ma_photo + ')'}">
-                                                        <icon class="fa coeur" ng-class="{'fa-heart': membre.is_favorite, 'fa-heart-o': !membre.is_favorite}" />
-                                                    </div>
-                                                    <div class="name text-black" style="text-align:center;">
-                                                        <span style="font-size: 1.2rem;">{{membre.full_name}}&amp;nbsp;</span>
-                                                        <icon class="fa fa-shield" ng-if="membre.antecedent_judiciaire_verifier" style="font-size: 1.2rem;" />
-                                                    </div>
-                                                    <div class="infos text-black" style="text-align:center;">
-                                                        <span ng-if="membre.age > 0" style="font-size: 1.2rem;">{{membre.age}} ans</span>
-                                                        <span ng-if="membre.age > 0 &amp;&amp; !_.isUndefined(membre.distance)" style="font-size: 1.2rem;"> - </span>
-                                                        <span ng-if="!_.isUndefined(membre.distance)" style="font-size: 1.2rem;">{{membre.distance}} m</span>
-                                                    </div>
-                                                    <div class="item_desc centered" ng-if="!_.isEmpty(membre.introduction)" style="width:auto; height:20px; word-wrap: break-word;">
-                                                        <font style="color: rgb(99, 99, 99);"><q>{{membre.introduction}}</q></font>
-                                                    </div>
-                                                    <div class="item_foot debug_unimplemented">
-                                                        <span class="tag">Marche</span>
-                                                        <span class="tag">Violoncelle</span>
-                                                        <span class="tag">Gym</span>
-                                                    </div>
+                                                <div class="item_img oe_img_bg oe_custom_bg" ng-style="{'background-image': 'url(' + membre.ma_photo + ')'}">
+                                                    <icon class="fa coeur" ng-class="{'fa-heart': membre.is_favorite, 'fa-heart-o': !membre.is_favorite}" />
+                                                </div>
+                                                <div class="name text-black" style="text-align:center;">
+                                                    <span style="font-size: 1.2rem;">{{membre.full_name}}&amp;nbsp;</span>
+                                                    <icon class="fa fa-shield" ng-if="membre.antecedent_judiciaire_verifier" style="font-size: 1.2rem;" />
+                                                </div>
+                                                <div class="infos text-black" style="text-align:center;">
+                                                    <span ng-if="membre.age > 0" style="font-size: 1.2rem;">{{membre.age}} ans</span>
+                                                    <span ng-if="membre.age > 0 &amp;&amp; !_.isUndefined(membre.distance)" style="font-size: 1.2rem;"> - </span>
+                                                    <span ng-if="!_.isUndefined(membre.distance)" style="font-size: 1.2rem;">{{membre.distance}} m</span>
+                                                </div>
+                                                <div class="item_desc centered" ng-if="!_.isEmpty(membre.introduction)">
+                                                    <font style="color: rgb(99, 99, 99);"><q>{{membre.introduction}}</q></font>
+                                                </div>
+                                                <div class="item_foot debug_unimplemented">
+                                                    <span class="tag">Marche</span>
+                                                    <span class="tag">Violoncelle</span>
+                                                    <span class="tag">Gym</span>
+                                                </div>
                                                 </a>
                                             </div>
                                         </div>
