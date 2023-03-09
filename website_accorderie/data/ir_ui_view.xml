@@ -2032,9 +2032,9 @@
                                                 <input id="file-input" style="opacity:0;" ng-if="ask_modification_profile" type="file" ng-model="myImage" accept="image/*" onchange="angular.element(this).scope().updateImage(this)" />
                                                 <label for="file-input" class="file-label">
                                                     <i class="white_box" style="padding-bottom: 1px; padding-right: 1px; border-radius: 10px; left: 55px; top: 50px; width: 40px; height: 40px" ng-if="ask_modification_profile" />
-                                                    <i class="fa fa-pencil-square text-primary" style="padding-bottom: 50px; padding-right: 100px; cursor: pointer;" ng-if="ask_modification_profile" />
+                                                    <i class="fa fa-pencil-square text-primary" style="padding-bottom: 50px; cursor: pointer;" ng-if="ask_modification_profile" />
+                                                    <i class="fa fa-shield text-epsilon" ng-if="membre_info.antecedent_judiciaire_verifier" />
                                                 </label>
-                                                <i class="fa fa-shield text-epsilon" ng-if="membre_info.antecedent_judiciaire_verifier" />
                                             </div>
                                             <span class="text desc" style="font-size: 1.4rem;">
                                                 Bonjour, je m'appelle

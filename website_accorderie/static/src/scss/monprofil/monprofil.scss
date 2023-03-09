@@ -114,6 +114,27 @@
       max-width: 100%;
       word-wrap: break-word;
     }
+
+    /* Default padding value for all browsers */
+    .file-label i.fa.fa-pencil-square {
+      padding-right: 100px;
+    }
+
+    /* Firefox-specific rules */
+    @-moz-document url-prefix() {
+      .file-label i.fa.fa-pencil-square {
+        padding-right: 100px !important;
+      }
+    }
+
+    /* Chromium-specific rules */
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) {
+        .file-label i.fa.fa-pencil-square {
+          padding-right: 50px;
+        }
+      }
+    }
   }
 
   .information-1 {
