@@ -85,8 +85,7 @@
                                                     </div>
                                                 </div>
                                                 <div ng-if="_.isEmpty(echange_info.lst_echange)">Aucun échange ce mois-ci</div>
-                                                <div ng-repeat="echange in echange_info.lst_echange" class="activite btn" ng-click="echange_click_redirect(echange)">
-<!--                                                 <a href="/">-->
+                                                <a ng-repeat="echange in echange_info.lst_echange" class="activite btn" ng-href="/monactivite/echange#!?echange={{echange.id}}">
                                                     <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
                                                     <div class="activite_infos">
                                                         <div class="activite_title">
@@ -100,12 +99,10 @@
                                                             <span class="mb-auto" ng-show="!_.isEmpty(echange.sujet_demande_service)">{{echange.sujet_demande_service}}</span>
                                                         </div>
                                                     </div>
-                                                    <a class="details_link" ng-href="/monactivite/echange#!?echange={{echange.id}}"><u>Voir les détails</u></a>
                                                     <p class="status" ng-class="{'red-o': echange.estAcheteur, 'blue-o': !echange.estAcheteur}" ng-if="!echange.transaction_valide">{{echange.show_duree_total_estime}} à valider <i class="fa fa-chevron-right" /></p>
                                                     <p class="status" ng-class="{'red': echange.estAcheteur, 'blue': !echange.estAcheteur}" ng-if="echange.transaction_valide">{{echange.show_duree_total}}</p>
-<!--                                                    </a>-->
+                                                    </a>
                                                 </div>
-                                            </div>
                                             <div class="medium-btn btn btn-primary debug_unimplemented">Voir les transactions plus anciennes</div>
                                         </div>
                                     </div>
