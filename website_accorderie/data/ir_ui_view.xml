@@ -14,7 +14,7 @@
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-color-title">
+                                            <p class="s_title_default text-bold text-bold text-color-title">
                                                 Mon activit&#233;
                                             </p>
                                         </div>
@@ -50,7 +50,7 @@
                                 <section class="pb0 pt0">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb4" style="text-align: center;">
-                                            <p class="s_title_default" style="text-align: left;margin-left:14%; font-size:2rem;">
+                                            <p class="s_title_default text-bold text-bold" style="text-align: left;margin-left:14%; font-size:2rem;">
                                                 Mes échanges de service
                                                 <br />
                                             </p>
@@ -129,7 +129,7 @@
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-color-title">
+                                            <p class="s_title_default text-bold text-bold text-color-title">
                                                 {{personal.mon_accorderie.name}}
                                             </p>
                                         </div>
@@ -437,7 +437,7 @@
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-color-title">
+                                            <p class="s_title_default text-bold text-color-title">
                                                 {{personal.mon_accorderie.name}}
                                             </p>
                                         </div>
@@ -707,7 +707,7 @@
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-color-title">
+                                            <p class="s_title_default text-bold text-bold text-color-title">
                                                 {{personal.mon_accorderie.name}}
                                             </p>
                                         </div>
@@ -1479,7 +1479,7 @@
                                 <div class="container">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                                            <h1 class="s_title_default">
+                                            <h1 class="s_title_default text-bold">
                                                 <div class="search_bar">
                                                     <p class="search_txt text-epsilon">Que cherchez-vous?</p>
                                                     <div class="search_category">
@@ -2017,7 +2017,7 @@
                                 <section class="oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb48" style="text-align: center;">
-                                            <h1 class="s_title_default" style="text-align: left;" />
+                                            <h1 class="s_title_default text-bold" style="text-align: left;" />
                                         </div>
                                     </div>
                                 </section>
@@ -2258,7 +2258,7 @@
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-color-title">
+                                            <p class="s_title_default text-bold text-color-title">
                                                 {{personal.mon_accorderie.name}}
                                             </p>
                                         </div>
@@ -2372,7 +2372,7 @@
                                 <section class="s_page_title pb24 pt88 s" style="margin-left:14%;">
                                     <p><a href="/monprofil">Mon profil <i class="fa fa-chevron-right" /> Mes annonces publiées</a></p>
                                     <div class="pt8 pb4 " style="text-align: center;">
-                                        <h1 class="s_title_default" style="text-align: left;">
+                                        <h1 class="s_title_default text-bold" style="text-align: left;">
                                             Mes annonces publiées
                                             <br />
                                         </h1>
@@ -2460,7 +2460,7 @@
                                 <section class="s_page_title pb24 pt88 s" style="margin-left:14%;">
                                     <p><a href="/monprofil">Mon profil <i class="fa fa-chevron-right" /> Mes favoris</a></p>
                                     <div class="pt8 pb4 " style="text-align: center;">
-                                        <h1 class="s_title_default" style="text-align: left;">
+                                        <h1 class="s_title_default text-bold" style="text-align: left;">
                                             Mes favoris
                                             <br />
                                         </h1>
@@ -2570,7 +2570,7 @@
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-color-title">
+                                            <p class="s_title_default text-bold text-color-title">
                                                 Mon activit&#233;
                                             </p>
                                         </div>
@@ -2602,7 +2602,7 @@
                                 </nav>
                                 <section class="s_event_list lg debug_unimplemented">
                                     <div class="list_head mobile-display-none">
-                                        <div class="list_title s_title">
+                                        <div class="list_title s_title text-bold">
                                             <h1>
                                                 <font style="font-size:2rem;">Mes groupes</font>
                                             </h1>
@@ -2758,7 +2758,7 @@
                                 <section class="s_page_title pb24 pt88 s" style="margin-left:14%;">
                                     <p>Mon profil > Mes informations personnelles</p>
                                     <div class="pt8 pb4 " style="text-align: center;">
-                                        <h1 class="s_title_default" style="text-align: left;">
+                                        <h1 class="s_title_default text-bold" style="text-align: left;">
                                             Mes informations personnelles
                                             <br />
                                         </h1>
@@ -2847,7 +2847,7 @@
                                 <section class="s_page_title pb24 pt88 s" style="margin-left:14%;">
                                     <p>Mon profil > Mes préférences générales</p>
                                     <div class="pt8 pb4 " style="text-align: center;">
-                                        <h1 class="s_title_default" style="text-align: left;">
+                                        <h1 class="s_title_default text-bold" style="text-align: left;">
                                             Mes préférences générales
                                             <br />
                                         </h1>
@@ -2903,7 +2903,7 @@
                                         <!--                                        <p>Mon profil > Mes préférences générales</p>-->
                                         <div class="row s_nb_column_fixed">
                                             <div class="col-lg-12 s_title pt16 pb16">
-                                                <p class="s_title_default text-gamma titre_message_and_notification">
+                                                <p class="s_title_default text-bold text-gamma titre_message_and_notification">
                                                     Notifications
                                                 </p>
                                             </div>
@@ -3057,7 +3057,7 @@
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="banner_profile s_title pt16 pb16">
-                                        <p class="s_title_default text-color-title">
+                                        <p class="s_title_default text-bold text-color-title">
                                             Mon activité
                                         </p>
                                         <div class="solde_container text-color-title">
@@ -3233,7 +3233,7 @@
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-color-title">
+                                            <p class="s_title_default text-bold text-color-title">
                                                 Mon activit&#233;
                                             </p>
                                         </div>
@@ -3267,7 +3267,7 @@
                                 </nav>
                                 <section class="s_event_list small-cards debug_unimplemented">
                                     <div class="list_head mobile-display-none">
-                                        <div class="list_title s_title">
+                                        <div class="list_title s_title text-bold">
                                             <font style="font-size:2rem;">Mon r&#233;seau</font>
                                             <span class="filter_btn btn">
                                                 <icon class="fa fa-sliders text-epsilon" />&amp;nbsp;
@@ -3894,7 +3894,7 @@
                                     <div class="container">
                                         <div class="row s_nb_column_fixed">
                                             <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                                                <h1 class="s_title_default">
+                                                <h1 class="s_title_default text-bold">
                                                     <div class="search_bar" style="margin:0 auto;width:100%">
                                                         <p class="search_txt text-epsilon">Que cherchez-vous?</p>
                                                         <div class="search_category">
@@ -3983,7 +3983,7 @@
                                     <div class="container">
                                         <div class="row s_nb_column_fixed">
                                             <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                                                <h1 class="s_title_default">
+                                                <h1 class="s_title_default text-bold">
                                                     <div class="search_bar" style="margin:0 auto;width:100%">
                                                         <p class="search_txt text-epsilon">Que cherchez-vous?</p>
                                                         <div class="search_category">
@@ -4374,7 +4374,7 @@
                                 <section class="s_page_title pb24 pt88 s" style="margin:0 14%;">
                                     <p>Mon activité &gt; Mon agenda</p>
                                     <div class="pt8 pb4 " style="text-align: center;">
-                                        <h1 class="s_title_default" style="text-align: left;">
+                                        <h1 class="s_title_default text-bold" style="text-align: left;">
                                             Mon agenda
                                             <span class="filter_btn btn">
                                                 <icon class="fa fa-sliders text-epsilon" />&amp;nbsp;
@@ -4609,7 +4609,7 @@
                                     <div class="container">
                                         <div class="row s_nb_column_fixed">
                                             <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                                                <h1 class="s_title_default">
+                                                <h1 class="s_title_default text-bold">
                                                     <font style="font-size: 62px;">{{section}}</font>
                                                 </h1>
                                             <select name="changeModeView" class="debug_debug" ng-model="guide_user_show">
@@ -4709,7 +4709,7 @@
                                         <div ng-if="guide_user_show === 'item'" ng-repeat="(sub_section, lst_sub_section) in dct_section">
                                             <div class="row s_nb_column_fixed" ng-if="sub_section !== 'false'">
                                                 <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                                                    <h1 class="s_title_default">
+                                                    <h1 class="s_title_default text-bold">
                                                         <font style="font-size: 48px;">{{sub_section}}</font>
                                                     </h1>
                                                 </div>
