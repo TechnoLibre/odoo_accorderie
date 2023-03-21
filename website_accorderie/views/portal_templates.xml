@@ -613,7 +613,7 @@
                             </li>
                             <li class="nav-item dropdown bg-primary" t-ignore="true" t-if="not user_id._is_public()">
                                 <a
-                                    class="nav-link adapt-text-primary-color"
+                                    class="nav-link adapt-text-secondary-color"
                                     data-toggle="dropdown"
                                     role="menu_item"
                                     style="cursor:pointer"
