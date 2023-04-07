@@ -2,9 +2,9 @@
 <odoo>
     <template id="layout" name="Main layout" inherit_id="portal.frontend_layout">
         <xpath expr="//div[@id='wrapwrap']" position="attributes">
-          <attribute name="ng-app">AccorderieApp</attribute>
-          <attribute name="ng-controller">MainController</attribute>
-          <attribute name="ng-mousemove">updateMoveMouse($event)</attribute>
+            <attribute name="ng-app">AccorderieApp</attribute>
+            <attribute name="ng-controller">MainController</attribute>
+            <attribute name="ng-mousemove">updateMoveMouse($event)</attribute>
         </xpath>
 
         <xpath expr="//div[@id='wrapwrap']" position="inside">
@@ -15,9 +15,10 @@
             >
                 <div class="modal-dialog">
                     <div id="s_media_block_modal" class="modal-content">
-                        <button class="btn btn-primary btn-lg" ng-click="show_qrcode_modal = false"><i
-                                class="fa fa-times-circle"
-                            /> Fermer</button>
+                        <button class="btn btn-primary btn-lg" ng-click="show_qrcode_modal = false">
+                            <i class="fa fa-times-circle" />
+                            Fermer
+                        </button>
                         <div class="modal-body">
                             <h2>Partager la page!</h2>
                         </div>
@@ -32,9 +33,10 @@
             >
                 <div class="modal-dialog">
                     <div id="s_media_block_modal" class="modal-content">
-                        <button class="btn btn-primary btn-lg" ng-click="show_camera_close()"><i
-                                class="fa fa-times-circle"
-                            /> Fermer</button>
+                        <button class="btn btn-primary btn-lg" ng-click="show_camera_close()">
+                            <i class="fa fa-times-circle" />
+                            Fermer
+                        </button>
                         <div class="modal-body">
                             <h3>Lecteur Code QR</h3>
                             <div ng-if="_.isEmpty(list_camera_qrcode)">
@@ -46,7 +48,8 @@
                                     class="btn btn-sm"
                                     ng-class="{'btn-primary': option.id === selectedCamera.id}"
                                     ng-click="show_camera_select(option)"
-                                >Caméra {{option.label}}
+                                >
+                                    Caméra {{option.label}}
                                 </button>
                                 <!-- TODO select with ng-model not work, cannot be updated in modal -->
                                 <!--<label for="cameraSelect">Liste des caméras : </label>-->
@@ -63,13 +66,12 @@
                             <!--        class="btn btn-primary btn-lg"-->
                             <!--        ng-click="show_camera_open()"-->
                             <!--    ><i class="fa fa-camera" /> Ouvrir</button></div>-->
-                            <div
-                                ng-if="show_camera_find_url"
-                                style="color:green;"
-                            >Lien trouvé, redirection dans 2 secondes vers
+                            <div ng-if="show_camera_find_url" style="color:green;">
+                                Lien trouvé, redirection dans 2 secondes vers
                             </div>
                             <div ng-if="!_.isUndefined(show_camera_link_find)">{{show_camera_link_find}}</div>
-                            <div style="color:red;" ng-if="!_.isEmpty(show_camera_error)">Erreur : {{show_camera_error}}
+                            <div style="color:red;" ng-if="!_.isEmpty(show_camera_error)">
+                                Erreur : {{show_camera_error}}
                             </div>
                         </div>
                         <div id="reader" />
@@ -88,9 +90,9 @@
         <!--            <attribute name="class">navbar navbar-expand-md navbar-light bg-light nav-height-medium</attribute>-->
         <!--        </xpath>-->
 
-<!--        <xpath expr="//header" position="attributes">-->
-<!--            <attribute name="class">ng-cloak</attribute>-->
-<!--        </xpath>-->
+        <!--        <xpath expr="//header" position="attributes">-->
+        <!--            <attribute name="class">ng-cloak</attribute>-->
+        <!--        </xpath>-->
         <xpath expr="//header" position="replace">
             <header>
                 <!-- hidden stuff -->
@@ -100,8 +102,8 @@
                 <canvas class="canvasPresentationClass" style="position: absolute;" />
                 <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href="" />
                 <!-- end hidden stuff -->
-<!--            <header class="ng-cloak">-->
-<!--            <header class="o_affix_enabled">-->
+                <!--            <header class="ng-cloak">-->
+                <!--            <header class="o_affix_enabled">-->
                 <nav class="navbar navbar-expand-md navbar-light bg-light nav-height-medium">
                     <a href="/" class="navbar-brand logo">
                         <img
@@ -199,8 +201,7 @@
                             <!--                                    </span>-->
                             <!--                                </a>-->
                             <!--                            </li>-->
-                            <li class="nav-item" t-ignore="true">
-                            </li>
+                            <li class="nav-item" t-ignore="true" />
                             <span ng-controller="AnimationController">
                                 <li
                                     class="nav-item dropdown"
@@ -234,7 +235,10 @@
                                             ng-click="animationRecord.animationName = animation; animationRecord.stateAnimation = 1"
                                             ng-repeat="animation in animationRecord.lstAnimation"
                                         >
-                                            <p><i class="fa fa-play" /> {{animation}}</p>
+                                            <p>
+                                                <i class="fa fa-play" />
+                                                {{animation}}
+                                            </p>
                                         </div>
                                     </div>
                                 </li>
@@ -273,9 +277,9 @@
                                         >
                                             <p>Afficher le déverminage</p>
                                         </div>
-    <!--                                    <div role="menuitem" class="dropdown-item" ng-click="forceRefreshAngularJS()">-->
-    <!--                                        <p>Refresh AngularJS</p>-->
-    <!--                                    </div>-->
+                                        <!--                                    <div role="menuitem" class="dropdown-item" ng-click="forceRefreshAngularJS()">-->
+                                        <!--                                        <p>Refresh AngularJS</p>-->
+                                        <!--                                    </div>-->
                                         <div
                                             role="menuitem"
                                             class="dropdown-item"
@@ -307,15 +311,16 @@
                                         style="cursor:pointer"
                                         ng-click="copy_clipboard_url()"
                                     >
-                                        <p><i class="fa fa-files-o" /> <span
-                                                ng-if="is_copied_url"
-                                                style="color:green;"
-                                            >Copié!</span><span
-                                                ng-if="_.isEmpty(error_copy) &amp;&amp; !is_copied_url"
-                                            >Copier le lien</span><span
-                                                ng-if="!_.isEmpty(error_copy)"
-                                                style="color:red;"
-                                            >Erreur : {{error_copy}}</span></p>
+                                        <p>
+                                            <i class="fa fa-files-o" />
+                                            <span ng-if="is_copied_url" style="color:green;">Copié!</span>
+                                            <span ng-if="_.isEmpty(error_copy) &amp;&amp; !is_copied_url">
+                                                Copier le lien
+                                            </span>
+                                            <span ng-if="!_.isEmpty(error_copy)" style="color:red;">
+                                                Erreur : {{error_copy}}
+                                            </span>
+                                        </p>
                                     </div>
                                     <div
                                         role="menuitem"
@@ -323,14 +328,16 @@
                                         ng-style="is_share_enable() &amp;&amp; {'cursor':'pointer'}"
                                         ng-click="share_link()"
                                     >
-                                        <p><i class="fa fa-share-alt" /> <span ng-if="_.isEmpty(error_share)">
-                                            <span ng-if="!is_share_enable()">Non supporté</span><span
-                                                    ng-if="is_share_enable()"
-                                                >Partager le lien</span>
-                                        </span><span
-                                                ng-if="!_.isEmpty(error_share)"
-                                                style="color:red;"
-                                            >Erreur : {{error_share}}</span></p>
+                                        <p>
+                                            <i class="fa fa-share-alt" />
+                                            <span ng-if="_.isEmpty(error_share)">
+                                                <span ng-if="!is_share_enable()">Non supporté</span>
+                                                <span ng-if="is_share_enable()">Partager le lien</span>
+                                            </span>
+                                            <span ng-if="!_.isEmpty(error_share)" style="color:red;">
+                                                Erreur : {{error_share}}
+                                            </span>
+                                        </p>
                                     </div>
                                     <div
                                         role="menuitem"
@@ -338,7 +345,10 @@
                                         style="cursor:pointer"
                                         ng-click="show_and_generate_qrcode()"
                                     >
-                                        <p><i class="fa fa-qrcode" /> Code QR</p>
+                                        <p>
+                                            <i class="fa fa-qrcode" />
+                                            Code QR
+                                        </p>
                                     </div>
                                     <div
                                         role="menuitem"
@@ -346,7 +356,10 @@
                                         style="cursor:pointer"
                                         ng-click="show_camera_qrcode()"
                                     >
-                                        <p><i class="fa fa-camera" /> Lecteur Code QR</p>
+                                        <p>
+                                            <i class="fa fa-camera" />
+                                            Lecteur Code QR
+                                        </p>
                                     </div>
                                 </div>
                             </li>
@@ -385,14 +398,14 @@
                                                         />
                                                         <div class="infos">
                                                             <span class="activite_title">{{offre_service.titre}}</span>
-                                                            <span
-                                                                class="activite_auteur"
-                                                            >{{offre_service.membre.full_name}}</span>
+                                                            <span class="activite_auteur">
+                                                                {{offre_service.membre.full_name}}
+                                                            </span>
                                                         </div>
                                                         <div class="infos right">
-                                                            <span
-                                                                ng-if="offre_service.distance"
-                                                            >{{offre_service.distance}}</span>
+                                                            <span ng-if="offre_service.distance">
+                                                                {{offre_service.distance}}
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -419,17 +432,17 @@
                                                             src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg"
                                                         />
                                                         <div class="infos">
-                                                            <span
-                                                                class="activite_title"
-                                                            >{{demande_service.titre}}</span>
-                                                            <span
-                                                                class="activite_auteur"
-                                                            >{{demande_service.membre.full_name}}</span>
+                                                            <span class="activite_title">
+                                                                {{demande_service.titre}}
+                                                            </span>
+                                                            <span class="activite_auteur">
+                                                                {{demande_service.membre.full_name}}
+                                                            </span>
                                                         </div>
                                                         <div class="infos right">
-                                                            <span
-                                                                ng-if="demande_service.distance"
-                                                            >{{demande_service.distance}}</span>
+                                                            <span ng-if="demande_service.distance">
+                                                                {{demande_service.distance}}
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -467,20 +480,22 @@
                                                             ng-src="{{ membre_favoris.ma_photo }}"
                                                         />
                                                         <div class="infos">
-                                                            <span
-                                                                class="activite_title"
-                                                            >{{membre_favoris.full_name}}</span>
+                                                            <span class="activite_title">
+                                                                {{membre_favoris.full_name}}
+                                                            </span>
                                                             <span
                                                                 class="activite_auteur"
                                                                 ng-if="membre_favoris.description"
-                                                            ><q>{{membre_favoris.description}}</q></span>
+                                                            >
+                                                                <q>{{membre_favoris.description}}</q>
+                                                            </span>
                                                         </div>
-<!--                                                        <div class="infos right">-->
-<!--                                                            <i-->
-<!--                                                                class="fa fa-2x fa-heart text-epsilon"-->
-<!--                                                                style="margin:unset;"-->
-<!--                                                            />-->
-<!--                                                        </div>-->
+                                                        <!--                                                        <div class="infos right">-->
+                                                        <!--                                                            <i-->
+                                                        <!--                                                                class="fa fa-2x fa-heart text-epsilon"-->
+                                                        <!--                                                                style="margin:unset;"-->
+                                                        <!--                                                            />-->
+                                                        <!--                                                        </div>-->
                                                     </div>
                                                 </a>
                                             </div>
@@ -527,9 +542,9 @@
                                                             ng-src="{{ notif.membre_photo }}"
                                                         />
                                                         <div class="infos">
-                                                            <span
-                                                                class="activite_title"
-                                                            >{{notif.type_notification}}</span>
+                                                            <span class="activite_title">
+                                                                {{notif.type_notification}}
+                                                            </span>
                                                             <span class="activite_auteur">{{notif.name}}</span>
                                                         </div>
                                                         <div class="infos right">
@@ -638,15 +653,18 @@
                                     </a>
                                     <a role="menuitem" href="/participer#!?state=init.pds" class="dropdown-item pub">
                                         <h4>Publier une demande de service</h4>
-                                        Vous avez besoin d'un service? Faites part de votre besoin aux membres de l'Accorderie en créant une demande ici.
+                                        Vous avez besoin d'un service? Faites part de votre besoin aux membres de
+                                        l'Accorderie en créant une demande ici.
                                     </a>
                                     <a role="menuitem" href="/participer#!?state=init.saa" class="dropdown-item pub">
                                         <h4>Faire un échange avec un autre Accordeur.e</h4>
-                                        Mettez vous d'accord à l'avance sur les modalités exactes du service à donner ou recevoir.
+                                        Mettez vous d'accord à l'avance sur les modalités exactes du service à donner ou
+                                        recevoir.
                                     </a>
                                     <a role="menuitem" href="/participer#!?state=init.va" class="dropdown-item pub">
                                         <h4>Valider un échange</h4>
-                                        Vous avez donné ou reçu un service? Déclarer ici la transaction pour donner ou percevoir les heures d'Accorderie dues.
+                                        Vous avez donné ou reçu un service? Déclarer ici la transaction pour donner ou
+                                        percevoir les heures d'Accorderie dues.
                                     </a>
                                 </div>
                             </li>
@@ -668,28 +686,31 @@
                                     </b>
                                     <br />
                                     <b class="ng-cloak">
-                                        <p
-                                            class="hours"
-                                            ng-class="{neg_time: !personal.actual_bank_sign}"
-                                        >{{personal.actual_bank_time_diff}}</p>
+                                        <p class="hours" ng-class="{neg_time: !personal.actual_bank_sign}">
+                                            {{personal.actual_bank_time_diff}}
+                                        </p>
                                     </b>
-
                                 </a>
                                 <div class="dropdown-menu js_usermenu" role="menu">
                                     <a class="dropdown-item" t-attf-href="/monactivite" role="menuitem">
-                                        <i class="fa fa-signal icon_padding_right" />Mon activité
+                                        <i class="fa fa-signal icon_padding_right" />
+                                        Mon activité
                                     </a>
                                     <a class="dropdown-item" t-attf-href="/monprofil/mapresentation" role="menuitem">
-                                        <i class="fa fa-user-circle icon_padding_right" />Ma présentation
+                                        <i class="fa fa-user-circle icon_padding_right" />
+                                        Ma présentation
                                     </a>
                                     <a class="dropdown-item" t-attf-href="/monprofil/mesannonces" role="menuitem">
-                                        <i class="fa fa-newspaper-o icon_padding_right" />Mes annonces publiées
+                                        <i class="fa fa-newspaper-o icon_padding_right" />
+                                        Mes annonces publiées
                                     </a>
                                     <a class="dropdown-item" t-attf-href="/communaute/actualite" role="menuitem">
-                                        <i class="fa fa-eye icon_padding_right" />Mon accorderie
+                                        <i class="fa fa-eye icon_padding_right" />
+                                        Mon accorderie
                                     </a>
                                     <a class="dropdown-item" t-attf-href="/monprofil/mespreferences" role="menuitem">
-                                        <i class="fa fa-gear icon_padding_right" />Mes préférences générales
+                                        <i class="fa fa-gear icon_padding_right" />
+                                        Mes préférences générales
                                     </a>
                                     <hr />
                                     <a

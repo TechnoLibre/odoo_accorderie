@@ -24,17 +24,13 @@
                             <group>
                                 <group>
                                     <label for="street" string="Address" />
-                                        <div class="o_address_format">
-                                            <field name="adresse" placeholder="Adresse..." class="o_address_street" />
-                                            <field
-                                            name="code_postal"
-                                            placeholder="Code postale"
-                                            class="o_address_zip"
-                                        />
-                                        </div>
-                                        <field name="arrondissement" />
-                                        <field name="region" />
-                                        <field name="ville" />
+                                    <div class="o_address_format">
+                                        <field name="adresse" placeholder="Adresse..." class="o_address_street" />
+                                        <field name="code_postal" placeholder="Code postale" class="o_address_zip" />
+                                    </div>
+                                    <field name="arrondissement" />
+                                    <field name="region" />
+                                    <field name="ville" />
                                 </group>
                                 <group>
                                     <field name="courriel" widget="email" />

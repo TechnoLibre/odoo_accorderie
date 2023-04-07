@@ -24,7 +24,9 @@ Environnement testé
 - 1h15 d'exécution
 
 ```bash
-docker run --memory 128G -t -v "${PWD}:/data" osrm/osrm-backend osrm-partition /data/north-america-latest.osm;echo $?
+docker run --memory 128G -t -v "${PWD}:/data" osrm/osrm-backend osrm-partition /data/north-america-latest.osm
+echo $?
+
 ```
 
 Environnement testé

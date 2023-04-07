@@ -4,11 +4,11 @@
     <!-- Add stylesheet and Javascript -->
     <template id="assets_frontend" inherit_id="website.assets_frontend">
         <xpath expr="//link[last()]" position="after">
-<!--            <link-->
-<!--                rel="stylesheet"-->
-<!--                type="text/scss"-->
-<!--                href="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/10.2.7/css/autoComplete.min.css"-->
-<!--            />-->
+            <!--            <link-->
+            <!--                rel="stylesheet"-->
+            <!--                type="text/scss"-->
+            <!--                href="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/10.2.7/css/autoComplete.min.css"-->
+            <!--            />-->
             <!-- main -->
             <link
                 rel="stylesheet"
@@ -137,18 +137,18 @@
             />
         </xpath>
         <xpath expr="//script[last()]" position="after">
-<!--            <script type="text/javascript" src="https://webrtchacks.github.io/adapter/adapter-latest.js" />-->
-<!--            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js" />-->
-<!--            <script-->
-<!--                type="text/javascript"-->
-<!--                src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-sanitize.min.js"-->
-<!--            />-->
-<!--            <script-->
-<!--                type="text/javascript"-->
-<!--                src="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/10.2.7/autoComplete.js"-->
-<!--            />-->
+            <!--            <script type="text/javascript" src="https://webrtchacks.github.io/adapter/adapter-latest.js" />-->
+            <!--            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js" />-->
+            <!--            <script-->
+            <!--                type="text/javascript"-->
+            <!--                src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-sanitize.min.js"-->
+            <!--            />-->
+            <!--            <script-->
+            <!--                type="text/javascript"-->
+            <!--                src="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/10.2.7/autoComplete.js"-->
+            <!--            />-->
 
-<!--            <script type="text/javascript" src="/website_accorderie/static/src/js/hidpi-canvas.js" />-->
+            <!--            <script type="text/javascript" src="/website_accorderie/static/src/js/hidpi-canvas.js" />-->
             <!-- html5-qrcode.min.js version 2.3.3 -->
             <script type="text/javascript" src="/website_accorderie/static/src/js/lib/html5-qrcode.min.js" />
             <script type="text/javascript" src="/website_accorderie/static/src/js/lib/adapter-latest.js" />

@@ -103,15 +103,18 @@
                             </group>
                         </page>
                         <page string="Achat">
-                            <group><group>
-                                <field name="achat_regrouper" />
-
-                            </group></group>
+                            <group>
+                                <group>
+                                    <field name="achat_regrouper" />
+                                </group>
+                            </group>
                         </page>
                         <page string="CA">
-                            <group><group>
-                            <field name="membre_ca" />
-                            </group></group>
+                            <group>
+                                <group>
+                                    <field name="membre_ca" />
+                                </group>
+                            </group>
                         </page>
                     </notebook>
                 </sheet>

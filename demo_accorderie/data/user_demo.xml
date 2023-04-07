@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-     <!-- Alice Poitier -->
+    <!-- Alice Poitier -->
     <record id="partner_demo_alice_poitier" model="res.partner">
         <field name="name">Alice Poitier</field>
         <field name="company_id" ref="base.main_company" />
@@ -31,7 +31,7 @@
         <field name="image" type="base64" file="base/static/img/res_partner_address_32.jpg" />
     </record>
 
-     <!-- Martin Petit -->
+    <!-- Martin Petit -->
     <record id="partner_demo_martin_petit" model="res.partner">
         <field name="name">Martin Petit</field>
         <field name="company_id" ref="base.main_company" />

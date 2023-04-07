@@ -79,10 +79,10 @@
             <field name="help_description">Permettre de rendre accessible une offre de service à la communauté entre une personne et un groupe de personnes.</field>
             <field name="help_caract_lst">Nouvelle offre;Offre publique;Offre de groupe</field>
             <field name="caract_offre_demande_nouveau_existante">Nouvelle offre</field>
-<!--            <field name="help_fast_btn_title">Créer une offre</field>-->
-<!--            <field name="help_fast_btn_url">participer#!?state=init.pos.single</field>-->
-<!--            <field name="help_fast_btn_guide_url">participer#!?animation=Créer une offre de service publique individuelle</field>-->
-<!--            <field name="help_video_url">//player.vimeo.com/video/753487834?autoplay=0</field>-->
+            <!--            <field name="help_fast_btn_title">Créer une offre</field>-->
+            <!--            <field name="help_fast_btn_url">participer#!?state=init.pos.single</field>-->
+            <!--            <field name="help_fast_btn_guide_url">participer#!?animation=Créer une offre de service publique individuelle</field>-->
+            <!--            <field name="help_video_url">//player.vimeo.com/video/753487834?autoplay=0</field>-->
             <field name="not_implemented">true</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
@@ -102,10 +102,10 @@
             <field name="help_description">Permettre de rendre accessible une offre de service à la communauté, entre deux personnes de manière ponctuel.</field>
             <field name="help_caract_lst">Nouvelle offre;Offre publique;Offre ponctuelle</field>
             <field name="caract_offre_demande_nouveau_existante">Nouvelle offre</field>
-<!--            <field name="help_fast_btn_title">Créer une offre</field>-->
-<!--            <field name="help_fast_btn_url">participer#!?state=init.pos.single</field>-->
-<!--            <field name="help_fast_btn_guide_url">participer#!?animation=Créer une offre de service publique individuelle</field>-->
-<!--            <field name="help_video_url">//player.vimeo.com/video/753487834?autoplay=0</field>-->
+            <!--            <field name="help_fast_btn_title">Créer une offre</field>-->
+            <!--            <field name="help_fast_btn_url">participer#!?state=init.pos.single</field>-->
+            <!--            <field name="help_fast_btn_guide_url">participer#!?animation=Créer une offre de service publique individuelle</field>-->
+            <!--            <field name="help_video_url">//player.vimeo.com/video/753487834?autoplay=0</field>-->
             <field name="not_implemented">true</field>
             <field name="diagram_id" ref="accorderie_workflow_participer" />
         </record>
@@ -323,7 +323,7 @@
             <field name="caract_service_offrir_recevoir">Service à offrir</field>
             <field name="help_fast_btn_title">Créer un échange</field>
             <field name="help_fast_btn_url">participer#!?state=init.saa.offrir</field>
-<!--            <field name="help_fast_btn_guide_url">participer#!?animation=Créer un échange en tant que personne offrant le service avec une demande existante</field>-->
+            <!--            <field name="help_fast_btn_guide_url">participer#!?animation=Créer un échange en tant que personne offrant le service avec une demande existante</field>-->
             <field name="help_date_last_update" eval="(DateTime.today() - timedelta(minutes=5)).strftime('%Y-%m-%d %H:%M')" />
             <field name="help_validate_bug">&lt;i class="fa fa-bug" style="color:#FF0000"/&gt; Not finish&lt;br /&gt;
 &lt;div style="text-align:left"&gt;
@@ -581,7 +581,7 @@
             <field name="submit_button_text">Je déclare que le service a bien été effectué</field>
             <field name="submit_response_title">La transaction de l'échange de service a bien été déclarée!</field>
             <field name="submit_response_description">Merci de contribuer continuellement à la communauté. Que souhaitez-vous faire maintenant?</field>
-<!--            <field name="submit_response_description">Merci de contribuer continuellement à la communauté de l'Accorderie de ??. Que souhaitez-vous faire maintenant?</field>-->
+            <!--            <field name="submit_response_description">Merci de contribuer continuellement à la communauté de l'Accorderie de ??. Que souhaitez-vous faire maintenant?</field>-->
             <field name="model_field_depend">echange_service_id</field>
             <field name="help_section">Échange de service</field>
             <field name="help_sub_section">Valider un échange</field>
