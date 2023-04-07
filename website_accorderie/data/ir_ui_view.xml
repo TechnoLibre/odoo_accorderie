@@ -8,8 +8,11 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371564">https://marvelapp.com/prototype/1773h559/screen/86371564</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805031">https://marvelapp.com/prototype/6dbaaf8/screen/84805031</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371564">https://marvelapp.com/prototype/1773h559/screen/86371564</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805031">https://marvelapp.com/prototype/6dbaaf8/screen/84805031</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
@@ -46,7 +49,7 @@
                                         </li>
                                     </ul>
                                 </nav>
-<!--                                <section class="pb0 pt0 mobile-display-none">-->
+                                <!--                                <section class="pb0 pt0 mobile-display-none">-->
                                 <section class="pb0 pt0">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb4" style="text-align: center;">
@@ -99,10 +102,13 @@
                                                             <span class="mb-auto" ng-show="!_.isEmpty(echange.sujet_demande_service)">{{echange.sujet_demande_service}}</span>
                                                         </div>
                                                     </div>
-                                                    <p class="status" ng-class="{'red-o': echange.estAcheteur, 'blue-o': !echange.estAcheteur}" ng-if="!echange.transaction_valide">{{echange.show_duree_total_estime}} à valider <i class="fa fa-chevron-right" /></p>
+                                                    <p class="status" ng-class="{'red-o': echange.estAcheteur, 'blue-o': !echange.estAcheteur}" ng-if="!echange.transaction_valide">
+                                                        {{echange.show_duree_total_estime}} à valider
+                                                        <i class="fa fa-chevron-right" />
+                                                    </p>
                                                     <p class="status" ng-class="{'red': echange.estAcheteur, 'blue': !echange.estAcheteur}" ng-if="echange.transaction_valide">{{echange.show_duree_total}}</p>
-                                                    </a>
-                                                </div>
+                                                </a>
+                                            </div>
                                             <div class="medium-btn btn btn-primary debug_unimplemented">Voir les transactions plus anciennes</div>
                                         </div>
                                     </div>
@@ -123,15 +129,16 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371538">https://marvelapp.com/prototype/1773h559/screen/86371538</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805020">https://marvelapp.com/prototype/6dbaaf8/screen/84805020</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371538">https://marvelapp.com/prototype/1773h559/screen/86371538</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805020">https://marvelapp.com/prototype/6dbaaf8/screen/84805020</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-bold text-bold text-color-title">
-                                                {{personal.mon_accorderie.name}}
-                                            </p>
+                                            <p class="s_title_default text-bold text-bold text-color-title">{{personal.mon_accorderie.name}}</p>
                                         </div>
                                     </div>
                                 </section>
@@ -177,7 +184,8 @@
                                             </div>
                                         </div>
                                         <div class="box_publication">
-                                            <p>Publications</p><br />
+                                            <p>Publications</p>
+                                            <br />
                                             <img class="profile_img" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
                                             <input type="text" placeholder="Vous pouvez écrire votre message ici" />
                                         </div>
@@ -431,15 +439,16 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371531">https://marvelapp.com/prototype/1773h559/screen/86371531</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805023">https://marvelapp.com/prototype/6dbaaf8/screen/84805023</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371531">https://marvelapp.com/prototype/1773h559/screen/86371531</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805023">https://marvelapp.com/prototype/6dbaaf8/screen/84805023</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-bold text-color-title">
-                                                {{personal.mon_accorderie.name}}
-                                            </p>
+                                            <p class="s_title_default text-bold text-color-title">{{personal.mon_accorderie.name}}</p>
                                         </div>
                                     </div>
                                 </section>
@@ -499,14 +508,18 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_miti_vsws0g1kjxi_unsplash_jpg/miti-vSws0g1KjxI-unsplash.jpg&quot;">
                                                     <div class="event_date_container lg">
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            1 <br />
+                                                            MER.
+                                                            <br />
+                                                            1
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                         <div class="event_date_separator" />
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            2 <br />
+                                                            MER.
+                                                            <br />
+                                                            2
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                     </div>
@@ -538,8 +551,10 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_product_school_gajroen6m4_unsplash_jpg/product-school--GajrOEN6m4-unsplash.jpg&quot;">
                                                     <div class="event_date_container">
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            1 <br />
+                                                            MER.
+                                                            <br />
+                                                            1
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                     </div>
@@ -571,14 +586,18 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_patrick_tomasso_ajgebwgnru4_unsplash_jpg/patrick-tomasso-AjgebwgNrU4-unsplash.jpg&quot;">
                                                     <div class="event_date_container lg">
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            1 <br />
+                                                            MER.
+                                                            <br />
+                                                            1
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                         <div class="event_date_separator" />
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            2 <br />
+                                                            MER.
+                                                            <br />
+                                                            2
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                     </div>
@@ -610,14 +629,18 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_miti_vsws0g1kjxi_unsplash_jpg/miti-vSws0g1KjxI-unsplash.jpg&quot;">
                                                     <div class="event_date_container lg">
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            1 <br />
+                                                            MER.
+                                                            <br />
+                                                            1
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                         <div class="event_date_separator" />
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            2 <br />
+                                                            MER.
+                                                            <br />
+                                                            2
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                     </div>
@@ -649,14 +672,18 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_nathan_dumlao_71u2foofi_u_unsplash_jpg/nathan-dumlao-71u2fOofI-U-unsplash.jpg&quot;">
                                                     <div class="event_date_container lg">
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            1 <br />
+                                                            MER.
+                                                            <br />
+                                                            1
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                         <div class="event_date_separator" />
                                                         <div class="event_date">
-                                                            MER. <br />
-                                                            2 <br />
+                                                            MER.
+                                                            <br />
+                                                            2
+                                                            <br />
                                                             OCT.
                                                         </div>
                                                     </div>
@@ -701,15 +728,16 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371516">https://marvelapp.com/prototype/1773h559/screen/86371516</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805026">https://marvelapp.com/prototype/6dbaaf8/screen/84805026</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371516">https://marvelapp.com/prototype/1773h559/screen/86371516</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805026">https://marvelapp.com/prototype/6dbaaf8/screen/84805026</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-bold text-bold text-color-title">
-                                                {{personal.mon_accorderie.name}}
-                                            </p>
+                                            <p class="s_title_default text-bold text-bold text-color-title">{{personal.mon_accorderie.name}}</p>
                                         </div>
                                     </div>
                                 </section>
@@ -740,9 +768,7 @@
                                 <section class="s_event_list lg debug_unimplemented">
                                     <div class="list_head mobile-display-none">
                                         <div class="list_title s_title">
-                                            <h1>
-                                                Groupes
-                                            </h1>
+                                            <h1>Groupes</h1>
                                         </div>
                                     </div>
                                     <div class="actualite_search d-none">
@@ -761,9 +787,7 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_miti_vsws0g1kjxi_unsplash_jpg/miti-vSws0g1KjxI-unsplash.jpg&quot;" />
                                                 <div class="item_desc">
                                                     <h4 class="item_title">Membres du CA de l'Accorderie</h4>
-                                                    <p style="font-size:1rem;">
-                                                        5 membres - 2 publications
-                                                    </p>
+                                                    <p style="font-size:1rem;">5 membres - 2 publications</p>
                                                     <p>
                                                         Lorem ipsum dolor sit amet,
                                                         consectetur adipiscing elit, sed do eiusmod tempor
@@ -786,9 +810,7 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_product_school_gajroen6m4_unsplash_jpg/product-school--GajrOEN6m4-unsplash.jpg&quot;" />
                                                 <div class="item_desc">
                                                     <h4 class="item_title">Les couturi&#232;res du Vieux Nord</h4>
-                                                    <p style="font-size:1rem;">
-                                                        5 membres - 2 publications
-                                                    </p>
+                                                    <p style="font-size:1rem;">5 membres - 2 publications</p>
                                                     <p>
                                                         Lorem ipsum dolor sit amet,
                                                         consectetur adipiscing elit, sed do eiusmod tempor
@@ -808,9 +830,7 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_patrick_tomasso_ajgebwgnru4_unsplash_jpg/patrick-tomasso-AjgebwgNrU4-unsplash.jpg&quot;" />
                                                 <div class="item_desc">
                                                     <h4 class="item_title">Aide pour utiliser l'espace membre</h4>
-                                                    <p style="font-size:1rem;">
-                                                        5 membres - 2 publications
-                                                    </p>
+                                                    <p style="font-size:1rem;">5 membres - 2 publications</p>
                                                     <p>
                                                         Lorem ipsum dolor sit amet,
                                                         consectetur adipiscing elit, sed do eiusmod tempor
@@ -830,9 +850,7 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_miti_vsws0g1kjxi_unsplash_jpg/miti-vSws0g1KjxI-unsplash.jpg&quot;" />
                                                 <div class="item_desc">
                                                     <h4 class="item_title">&#201;quipe des incroyables comestibles</h4>
-                                                    <p style="font-size:1rem;">
-                                                        5 membres - 2 publications
-                                                    </p>
+                                                    <p style="font-size:1rem;">5 membres - 2 publications</p>
                                                     <p>
                                                         Lorem ipsum dolor sit amet,
                                                         consectetur adipiscing elit, sed do eiusmod tempor
@@ -852,9 +870,7 @@
                                                 <div class="item_img oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_nathan_dumlao_71u2foofi_u_unsplash_jpg/nathan-dumlao-71u2fOofI-U-unsplash.jpg&quot;" />
                                                 <div class="item_desc">
                                                     <h4 class="item_title">&#201;quipe du caf&#233; rencontre</h4>
-                                                    <p style="font-size:1rem;">
-                                                        5 membres - 2 publications
-                                                    </p>
+                                                    <p style="font-size:1rem;">5 membres - 2 publications</p>
                                                     <p>
                                                         Lorem ipsum dolor sit amet,
                                                         consectetur adipiscing elit, sed do eiusmod tempor
@@ -1078,8 +1094,7 @@
                                             <h2>Un réseau actif</h2>
                                             Le réseau de l'Accorderie a actuellement {{ nb_offre_service }} offres de service actives!
                                             <div groups="base.group_public" class="s_btn text-left pt16 pb16">
-                                                <a href="/web/signup?redirect=%2Fexplorer" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip737296">S'inscrire
-                                                </a>
+                                                <a href="/web/signup?redirect=%2Fexplorer" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip737296">S'inscrire</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1107,12 +1122,12 @@
                                             <div class="row content">
                                                 <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
                                                     <p>
-                                                        <a href="https://mathieubenoit.ca/" class="btn btn-alpha rounded-circle">Mathieu Benoit
-                                                        </a>
+                                                        <a href="https://mathieubenoit.ca/" class="btn btn-alpha rounded-circle">Mathieu Benoit</a>
                                                     </p>
                                                     <footer>
                                                         <img class="img" src="/web/image/website_accorderie.ir_attachment_mathieu_benoit_logo_jpg/Mathieu-Benoit-Logo.jpg" alt="" />
-                                                        <span>—
+                                                        <span>
+                                                            —
                                                             <b>Développement</b>
                                                         </span>
                                                     </footer>
@@ -1127,7 +1142,8 @@
                                                     <p>Samuel Bassetto</p>
                                                     <footer>
                                                         <img class="img" src="/web/image/website_accorderie.ir_attachment_samuel_bassetto_jpeg/samuel_bassetto.jpeg" alt="" />
-                                                        <span>—
+                                                        <span>
+                                                            —
                                                             <b>Direction</b>
                                                         </span>
                                                     </footer>
@@ -1139,11 +1155,13 @@
                                         <div class="container">
                                             <div class="row content">
                                                 <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
-                                                    <p>Célia Lignon
+                                                    <p>
+                                                        Célia Lignon
                                                         <br />
                                                     </p>
                                                     <footer>
-                                                        <span>—
+                                                        <span>
+                                                            —
                                                             <b>Designer</b>
                                                         </span>
                                                     </footer>
@@ -1157,7 +1175,8 @@
                                                 <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
                                                     <p>Nadia Mohammed-Azizi</p>
                                                     <footer>
-                                                        <span>—
+                                                        <span>
+                                                            —
                                                             <b>Directrice Accorderie</b>
                                                         </span>
                                                     </footer>
@@ -1169,10 +1188,10 @@
                                         <div class="container">
                                             <div class="row content">
                                                 <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
-                                                    <p>Jason Pan
-                                                    </p>
+                                                    <p>Jason Pan</p>
                                                     <footer>
-                                                        <span>—
+                                                        <span>
+                                                            —
                                                             <b>Intégration</b>
                                                         </span>
                                                     </footer>
@@ -1184,11 +1203,11 @@
                                         <div class="container">
                                             <div class="row content">
                                                 <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
-                                                    <p>Marie-Michèle Poulin
-                                                    </p>
+                                                    <p>Marie-Michèle Poulin</p>
                                                     <footer>
                                                         <img class="img" src="/web/image/website_accorderie.ir_attachment_marieplume_logo_png/marieplume_logo.png" alt="" />
-                                                        <span>—
+                                                        <span>
+                                                            —
                                                             <b>Contenu</b>
                                                         </span>
                                                     </footer>
@@ -1202,7 +1221,8 @@
                                                 <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
                                                     <p>Garrick Cabour</p>
                                                     <footer>
-                                                        <span>—
+                                                        <span>
+                                                            —
                                                             <b>Interface projet</b>
                                                         </span>
                                                     </footer>
@@ -1216,7 +1236,8 @@
                                                 <blockquote class="carousel-content col-lg-6 bg-white offset-lg-3">
                                                     <p>Sarah Batha</p>
                                                     <footer>
-                                                        <span>—
+                                                        <span>
+                                                            —
                                                             <b>Interface projet</b>
                                                         </span>
                                                     </footer>
@@ -1246,7 +1267,8 @@
                                             <div class="card bg-white text-center">
                                                 <div class="card-body">
                                                     <img class="img img-fluid rounded-circle m-3" src="/web/image/website_accorderie.ir_attachment_famille_trottier_logo_png/famille_trottier_logo.png" style="width: 50%;" alt="" />
-                                                    <h2 class="card-title">Fondation Trottier
+                                                    <h2 class="card-title">
+                                                        Fondation Trottier
                                                         <br />
                                                     </h2>
                                                     <h6 class="text-primary">Mécène</h6>
@@ -1263,7 +1285,8 @@
                                                 <div class="card-body">
                                                     <img class="img img-fluid rounded-circle m-3 mx-auto" src="/web/image/website_accorderie.ir_attachment_technolibre_circle_logo_svg/technolibre_circle_logo.svg" style="width: 50%;" alt="" />
                                                     <h2 class="card-title">TechnoLibre</h2>
-                                                    <h6 class="text-primary">Participation au développement et
+                                                    <h6 class="text-primary">
+                                                        Participation au développement et
                                                         contribution financière
                                                     </h6>
                                                 </div>
@@ -1279,7 +1302,8 @@
                                                 <div class="card-body">
                                                     <img class="img img-fluid rounded-circle m-3 mx-auto" src="/web/image/website_accorderie.ir_attachment_labac_logo_png/LABAC_logo.png" style="width: 50%;" alt="" />
                                                     <h2 class="card-title">LABAC</h2>
-                                                    <h6 class="text-primary">Recherche et développement en amélioration
+                                                    <h6 class="text-primary">
+                                                        Recherche et développement en amélioration
                                                         continue
                                                     </h6>
                                                 </div>
@@ -1315,8 +1339,7 @@
                                         </div>
                                         <div class="col-lg-6 pt16 pb16">
                                             <h2>
-                                                <font class="text-beta" style="">Les principes de l'échange de service
-                                                </font>
+                                                <font class="text-beta" style="">Les principes de l'échange de service</font>
                                             </h2>
                                         </div>
                                     </div>
@@ -1328,12 +1351,14 @@
                                         <div class="col-lg-10 offset-lg-1 pt32 pb32">
                                             <h4>
                                                 <strong>
-                                                    <font class="text-beta" style="">1) UNE HEURE DE SERVICE RENDU VAUT
+                                                    <font class="text-beta" style="">
+                                                        1) UNE HEURE DE SERVICE RENDU VAUT
                                                         UNE HEURE DE SERVICE REÇU
                                                     </font>
                                                 </strong>
                                             </h4>
-                                            <p class="lead">Le principe de fonctionnement de base d’une Accorderie est
+                                            <p class="lead">
+                                                Le principe de fonctionnement de base d’une Accorderie est
                                                 qu’une heure
                                                 de service rendu vaut une heure de service reçu, quels que soient la
                                                 nature, la complexité ou l’effort reliés au service échangé. De l’aide
@@ -1343,12 +1368,14 @@
                                             </p>
                                             <h4>
                                                 <strong>
-                                                    <font class="text-beta" style="">2) L’ÉCHANGE REPOSE SUR LE TEMPS ET
+                                                    <font class="text-beta" style="">
+                                                        2) L’ÉCHANGE REPOSE SUR LE TEMPS ET
                                                         NON L’ARGENT
                                                     </font>
                                                 </strong>
                                             </h4>
-                                            <p class="lead">La monnaie d’échange d’une Accorderie, c’est le temps et non
+                                            <p class="lead">
+                                                La monnaie d’échange d’une Accorderie, c’est le temps et non
                                                 le dollar.
                                                 Le seul moment où l’argent entre en ligne de compte, c’est pour
                                                 rembourser les dépenses liées à un service rendu. Par exemple, c’est
@@ -1357,11 +1384,11 @@
                                             </p>
                                             <h4>
                                                 <strong>
-                                                    <font class="text-beta" style="">3) ÉQUILIBRE DANS LES ÉCHANGES
-                                                    </font>
+                                                    <font class="text-beta" style="">3) ÉQUILIBRE DANS LES ÉCHANGES</font>
                                                 </strong>
                                             </h4>
-                                            <p class="lead">L’adhésion à une Accorderie implique, de la part de chaque
+                                            <p class="lead">
+                                                L’adhésion à une Accorderie implique, de la part de chaque
                                                 AccordeurE,
                                                 une obligation morale vis-à-vis du groupe et une aptitude réelle à
                                                 rendre service. Il est essentiel que chaque AccordeurE s’engage à
@@ -1371,12 +1398,14 @@
                                             </p>
                                             <h4>
                                                 <strong>
-                                                    <font class="text-beta" style="">4) DE L’ÉCHANGE ET NON DU
+                                                    <font class="text-beta" style="">
+                                                        4) DE L’ÉCHANGE ET NON DU
                                                         BÉNÉVOLAT
                                                     </font>
                                                 </strong>
                                             </h4>
-                                            <p>Dans une Accorderie, le seul bénévolat est celui de la participation aux
+                                            <p>
+                                                Dans une Accorderie, le seul bénévolat est celui de la participation aux
                                                 réunions du conseil d’administration. Participer à un comité de travail
                                                 ou accomplir une tâche technique pour L’Accorderie est considéré comme
                                                 un service rendu. Chaque Accordeur est rémunéré, pour le temps offert,
@@ -1386,12 +1415,14 @@
                                             <p class="lead" />
                                             <h4>
                                                 <strong>
-                                                    <font class="text-beta" style="">5) PRISE EN CHARGE DE L’ORGANISME
+                                                    <font class="text-beta" style="">
+                                                        5) PRISE EN CHARGE DE L’ORGANISME
                                                         PAR LES ACCORDEURES
                                                     </font>
                                                 </strong>
                                             </h4>
-                                            <p class="lead">L’animation de l’échange de services et l’organisation des
+                                            <p class="lead">
+                                                L’animation de l’échange de services et l’organisation des
                                                 activités
                                                 d’échange sont sous la responsabilité individuelle et collective de tous
                                                 les AccordeurEs. Une Accorderie ne saurait fonctionner sans la
@@ -1400,7 +1431,8 @@
                                             </p>
                                             <h2>
                                                 <strong>
-                                                    <font class="text-beta" style="">DE L’ÉCHANGE DE SERVICES À TROIS
+                                                    <font class="text-beta" style="">
+                                                        DE L’ÉCHANGE DE SERVICES À TROIS
                                                         NIVEAUX
                                                     </font>
                                                 </strong>
@@ -1412,7 +1444,8 @@
                                                     </font>
                                                 </strong>
                                             </h4>
-                                            <p class="lead">La raison d’être d’une Accorderie, c’est le développement de
+                                            <p class="lead">
+                                                La raison d’être d’une Accorderie, c’est le développement de
                                                 l’échange de services de type individuel afin de rendre possible des
                                                 échanges à partir des compétences, des talents et des savoir-faire de
                                                 chaque Accordeur. L’échange de type individuel peut se faire entre deux
@@ -1422,29 +1455,34 @@
                                             </p>
                                             <h4>
                                                 <strong>
-                                                    <font class="text-beta" style="">DEUXIÈME NIVEAU : LES ACTIVITÉS
+                                                    <font class="text-beta" style="">
+                                                        DEUXIÈME NIVEAU : LES ACTIVITÉS
                                                         COLLECTIVES D’ÉCHANGE
                                                     </font>
                                                 </strong>
                                             </h4>
-                                            <p class="lead">Les activités collectives d’échange sont des services
+                                            <p class="lead">
+                                                Les activités collectives d’échange sont des services
                                                 d’intérêt « général » qui s’adressent à l’ensemble des AccordeurEs. Ces
                                                 activités collectives d’échange peuvent concerner simultanément
                                                 plusieurs AccordeurEs et plusieurs échanges. Ce qui les caractérise,
                                                 c’est que L’Accorderie sert d’intermédiaire, c’est-à-dire qu’elle reçoit
                                                 des heures et en débourse pour le service offert.
                                                 <br />
-                                                <br />Ces activités collectives d’échange peuvent prendre différentes
+                                                <br />
+                                                Ces activités collectives d’échange peuvent prendre différentes
                                                 formes (ex : un groupe d’achats).
                                             </p>
                                             <h4>
                                                 <strong>
-                                                    <font class="text-beta" style="">TROISIÈME NIVEAU : L’ÉCHANGE
+                                                    <font class="text-beta" style="">
+                                                        TROISIÈME NIVEAU : L’ÉCHANGE
                                                         ASSOCIATIF
                                                     </font>
                                                 </strong>
                                             </h4>
-                                            <p class="lead">L’échange de type associatif a pour objectif de faire
+                                            <p class="lead">
+                                                L’échange de type associatif a pour objectif de faire
                                                 fonctionner une Accorderie en s’appuyant sur les services offerts par
                                                 les AccordeurEs. Elle rémunère chacunE d’entre eux/elles avec du temps
                                                 dès qu’il y a participation à l’organisation et au fonctionnement d’une
@@ -1473,7 +1511,8 @@
                                 Lien maquette :
                                 <a href="https://marvelapp.com/prototype/1773h559/screen/86371509">https://marvelapp.com/prototype/1773h559/screen/86371509</a>
                                 <br />
-                                Mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804840">https://marvelapp.com/prototype/6dbaaf8/screen/84804840</a>
+                                Mobile :
+                                <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804840">https://marvelapp.com/prototype/6dbaaf8/screen/84804840</a>
                             </div>
                             <section class="s_search oe_img_bg oe_custom_bg pt16 debug_unimplemented" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_accueil_illustration_05@2x_png/Accueil-Illustration-05@2x.png&quot;);">
                                 <div class="container">
@@ -1549,9 +1588,7 @@
                                                     </div>
                                                     <div class="banner_btn s_btn col-lg-5 text-center" data-name="Button">
                                                         <a href="/participer#!?state=init.pos" class="btn btn-gamma rounded-circle">
-                                                            <font class="adapt-text-gamma-color">
-                                                                Publier une offre
-                                                            </font>
+                                                            <font class="adapt-text-gamma-color">Publier une offre</font>
                                                         </a>
                                                     </div>
                                                     <div class="banner_btn s_btn text-center col-lg-5 debug_unimplemented" data-name="Button">
@@ -1580,17 +1617,17 @@
                                     </div>
                                     <div class="box_actualite">
                                         <div class="actualite_head">
-                                                <img class="pub_pfp rounded-circle" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
-                                                <div class="pub_info">
-                                                    <div class="pub_user">
-                                                        <p>Accorderie de Sherbrooke</p>
-                                                    </div>
-                                                    <div class="pub_date">
-                                                        <p>Publiée il y a 1 j</p>
-                                                    </div>
+                                            <img class="pub_pfp rounded-circle" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
+                                            <div class="pub_info">
+                                                <div class="pub_user">
+                                                    <p>Accorderie de Sherbrooke</p>
                                                 </div>
-                                                <i class="fa fa-thumb-tack mobile-display-none" />
+                                                <div class="pub_date">
+                                                    <p>Publiée il y a 1 j</p>
+                                                </div>
                                             </div>
+                                            <i class="fa fa-thumb-tack mobile-display-none" />
+                                        </div>
                                         <div class="actualite_content">
                                             <div class="pub_title">
                                                 <h4>
@@ -1609,44 +1646,44 @@
                                             </div>
                                         </div>
                                         <div class="actualite_stats">
-                                                <span class="like_count">
+                                            <span class="like_count">
                                                     <icon class="fa fa-thumbs-up" />&amp;nbsp;16</span>
-                                                <span class="comment_count">4 commentaires</span>
-                                                <span>&#8226;</span>
-                                                <span class="view_count">10 vues</span>
-                                            </div>
-                                            <div class="pub_actions">
-                                                <div class="like_btn">
+                                            <span class="comment_count">4 commentaires</span>
+                                            <span>&#8226;</span>
+                                            <span class="view_count">10 vues</span>
+                                        </div>
+                                        <div class="pub_actions">
+                                            <div class="like_btn">
                                                     <icon class="fa fa-thumbs-o-up" />&amp;nbsp;J'aime
                                                 </div>
-                                                <div class="comment_btn">
+                                            <div class="comment_btn">
                                                     <icon class="fa fa-comment-o" />&amp;nbsp;Commenter
                                                 </div>
+                                        </div>
+                                        <div class="actualite_foot">
+                                            <img class="profile_img" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
+                                            <div class="comment_bar">
+                                                <input type="text" placeholder="&#201;crivez un commentaire" />
+                                                <icon class="fa fa-smile-o" />
+                                                <icon class="fa fa-camera" />
+                                                <icon class="fa fa-sticky-note-o" />
+                                                <icon class="fa fa-sticky-note-o" />
                                             </div>
-                                            <div class="actualite_foot">
-                                                <img class="profile_img" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
-                                                <div class="comment_bar">
-                                                    <input type="text" placeholder="&#201;crivez un commentaire" />
-                                                    <icon class="fa fa-smile-o" />
-                                                    <icon class="fa fa-camera" />
-                                                    <icon class="fa fa-sticky-note-o" />
-                                                    <icon class="fa fa-sticky-note-o" />
-                                                </div>
-                                            </div>
+                                        </div>
                                     </div>
                                     <div class="box_actualite">
                                         <div class="actualite_head">
-                                                <img class="pub_pfp rounded-circle" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
-                                                <div class="pub_info">
-                                                    <div class="pub_user">
-                                                        <p>Accorderie de Sherbrooke</p>
-                                                    </div>
-                                                    <div class="pub_date">
-                                                        <p>Publiée il y a 1 j</p>
-                                                    </div>
+                                            <img class="pub_pfp rounded-circle" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
+                                            <div class="pub_info">
+                                                <div class="pub_user">
+                                                    <p>Accorderie de Sherbrooke</p>
                                                 </div>
-                                                <i class="fa fa-thumb-tack mobile-display-none" />
+                                                <div class="pub_date">
+                                                    <p>Publiée il y a 1 j</p>
+                                                </div>
                                             </div>
+                                            <i class="fa fa-thumb-tack mobile-display-none" />
+                                        </div>
                                         <div class="actualite_content">
                                             <div class="pub_title">
                                                 <h4>
@@ -1665,30 +1702,30 @@
                                             </div>
                                         </div>
                                         <div class="actualite_stats">
-                                                <span class="like_count">
+                                            <span class="like_count">
                                                     <icon class="fa fa-thumbs-up" />&amp;nbsp;16</span>
-                                                <span class="comment_count">4 commentaires</span>
-                                                <span>&#8226;</span>
-                                                <span class="view_count">10 vues</span>
-                                            </div>
-                                            <div class="pub_actions">
-                                                <div class="like_btn">
+                                            <span class="comment_count">4 commentaires</span>
+                                            <span>&#8226;</span>
+                                            <span class="view_count">10 vues</span>
+                                        </div>
+                                        <div class="pub_actions">
+                                            <div class="like_btn">
                                                     <icon class="fa fa-thumbs-o-up" />&amp;nbsp;J'aime
                                                 </div>
-                                                <div class="comment_btn">
+                                            <div class="comment_btn">
                                                     <icon class="fa fa-comment-o" />&amp;nbsp;Commenter
                                                 </div>
+                                        </div>
+                                        <div class="actualite_foot">
+                                            <img class="profile_img" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
+                                            <div class="comment_bar">
+                                                <input type="text" placeholder="&#201;crivez un commentaire" />
+                                                <icon class="fa fa-smile-o" />
+                                                <icon class="fa fa-camera" />
+                                                <icon class="fa fa-sticky-note-o" />
+                                                <icon class="fa fa-sticky-note-o" />
                                             </div>
-                                            <div class="actualite_foot">
-                                                <img class="profile_img" src="/web/image/website_accorderie.ir_attachment_henrique_castilho_l8kmx3rzt7s_unsplash_jpg/henrique-castilho-L8kMx3rzt7s-unsplash.jpg" />
-                                                <div class="comment_bar">
-                                                    <input type="text" placeholder="&#201;crivez un commentaire" />
-                                                    <icon class="fa fa-smile-o" />
-                                                    <icon class="fa fa-camera" />
-                                                    <icon class="fa fa-sticky-note-o" />
-                                                    <icon class="fa fa-sticky-note-o" />
-                                                </div>
-                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="container_echange">
@@ -1766,7 +1803,6 @@
                                             <a href="" style="font-size:1.25rem;margin-right:3%">
                                                 Voir Tout
                                                 (+10)
-
                                             </a>
                                             <div class="nav_btn mobile-display-none">❮</div>
                                             <div class="nav_btn mobile-display-none">❯</div>
@@ -1966,9 +2002,7 @@
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title" data-name="Title">
                                             <p class="aide_title text-gamma">
-                                                <b>
-                                                    Avez-vous besoin d'aide ?
-                                                </b>
+                                                <b>Avez-vous besoin d'aide ?</b>
                                             </p>
                                         </div>
                                         <div class="s_text pt16 col-lg-5 pb0" data-name="Text">
@@ -2009,10 +2043,17 @@
                         <div id="wrap" class="ng-cloak">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371556">https://marvelapp.com/prototype/1773h559/screen/86371556</a><br />
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371573">https://marvelapp.com/prototype/1773h559/screen/86371573</a><br />
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86589551">https://marvelapp.com/prototype/1773h559/screen/86589551</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804863">https://marvelapp.com/prototype/6dbaaf8/screen/84804863</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371556">https://marvelapp.com/prototype/1773h559/screen/86371556</a>
+                                    <br />
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371573">https://marvelapp.com/prototype/1773h559/screen/86371573</a>
+                                    <br />
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86589551">https://marvelapp.com/prototype/1773h559/screen/86589551</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804863">https://marvelapp.com/prototype/6dbaaf8/screen/84804863</a>
                                 </div>
                                 <section class="oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
@@ -2061,9 +2102,7 @@
                                                         <span class="img img-fluid mx-auto fa fa-save" />
                                                         Enregistrer le profil
                                                     </div>
-                                                    <div class="profil profil_right profil_box btn btn-primary btn_saccorder debug_unimplemented adapt-text-primary-color" ng-if="!membre_info.estPersonnel">
-                                                        S'accorder avec {{membre_info.prenom}}
-                                                    </div>
+                                                    <div class="profil profil_right profil_box btn btn-primary btn_saccorder debug_unimplemented adapt-text-primary-color" ng-if="!membre_info.estPersonnel">S'accorder avec {{membre_info.prenom}}</div>
                                                 </nav>
                                             </div>
                                         </div>
@@ -2071,8 +2110,12 @@
                                             <span class="txt">Intro</span>
                                             <br />
                                             <br />
-                                            <span class="nbr" ng-show="membre_info.introduction" ng-if="!ask_modification_profile"><q>{{membre_info.introduction}}</q></span>
-                                            <span class="nbr" ng-if="ask_modification_profile"><q class="editable-content-blue" contenteditable="true" ng-model="membre_info.introduction" /></span>
+                                            <span class="nbr" ng-show="membre_info.introduction" ng-if="!ask_modification_profile">
+                                                <q>{{membre_info.introduction}}</q>
+                                            </span>
+                                            <span class="nbr" ng-if="ask_modification_profile">
+                                                <q class="editable-content-blue" contenteditable="true" ng-model="membre_info.introduction" />
+                                            </span>
                                         </div>
                                         <div class="information information-3">
                                             <span class="txt">R&#233;sum&#233;</span>
@@ -2103,7 +2146,9 @@
                                             <div class="debug_unimplemented">
                                                 <span class="txt">Ma description</span>
 
-                                                <span><br />Pellentesque feugiat arcu eu laoreet dignissim. Ut ut orci
+                                                <span>
+                                                    <br />
+                                                    Pellentesque feugiat arcu eu laoreet dignissim. Ut ut orci
                                                     ullamcorper erat lacinia mattis ac aliquet leo. Fusce et dui quis
                                                     odio pellentesque egestas sit amet in dui. Quisque elementum dapibus
                                                     magna, sed varius neque pellentesque pulvinar. Aenean at cursus
@@ -2133,12 +2178,10 @@
                                                 <span class="txt">Mes centres d'intérêt</span>
                                                 <br />
                                                 <div class="d-flex" style="gap:1%">
-
                                                     <div class="tag">Marche</div>
                                                     <div class="tag">Jardinage</div>
                                                     <div class="tag">Tricot</div>
                                                 </div>
-
                                             </div>
                                             <div class="debug_unimplemented">
                                                 <span class="txt">Pourquoi suis-je membre de l'Accorderie?</span>
@@ -2159,9 +2202,15 @@
                                             <div class="debug_unimplemented">
                                                 <span class="txt" ng-if="membre_info.estPersonnel">Les langues que je parle</span>
                                                 <span class="txt" ng-if="!membre_info.estPersonnel">Les langues parlées</span>
-                                                <span><i class="fa fa-commenting" />Français</span>
+                                                <span>
+                                                    <i class="fa fa-commenting" />
+                                                    Français
+                                                </span>
                                                 <br />
-                                                <span><i class="fa fa-commenting" />Anglais</span>
+                                                <span>
+                                                    <i class="fa fa-commenting" />
+                                                    Anglais
+                                                </span>
                                             </div>
 
                                             <div ng-if="_.isEmpty(membre_info.dct_offre_service)">
@@ -2252,15 +2301,16 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371562">https://marvelapp.com/prototype/1773h559/screen/86371562</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805022">https://marvelapp.com/prototype/6dbaaf8/screen/84805022</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371562">https://marvelapp.com/prototype/1773h559/screen/86371562</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805022">https://marvelapp.com/prototype/6dbaaf8/screen/84805022</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
                                         <div class="col-lg-12 s_title pt16 pb16">
-                                            <p class="s_title_default text-bold text-color-title">
-                                                {{personal.mon_accorderie.name}}
-                                            </p>
+                                            <p class="s_title_default text-bold text-color-title">{{personal.mon_accorderie.name}}</p>
                                         </div>
                                     </div>
                                 </section>
@@ -2316,26 +2366,28 @@
                                         <div class="list_item" ng-repeat="(membre_id, membre) in dct_membre" style="height: 600px; width: 300px;">
                                             <div class="item_card btn shadow">
                                                 <a ng-href="/monprofil/mapresentation#!?membre_id={{membre_id}}">
-                                                <div class="item_img oe_img_bg oe_custom_bg" ng-style="{'background-image': 'url(' + membre.ma_photo + ')'}">
-                                                    <icon class="fa coeur" ng-class="{'fa-heart': membre.is_favorite, 'fa-heart-o': !membre.is_favorite}" />
-                                                </div>
-                                                <div class="name text-black" style="text-align:center;">
-                                                    <span style="font-size: 1.2rem;">{{membre.full_name}}&amp;nbsp;</span>
-                                                    <icon class="fa fa-shield" ng-if="membre.antecedent_judiciaire_verifier" style="font-size: 1.2rem;" />
-                                                </div>
-                                                <div class="infos text-black" style="text-align:center;">
-                                                    <span ng-if="membre.age > 0" style="font-size: 1.2rem;">{{membre.age}} ans</span>
-                                                    <span ng-if="membre.age > 0 &amp;&amp; !_.isUndefined(membre.distance)" style="font-size: 1.2rem;"> - </span>
-                                                    <span ng-if="!_.isUndefined(membre.distance)" style="font-size: 1.2rem;">{{membre.distance}} m</span>
-                                                </div>
-                                                <div class="item_desc centered" ng-if="!_.isEmpty(membre.introduction)">
-                                                    <font style="color: rgb(99, 99, 99);"><q>{{membre.introduction}}</q></font>
-                                                </div>
-                                                <div class="item_foot debug_unimplemented">
-                                                    <span class="tag">Marche</span>
-                                                    <span class="tag">Violoncelle</span>
-                                                    <span class="tag">Gym</span>
-                                                </div>
+                                                    <div class="item_img oe_img_bg oe_custom_bg" ng-style="{'background-image': 'url(' + membre.ma_photo + ')'}">
+                                                        <icon class="fa coeur" ng-class="{'fa-heart': membre.is_favorite, 'fa-heart-o': !membre.is_favorite}" />
+                                                    </div>
+                                                    <div class="name text-black" style="text-align:center;">
+                                                        <span style="font-size: 1.2rem;">{{membre.full_name}}&amp;nbsp;</span>
+                                                        <icon class="fa fa-shield" ng-if="membre.antecedent_judiciaire_verifier" style="font-size: 1.2rem;" />
+                                                    </div>
+                                                    <div class="infos text-black" style="text-align:center;">
+                                                        <span ng-if="membre.age > 0" style="font-size: 1.2rem;">{{membre.age}} ans</span>
+                                                        <span ng-if="membre.age > 0 &amp;&amp; !_.isUndefined(membre.distance)" style="font-size: 1.2rem;">-</span>
+                                                        <span ng-if="!_.isUndefined(membre.distance)" style="font-size: 1.2rem;">{{membre.distance}} m</span>
+                                                    </div>
+                                                    <div class="item_desc centered" ng-if="!_.isEmpty(membre.introduction)">
+                                                        <font style="color: rgb(99, 99, 99);">
+                                                            <q>{{membre.introduction}}</q>
+                                                        </font>
+                                                    </div>
+                                                    <div class="item_foot debug_unimplemented">
+                                                        <span class="tag">Marche</span>
+                                                        <span class="tag">Violoncelle</span>
+                                                        <span class="tag">Gym</span>
+                                                    </div>
                                                 </a>
                                             </div>
                                         </div>
@@ -2366,11 +2418,20 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371565">https://marvelapp.com/prototype/1773h559/screen/86371565</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804996">https://marvelapp.com/prototype/6dbaaf8/screen/84804996</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371565">https://marvelapp.com/prototype/1773h559/screen/86371565</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804996">https://marvelapp.com/prototype/6dbaaf8/screen/84804996</a>
                                 </div>
                                 <section class="s_page_title pb24 pt88 s" style="margin-left:14%;">
-                                    <p><a href="/monprofil">Mon profil <i class="fa fa-chevron-right" /> Mes annonces publiées</a></p>
+                                    <p>
+                                        <a href="/monprofil">
+                                            Mon profil
+                                            <i class="fa fa-chevron-right" />
+                                            Mes annonces publiées
+                                        </a>
+                                    </p>
                                     <div class="pt8 pb4 " style="text-align: center;">
                                         <h1 class="s_title_default text-bold" style="text-align: left;">
                                             Mes annonces publiées
@@ -2387,10 +2448,8 @@
                                                     <font style="font-size: 1.5rem;" ng-if="!membre_info.estPersonnel">Ses offres de service</font>
                                                 </h5>
                                             </div>
-                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_offre_service)">
-                                                Aucune offre de service n'est actuellement publiée dans vos activités.
-                                            </div>
-<!--                                            <div ng-repeat="(service_id, service) in personal.dct_offre_service" ng-include="'/accorderie/template/offre_ou_demande_de_service_generic'" ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'offre'; " />-->
+                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_offre_service)">Aucune offre de service n'est actuellement publiée dans vos activités.</div>
+                                            <!--                                            <div ng-repeat="(service_id, service) in personal.dct_offre_service" ng-include="'/accorderie/template/offre_ou_demande_de_service_generic'" ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'offre'; " />-->
                                             <div class="activite btn" ng-repeat="(offre_service_id, offre_service) in personal.dct_offre_service">
                                                 <a ng-href="/accorderie/accorderie_offre_service/{{offre_service.id}}">
                                                     <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
@@ -2405,21 +2464,18 @@
                                                     <i class="fa text-epsilon coeur" ng-class="{'fa-heart': offre_service.is_favorite, 'fa-heart-o': !offre_service.is_favorite}" style="font-size:1.5rem;" ng-click="add_to_my_favorite('accorderie.offre.service', offre_service)" />
                                                 </div>
                                             </div>
-                                            <a href="/participer#!?state=init.pos" class="btn btn-primary rounded-circle adapt-text-primary-color add_service"><i class="fa fa-plus-circle icon_padding_right" /> Ajouter une offre de service</a>
+                                            <a href="/participer#!?state=init.pos" class="btn btn-primary rounded-circle adapt-text-primary-color add_service">
+                                                <i class="fa fa-plus-circle icon_padding_right" />
+                                                Ajouter une offre de service
+                                            </a>
                                             <div class="list_title s_title pb40">
                                                 <h5>
-                                                    <font style="font-size: 1.5rem;" ng-if="membre_info.estPersonnel">
-                                                        Mes demandes de service
-                                                    </font>
-                                                    <font style="font-size: 1.5rem;" ng-if="!membre_info.estPersonnel">
-                                                        Ses demandes de service
-                                                    </font>
+                                                    <font style="font-size: 1.5rem;" ng-if="membre_info.estPersonnel">Mes demandes de service</font>
+                                                    <font style="font-size: 1.5rem;" ng-if="!membre_info.estPersonnel">Ses demandes de service</font>
                                                 </h5>
                                             </div>
-                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_demande_service)">
-                                                Aucune demande de service n'est actuellement publiée dans vos activités.
-                                            </div>
-<!--                                            <div ng-repeat="(service_id, service) in personal.dct_demande_service" ng-include="'/accorderie/template/offre_ou_demande_de_service_generic'"  ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'demande'; " />-->
+                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_demande_service)">Aucune demande de service n'est actuellement publiée dans vos activités.</div>
+                                            <!--                                            <div ng-repeat="(service_id, service) in personal.dct_demande_service" ng-include="'/accorderie/template/offre_ou_demande_de_service_generic'"  ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'demande'; " />-->
                                             <div class="activite btn" ng-repeat="(demande_service_id, demande_service) in personal.dct_demande_service">
                                                 <a ng-href="/accorderie/accorderie_demande_service/{{demande_service.id}}">
                                                     <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
@@ -2434,7 +2490,10 @@
                                                     <i class="fa text-epsilon coeur" ng-class="{'fa-heart': demande_service.is_favorite, 'fa-heart-o': !demande_service.is_favorite}" style="font-size:1.5rem;" ng-click="add_to_my_favorite('accorderie.demande.service', demande_service)" />
                                                 </div>
                                             </div>
-                                            <a href="/participer#!?state=init.pds" class="btn btn-primary rounded-circle adapt-text-primary-color add_service"><i class="fa fa-plus-circle icon_padding_right" /> Ajouter une demande de service</a>
+                                            <a href="/participer#!?state=init.pds" class="btn btn-primary rounded-circle adapt-text-primary-color add_service">
+                                                <i class="fa fa-plus-circle icon_padding_right" />
+                                                Ajouter une demande de service
+                                            </a>
                                         </div>
                                     </div>
                                 </section>
@@ -2454,11 +2513,20 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371530">https://marvelapp.com/prototype/1773h559/screen/86371530</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805005">https://marvelapp.com/prototype/6dbaaf8/screen/84805005</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371530">https://marvelapp.com/prototype/1773h559/screen/86371530</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805005">https://marvelapp.com/prototype/6dbaaf8/screen/84805005</a>
                                 </div>
                                 <section class="s_page_title pb24 pt88 s" style="margin-left:14%;">
-                                    <p><a href="/monprofil">Mon profil <i class="fa fa-chevron-right" /> Mes favoris</a></p>
+                                    <p>
+                                        <a href="/monprofil">
+                                            Mon profil
+                                            <i class="fa fa-chevron-right" />
+                                            Mes favoris
+                                        </a>
+                                    </p>
                                     <div class="pt8 pb4 " style="text-align: center;">
                                         <h1 class="s_title_default text-bold" style="text-align: left;">
                                             Mes favoris
@@ -2474,9 +2542,7 @@
                                                     <font style="font-size: 1.5rem;">Les offres de service</font>
                                                 </h5>
                                             </div>
-                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_offre_service_favoris)">
-                                                Aucune offre de services favoris dans votre liste.
-                                            </div>
+                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_offre_service_favoris)">Aucune offre de services favoris dans votre liste.</div>
                                             <div class="activite btn" ng-repeat="(offre_service_id, offre_service) in personal.dct_offre_service_favoris">
                                                 <a ng-href="/accorderie/accorderie_offre_service/{{offre_service.id}}">
                                                     <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
@@ -2500,9 +2566,7 @@
                                                     </font>
                                                 </h5>
                                             </div>
-                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_demande_service_favoris)">
-                                                Aucune demande de services favoris dans votre liste.
-                                            </div>
+                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_demande_service_favoris)">Aucune demande de services favoris dans votre liste.</div>
                                             <div class="activite btn" ng-repeat="(demande_service_id, demande_service) in personal.dct_demande_service_favoris">
                                                 <a ng-href="/accorderie/accorderie_demande_service/{{demande_service.id}}">
                                                     <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
@@ -2524,19 +2588,13 @@
                                                 </h5>
                                             </div>
 
-                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_membre_favoris)">
-                                                Aucun membre favoris dans votre liste.
-                                            </div>
+                                            <div class="activite btn" ng-if="_.isEmpty(personal.dct_membre_favoris)">Aucun membre favoris dans votre liste.</div>
                                             <div class="activite btn" ng-repeat="(membre_id, membre_favoris) in personal.dct_membre_favoris">
                                                 <a ng-href="/monprofil/mapresentation#!?membre_id={{membre_favoris.id}}">
                                                     <img class="activite_img img-fluid rounded-circle" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
                                                     <div class="infos">
-                                                        <h4 class="activite_title">
-                                                            {{membre_favoris.full_name}}
-                                                        </h4>
-                                                        <h5 class="activite_age">
-                                                            {{membre_favoris.age}} ans
-                                                        </h5>
+                                                        <h4 class="activite_title">{{membre_favoris.full_name}}</h4>
+                                                        <h5 class="activite_age">{{membre_favoris.age}} ans</h5>
                                                         <q ng-if="membre_favoris.description">{{membre_favoris.description}}</q>
                                                     </div>
                                                 </a>
@@ -2564,8 +2622,11 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371519">https://marvelapp.com/prototype/1773h559/screen/86371519</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805033">https://marvelapp.com/prototype/6dbaaf8/screen/84805033</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371519">https://marvelapp.com/prototype/1773h559/screen/86371519</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805033">https://marvelapp.com/prototype/6dbaaf8/screen/84805033</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
@@ -2752,8 +2813,11 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371551">https://marvelapp.com/prototype/1773h559/screen/86371551</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804998">https://marvelapp.com/prototype/6dbaaf8/screen/84804998</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371551">https://marvelapp.com/prototype/1773h559/screen/86371551</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804998">https://marvelapp.com/prototype/6dbaaf8/screen/84804998</a>
                                 </div>
                                 <section class="s_page_title pb24 pt88 s" style="margin-left:14%;">
                                     <p>Mon profil > Mes informations personnelles</p>
@@ -2841,8 +2905,11 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371527">https://marvelapp.com/prototype/1773h559/screen/86371527</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805003">https://marvelapp.com/prototype/6dbaaf8/screen/84805003</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371527">https://marvelapp.com/prototype/1773h559/screen/86371527</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805003">https://marvelapp.com/prototype/6dbaaf8/screen/84805003</a>
                                 </div>
                                 <section class="s_page_title pb24 pt88 s" style="margin-left:14%;">
                                     <p>Mon profil > Mes préférences générales</p>
@@ -2888,24 +2955,21 @@
                     <t t-call="website.layout">
                         <div id="wrap" ng-controller="NotificationController">
                             <div class="oe_structure">
-                                <p class="alert alert-danger" ng-if="!_.isEmpty(error)" role="alert">
-                                    {{error}}
-                                </p>
+                                <p class="alert alert-danger" ng-if="!_.isEmpty(error)" role="alert">{{error}}</p>
                                 <div class="debug_debug">
                                     <div ng-if="section==='notification'">
-                                        Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371534">https://marvelapp.com/prototype/1773h559/screen/86371534</a>
+                                        Lien maquette :
+                                        <a href="https://marvelapp.com/prototype/1773h559/screen/86371534">https://marvelapp.com/prototype/1773h559/screen/86371534</a>
                                     </div>
                                 </div>
-<!--                                <span ng-if="$parent.section_membre===''">-->
+                                <!--                                <span ng-if="$parent.section_membre===''">-->
                                 <span class="span_section_message_and_notification_body">
                                     <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                         <!-- TODO missing link back -->
                                         <!--                                        <p>Mon profil > Mes préférences générales</p>-->
                                         <div class="row s_nb_column_fixed">
                                             <div class="col-lg-12 s_title pt16 pb16">
-                                                <p class="s_title_default text-bold text-gamma titre_message_and_notification">
-                                                    Notifications
-                                                </p>
+                                                <p class="s_title_default text-bold text-gamma titre_message_and_notification">Notifications</p>
                                             </div>
                                         </div>
                                     </section>
@@ -2954,8 +3018,11 @@
                         <div id="wrap" class="ng-cloak">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371536">https://marvelapp.com/prototype/1773h559/screen/86371536</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804881">https://marvelapp.com/prototype/6dbaaf8/screen/84804881</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371536">https://marvelapp.com/prototype/1773h559/screen/86371536</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804881">https://marvelapp.com/prototype/6dbaaf8/screen/84804881</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pb64 pt56" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="banner_profile">
@@ -2974,7 +3041,7 @@
                                         </div>
                                         <div id="btn_accorderie_profil" class="profile_btn btn accorderie text-color-title debug_unimplemented">
                                             <i class="fa fa-smile-o" />
-                                            <span id="mon_accorderie"> Mon accorderie: {{personal.mon_accorderie.name}}</span>
+                                            <span id="mon_accorderie">Mon accorderie: {{personal.mon_accorderie.name}}</span>
                                             <i class="fa fa-chevron-right" />
                                         </div>
                                         <a href="web/session/logout?redirect=/">
@@ -3052,16 +3119,20 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371557">https://marvelapp.com/prototype/1773h559/screen/86371557</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804872">https://marvelapp.com/prototype/6dbaaf8/screen/84804872</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371557">https://marvelapp.com/prototype/1773h559/screen/86371557</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804872">https://marvelapp.com/prototype/6dbaaf8/screen/84804872</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="banner_profile s_title pt16 pb16">
-                                        <p class="s_title_default text-bold text-color-title">
-                                            Mon activité
-                                        </p>
+                                        <p class="s_title_default text-bold text-color-title">Mon activité</p>
                                         <div class="solde_container text-color-title">
-                                            <div class="txt">Solde de mon compte <i class="fa fa-question-circle-o debug_unimplemented" /></div>
+                                            <div class="txt">
+                                                Solde de mon compte
+                                                <i class="fa fa-question-circle-o debug_unimplemented" />
+                                            </div>
                                             <div class="solde text-color-title" ng-class="{neg_time: !personal.actual_bank_sign}">{{personal.actual_bank_time_human_short | uppercase}}</div>
                                         </div>
                                     </div>
@@ -3131,7 +3202,8 @@
                                             <div class="list_title s_title">
                                                 <div class="title">
                                                     <h1>Activités à venir</h1>
-                                                    <a href="/monactivite/monagenda" style="font-size:1.25rem;">Voir
+                                                    <a href="/monactivite/monagenda" style="font-size:1.25rem;">
+                                                        Voir
                                                         tout (+500)
                                                     </a>
                                                 </div>
@@ -3139,8 +3211,7 @@
                                             <div class="activite btn">
                                                 <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
                                                 <div class="infos">
-                                                    <h4 class="activite_title">Soirée au café Baobab
-                                                    </h4>
+                                                    <h4 class="activite_title">Soirée au café Baobab</h4>
                                                     <h5 class="activite_auteur">19h00 - 22h00</h5>
                                                     <h5 class="activite_distance">Mercredi 16 juillet</h5>
                                                 </div>
@@ -3175,7 +3246,8 @@
                                                         Messages et
                                                         notifications
                                                     </h1>
-                                                    <a href="/notification#!?section=message" style="font-size:1.25rem;">Voir
+                                                    <a href="/notification#!?section=message" style="font-size:1.25rem;">
+                                                        Voir
                                                         Tout (+40)
                                                     </a>
                                                 </div>
@@ -3227,8 +3299,11 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371583">https://marvelapp.com/prototype/1773h559/screen/86371583</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805034">https://marvelapp.com/prototype/6dbaaf8/screen/84805034</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371583">https://marvelapp.com/prototype/1773h559/screen/86371583</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805034">https://marvelapp.com/prototype/6dbaaf8/screen/84805034</a>
                                 </div>
                                 <section class="s_title_banner oe_img_bg oe_custom_bg pt56 pb64" style="background-image: url(&quot;/website_accorderie/static/src/img/abstract-blue-and-green-fluid-shape-modern-background-vector.jpg&quot;);">
                                     <div class="row s_nb_column_fixed">
@@ -3505,7 +3580,7 @@
                                             </span>
                                         </div>
                                         <div class="col-lg-2 footer_menu div_footer_link">
-<!--                                            <a href="/aide" class="img bottom_menu_icon fa fa-question-circle" style="text-decoration:none;" />-->
+                                            <!--                                            <a href="/aide" class="img bottom_menu_icon fa fa-question-circle" style="text-decoration:none;" />-->
                                             <h5>Aide</h5>
                                             <span>
                                                 <a href="/aide#!?section=guide_utilisation" class="footer_link">Guides d'utilisation</a>
@@ -3650,8 +3725,11 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371547">https://marvelapp.com/prototype/1773h559/screen/86371547</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805037">https://marvelapp.com/prototype/6dbaaf8/screen/84805037</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371547">https://marvelapp.com/prototype/1773h559/screen/86371547</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805037">https://marvelapp.com/prototype/6dbaaf8/screen/84805037</a>
                                 </div>
                                 <section class="s_event_banner oe_img_bg oe_custom_bg" style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_patrick_tomasso_ajgebwgnru4_unsplash_jpg/patrick-tomasso-AjgebwgNrU4-unsplash.jpg&quot;);">
                                     <div class="event_date_container lg">
@@ -3887,8 +3965,11 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86417205">https://marvelapp.com/prototype/1773h559/screen/86417205</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804842">https://marvelapp.com/prototype/6dbaaf8/screen/84804842</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86417205">https://marvelapp.com/prototype/1773h559/screen/86417205</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804842">https://marvelapp.com/prototype/6dbaaf8/screen/84804842</a>
                                 </div>
                                 <section class="s_search_short debug_unimplemented">
                                     <div class="container">
@@ -3914,7 +3995,7 @@
                                         </div>
                                     </div>
                                 </section>
-<!--                                <div style="text-align: left;" />-->
+                                <!--                                <div style="text-align: left;" />-->
                                 <section class="s_vertical_list_lg pt0">
                                     <div class="container_lists">
                                         <div class="row vertical_list">
@@ -3942,25 +4023,25 @@
                                                 </div>
                                             </div>
                                             <div ng-repeat="(service_id, service) in dct_offre_service_info" ng-include="'/accorderie/template/offre_ou_demande_de_service_generic'" ng-init="service_enable_href = true; service_enable_favorite = true; type_service = 'offre'; " />
-<!--                                            <div class="activite btn debug_unimplemented">-->
-<!--                                                <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />-->
-<!--                                                <div class="infos">-->
-<!--                                                    <h4 class="activite_title">-->
-<!--                                                        Vous souhaitez acheter une maison à-->
-<!--                                                        l"étranger?-->
-<!--                                                    </h4>-->
-<!--                                                    <h5 class="activite_desc">-->
-<!--                                                        Vous êtes à l'étranger et vous cherchez-->
-<!--                                                        une maison?-->
-<!--                                                    </h5>-->
-<!--                                                    <h5 class="activite_auteur">Denis Lemarchand</h5>-->
-<!--                                                    <h5 class="activite_distance">300m</h5>-->
-<!--                                                </div>-->
-<!--                                                <div class="infos right">-->
-<!--                                                    <h5>5m</h5>-->
-<!--                                                    <h2 class="fa fa-heart-o text-epsilon coeur" />-->
-<!--                                                </div>-->
-<!--                                            </div>-->
+                                            <!--                                            <div class="activite btn debug_unimplemented">-->
+                                            <!--                                                <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />-->
+                                            <!--                                                <div class="infos">-->
+                                            <!--                                                    <h4 class="activite_title">-->
+                                            <!--                                                        Vous souhaitez acheter une maison à-->
+                                            <!--                                                        l"étranger?-->
+                                            <!--                                                    </h4>-->
+                                            <!--                                                    <h5 class="activite_desc">-->
+                                            <!--                                                        Vous êtes à l'étranger et vous cherchez-->
+                                            <!--                                                        une maison?-->
+                                            <!--                                                    </h5>-->
+                                            <!--                                                    <h5 class="activite_auteur">Denis Lemarchand</h5>-->
+                                            <!--                                                    <h5 class="activite_distance">300m</h5>-->
+                                            <!--                                                </div>-->
+                                            <!--                                                <div class="infos right">-->
+                                            <!--                                                    <h5>5m</h5>-->
+                                            <!--                                                    <h2 class="fa fa-heart-o text-epsilon coeur" />-->
+                                            <!--                                                </div>-->
+                                            <!--                                            </div>-->
                                         </div>
                                     </div>
                                 </section>
@@ -4003,7 +4084,7 @@
                                         </div>
                                     </div>
                                 </section>
-<!--                                <div style="text-align: left;" />-->
+                                <!--                                <div style="text-align: left;" />-->
                                 <section class="s_vertical_list_lg pt0">
                                     <div class="container_lists">
                                         <div class="row vertical_list">
@@ -4051,10 +4132,14 @@
                             <div class="oe_structure">
                                 <div class="debug_debug">
                                     <div ng-if="!echange_service_info.transaction_valide">
-                                        Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86594051">https://marvelapp.com/prototype/1773h559/screen/86594051</a><br />
+                                        Lien maquette :
+                                        <a href="https://marvelapp.com/prototype/1773h559/screen/86594051">https://marvelapp.com/prototype/1773h559/screen/86594051</a>
+                                        <br />
                                     </div>
                                     <div ng-if="echange_service_info.transaction_valide">
-                                        Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86694421">https://marvelapp.com/prototype/1773h559/screen/86694421</a><br />
+                                        Lien maquette :
+                                        <a href="https://marvelapp.com/prototype/1773h559/screen/86694421">https://marvelapp.com/prototype/1773h559/screen/86694421</a>
+                                        <br />
                                     </div>
                                 </div>
                                 <section class="s_back">
@@ -4065,36 +4150,36 @@
                                     <div class="actions debug_unimplemented">
                                         <div>
                                             <i class="fa fa-phone text-primary icon_padding_right" />
-                                        Contacter l'Accorderie
+                                            Contacter l'Accorderie
                                         </div>
 
                                         <divider />
                                         <div>
                                             <i class="fa fa-print text-primary icon_padding_right" />
-                                        Imprimer la validation
+                                            Imprimer la validation
                                         </div>
                                     </div>
                                 </section>
                                 <section class="s_echange_informations pt72 pb72" ng-if="_.isEmpty(echange_service_info)">
-                                    Aucune échange de service, veuillez <a href="/monactivite/echanges">recommencer</a>.
+                                    Aucune échange de service, veuillez
+                                    <a href="/monactivite/echanges">recommencer</a>
+                                    .
                                 </section>
                                 <section class="s_echange_informations pt72 pb72" ng-if="!_.isEmpty(echange_service_info)">
                                     <div class="informations_container">
                                         <div class="information information-1" ng-if="!echange_service_info.transaction_valide">
                                             <span class="info_title">
-                                                <font style="font-weight:bold;">
-                                                    Mon échange de service à venir avec
-                                                </font>
+                                                <font style="font-weight:bold;">Mon échange de service à venir avec</font>
                                                 <br />
                                                 {{contact_info.full_name}}
                                             </span>
                                             <div class="btn btn-primary adapt-text-primary-color debug_unimplemented">
-<!--                                                <a ng-href="{{get_href_participer_service_effectue(echange_service_info)}}">-->
-                                                    <i class="fa fa-thumbs-up" />
-                                                    <!-- TODO faire apparaitre un formulaire pour demander des commentaires et informer l'autre utilisateur d'avoir accepter. Quel est la prochaine étape? -->
-                                                    <!-- TODO faire afficher seulement pour celui qui recois le service, celui qui a créer cet échange a déjà accepté, puis sinon faire accepter par un administrateur -->
-                                                    <span>Accepter</span>
-<!--                                                </a>-->
+                                                <!--                                                <a ng-href="{{get_href_participer_service_effectue(echange_service_info)}}">-->
+                                                <i class="fa fa-thumbs-up" />
+                                                <!-- TODO faire apparaitre un formulaire pour demander des commentaires et informer l'autre utilisateur d'avoir accepter. Quel est la prochaine étape? -->
+                                                <!-- TODO faire afficher seulement pour celui qui recois le service, celui qui a créer cet échange a déjà accepté, puis sinon faire accepter par un administrateur -->
+                                                <span>Accepter</span>
+                                                <!--                                                </a>-->
                                             </div>
                                             <div class="btn btn-primary adapt-text-primary-color">
                                                 <a ng-href="{{get_href_participer_service_effectue(echange_service_info)}}" class="adapt-text-primary-color">
@@ -4116,7 +4201,10 @@
                                         <div class="information information-1" ng-if="echange_service_info.transaction_valide">
                                             <span class="info_title">
                                                 <h1>
-                                                    Service <span ng-if="!echange_service_info.estAcheteur">donné</span><span ng-if="echange_service_info.estAcheteur">reçu</span> le :
+                                                    Service
+                                                    <span ng-if="!echange_service_info.estAcheteur">donné</span>
+                                                    <span ng-if="echange_service_info.estAcheteur">reçu</span>
+                                                    le :
                                                 </h1>
                                                 {{echange_service_info.show_date | toTitleCase}}
                                                 <divider />
@@ -4124,40 +4212,29 @@
                                             </span>
                                             <div class="info_depot" ng-class="{'neg_time': echange_service_info.estAcheteur}">
                                                 <span ng-if="!echange_service_info.estAcheteur">DÉPOT</span>
-                                                <span ng-if="echange_service_info.estAcheteur">RETRAIT</span> SUR MON COMPTE
-                                                <div class="heures" ng-class="{'neg_time_b': echange_service_info.estAcheteur}">
-                                                    {{echange_service_info.transaction_valide ? echange_service_info.show_total_dure_pos : echange_service_info.show_total_dure_estime_pos}}
-                                                </div>
+                                                <span ng-if="echange_service_info.estAcheteur">RETRAIT</span>
+                                                SUR MON COMPTE
+                                                <div class="heures" ng-class="{'neg_time_b': echange_service_info.estAcheteur}">{{echange_service_info.transaction_valide ? echange_service_info.show_total_dure_pos : echange_service_info.show_total_dure_estime_pos}}</div>
                                             </div>
                                         </div>
                                         <div class="information information-2">
-<!--                                                {{echange_service_info.membre.full_name}}-->
+                                            <!--                                                {{echange_service_info.membre.full_name}}-->
                                             <div ng-include="'/accorderie/template/votre_contact_full'" />
                                         </div>
                                         <div class="information information-3" ng-if="!echange_service_info.transaction_valide">
                                             <span class="info_title">
-                                                <p style="font-weight:bold;">
-                                                    Date prévue du service
-                                                </p>
+                                                <p style="font-weight:bold;">Date prévue du service</p>
                                                 <br />
-                                                <span>
-                                                    {{echange_service_info.show_date | toTitleCase}}
-                                                </span>
+                                                <span>{{echange_service_info.show_date | toTitleCase}}</span>
                                                 <span class="divider" />
-                                                <span ng-if="echange_service_info.show_start_time !== echange_service_info.show_end_time">
-                                                    {{echange_service_info.show_start_time}} - {{echange_service_info.show_end_time}}
-                                                </span>
-                                                <span ng-if="echange_service_info.show_start_time === echange_service_info.show_end_time">
-                                                    {{echange_service_info.show_start_time}}
-                                                </span>
+                                                <span ng-if="echange_service_info.show_start_time !== echange_service_info.show_end_time">{{echange_service_info.show_start_time}} - {{echange_service_info.show_end_time}}</span>
+                                                <span ng-if="echange_service_info.show_start_time === echange_service_info.show_end_time">{{echange_service_info.show_start_time}}</span>
                                             </span>
                                         </div>
                                         <div class="information information-4" ng-if="!echange_service_info.transaction_valide &amp;&amp; !_.isUndefined(echange_service_info.offre_service) || !_.isUndefined(echange_service_info.demande_service)">
                                             <div ng-if="!_.isUndefined(echange_service_info.offre_service)">
                                                 <span class="info_title">
-                                                    <font style="font-weight:bold;">
-                                                        Offre de service
-                                                    </font>
+                                                    <font style="font-weight:bold;">Offre de service</font>
                                                 </span>
                                                 <div class="row vertical_list">
                                                     <div ng-controller="OffreDemandeService" ng-include="'/accorderie/template/offre_ou_demande_de_service_generic'" ng-init="model = 'accorderie.offre.service'; service_id = echange_service_info.offre_service; type_service = 'offre'; getDatabaseInfo(); " />
@@ -4165,9 +4242,7 @@
                                             </div>
                                             <div ng-if="!_.isUndefined(echange_service_info.demande_service)">
                                                 <span class="info_title">
-                                                    <font style="font-weight:bold;">
-                                                        Demande de service
-                                                    </font>
+                                                    <font style="font-weight:bold;">Demande de service</font>
                                                 </span>
                                                 <div class="row vertical_list">
                                                     <div ng-controller="OffreDemandeService" ng-include="'/accorderie/template/offre_ou_demande_de_service_generic'" ng-init="model = 'accorderie.demande.service'; service_id = echange_service_info.demande_service; type_service = 'demande'; getDatabaseInfo(); " />
@@ -4176,45 +4251,34 @@
                                         </div>
                                         <div class="information information-5" ng-if="!echange_service_info.transaction_valide">
                                             <span class="info_title debug_unimplemented">
-                                                <font style="font-weight:bold;">
-                                                    Conditions de l'entente
-                                                </font>
+                                                <font style="font-weight:bold;">Conditions de l'entente</font>
                                             </span>
                                             <div class="condition debug_unimplemented">
-                                                <b class="nbr">
-                                                    Coût possible supplémentaire à prévoir
-                                                </b>
+                                                <b class="nbr">Coût possible supplémentaire à prévoir</b>
                                                 <p class="condition_desc">Frais pour trajet de</p>
                                                 <p>{{echange_service_info.distance_trajet}} km</p>
-                                                <p class="condition_desc debug_unimplemented">Frais pour le matériel nécessaire à l'échange
+                                                <p class="condition_desc debug_unimplemented">
+                                                    Frais pour le matériel nécessaire à l'échange
                                                     de service
                                                     <a href="" class="ml-auto text-primary">Voir la liste</a>
                                                 </p>
                                             </div>
                                             <divider class="debug_unimplemented" />
                                             <div class="condition">
-                                                <b class="nbr">
-                                                    Estimation de la durée de service
-                                                </b>
+                                                <b class="nbr">Estimation de la durée de service</b>
                                                 <p class="condition_desc">Nombre d'heures estimé pour le service</p>
                                                 <p>{{echange_service_info.show_duree_estime_pos}}</p>
                                                 <p class="condition_desc">Durée du trajet estimée à effectuer</p>
                                                 <p>{{echange_service_info.show_duree_trajet_estime_pos}}</p>
                                                 <div class="bar_time" style="color:white;">
-                                                    <b>
-                                                        Montant total de temps estimé :
-                                                    </b>
-                                                    <span>
-                                                        {{echange_service_info.show_total_dure_estime_pos}}
-                                                    </span>
+                                                    <b>Montant total de temps estimé :</b>
+                                                    <span>{{echange_service_info.show_total_dure_estime_pos}}</span>
                                                 </div>
                                             </div>
                                             <span class="debug_unimplemented">
                                                 <divider />
                                                 <div class="condition">
-                                                    <b class="nbr">
-                                                        Respectez-vous les conditions suivantes :
-                                                    </b>
+                                                    <b class="nbr">Respectez-vous les conditions suivantes :</b>
                                                     <p>
                                                         <i class="fa fa-check text-epsilon checker" />
                                                         Il doit y avoir au moins 4 personnes pour le déménagement
@@ -4222,9 +4286,7 @@
                                                 </div>
                                                 <divider />
                                                 <div class="condition">
-                                                    <b class="nbr">
-                                                        Mise en garde
-                                                    </b>
+                                                    <b class="nbr">Mise en garde</b>
                                                     <p class="condition_txt">
                                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -4237,9 +4299,7 @@
                                             </span>
                                             <span ng-if="!_.isEmpty(echange_service_info.commentaire)">
                                                 <span class="info_title">
-                                                    <font style="font-weight:bold;">
-                                                        Commentaire
-                                                    </font>
+                                                    <font style="font-weight:bold;">Commentaire</font>
                                                 </span>
                                                 <div class="condition">
                                                     <p>{{echange_service_info.commentaire}}</p>
@@ -4249,99 +4309,71 @@
 
                                         <div class="information information-5" style="grid-area:2/2/4/3;" ng-if="echange_service_info.transaction_valide">
                                             <span class="info_title" ng-if="echange_service_info.has_offre_service">
-                                                <font style="font-weight:bold;">
-                                                    Offre de service privée
-                                                </font>
+                                                <font style="font-weight:bold;">Offre de service privée</font>
                                             </span>
                                             <div class="condition" ng-if="echange_service_info.has_offre_service &amp;&amp; !_.isEmpty(echange_service_info.categorie_offre_service)">
-                                                <b class="nbr">
-                                                    Catégorie du service
-                                                </b>
+                                                <b class="nbr">Catégorie du service</b>
                                                 <p class="condition_desc">{{echange_service_info.categorie_offre_service}}</p>
                                             </div>
                                             <divider ng-if="echange_service_info.has_offre_service" />
                                             <div class="condition" ng-if="echange_service_info.has_offre_service">
-                                                <b class="nbr">
-                                                    Nom du service
-                                                </b>
+                                                <b class="nbr">Nom du service</b>
                                                 <p class="condition_desc">{{echange_service_info.sujet_offre_service}}</p>
                                             </div>
                                             <divider ng-if="echange_service_info.has_offre_service &amp;&amp; !_.isEmpty(echange_service_info.description_offre_service)" />
                                             <div class="condition" ng-if="echange_service_info.has_offre_service &amp;&amp; !_.isEmpty(echange_service_info.description_offre_service)">
-                                                <b class="nbr">
-                                                    Description du service offert
-                                                </b>
+                                                <b class="nbr">Description du service offert</b>
                                                 <p class="condition_desc" ng-bind-html="echange_service_info.description_offre_service | unsafe" />
                                             </div>
 
                                             <span class="info_title" ng-if="echange_service_info.has_demande_service">
-                                                <font style="font-weight:bold;">
-                                                    Demande de service privé
-                                                </font>
+                                                <font style="font-weight:bold;">Demande de service privé</font>
                                             </span>
                                             <div class="condition" ng-if="echange_service_info.has_demande_service &amp;&amp; !_.isEmpty(echange_service_info.categorie_demande_service)">
-                                                <b class="nbr">
-                                                    Catégorie du service
-                                                </b>
+                                                <b class="nbr">Catégorie du service</b>
                                                 <p class="condition_desc">{{echange_service_info.categorie_demande_service}}</p>
                                             </div>
                                             <divider ng-if="echange_service_info.has_demande_service" />
                                             <div class="condition" ng-if="echange_service_info.has_demande_service">
-                                                <b class="nbr">
-                                                    Nom du service
-                                                </b>
+                                                <b class="nbr">Nom du service</b>
                                                 <p class="condition_desc">{{echange_service_info.sujet_demande_service}}</p>
                                             </div>
                                             <divider ng-if="echange_service_info.has_demande_service &amp;&amp; !_.isEmpty(echange_service_info.description_demande_service)" />
                                             <div class="condition" ng-if="echange_service_info.has_demande_service &amp;&amp; !_.isEmpty(echange_service_info.description_demande_service)">
-                                                <b class="nbr">
-                                                    Description du service demandé
-                                                </b>
+                                                <b class="nbr">Description du service demandé</b>
                                                 <p class="condition_desc" ng-bind-html="echange_service_info.description_demande_service | unsafe" />
                                             </div>
                                         </div>
                                         <div class="information information-5" ng-if="echange_service_info.transaction_valide">
                                             <span class="info_title">
-                                                <font style="font-weight:bold;">
-                                                    Détails sur le service reçu
-                                                </font>
+                                                <font style="font-weight:bold;">Détails sur le service reçu</font>
                                             </span>
                                             <div class="condition">
-                                                <b class="nbr">
-                                                    Coût supplémentaires engagés
-                                                </b>
+                                                <b class="nbr">Coût supplémentaires engagés</b>
                                                 <p class="condition_desc">Frais pour le trajet :</p>
                                                 <p>${{echange_service_info.frais_trajet}} CAD</p>
-                                                <p class="condition_desc">Frais pour le matériel nécessaire à l'échange
+                                                <p class="condition_desc">
+                                                    Frais pour le matériel nécessaire à l'échange
                                                     de service
                                                 </p>
                                                 <p>${{echange_service_info.frais_materiel}} CAD</p>
                                             </div>
                                             <divider />
                                             <div class="condition">
-                                                <b class="nbr">
-                                                    Durée du service reçu
-                                                </b>
+                                                <b class="nbr">Durée du service reçu</b>
                                                 <p class="condition_desc">Durée de la réalisation du service</p>
                                                 <p>{{echange_service_info.show_duree_pos}}</p>
                                                 <p class="condition_desc">Durée du trajet aller-retour</p>
                                                 <p>{{echange_service_info.show_duree_trajet_pos}}</p>
-
                                             </div>
                                             <divider ng-if="!_.isEmpty(echange_service_info.commentaire)" />
                                             <div class="condition" ng-if="!_.isEmpty(echange_service_info.commentaire)">
-                                                <b class="nbr">
-                                                    Commentaires
-                                                </b>
+                                                <b class="nbr">Commentaires</b>
                                                 <p class="condition_desc">{{echange_service_info.commentaire}}</p>
                                             </div>
                                             <div class="bar_time" style="color:white;">
-                                                <b>
-                                                    Montant total de temps transféré :
-                                                </b>
-                                                <span>
-                                                    {{echange_service_info.show_total_dure_pos}}
-                                                </span>
+                                                <b>Montant total de temps transféré :</b>
+                                                <span>{{echange_service_info.show_total_dure_pos}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -4362,8 +4394,11 @@
                         <div id="wrap">
                             <div class="oe_structure">
                                 <div class="debug_debug">
-                                    Lien maquette : <a href="https://marvelapp.com/prototype/1773h559/screen/86371574">https://marvelapp.com/prototype/1773h559/screen/86371574</a><br />
-                                    Lien mobile : <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805048">https://marvelapp.com/prototype/6dbaaf8/screen/84805048</a>
+                                    Lien maquette :
+                                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371574">https://marvelapp.com/prototype/1773h559/screen/86371574</a>
+                                    <br />
+                                    Lien mobile :
+                                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84805048">https://marvelapp.com/prototype/6dbaaf8/screen/84805048</a>
                                 </div>
                                 <section class="s_back">
                                     <a href="">
@@ -4427,7 +4462,9 @@
                                                         <span class="mb-auto">Soirée au café Baobab</span>
                                                     </div>
                                                 </div>
-                                                <a class="details_link ml-auto" href="/"><u>Voir les détails</u></a>
+                                                <a class="details_link ml-auto" href="/">
+                                                    <u>Voir les détails</u>
+                                                </a>
                                             </div>
 
                                             <div class="list_title s_title">
@@ -4447,7 +4484,9 @@
                                                         <span class="mb-auto">Faire visiter une maison à louer</span>
                                                     </div>
                                                 </div>
-                                                <a class="details_link ml-auto" href="/"><u>Voir les détails</u></a>
+                                                <a class="details_link ml-auto" href="/">
+                                                    <u>Voir les détails</u>
+                                                </a>
                                             </div>
                                             <div class="activite btn">
                                                 <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
@@ -4461,7 +4500,9 @@
                                                         <span class="mb-auto">Faire visiter une maison à louer</span>
                                                     </div>
                                                 </div>
-                                                <a class="details_link ml-auto" href="/"><u>Voir les détails</u></a>
+                                                <a class="details_link ml-auto" href="/">
+                                                    <u>Voir les détails</u>
+                                                </a>
                                             </div>
 
                                             <div class="list_title s_title">
@@ -4481,7 +4522,9 @@
                                                         <span class="mb-auto">Faire visiter une maison à louer</span>
                                                     </div>
                                                 </div>
-                                                <a class="details_link ml-auto" href="/"><u>Voir les détails</u></a>
+                                                <a class="details_link ml-auto" href="/">
+                                                    <u>Voir les détails</u>
+                                                </a>
                                             </div>
                                             <div class="activite btn">
                                                 <img class="activite_img img-fluid" src="/web/image/website_accorderie.ir_attachment_meritt_thomas_u_hb93v6iwi_unsplash_jpg/meritt-thomas-u-Hb93V6IWI-unsplash.jpg" />
@@ -4495,7 +4538,9 @@
                                                         <span class="mb-auto">Faire visiter une maison à louer</span>
                                                     </div>
                                                 </div>
-                                                <a class="details_link ml-auto" href="/"><u>Voir les détails</u></a>
+                                                <a class="details_link ml-auto" href="/">
+                                                    <u>Voir les détails</u>
+                                                </a>
                                             </div>
                                             <div class="medium-btn btn btn-primary debug_unimplemented">Voir les transactions plus anciennes</div>
                                         </div>
@@ -4515,9 +4560,7 @@
                 <t name="Aide" t-name="website.aide">
                     <t t-call="website.layout">
                         <div id="wrap" class="oe_structure oe_empty" ng-controller="AideController">
-                            <p class="alert alert-danger" ng-if="!_.isEmpty(error)" role="alert">
-                                {{error}}
-                            </p>
+                            <p class="alert alert-danger" ng-if="!_.isEmpty(error)" role="alert">{{error}}</p>
                             <nav class="sub-navbar navbar-light bg-light second_navbar">
                                 <ul class="nav navbar-nav second_navbar">
                                     <li class="nav-item">
@@ -4558,8 +4601,7 @@
                                         <div class="row mb64">
                                             <div class="col-lg-12 text-center mb32">
                                                 <h2 class="o_default_snippet_text">Guide utilisateur</h2>
-                                                <h3 class="text-muted  o_default_snippet_text">Vue global
-                                                </h3>
+                                                <h3 class="text-muted  o_default_snippet_text">Vue global</h3>
                                             </div>
                                             <div class="col-lg-2 col-md-12 offset-lg-1 mt16 mb32">
                                                 <div class="s_big_icons_box">
@@ -4594,14 +4636,14 @@
                                                     <h5 class="o_default_snippet_text">{{sizeGuideImplemented(data.state)}} guides implémentés</h5>
                                                 </div>
                                             </div>
-<!--                                            <div class="col-lg-2 col-md-12 mt16 mb32">-->
-<!--                                                <div class="s_big_icons_box">-->
-<!--                                                    <div class="s_big_icons_icon bg-epsilon">-->
-<!--                                                        <span class="fa fa-users"/>-->
-<!--                                                    </div>-->
-<!--                                                    <h5 class="o_default_snippet_text">75 Partners</h5>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
+                                            <!--                                            <div class="col-lg-2 col-md-12 mt16 mb32">-->
+                                            <!--                                                <div class="s_big_icons_box">-->
+                                            <!--                                                    <div class="s_big_icons_icon bg-epsilon">-->
+                                            <!--                                                        <span class="fa fa-users"/>-->
+                                            <!--                                                    </div>-->
+                                            <!--                                                    <h5 class="o_default_snippet_text">75 Partners</h5>-->
+                                            <!--                                                </div>-->
+                                            <!--                                            </div>-->
                                         </div>
                                     </div>
                                 </section>
@@ -4612,23 +4654,31 @@
                                                 <h1 class="s_title_default text-bold">
                                                     <font style="font-size: 62px;">{{section}}</font>
                                                 </h1>
-                                            <select name="changeModeView" class="debug_debug" ng-model="guide_user_show">
-                                                <option value="item">Item</option>
-                                                <option value="table">Table</option>
-                                            </select>
-                                            <select ng-show="guide_user_show === 'table'" name="changeModeConcat" class="debug_debug" ng-model="guide_user_show_is_concat">
-<!--                                            <select name="changeModeConcat" class="debug_debug" ng-model="guide_user_show_is_concat" ng-change="changeGuideUserIsConcat()">-->
-                                                <option value="normal">Normal</option>
-                                                <option value="concat">Compressé</option>
-                                            </select>
+                                                <select name="changeModeView" class="debug_debug" ng-model="guide_user_show">
+                                                    <option value="item">Item</option>
+                                                    <option value="table">Table</option>
+                                                </select>
+                                                <select ng-show="guide_user_show === 'table'" name="changeModeConcat" class="debug_debug" ng-model="guide_user_show_is_concat">
+                                                    <!--                                            <select name="changeModeConcat" class="debug_debug" ng-model="guide_user_show_is_concat" ng-change="changeGuideUserIsConcat()">-->
+                                                    <option value="normal">Normal</option>
+                                                    <option value="concat">Compressé</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div ng-if="guide_user_show === 'table'">
                                             <table style="border:1px solid black">
                                                 <tr>
                                                     <th style="border:1px solid black">Caractéristiques</th>
-                                                    <th ng-repeat="state in data.state" ng-if="state.section == section" style="border:1px solid black" ng-class="{'debug_unimplemented': state.not_implemented, 'help_show_col': state.table_col_check}">{{state.title}}<br /><span style="color:#00FF00">{{state.key_space}}</span><br /><span style="color:#0000FF;font-size:5px;">{{state.key}}</span><br /><input type="checkbox" ng-model="state.table_col_check" /></th>
-<!--                                                    ng-bind-html="link.html | unsafe"-->
+                                                    <th ng-repeat="state in data.state" ng-if="state.section == section" style="border:1px solid black" ng-class="{'debug_unimplemented': state.not_implemented, 'help_show_col': state.table_col_check}">
+                                                        {{state.title}}
+                                                        <br />
+                                                        <span style="color:#00FF00">{{state.key_space}}</span>
+                                                        <br />
+                                                        <span style="color:#0000FF;font-size:5px;">{{state.key}}</span>
+                                                        <br />
+                                                        <input type="checkbox" ng-model="state.table_col_check" />
+                                                    </th>
+                                                    <!--                                                    ng-bind-html="link.html | unsafe"-->
                                                 </tr>
                                                 <tr ng-repeat="(caract, caract_info) in (guide_user_show_is_concat === 'normal' ? data.dct_unique_caract: data.dct_unique_caract_concat)" ng-style="{'background-color': $even ? '#FFFFFF' : '#888888'}" style="text-align: center;">
                                                     <td style="border:1px solid black" ng-bind-html="caract | unsafe" />
@@ -4636,7 +4686,7 @@
                                                         <span ng-if="caract_info !== false">
                                                             <i class="fa" ng-repeat="icon_name in getIconCaract(state, caract_info)" ng-class="icon_name" ng-style="{'color': icon_name.includes('fa-inverse') ? '#00FF00' : 'inherit'}" />
                                                         </span>
-<!--                                                        <i ng-if="caract_info === false" class="fa" ng-class="{'fa-remove':!state.lst_caract.includes(caract), 'fa-check':state.lst_caract.includes(caract)}" />-->
+                                                        <!--                                                        <i ng-if="caract_info === false" class="fa" ng-class="{'fa-remove':!state.lst_caract.includes(caract), 'fa-check':state.lst_caract.includes(caract)}" />-->
                                                         <i ng-if="caract_info === false" class="fa" ng-class="{'fa-check':state.lst_caract.includes(caract)}" ng-style="{'color': guide_user_show_is_concat === 'normal' ? 'inherit' : '#00FF00'}" />
                                                     </td>
                                                 </tr>
@@ -4650,29 +4700,37 @@
                                                     <tr>
                                                         <td style="border:1px solid black">Exécuter</td>
                                                         <td ng-repeat="state in data.state" ng-if="state.section == section" style="border:1px solid black;text-align: center;" ng-class="{'debug_unimplemented': state.not_implemented, 'help_show_col': state.table_col_check}">
-                                                            <a href="{{state.fast_btn_url}}" ng-if="!_.isEmpty(state.fast_btn_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943"><i class="fa fa-clock-o" />
+                                                            <a href="{{state.fast_btn_url}}" ng-if="!_.isEmpty(state.fast_btn_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">
+                                                                <i class="fa fa-clock-o" />
                                                             </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="border:1px solid black">Animation guidé <a ng-click="open_all_animation_tab(data.state)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943"><i class="fa fa-clock-o" />
-                                                            </a></td>
+                                                        <td style="border:1px solid black">
+                                                            Animation guidé
+                                                            <a ng-click="open_all_animation_tab(data.state)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">
+                                                                <i class="fa fa-clock-o" />
+                                                            </a>
+                                                        </td>
                                                         <td ng-repeat="state in data.state" ng-if="state.section == section" style="border:1px solid black;text-align: center;" ng-class="{'debug_unimplemented': state.not_implemented, 'help_show_col': state.table_col_check}">
-                                                            <a href="{{state.fast_btn_guide_url}}" ng-if="!_.isEmpty(state.fast_btn_guide_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943"><i class="fa fa-clock-o" />
+                                                            <a href="{{state.fast_btn_guide_url}}" ng-if="!_.isEmpty(state.fast_btn_guide_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">
+                                                                <i class="fa fa-clock-o" />
                                                             </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="border:1px solid black">Lien direct</td>
                                                         <td ng-repeat="state in data.state" ng-if="state.section == section" style="border:1px solid black;text-align: center;" ng-class="{'debug_unimplemented': state.not_implemented, 'help_show_col': state.table_col_check}">
-                                                            <a href="{{state.fast_btn_form_url}}" ng-if="!_.isEmpty(state.fast_btn_form_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943"><i class="fa fa-clock-o" />
+                                                            <a href="{{state.fast_btn_form_url}}" ng-if="!_.isEmpty(state.fast_btn_form_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">
+                                                                <i class="fa fa-clock-o" />
                                                             </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="border:1px solid black">Lien maquette</td>
                                                         <td ng-repeat="state in data.state" ng-if="state.section == section" style="border:1px solid black;text-align: center;" ng-class="{'debug_unimplemented': state.not_implemented, 'help_show_col': state.table_col_check}">
-                                                            <a href="{{state.maquette_link}}" ng-if="!_.isEmpty(state.maquette_link)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943"><i class="fa fa-clock-o" />
+                                                            <a href="{{state.maquette_link}}" ng-if="!_.isEmpty(state.maquette_link)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">
+                                                                <i class="fa fa-clock-o" />
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -4694,8 +4752,7 @@
                                                 <div class="col-lg-12 pt16 pb16">
                                                     <div id="myCollapse" class="accordion" role="tablist">
                                                         <div class="card bg-white">
-                                                            <a href="#" role="tab" data-toggle="collapse" aria-expanded="false" class="card-header o_default_snippet_text collapsed" data-parent="#myCollapse" data-target="#myCollapseTab1668630708666" data-original-title="" title="" aria-describedby="tooltip222371">Affichage formulaire
-                                                            </a>
+                                                            <a href="#" role="tab" data-toggle="collapse" aria-expanded="false" class="card-header o_default_snippet_text collapsed" data-parent="#myCollapse" data-target="#myCollapseTab1668630708666" data-original-title="" title="" aria-describedby="tooltip222371">Affichage formulaire</a>
                                                             <div ng-controller="ParticiperController" class="collapse" role="tabpanel" id="myCollapseTab1668630708666" style="">
                                                                 <div class="card-body">
                                                                     <div ng-repeat="(name, dctCB) in dctFormIsCall" style="cursor:pointer" ng-class="{'help_show_col': dctCB.enable}" ng-click="dctCB.cb(dctCB, $parent.data.state)">{{name}}</div>
@@ -4718,14 +4775,14 @@
                                                 <div class="col-lg-6 pt16 pb16">
                                                     <h2>{{state.title}}</h2>
                                                     {{state.description}}
-                                                    <span ng-if="!_.isEmpty(state.date_last_update)"><br />Dernière mise à jour : {{state.date_last_update}}</span>
+                                                    <span ng-if="!_.isEmpty(state.date_last_update)">
+                                                        <br />
+                                                        Dernière mise à jour : {{state.date_last_update}}
+                                                    </span>
                                                     <div class="s_btn text-left pt16 pb16 guide_buttons" data-name="Buttons" t-if="not user_id._is_public()">
-                                                        <a href="{{state.fast_btn_url}}" ng-if="!_.isEmpty(state.fast_btn_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">{{state.fast_btn_title}}
-                                                        </a>
-                                                        <a href="{{state.fast_btn_guide_url}}" ng-if="!_.isEmpty(state.fast_btn_guide_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">Démarrer guide
-                                                        </a>
-                                                        <a href="{{state.fast_btn_form_url}}" ng-if="!_.isEmpty(state.fast_btn_form_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">Démarrer demo
-                                                        </a>
+                                                        <a href="{{state.fast_btn_url}}" ng-if="!_.isEmpty(state.fast_btn_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">{{state.fast_btn_title}}</a>
+                                                        <a href="{{state.fast_btn_guide_url}}" ng-if="!_.isEmpty(state.fast_btn_guide_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">Démarrer guide</a>
+                                                        <a href="{{state.fast_btn_form_url}}" ng-if="!_.isEmpty(state.fast_btn_form_url)" class="btn btn-primary" data-original-title="" title="" aria-describedby="tooltip300943">Démarrer demo</a>
                                                     </div>
                                                     <div class="debug_debug">
                                                         <span class="o_pill bg-200" ng-repeat="caract in state.lst_caract">{{caract}}</span>
@@ -4744,9 +4801,7 @@
                                     </div>
                                 </section>
                             </div>
-                            <section ng-show="section=='faq'" t-if="not user_id._is_public()">
-                                faq
-                            </section>
+                            <section ng-show="section=='faq'" t-if="not user_id._is_public()">faq</section>
                             <section class="container readable o_website_form_builder s_tabs" ng-show="section=='amelioration'">
                                 <div class="container">
                                     <div class="row s_col_no_bgcolor">
@@ -4755,16 +4810,13 @@
                                                 <div class="card-header">
                                                     <ul class="nav nav-tabs card-header-tabs" role="tablist">
                                                         <li class="nav-item">
-                                                            <a class="nav-link o_default_snippet_text" ng-class="{'active': amelioration_section === 'amelioration_continue'}" data-toggle="tab" href="/aide#!?section=amelioration&amp;amelioration_section=amelioration_continue" role="tab" aria-selected="true">Amélioration continue
-                                                            </a>
+                                                            <a class="nav-link o_default_snippet_text" ng-class="{'active': amelioration_section === 'amelioration_continue'}" data-toggle="tab" href="/aide#!?section=amelioration&amp;amelioration_section=amelioration_continue" role="tab" aria-selected="true">Amélioration continue</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link o_default_snippet_text" ng-class="{'active': amelioration_section === 'report_bug'}" data-toggle="tab" href="/aide#!?section=amelioration&amp;amelioration_section=report_bug" role="tab" aria-selected="false">Reporter un bogue
-                                                            </a>
+                                                            <a class="nav-link o_default_snippet_text" ng-class="{'active': amelioration_section === 'report_bug'}" data-toggle="tab" href="/aide#!?section=amelioration&amp;amelioration_section=report_bug" role="tab" aria-selected="false">Reporter un bogue</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link o_default_snippet_text" ng-class="{'active': amelioration_section === 'revision_paire'}" data-toggle="tab" href="/aide#!?section=amelioration&amp;amelioration_section=revision_paire" role="tab" aria-selected="false">Révision par les paires
-                                                            </a>
+                                                            <a class="nav-link o_default_snippet_text" ng-class="{'active': amelioration_section === 'revision_paire'}" data-toggle="tab" href="/aide#!?section=amelioration&amp;amelioration_section=revision_paire" role="tab" aria-selected="false">Révision par les paires</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -4793,8 +4845,7 @@
                                                                 <div class="form-group form-field  form-field-boolean" data-model-field="false" data-optional="true">
                                                                     <label class="control-label" for="Custom Yes or not field">
                                                                         <input name="J'aimerais être contacté pour le suivi" type="checkbox" class="o_website_form_input" value="J'aimerais être contacté pour le suivi" />
-                                                                        <span>J'aimerais être contacté pour le suivi
-                                                                        </span>
+                                                                        <span>J'aimerais être contacté pour le suivi</span>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-group form-field  form-field-char" data-model-field="false" data-optional="true">
@@ -4802,7 +4853,8 @@
                                                                         <span>Votre adresse courriel</span>
                                                                     </label>
                                                                     <input name="Votre adresse courriel" class="form-control o_website_form_input" type="text" />
-                                                                    <p class="help-block">Afin de pouvoir vous contacter pour le suivi ou si nous avons des questions
+                                                                    <p class="help-block">
+                                                                        Afin de pouvoir vous contacter pour le suivi ou si nous avons des questions
                                                                         <br />
                                                                     </p>
                                                                 </div>
@@ -4811,26 +4863,32 @@
                                                                         <span>Description détaillée</span>
                                                                     </label>
                                                                     <textarea name="Description détaillée" required="required" class="form-control o_website_form_input" type="text" />
-                                                                    <p class="help-block">Expliquez l'amélioration suggérée. Mettez les URL en question s'il y
+                                                                    <p class="help-block">
+                                                                        Expliquez l'amélioration suggérée. Mettez les URL en question s'il y
                                                                         a lieu.
                                                                         <br />
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-lg-12 s_btn pt16 pb16 text-center" data-name="Buttons">
-                                                                <button type="button" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">
-                                                                    Envoyer
-                                                                </button>
+                                                                <button type="button" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Envoyer</button>
                                                                 <span id="o_website_form_result" />
                                                             </div>
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane fade" ng-class="{'active': amelioration_section === 'report_bug', 'show': amelioration_section === 'report_bug'}" role="tabpanel" aria-labelledby="nav_tabs_link">
                                                         <h3 class="o_default_snippet_text">Reporter un bogue</h3>
-                                                        <p class="o_default_snippet_text">Le développement de cette plateforme est fait de manière libre et ouverte au public sur <a href="https://github.com/TechnoLibre/odoo_accorderie"><button type="button" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">
-                                                                    Github
-                                                                </button></a>.
-                                                            <a href="https://github.com/TechnoLibre/odoo_accorderie/issues"><button type="button" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Pour reporter un bogue sur Github</button></a>.</p>
+                                                        <p class="o_default_snippet_text">
+                                                            Le développement de cette plateforme est fait de manière libre et ouverte au public sur
+                                                            <a href="https://github.com/TechnoLibre/odoo_accorderie">
+                                                                <button type="button" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Github</button>
+                                                            </a>
+                                                            .
+                                                            <a href="https://github.com/TechnoLibre/odoo_accorderie/issues">
+                                                                <button type="button" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Pour reporter un bogue sur Github</button>
+                                                            </a>
+                                                            .
+                                                        </p>
                                                         <p class="o_default_snippet_text">Vous pouvez aussi reporter votre problème en privé via le formulaire suivant :</p>
                                                         <form accept-charset="UTF-8" action="/website_form/" class="s_website_form col-md-12 mt32" data-model_name="crm.lead" data-force_action="" data-success_page="" enctype="multipart/form-data" method="post">
                                                             <div class="o_website_form_fields">
@@ -4853,8 +4911,7 @@
                                                                 <div class="form-group form-field  form-field-boolean" data-model-field="false" data-optional="true">
                                                                     <label class="control-label" for="Custom Yes or not field">
                                                                         <input name="J'aimerais être contacté pour le suivi" type="checkbox" class="o_website_form_input" value="J'aimerais être contacté pour le suivi" />
-                                                                        <span>J'aimerais être contacté pour le suivi
-                                                                        </span>
+                                                                        <span>J'aimerais être contacté pour le suivi</span>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-group form-field  form-field-char" data-model-field="false" data-optional="true">
@@ -4862,7 +4919,8 @@
                                                                         <span>Votre adresse courriel</span>
                                                                     </label>
                                                                     <input name="Votre adresse courriel" class="form-control o_website_form_input" type="text" />
-                                                                    <p class="help-block">Afin de pouvoir vous contacter pour le suivi ou si nous avons des questions
+                                                                    <p class="help-block">
+                                                                        Afin de pouvoir vous contacter pour le suivi ou si nous avons des questions
                                                                         <br />
                                                                     </p>
                                                                 </div>
@@ -4871,7 +4929,8 @@
                                                                         <span>Le résultat attendu</span>
                                                                     </label>
                                                                     <textarea name="Le résultat attendu" required="required" class="form-control o_website_form_input" type="text" />
-                                                                    <p class="help-block">Décrire le résultat s'il
+                                                                    <p class="help-block">
+                                                                        Décrire le résultat s'il
                                                                         n'avait pas eu le bogue
                                                                         <br />
                                                                     </p>
@@ -4881,7 +4940,8 @@
                                                                         <span>Démarche pour reproduire le bogue</span>
                                                                     </label>
                                                                     <textarea name="Démarche pour reproduire le bogue" required="required" class="form-control o_website_form_input" type="text" />
-                                                                    <p class="help-block">Décrire les étapes pour produire le bogue, définir ce qu'est le bogue à reporter
+                                                                    <p class="help-block">
+                                                                        Décrire les étapes pour produire le bogue, définir ce qu'est le bogue à reporter
                                                                         <br />
                                                                     </p>
                                                                 </div>
@@ -4913,7 +4973,8 @@
                                                                             <span>Basse</span>
                                                                         </label>
                                                                     </div>
-                                                                    <p class="help-block">Niveau d'importance à devoir
+                                                                    <p class="help-block">
+                                                                        Niveau d'importance à devoir
                                                                         corriger ce problème
                                                                         <br />
                                                                     </p>
@@ -4923,7 +4984,8 @@
                                                                         <span>Image au besoin</span>
                                                                     </label>
                                                                     <input name="Image au besoin" type="file" class="o_website_form_input" />
-                                                                    <p class="help-block">Téléverser une image pour
+                                                                    <p class="help-block">
+                                                                        Téléverser une image pour
                                                                         montrer le problème
                                                                         <br />
                                                                     </p>
@@ -4933,16 +4995,15 @@
                                                                         <span>Image secondaire au besoin</span>
                                                                     </label>
                                                                     <input name="Image secondaire au besoin" type="file" class="o_website_form_input" />
-                                                                    <p class="help-block">Téléverser une deuxième image
+                                                                    <p class="help-block">
+                                                                        Téléverser une deuxième image
                                                                         pour montrer le problème
                                                                         <br />
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-lg-12 s_btn pt16 pb16 text-center" data-name="Buttons">
-                                                                <button type="button" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">
-                                                                    Envoyer
-                                                                </button>
+                                                                <button type="button" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Envoyer</button>
                                                                 <span id="o_website_form_result" />
                                                             </div>
                                                         </form>
@@ -4952,7 +5013,8 @@
                                                         <p>Donner nous votre appréciation de cette plateforme, votre retour d'impression et tous autres commentaires.</p>
                                                         <form accept-charset="UTF-8" action="/website_form/" class="s_website_form col-md-12 mt32 ng-pristine ng-valid" data-model_name="crm.lead" data-force_action="" data-success_page="" enctype="multipart/form-data" method="post">
                                                             <div class="o_website_form_fields">
-                                                                <div class="o_not_editable d-none o_default_snippet_text">This placeholder prevents its parent from disappearing
+                                                                <div class="o_not_editable d-none o_default_snippet_text">
+                                                                    This placeholder prevents its parent from disappearing
                                                                     when emptied
                                                                 </div>
                                                                 <div class="form-group form-field o_required form-field-char css_non_editable_mode_hidden" data-model-field="true" data-optional="false">
@@ -4978,7 +5040,8 @@
                                                                         <span>Votre adresse courriel</span>
                                                                     </label>
                                                                     <input name="Votre adresse courriel" class="form-control o_website_form_input" type="text" />
-                                                                    <p class="help-block">Afin de pouvoir vous contacter pour le suivi ou si nous avons des questions
+                                                                    <p class="help-block">
+                                                                        Afin de pouvoir vous contacter pour le suivi ou si nous avons des questions
                                                                         <br />
                                                                     </p>
                                                                 </div>
@@ -4987,7 +5050,8 @@
                                                                         <span>Qui êtes-vous?</span>
                                                                     </label>
                                                                     <textarea name="Qui êtes-vous?" class="form-control o_website_form_input" type="text" />
-                                                                    <p class="help-block">Votre institution, votre niveau de scolarité, votre relation avec ce projet
+                                                                    <p class="help-block">
+                                                                        Votre institution, votre niveau de scolarité, votre relation avec ce projet
                                                                         <br />
                                                                     </p>
                                                                 </div>
@@ -4996,7 +5060,8 @@
                                                                         <span>Révision/retour</span>
                                                                     </label>
                                                                     <textarea name="Révision/retour" required="required" class="form-control o_website_form_input" type="text" />
-                                                                    <p class="help-block">Donnez-nous votre appréciation de cette plateforme, votre retour, vos impressions et tout autre commentaire.
+                                                                    <p class="help-block">
+                                                                        Donnez-nous votre appréciation de cette plateforme, votre retour, vos impressions et tout autre commentaire.
                                                                         <br />
                                                                     </p>
                                                                 </div>

@@ -5,27 +5,19 @@
             <field name="arch" type="xml">
                 <data inherit_id="website_accorderie.ir_ui_view_messages_et_notifications">
                     <xpath expr="//p[hasclass('titre_message_and_notification')]" position="replace">
-                        <p class="s_title_default text-bold text-color-title titre_message_and_notification">
-                            Messages et notifications
-                        </p>
+                        <p class="s_title_default text-bold text-color-title titre_message_and_notification">Messages et notifications</p>
                     </xpath>
                     <xpath expr="//div[hasclass('debug_debug')]" position="inside">
                         <div ng-if="section==='message' &amp;&amp; $parent.section_membre===''">
                             Lien maquette :
-                            <a href="https://marvelapp.com/prototype/1773h559/screen/86371550">
-                                https://marvelapp.com/prototype/1773h559/screen/86371550
-                            </a>
+                            <a href="https://marvelapp.com/prototype/1773h559/screen/86371550">https://marvelapp.com/prototype/1773h559/screen/86371550</a>
                         </div>
                         <div ng-if="section==='message' &amp;&amp; $parent.section_membre!==''">
                             Lien maquette :
-                            <a href="https://marvelapp.com/prototype/1773h559/screen/86371581">
-                                https://marvelapp.com/prototype/1773h559/screen/86371581
-                            </a>
+                            <a href="https://marvelapp.com/prototype/1773h559/screen/86371581">https://marvelapp.com/prototype/1773h559/screen/86371581</a>
                             <br />
                             Lien mobile :
-                            <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804859">
-                                https://marvelapp.com/prototype/6dbaaf8/screen/84804859
-                            </a>
+                            <a href="https://marvelapp.com/prototype/6dbaaf8/screen/84804859">https://marvelapp.com/prototype/6dbaaf8/screen/84804859</a>
                         </div>
                     </xpath>
                     <xpath expr="//span[hasclass('span_section_message_and_notification_body')]" position="attributes">
@@ -54,18 +46,16 @@
                                             <img ng-src="{{ $parent.section_membre_dct.ma_photo }}" />
                                             <div class="header_info">
                                                 <p class="chat_contact">{{$parent.section_membre_dct.name}}</p>
-<!--                                                        <p class="chat_title">Aide au déménagement</p>-->
-<!--                                                        <p class="chat_desc">J'ai des bras fort et des sourires à partager-->
-<!--                                                        </p>-->
+                                                <!--                                                        <p class="chat_title">Aide au déménagement</p>-->
+                                                <!--                                                        <p class="chat_desc">J'ai des bras fort et des sourires à partager-->
+                                                <!--                                                        </p>-->
                                             </div>
                                         </div>
                                         <div class="chat_body">
                                             <div class="chat_msg" ng-repeat="msg in $parent.section_membre_dct.lst_msg">
                                                 <img ng-if="$parent.section_membre_dct.id===msg.m_id &amp;&amp; personal.id!==$parent.section_membre_dct.id" class="contact_pic rounded-circle" ng-src="{{ $parent.section_membre_dct.ma_photo }}" />
-                                                <div class="msg" ng-class="{'my_msg': personal.id===msg.m_id, 'their_msg': $parent.section_membre_dct.id===msg.m_id &amp;&amp; personal.id!==$parent.section_membre_dct.id}">
-                                                    {{msg.name}}
-                                                </div>
-<!--                                                        <div class="msg_time">5 minutes</div>-->
+                                                <div class="msg" ng-class="{'my_msg': personal.id===msg.m_id, 'their_msg': $parent.section_membre_dct.id===msg.m_id &amp;&amp; personal.id!==$parent.section_membre_dct.id}">{{msg.name}}</div>
+                                                <!--                                                        <div class="msg_time">5 minutes</div>-->
                                             </div>
                                         </div>
                                         <div class="chat_footer">
@@ -143,9 +133,7 @@
                 <data inherit_id="website_accorderie.ir_ui_view_ma_presentation">
                     <xpath expr="//div[hasclass('btn_saccorder')]" position="after">
                         <div class="profil profil_right profil_box modif_btn btn btn-primary adapt-text-primary-color" ng-if="!membre_info.estPersonnel">
-                            <a ng-href="/notification#!?section=message&amp;membre={{membre_info.id}}">
-                                Contacter {{membre_info.prenom}}
-                            </a>
+                            <a ng-href="/notification#!?section=message&amp;membre={{membre_info.id}}">Contacter {{membre_info.prenom}}</a>
                         </div>
                     </xpath>
                 </data>

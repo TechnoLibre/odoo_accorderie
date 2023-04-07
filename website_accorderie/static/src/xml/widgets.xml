@@ -16,39 +16,47 @@
         <form class="accorderie_form">
             <p class="form_title">Accorderie à afficher</p>
             <br />
-            <p>Sur votre espace membre vous voyez toujours par défaut, toutes les offres / demandes
+            <p>
+                Sur votre espace membre vous voyez toujours par défaut, toutes les offres / demandes
             de services et actualités de l'Accorderie auquelle vous appartenez. Cependant, si vous
-            souhaitez voir les informations pour d'autres accorderies, vous pouvez l'indiquer ci-dessous.</p>
+            souhaitez voir les informations pour d'autres accorderies, vous pouvez l'indiquer ci-dessous.
+            </p>
 
-            <label class="radio_container">Mon accorderie (Sherbrooke)
+            <label class="radio_container">
+                Mon accorderie (Sherbrooke)
                 <input type="radio" checked="checked" name="monaccorderie" />
                 <span class="checkmark" />
             </label>
-            <label class="radio_container">Granby et région
+            <label class="radio_container">
+                Granby et région
                 <input type="radio" name="monaccorderie" />
                 <span class="checkmark" />
             </label>
-            <label class="radio_container">Granit
+            <label class="radio_container">
+                Granit
                 <input type="radio" name="monaccorderie" />
                 <span class="checkmark" />
             </label>
-            <label class="radio_container">La manicouagan
+            <label class="radio_container">
+                La manicouagan
                 <input type="radio" name="monaccorderie" />
                 <span class="checkmark" />
             </label>
-            <label class="radio_container">La manicouagan
+            <label class="radio_container">
+                La manicouagan
                 <input type="radio" name="monaccorderie" />
                 <span class="checkmark" />
             </label>
-            <label class="radio_container">Longueil
+            <label class="radio_container">
+                Longueil
                 <input type="radio" name="monaccorderie" />
                 <span class="checkmark" />
             </label>
-            <label class="radio_container">Montréal-Nord
+            <label class="radio_container">
+                Montréal-Nord
                 <input type="radio" name="monaccorderie" />
                 <span class="checkmark" />
             </label>
         </form>
     </t>
-
 </template>

@@ -6,9 +6,11 @@
                 ng-href="/notification#!?section=message&amp;membre={{contact_info.id}}"
                 ng-if="!hide_votre_contact_to_contact"
             >
-                <div class="btn btn-primary rounded-circle"><span ng-if="contact_info === 'femme'">La</span><span
-                        ng-if="contact_info !== 'femme'"
-                    >Le</span> contacter</div>
+                <div class="btn btn-primary rounded-circle">
+                    <span ng-if="contact_info === 'femme'">La</span>
+                    <span ng-if="contact_info !== 'femme'">Le</span>
+                    contacter
+                </div>
             </a>
         </xpath>
     </template>
@@ -60,9 +62,7 @@
             </div>
             <a role="menuitem" href="/notification#!?section=message" class="dropdown-item">
                 <div class="cat activite btn btn-primary">
-                    <font class="adapt-text-primary-color" style="font-size: 1rem;">
-                        Voir tous les messages
-                    </font>
+                    <font class="adapt-text-primary-color" style="font-size: 1rem;">Voir tous les messages</font>
                 </div>
             </a>
         </xpath>

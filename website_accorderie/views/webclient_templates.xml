@@ -8,15 +8,16 @@
                 style="background-image: url(&quot;/web/image/website_accorderie.ir_attachment_accueil_illustration_05@2x_png/Accueil-Illustration-05@2x.png&quot;);"
             >
                 <div class="debug_debug">
-                        Lien maquette :
-                        <a
-                        href="https://marvelapp.com/prototype/1773h559/screen/86371568"
-                    >https://marvelapp.com/prototype/1773h559/screen/86371568</a>
-                        <br />
-                        Mobile : <a
-                        href="https://marvelapp.com/prototype/6dbaaf8/screen/85564739"
-                    >https://marvelapp.com/prototype/6dbaaf8/screen/85564739</a>
-                    </div>
+                    Lien maquette :
+                    <a href="https://marvelapp.com/prototype/1773h559/screen/86371568">
+                        https://marvelapp.com/prototype/1773h559/screen/86371568
+                    </a>
+                    <br />
+                    Mobile :
+                    <a href="https://marvelapp.com/prototype/6dbaaf8/screen/85564739">
+                        https://marvelapp.com/prototype/6dbaaf8/screen/85564739
+                    </a>
+                </div>
                 <div class="login_box shadow">
                     <h1>Bienvenue sur l'espace</h1>
                     <br />
@@ -92,22 +93,20 @@
                             </button>
                             <!-- TODO this is wrong, suppose to be in file auth_signup_login_templates.xml -->
                             <div class="justify-content-between mt-2 d-flex small">
-                                <a
-                                    t-if="signup_enabled"
-                                    t-attf-href="/web/signup?{{ keep_query() }}"
-                                >Don't have an account?</a>
-                                <a
-                                    t-if="reset_password_enabled"
-                                    t-attf-href="/web/reset_password?{{ keep_query() }}"
-                                >Reset Password</a>
+                                <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}">
+                                    Don't have an account?
+                                </a>
+                                <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}">
+                                    Reset Password
+                                </a>
                             </div>
                             <t t-if="debug">
-<!--                                <button-->
-<!--                                    type="submit"-->
-<!--                                    name="redirect"-->
-<!--                                    value="/web/become"-->
-<!--                                    class="btn btn-link btn-sm btn-block"-->
-<!--                                >-->
+                                <!--                                <button-->
+                                <!--                                    type="submit"-->
+                                <!--                                    name="redirect"-->
+                                <!--                                    value="/web/become"-->
+                                <!--                                    class="btn btn-link btn-sm btn-block"-->
+                                <!--                                >-->
                                 <button
                                     type="submit"
                                     name="redirect"

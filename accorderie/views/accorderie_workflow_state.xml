@@ -85,8 +85,8 @@
                 <field name="model_field_name_alias" />
                 <field name="show_breadcrumb" />
                 <field name="type" />
-<!--                <field name="xpos" />-->
-<!--                <field name="ypos" />-->
+                <!--                <field name="xpos" />-->
+                <!--                <field name="ypos" />-->
                 <field name="state_dst_ids" />
                 <field name="state_src_ids" />
                 <templates>
@@ -195,16 +195,16 @@
                                             <field name="type" />
                                         </strong>
                                     </li>
-<!--                                    <li class="mb4">-->
-<!--                                        <strong>-->
-<!--                                            <field name="xpos" />-->
-<!--                                        </strong>-->
-<!--                                    </li>-->
-<!--                                    <li class="mb4">-->
-<!--                                        <strong>-->
-<!--                                            <field name="ypos" />-->
-<!--                                        </strong>-->
-<!--                                    </li>-->
+                                    <!--                                    <li class="mb4">-->
+                                    <!--                                        <strong>-->
+                                    <!--                                            <field name="xpos" />-->
+                                    <!--                                        </strong>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    <li class="mb4">-->
+                                    <!--                                        <strong>-->
+                                    <!--                                            <field name="ypos" />-->
+                                    <!--                                        </strong>-->
+                                    <!--                                    </li>-->
                                     <li class="mb4">
                                         <strong>
                                             <field name="state_dst_ids" />
@@ -290,8 +290,8 @@
                     string="Afficher le fil d'ariane"
                 />
                 <filter domain="[('type','!=',False)]" name="type" string="Type" />
-<!--                <filter domain="[('xpos','!=',False)]" name="xpos" string="Diagram position x" />-->
-<!--                <filter domain="[('ypos','!=',False)]" name="ypos" string="Diagram position y" />-->
+                <!--                <filter domain="[('xpos','!=',False)]" name="xpos" string="Diagram position x" />-->
+                <!--                <filter domain="[('ypos','!=',False)]" name="ypos" string="Diagram position y" />-->
                 <filter domain="[('state_dst_ids','!=',False)]" name="state_dst_ids" string="Relation destination" />
                 <filter domain="[('state_src_ids','!=',False)]" name="state_src_ids" string="Relation source" />
             </search>
@@ -321,8 +321,8 @@
                 <field name="state_dst_ids" />
                 <field name="state_src_ids" />
                 <field name="type" />
-<!--                <field name="xpos" />-->
-<!--                <field name="ypos" />-->
+                <!--                <field name="xpos" />-->
+                <!--                <field name="ypos" />-->
                 <field name="name" />
             </tree>
         </field>
