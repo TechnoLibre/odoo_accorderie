@@ -38,6 +38,13 @@ class AccorderieEchangeService(models.Model):
         string="Membre vendeur",
     )
 
+    membre_qui_a_valide = fields.Many2one(
+        comodel_name="accorderie.membre",
+        string="Membre qui a validé",
+    )
+
+    date_valide = fields.Datetime(string="Date de la validation")
+
     nb_heure = fields.Float(
         string="Nombre d'heure",
         help="Nombre d'heure effectué au moment de l'échange.",
@@ -151,27 +158,61 @@ class AccorderieEchangeService(models.Model):
         res = super(AccorderieEchangeService, self).create(vals_list)
         lst_notif_value = []
         for es in res:
-            value = {}
-            # Create notification
-            if es.demande_service and es.offre_service:
-                pass
-            elif es.demande_service:
-                pass
-            elif es.offre_service:
-                value["type_notification"] = "Proposition de service"
-                value["echange_service_id"] = es.id
-                value["membre_id"] = es.membre_acheteur.id
-            else:
-                _logger.warning(
-                    "How doing notification without offre/demande service on"
-                    " échange?"
+            owner_membre_id = es.write_uid.accorderie_membre_ids.exists()
+            # Remove owner (membre who ask) to notif list
+            if owner_membre_id:
+                lst_membre_notif = list(
+                    {res.membre_acheteur, res.membre_vendeur}.difference(
+                        set(owner_membre_id)
+                    )
                 )
-            if value:
-                lst_notif_value.append(value)
+            else:
+                lst_membre_notif = [res.membre_acheteur, res.membre_vendeur]
+            for membre_id in lst_membre_notif:
+                # Create notification
+                value = {}
+                if not es.demande_service and not es.offre_service:
+                    _logger.warning(
+                        "How doing notification without offre/demande service"
+                        " on échange?"
+                    )
+                    continue
+                value["echange_service_id"] = es.id
+                value["membre_id"] = membre_id.id
+                if es.demande_service and es.offre_service:
+                    value["type_notification"] = "Proposition de service"
+                elif es.demande_service:
+                    value["type_notification"] = "Demande de service"
+                elif es.offre_service:
+                    value["type_notification"] = "Proposition de service"
+                if value:
+                    lst_notif_value.append(value)
         if lst_notif_value:
             self.env["accorderie.echange.service.notification"].create(
                 lst_notif_value
             )
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super().write(vals)
+        for rec in self:
+            membre_qui_a_valide = vals.get("membre_qui_a_valide")
+            if vals.get("transaction_valide") and membre_qui_a_valide:
+                lst_membre_notif = list(
+                    {rec.membre_acheteur.id, rec.membre_vendeur.id}.difference(
+                        {membre_qui_a_valide}
+                    )
+                )
+                for membre_id in lst_membre_notif:
+                    value = {
+                        "membre_id": membre_id,
+                        "echange_service_id": rec.id,
+                        "type_notification": "Transaction validée",
+                    }
+                    self.env["accorderie.echange.service.notification"].create(
+                        value
+                    )
         return res
 
     @api.depends("type_echange", "point_service")

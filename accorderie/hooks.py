@@ -27,7 +27,7 @@ def pre_init_hook(cr):
         company_id.sequence = 1
 
         user_admin_id = env["res.partner"].browse(
-            env.ref("base.partner_root").id
+            env.ref("base.partner_admin").id
         )
         user_admin_id.website = "https://technolibre.ca"
         user_admin_id.name = "Mathieu Benoit"

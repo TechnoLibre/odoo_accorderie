@@ -87,22 +87,14 @@
                         <div
                             t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}"
                         >
-                            <!-- <button type="submit" class="btn btn-primary btn-block login-btn rounded-circle"> -->
-                            <button
-                                type="submit"
-                                class="btn btn-primary btn-block login-btn rounded-circle"
-                                name="redirect"
-                                value="/explorer"
-                            >
+                            <button type="submit" class="btn btn-primary btn-block login-btn rounded-circle">
                                 Log in
                             </button>
                             <!-- TODO this is wrong, suppose to be in file auth_signup_login_templates.xml -->
                             <div class="justify-content-between mt-2 d-flex small">
-                                <!-- TODO try to fix redirect, else keep this href -->
-<!--                                <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}">Don't have an account?</a>-->
                                 <a
                                     t-if="signup_enabled"
-                                    t-attf-href="/web/signup?redirect=%2Fexplorer"
+                                    t-attf-href="/web/signup?{{ keep_query() }}"
                                 >Don't have an account?</a>
                                 <a
                                     t-if="reset_password_enabled"

@@ -7,7 +7,7 @@ import humanize
 import pytz
 import requests
 
-from odoo import _, http
+from odoo import _, fields, http
 from odoo.http import request
 from odoo.tools.image import image_data_uri
 
@@ -580,6 +580,248 @@ class AccorderieController(http.Controller):
             dct_value,
         )
 
+    @http.route(
+        ["/monprofil/mapresentation"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mapresentation(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_ma_presentation"
+        ).render()
+
+    @http.route(
+        ["/communaute/actualite"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_communaute_actualite(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_communaute"
+        ).render()
+
+    @http.route(
+        ["/monprofil/mesannonces"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mesannonces(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_annonces_publiees"
+        ).render()
+
+    @http.route(
+        ["/communaute/evenements"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_communaute_evenements(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_communaute_1"
+        ).render()
+
+    @http.route(
+        ["/explorer"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_explorer(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_explorer"
+        ).render()
+
+    @http.route(
+        ["/monactivite/mesgroupes"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_mesgroupes(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_groupes"
+        ).render()
+
+    @http.route(
+        ["/monprofil/mesfavoris"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mesfavoris(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_favoris"
+        ).render()
+
+    @http.route(
+        ["/communaute/groupes"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_communaute_groupes(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_communaute_2"
+        ).render()
+
+    @http.route(
+        ["/evenement"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_evenement(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_evenement"
+        ).render()
+
+    @http.route(
+        ["/monprofil/mespreferences"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mespreferences(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_preferences"
+        ).render()
+
+    @http.route(
+        ["/communaute/membres"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_communaute_membres(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_membres"
+        ).render()
+
+    @http.route(
+        ["/monprofil/mesinfos"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil_mesinfos(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mes_informations_personnelles"
+        ).render()
+
+    @http.route(
+        ["/monactivite/monreseau"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_monreseau(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mon_reseau"
+        ).render()
+
+    @http.route(
+        ["/monprofil"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monprofil(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mon_profil"
+        ).render()
+
+    @http.route(
+        ["/monactivite/echanges"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_echanges(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_echanges"
+        ).render()
+
+    @http.route(
+        ["/monactivite/echange"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_echange(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_echange"
+        ).render()
+
+    @http.route(
+        ["/publier-offre"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_publier_offre(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_publier_offre"
+        ).render()
+
+    @http.route(
+        ["/notification"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_notification(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_messages_et_notifications"
+        ).render()
+
+    @http.route(
+        ["/monactivite"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mon_activite"
+        ).render()
+
+    @http.route(
+        ["/offresservice"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_offresservice(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_offres_service"
+        ).render()
+
+    @http.route(
+        ["/demandesservice"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_demandesservice(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_demandes_service"
+        ).render()
+
+    @http.route(
+        ["/monactivite/monagenda"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def get_monactivite_monagenda(self, **kw):
+        return request.env.ref(
+            "website_accorderie.ir_ui_view_mon_agenda"
+        ).render()
+
     def _transform_str_diff_time_creation(self, create_date):
         if not create_date:
             return ""
@@ -616,6 +858,14 @@ class AccorderieController(http.Controller):
         user_tz = pytz.timezone(
             request.context.get("tz") or request.env.user.tz or "UTC"
         )
+        if not request.context.get("tz"):
+            _logger.warning(
+                f"User id '{request.context.get('uid')}' missing timezone, not"
+                " configure."
+            )
+        if field_input is False:
+            _logger.error("Field value is empty.")
+            return None
         local_time = pytz.utc.localize(field_input).astimezone(user_tz)
         return local_time
 
@@ -879,9 +1129,12 @@ class AccorderieController(http.Controller):
 
         status = True
         ma_photo = kw.get("ma_photo")
-        if ma_photo:
+        introduction = kw.get("introduction")
+        if "ma_photo" in kw.keys():
             # TODO do we need validation? like extension or supported file
             membre_id.logo = ma_photo.split(",")[1].encode("utf-8")
+        if "introduction" in kw.keys():
+            membre_id.introduction = introduction
         return status
 
     @http.route(
@@ -1825,6 +2078,8 @@ class AccorderieController(http.Controller):
             _logger.error(status["error"])
             return status
 
+        membre_id = http.request.env.user.partner_id.accorderie_membre_ids.id
+
         demande_service_id = None
         offre_service_id = None
         new_accorderie_echange_service = None
@@ -1860,31 +2115,24 @@ class AccorderieController(http.Controller):
                         if type_service_id_id:
                             vals["type_service_id"] = type_service_id_id
 
-                membre_id = (
-                    http.request.env.user.partner_id.accorderie_membre_ids.id
-                )
                 vals["membre"] = membre_id
 
                 if (
                     state_id.caract_offre_demande_nouveau_existante
                     == "Nouvelle demande"
                 ):
-                    new_accorderie_service = (
-                        request.env["accorderie.demande.service"]
-                        .sudo()
-                        .create(vals)
-                    )
+                    new_accorderie_service = request.env[
+                        "accorderie.demande.service"
+                    ].create(vals)
                     demande_service_id = new_accorderie_service.id
                     status["demande_service_id"] = demande_service_id
                 elif (
                     state_id.caract_offre_demande_nouveau_existante
                     == "Nouvelle offre"
                 ):
-                    new_accorderie_service = (
-                        request.env["accorderie.offre.service"]
-                        .sudo()
-                        .create(vals)
-                    )
+                    new_accorderie_service = request.env[
+                        "accorderie.offre.service"
+                    ].create(vals)
                     offre_service_id = new_accorderie_service.id
                     status["offre_service_id"] = offre_service_id
 
@@ -2004,9 +2252,9 @@ class AccorderieController(http.Controller):
 
             # date_echange
             # TODO support private offre/demande and unpublish it
-            new_accorderie_echange_service = (
-                request.env["accorderie.echange.service"].sudo().create(vals)
-            )
+            new_accorderie_echange_service = request.env[
+                "accorderie.echange.service"
+            ].create(vals)
             status["echange_service_id"] = new_accorderie_echange_service.id
 
         # if str_state_id in (
@@ -2064,9 +2312,13 @@ class AccorderieController(http.Controller):
                     != date_echange_float
                 ):
                     value_new_service["date_echange"] = date_echange_float
+
+            value_new_service["membre_qui_a_valide"] = membre_id
+            value_new_service["date_valide"] = fields.Datetime.now()
             new_accorderie_echange_service.write(value_new_service)
             status["echange_service_id"] = new_accorderie_echange_service.id
             # Force update time per member
+            # TODO remplacer is_time_updated par la méthode pour forcer la mise à jour du compute
             new_accorderie_echange_service.membre_acheteur.is_time_updated = (
                 True
             )

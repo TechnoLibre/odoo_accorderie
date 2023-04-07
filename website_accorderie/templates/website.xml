@@ -61,7 +61,7 @@
                             <div class="container">
                                 <div class="row s_nb_column_fixed">
                                     <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                                        <h1 class="s_title_default">
+                                        <h1 class="s_title_default text-bold">
                                             <font style="font-size: 62px;">Offre de service non existante</font>
                                         </h1>
                                     </div>
@@ -252,7 +252,7 @@
                             <div class="container">
                                 <div class="row s_nb_column_fixed">
                                     <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                                        <h1 class="s_title_default">
+                                        <h1 class="s_title_default text-bold">
                                             <font style="font-size: 62px;">Demande de service non existante</font>
                                         </h1>
                                     </div>
@@ -406,6 +406,7 @@
                 <div class="row activites_list col-lg-6">
                     <div class="list_title s_title">
                         <div class="title">
+                            <img id="offres_recentes_accorderie" />
                             <h1>Offres r&#233;centes</h1>
                             <a
                                 t-if="offre_services_count"
@@ -469,6 +470,7 @@
                 <div class="row activites_list col-lg-6">
                     <div class="list_title s_title">
                         <div class="title">
+                            <img id="demandes_recentes_accorderie" />
                             <h1>Demandes r&#233;centes</h1>
                             <a
                                 t-if="demande_services_count"
@@ -540,7 +542,7 @@
                         <div class="container">
                             <div class="row s_nb_column_fixed">
                                 <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                                    <h1 class="s_title_default">
+                                    <h1 class="s_title_default text-bold">
                                         <font style="font-size: 62px;">
                                             accorderie_type_service_categorie_id non existante
                                         </font>
@@ -1737,11 +1739,11 @@
                 <q>{{contact_info.introduction}}</q>
             </div>
             <div class="buttons">
-                <a ng-href="/monprofil/mapresentation#!?membre_id={{contact_info.id}}">
+                <a class="no-underline" ng-href="/monprofil/mapresentation#!?membre_id={{contact_info.id}}">
                     <div class="btn btn-primary rounded-circle">
-                        En savoir plus<span
-                            ng-if="!_.isUndefined(contact_info.prenom)"
-                        > sur {{contact_info.prenom}}</span>
+                        <span>En savoir plus</span>
+                        <span ng-if="!_.isUndefined(contact_info.prenom)">
+                            sur {{contact_info.prenom}}</span>
                     </div>
                 </a>
             </div>

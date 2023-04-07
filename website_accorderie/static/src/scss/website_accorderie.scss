@@ -20,9 +20,7 @@ $second-navbar-color: #e8eef8;
 $text-alpha: #ffffff;
 $text-beta: #000000;
 $text-gamma: #656565;
-$text-white: #ffffff;
 $text-black: #000000;
-$text-gray: #d6d0d5;
 
 // Background Colors
 $bg-alpha: white;
@@ -32,6 +30,14 @@ $bg-green-alert: #70a6a8;
 
 .text-color-title {
   color: white;
+}
+
+.no-underline {
+  text-decoration: none !important;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 /*
@@ -123,4 +129,8 @@ $bg-green-alert: #70a6a8;
       }
     }
   }
+}
+
+.editable-content-blue {
+  background-color: $bg-green-alert;
 }

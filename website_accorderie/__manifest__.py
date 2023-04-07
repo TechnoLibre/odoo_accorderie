@@ -12,6 +12,7 @@
         "website_crm",
         "website_form_builder",
         "demo_website_leaflet",
+        "portal",
     ],
     "data": [
         "data/ir_attachment.xml",

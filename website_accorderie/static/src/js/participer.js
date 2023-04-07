@@ -913,7 +913,7 @@ odoo.define("website.accorderie.participer", function (require) {
                         } else if ($scope.form_is_nouvelle_demande($scope.state)) {
                             $scope.submitted_url = `accorderie/accorderie_demande_service/${data.demande_service_id}`;
                         } else if ($scope.form_is_service_and_service_prevu($scope.state)) {
-                            $scope.submitted_url = `monactivite/echange#!?echange=${data.echange_service_id}`;
+                            $scope.submitted_url = `monactivite/echange${$scope.$parent.url_debug}#!?echange=${data.echange_service_id}`;
                         } else {
                             $scope.submitted_url = "";
                         }

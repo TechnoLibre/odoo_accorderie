@@ -42,6 +42,8 @@ class AccorderieEchangeServiceNotification(models.Model):
 
     membre_name = fields.Char(compute="_compute_membre_name", store=True)
 
+    membre_logo = fields.Char(compute="_compute_name", store=True)
+
     def first_to_json(self):
         obj = self[0]
         data = {
@@ -52,6 +54,7 @@ class AccorderieEchangeServiceNotification(models.Model):
             "echange_service_id": obj.echange_service_id.id,
             "membre_id": obj.membre_id.id,
             "membre_name": obj.membre_name,
+            "membre_photo": obj.membre_logo,
         }
         return data
 
@@ -67,6 +70,9 @@ class AccorderieEchangeServiceNotification(models.Model):
                 lst_msg.append(
                     f"Membre : '{rec.echange_service_id.membre_acheteur.nom}'"
                 )
+                rec.membre_logo = (
+                    rec.echange_service_id.membre_acheteur.logo_attachment_id.local_url
+                )
             if (
                 rec.echange_service_id.membre_vendeur
                 and rec.echange_service_id.membre_vendeur.id
@@ -74,6 +80,9 @@ class AccorderieEchangeServiceNotification(models.Model):
             ):
                 lst_msg.append(
                     f"Membre : '{rec.echange_service_id.membre_vendeur.nom}'"
+                )
+                rec.membre_logo = (
+                    rec.echange_service_id.membre_vendeur.logo_attachment_id.local_url
                 )
             if rec.echange_service_id.offre_service:
                 lst_msg.append(

@@ -25,7 +25,7 @@ function addInverseColor(bgClassName, newColorClassName) {
     let bgColor = getBackgroundColor(bgClassName);
 
     // Affichage de la couleur dans la console
-    console.log(bgColor);
+    console.debug(bgColor);
 
     const lightness = calculateLightness(bgColor);
 
@@ -36,7 +36,7 @@ function addInverseColor(bgClassName, newColorClassName) {
         color = 'black';
     }
 
-    console.log(`Create class color '${newColorClassName}' associate to background '${bgClassName}' color '${bgColor}', lightness '${lightness}', so color is '${color}'`);
+    console.debug(`Create class color '${newColorClassName}' associate to background '${bgClassName}' color '${bgColor}', lightness '${lightness}', so color is '${color}'`);
 
     let sheet = document.styleSheets[document.styleSheets.length - 1];
 

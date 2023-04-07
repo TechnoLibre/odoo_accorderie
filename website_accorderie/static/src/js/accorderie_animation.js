@@ -668,15 +668,18 @@ odoo.define('website.accorderie_recording', function (require) {
                         return;
                     }
                     // Show presentation of animation
-                    $scope.animationShowPresentation(name, "Publier une offre de service individuelle", presentation_timer_ms, newValue + 1)
-                } else if (newValue === 2) {
-                    // select init.pos and click on suivant
-                    setTimeout(function () {
-                        $scope.animationSelectorToSelector(name, '[for="init.pos"]', '#nextBtn', generic_timer_ms, newValue + 1, true, true, false)
-                    }, 500);
+                    $scope.animationShowPresentation(name, "Publier une offre de service individuelle", presentation_timer_ms, newValue + 2)
+                    // } else if (newValue === 2) {
+                    //     // select init.pos and click on suivant
+                    //     setTimeout(function () {
+                    //         $scope.animationSelectorToSelector(name, '[for="init.pos"]', '#nextBtn', generic_timer_ms, newValue + 3, true, true, false)
+                    //     }, 500);
                 } else if (newValue === 3) {
                     // click on individuelle
-                    $scope.animationSelectorToSelector(name, '#nextBtn', '[for="init.pos.single"]', generic_timer_ms, newValue + 1, false, true, false)
+                    // $scope.animationSelectorToSelector(name, '#nextBtn', '[for="init.pos.single"]', generic_timer_ms, newValue + 1, false, true, false)
+                    setTimeout(function () {
+                        $scope.animationSelectorToSelector(name, '#nextBtn', '[for="init.pos.single"]', generic_timer_ms, newValue + 1, false, true, false)
+                    }, 500);
                 } else if (newValue === 4) {
                     // click on suivant
                     $scope.animationSelectorToSelector(name, '[for="init.pos.single"]', '#nextBtn', generic_timer_ms, newValue + 1, false, true, false)
@@ -721,15 +724,18 @@ odoo.define('website.accorderie_recording', function (require) {
                         return;
                     }
                     // Show presentation of animation
-                    $scope.animationShowPresentation(name, "Publier une demande de service individuelle", presentation_timer_ms, newValue + 1)
-                } else if (newValue === 2) {
-                    // select init.pds and click on suivant
-                    setTimeout(function () {
-                        $scope.animationSelectorToSelector(name, '[for="init.pds"]', '#nextBtn', generic_timer_ms, newValue + 1, true, true, false)
-                    }, 500);
+                    $scope.animationShowPresentation(name, "Publier une demande de service individuelle", presentation_timer_ms, newValue + 2)
+                    // } else if (newValue === 2) {
+                    //     // select init.pds and click on suivant
+                    //     setTimeout(function () {
+                    //         $scope.animationSelectorToSelector(name, '[for="init.pds"]', '#nextBtn', generic_timer_ms, newValue + 1, true, true, false)
+                    //     }, 500);
                 } else if (newValue === 3) {
                     // click on individuelle
-                    $scope.animationSelectorToSelector(name, '#nextBtn', '[for="init.pds.single"]', generic_timer_ms, newValue + 1, false, true, false)
+                    // $scope.animationSelectorToSelector(name, '#nextBtn', '[for="init.pds.single"]', generic_timer_ms, newValue + 1, false, true, false)
+                    setTimeout(function () {
+                        $scope.animationSelectorToSelector(name, '#nextBtn', '[for="init.pds.single"]', generic_timer_ms, newValue + 1, false, true, false)
+                    }, 500);
                 } else if (newValue === 4) {
                     // click on suivant
                     $scope.animationSelectorToSelector(name, '[for="init.pds.single"]', '#nextBtn', generic_timer_ms, newValue + 1, false, true, false)

@@ -25,6 +25,12 @@
                         <field name="membre_vendeur" />
                     </group>
                     <group>
+                        <field name="membre_qui_a_valide" />
+                    </group>
+                    <group>
+                        <field name="date_valide" />
+                    </group>
+                    <group>
                         <field name="nb_heure" widget="float_time" />
                     </group>
                     <group>
@@ -76,6 +82,8 @@
                 <field name="demande_service" type="row" />
                 <field name="membre_acheteur" type="row" />
                 <field name="membre_vendeur" type="row" />
+                <field name="membre_qui_a_valide" type="row" />
+                <field name="date_valide" type="row" />
                 <field name="nb_heure" type="measure" />
                 <field name="nb_heure_estime" type="measure" />
                 <field name="nb_heure_duree_trajet" type="measure" />
@@ -103,6 +111,8 @@
                 <field name="demande_service" />
                 <field name="membre_acheteur" />
                 <field name="membre_vendeur" />
+                <field name="membre_qui_a_valide" />
+                <field name="date_valide" />
                 <field name="nb_heure" widget="float_time" />
                 <field name="nb_heure_estime" widget="float_time" />
                 <field name="nb_heure_duree_trajet" widget="float_time" />
@@ -148,6 +158,16 @@
                                     <li class="mb4">
                                         <strong>
                                             <field name="membre_vendeur" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="membre_qui_a_valide" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="date_valide" />
                                         </strong>
                                     </li>
                                     <li class="mb4">
@@ -230,6 +250,8 @@
                 <field name="demande_service" type="row" />
                 <field name="membre_acheteur" type="row" />
                 <field name="membre_vendeur" type="row" />
+                <field name="membre_qui_a_valide" type="row" />
+                <field name="date_valide" type="row" />
                 <field name="nb_heure" type="measure" />
                 <field name="nb_heure_estime" type="measure" />
                 <field name="nb_heure_duree_trajet" type="measure" />
@@ -257,6 +279,12 @@
                 <filter domain="[('demande_service','!=',False)]" name="demande_service" string="Demande de services" />
                 <filter domain="[('membre_acheteur','!=',False)]" name="membre_acheteur" string="Membre acheteur" />
                 <filter domain="[('membre_vendeur','!=',False)]" name="membre_vendeur" string="Membre vendeur" />
+                <filter
+                    domain="[('membre_qui_a_valide','!=',False)]"
+                    name="membre_qui_a_valide"
+                    string="Membre qui valide"
+                />
+                <filter domain="[('date_valide','!=',False)]" name="date_valide" string="Date de la validation" />
                 <filter domain="[('nb_heure','!=',False)]" name="nb_heure" string="Nombre d'heure" />
                 <filter
                     domain="[('nb_heure_estime','!=',False)]"
@@ -296,6 +324,8 @@
                 <field name="demande_service" />
                 <field name="membre_acheteur" />
                 <field name="membre_vendeur" />
+                <field name="membre_qui_a_valide" />
+                <field name="date_valide" />
                 <field name="nb_heure" widget="float_time" />
                 <field name="nb_heure_estime" widget="float_time" />
                 <field name="nb_heure_duree_trajet" widget="float_time" />

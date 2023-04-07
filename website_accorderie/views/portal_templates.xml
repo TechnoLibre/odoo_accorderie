@@ -154,6 +154,7 @@
                                         data-oe-field="name"
                                         data-oe-type="char"
                                         data-oe-expression="submenu.name"
+                                        id="participer_navbar_accorderie"
                                     >
                                         Participer
                                     </span>
@@ -516,14 +517,14 @@
                                             <div class="tab-items-container">
                                                 <a
                                                     role="menuitem"
-                                                    ng-href="/monactivite/echange#!?echange={{notif.echange_service_id}}"
+                                                    ng-href="/monactivite/echange{{url_debug}}#!?echange={{notif.echange_service_id}}"
                                                     class="dropdown-item"
                                                     ng-repeat="notif in lst_notification | filter:notif_filter_unread | limitTo:5"
                                                 >
                                                     <div class="cat activite btn">
                                                         <img
                                                             class="activite_img img-fluid rounded-circle"
-                                                            src="/web/image/website_accorderie.ir_attachment_liuba_bilyk_wu_tbwqdpji_unsplash_jpg/liuba-bilyk-wU_TbWqdPJI-unsplash.jpg"
+                                                            ng-src="{{ notif.membre_photo }}"
                                                         />
                                                         <div class="infos">
                                                             <span
@@ -612,7 +613,7 @@
                             </li>
                             <li class="nav-item dropdown bg-primary" t-ignore="true" t-if="not user_id._is_public()">
                                 <a
-                                    class="nav-link adapt-text-primary-color"
+                                    class="nav-link adapt-text-secondary-color"
                                     data-toggle="dropdown"
                                     role="menu_item"
                                     style="cursor:pointer"

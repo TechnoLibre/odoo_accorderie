@@ -38,6 +38,25 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             );
         }
     });
+    app.directive("contenteditable", function () {
+        return {
+            require: "ngModel",
+            link: function (scope, element, attrs, ngModel) {
+
+                function read() {
+                    ngModel.$setViewValue(element.html());
+                }
+
+                ngModel.$render = function () {
+                    element.html(ngModel.$viewValue || "");
+                };
+
+                element.bind("blur keyup change", function () {
+                    scope.$apply(read);
+                });
+            }
+        };
+    });
 
     // sAnimation.registry.affixMenu.include({
     //     /**
@@ -144,11 +163,13 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
         $scope.dct_echange_service_info = {}
         $scope.nb_offre_service = 0;
         $scope.animation_controller_enable = false;
+        $scope.url_debug = "";
+        $scope.modify_label_when_empty = "Modifiez moi!"
 
         // TODO créer environnement modification
         $scope.ask_modification = false;
         $scope.ask_modification_profile = false;
-        $scope.ask_modif_copy = {membre_info: {}};
+        $scope.ask_modif_copy = {membre_info: {}, introduction: ""};
         $scope.updateImage = function (input) {
             let reader = new FileReader();
             reader.onload = function () {
@@ -158,9 +179,10 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             };
             reader.readAsDataURL(input.files[0]);
         };
-        $scope.annuler_ask_modification_profile = function() {
+        $scope.annuler_ask_modification_profile = function () {
             // revert
             $scope.membre_info.ma_photo = $scope.ask_modif_copy.membre_info.ma_photo;
+            $scope.membre_info.introduction = $scope.ask_modif_copy.membre_info.introduction;
             $scope.ask_modification_profile = false;
         };
         $scope.change_ask_modification_profile = function (enable) {
@@ -168,8 +190,17 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             $scope.ask_modification_profile = enable;
             if (!enable) {
                 // Recording, check diff and rpc to server
+                let form = {};
                 if ($scope.ask_modif_copy.membre_info.ma_photo !== $scope.membre_info.ma_photo) {
-                    let form = {"ma_photo": $scope.membre_info.ma_photo}
+                    form["ma_photo"] = $scope.membre_info.ma_photo;
+                }
+                if ($scope.membre_info.introduction === $scope.modify_label_when_empty) {
+                    $scope.membre_info.introduction = "";
+                }
+                if ($scope.ask_modif_copy.membre_info.introduction !== $scope.membre_info.introduction) {
+                    form["introduction"] = $scope.membre_info.introduction;
+                }
+                if (!_.isEmpty(form)) {
                     let url = "/accorderie/personal_information/submit"
                     ajax.rpc(url, form).then(function (data) {
                             console.debug("AJAX receive submit_form personal_information");
@@ -195,9 +226,35 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
                 } else {
                     $scope.ask_modif_copy.membre_info.ma_photo = undefined;
                 }
+                if (!_.isUndefined($scope.membre_info.introduction)) {
+                    if (_.isEmpty($scope.membre_info.introduction)) {
+                        $scope.membre_info.introduction = $scope.modify_label_when_empty;
+                        $scope.ask_modif_copy.membre_info.introduction = "";
+                    } else {
+                        $scope.ask_modif_copy.membre_info.introduction = JSON.parse(JSON.stringify($scope.membre_info.introduction));
+                    }
+                } else {
+                    $scope.ask_modif_copy.membre_info.introduction = undefined;
+                }
             }
         };
         // End modification environnement
+
+        // History
+        $scope.$on('$locationChangeSuccess', function (object, newLocation, previousLocation) {
+            if (window.location.search === "?debug=assets") {
+                $scope.url_debug = "?debug=assets";
+            }
+            if (window.location.pathname !== "/monactivite/echange") {
+                return;
+            }
+            if (newLocation !== previousLocation) {
+                let new_echange_id = $location.search()["echange"];
+                if (!_.isUndefined(new_echange_id)) {
+                    $scope.update_echange_service();
+                }
+            }
+        });
 
         $scope.lst_notification = [];
 
@@ -349,12 +406,19 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
                 };
                 if ($(date_field).find(".o_website_form_date").length > 0 || dateFormatTool === "date") {
                     options.format = time.getLangDateFormat();
+                    if (["date_service_datepicker"].includes(date_field.id)) {
+                        options.defaultDate = moment();
+                    }
                 } else if (
                     $(date_field).find(".o_website_form_clock").length > 0 || dateFormatTool === "clock"
                 ) {
                     // options.format = time.getLangTimeFormat();
                     options.format = "HH:mm";
-                    options.defaultDate = moment("08:00", "HH:mm");
+                    if (["time_service_datepicker", "time_service"].includes(date_field.id)) {
+                        options.defaultDate = moment("08:00", "HH:mm");
+                    } else {
+                        options.defaultDate = moment("00:00", "HH:mm");
+                    }
                 } else {
                     options.format = time.getLangDatetimeFormat();
                 }
@@ -372,7 +436,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             }
             let membre_id = $scope.offre_service_info.membre_id;
             let offre_id = $scope.offre_service_info.id;
-            let url = `/participer#!?state=init.saa.recevoir.choix.existant.time&membre=${membre_id}&offre_service=${offre_id}&date=${date_value}`;
+            let url = `/participer${$scope.url_debug}#!?state=init.saa.recevoir.choix.existant.time&membre=${membre_id}&offre_service=${offre_id}&date=${date_value}`;
             console.debug(url);
             // location.replace(url);
             window.location.href = url;
@@ -388,7 +452,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             }
             let membre_id = $scope.demande_service_info.membre_id;
             let demande_id = $scope.demande_service_info.id;
-            let url = `/participer#!?state=init.saa.offrir.demande.existante.date.time.form&membre=${membre_id}&demande_service=${demande_id}&date=${date_value}`;
+            let url = `/participer${$scope.url_debug}#!?state=init.saa.offrir.demande.existante.date.time.form&membre=${membre_id}&demande_service=${demande_id}&date=${date_value}`;
             console.debug(url);
             // location.replace(url);
             window.location.href = url;
@@ -642,7 +706,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
             // } else {
             //     status = `/participer#!?state=init.va.non.offert.existant.form&membre=${echange_service_info.membre_id}&echange_service=${echange_service_info.id}`;
             // }
-            status = `/participer#!?state=init.va.oui.form&echange_service=${echange_service_info.id}`;
+            status = `/participer${$scope.url_debug}#!?state=init.va.oui.form&echange_service=${echange_service_info.id}`;
             return status;
         }
 
@@ -750,7 +814,10 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
                     })
                 }
             }
+            $scope.update_echange_service();
+        }
 
+        $scope.update_echange_service = function () {
             let echange_id = $location.search()["echange"];
             if (!_.isEmpty(echange_id)) {
                 echange_id = parseInt(echange_id, 10);
@@ -1017,7 +1084,7 @@ odoo.define('website.accorderie_angularjs_global', function (require) {
 
         $scope.echange_click_redirect = function (echange) {
             // TODO no need this, use instead <a href and not ng-click
-            window.location.href = '/monactivite/echange#!?echange=' + echange.id;
+            window.location.href = `/monactivite/echange${$scope.url_debug}#!?echange=${echange.id}`;
         }
     }])
 

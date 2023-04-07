@@ -1,5 +1,3 @@
-import datetime
-
 from odoo import _, api, fields, models
 
 
@@ -39,7 +37,7 @@ class AccorderieDemandeAdhesion(models.Model):
             lst_data = []
             for membre_id in membre_ids:
                 data = {
-                    "date_echange": datetime.datetime.today(),
+                    "date_echange": fields.Datetime.now(),
                     "nb_heure": 15,
                     "type_echange": "offre_ponctuel",
                     "transaction_valide": True,
